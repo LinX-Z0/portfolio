@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Conquest — Lin Xin</title>
   <meta charset="utf-8">
+  <title>Conquest — Lin Xin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -34,28 +34,43 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <div class="mb-4 project-doc">
+        <iframe
+          class="rounded shadow"
+          src="https://drive.google.com/file/d/1uADwVerAfBifg5sPsR7EHdTv8X0xbSst/preview"
+          allow="autoplay"
+          allowfullscreen
+          title="Conquest demo video"
+        ></iframe>
+      </div>
+      <p class="project-links mb-4">
+        <a href="https://drive.google.com/file/d/1uADwVerAfBifg5sPsR7EHdTv8X0xbSst/view" target="_blank" rel="noopener">Open demo on Google Drive</a>
+      </p>
+
       <h1 class="display-5 mb-3">Conquest</h1>
-      <p class="lead">A solo positional strategy game</p>
+      <p class="lead">A hex-based positional strategy board game</p>
       <p class="fst-italic">"Medieval problems require management solutions."</p>
 
-      <p>You are the Prince, eight days from coronation, trapped in a time loop. Your younger brother has sent an assassin who can reset the cycle every time you survive. You travel the kingdom to win favour, conquer territories, and command two knights. If the assassin is still alive at the end of day eight, the loop starts again — and he is stronger than you.</p>
+      <p>You command a prince and two knights, each with unique traits. The board is a hex map of numbered territories. You have eight turns to reduce the assassin's health to zero. Fail that clock, or lose the prince or knights, and the game is over. Between those two clocks — eight turns versus a hunter walking the shortest path toward you — the actual verbs are management: action points, supplies, and which land is still yours when he walks through it.</p>
+      <p>Setup is already a strategic fork. You pick one of four strongholds for the prince. That choice also sets where the assassin starts, so opening position is a matchup, not flavour.</p>
 
       <h3 class="mt-4">Design Rationale</h3>
-      <p>The fantasy is medieval succession. The verbs are modern management: budget time, budget supplies, place people. Action points are not a generic energy bar — they are the day passing. Spend them on movement and conquest, and you have fewer hours left before night. That is how “time loop” becomes a resource instead of a cutscene.</p>
-      <p>Supplies are a three-way sink. Conquest feeds the pool; upgrades, new formations, and healing empty it. You cannot max knights, unlock every formation, and stay topped up. The interesting turn is choosing which of those three you can afford to starve.</p>
-      <p>Knights are positional, not just stats. Where you leave them enables formations. Combat bonuses come from layout — extra damage or defence if the squad is standing in the right shape — so the map is a tactics board, not a score track you paint red. Levelling knights and unlocking formations is the Prince learning command as the eight-day window closes.</p>
-      <p>The assassin is always chasing. He does not play a scripted boss pattern; he picks from three reactive moves based on the situation (for example how many enemies are in the fight). That keeps the hunt from becoming a solved puzzle after one loop. Day structure reinforces the same idea: morning, evening, night, with AP limits in each phase, so a “perfect route” still has to respect medieval travel instead of teleporting across the board.</p>
+      <p>The theme is the rules. A medieval crisis (an assassin in your kingdom) is solved with budgets and routing, not a single heroic swing. Each turn starts with an event card that applies a global effect, so the "kingdom" keeps changing under you. Then you play three phases — morning, phase two, phase three — with 10 action points each, tracked on a D20. Traversing a territory costs 1 AP. You spend that AP to move and to conquer, because conquered land is how you get supplies.</p>
+      <p>Supplies are the between-turn economy. Holding territories feeds the pool; spending it is a three-way split: recover health, level up knights, or unlock combat formations. You cannot do all three well. Levelling and formations are how the prince's retinue gets strong enough to actually kill the assassin. Healing is how you survive long enough to use them. Starving any one of those is the interesting turn.</p>
+      <p>The assassin is a pathing problem, not a scripted boss. He moves toward the prince on the shortest path and ignores small nodes, so the hex graph matters. In the third phase he speeds up. Anything he walks through is unconquered — your economy can be peeled off the map just by him travelling. Forests counter that with "enemy shrouded": he has to spend an entire phase to enter or leave, which can buy you a whole phase of AP. Mortars (if you hold them) are a once-per-turn map-wide attack. Watchtowers work like mortars but only for a region. Terrain is a toolkit for controlling his clock versus yours.</p>
+      <p>Victory is only assassin HP to zero inside eight turns. That keeps the game from becoming a painting-the-map contest. Conquest is fuel for the hunt, not the win condition.</p>
 
       <h3 class="mt-4">Systems</h3>
-      <p>The core loop is a state machine of days and phases. Each day has three phases. AP refreshes in a controlled way and is spent on move/conquer. Supplies are gained from conquered land and spent on three mutually competing upgrades. Combat resolves with formation checks against the assassin’s chosen move.</p>
-      <p>The assassin AI is small on purpose: a reactive selector over three attacks, not a learning model. The design problem is readability — the player should be able to infer why he swung that way from the board state (numbers, positions), then counter next loop with placement and formation unlocks. Progression (knight levels, formation list) is the long-term answer to a hunter who resets the short-term board.</p>
-      <p>Failing day eight is a full reset of the loop, which makes early-game routing matter: what you learn about his behaviour and which upgrades you rush are the metagame across attempts.</p>
+      <p>Board: hexes with reference numbers. Units: prince + two knights with distinct traits. Turn loop: draw event (global) → three phases of 10 AP → between-turn supply spend. Movement cost is uniform (1 AP per territory), so the cost of a plan is path length plus whatever you spend on conquest along the way.</p>
+      <p>Assassin AI is readable on purpose: shortest path to the prince, skip small nodes, faster in phase three, unconquer on pass-through. You can look at the hexes and predict where he will be. Forests, mortars, and watchtowers are the player-side tools for breaking that path or taxing him while you set up a fight. Formations and knight levels are the combat layer once you actually intercept him.</p>
+      <p>Loss is two-channel: the eight-turn hard limit, or the party dying. That means a greedy rush that gets the prince killed is as much a loss as playing too safe and running out the clock.</p>
 
       <h4 class="mt-5">Key Features</h4>
       <ul>
-        <li>AP as time, supplies as a three-way upgrade/heal sink</li>
-        <li>Knight placement and formation bonuses</li>
-        <li>Reactive three-move assassin and a day/night travel clock</li>
+        <li>Hex map, four strongholds, assassin start tied to your opening pick</li>
+        <li>Event card, then three phases of 10 AP tracked on a D20</li>
+        <li>Assassin shortest-path hunter who unconquers land; forests, mortars, watchtowers as map tools</li>
+        <li>Supplies between turns: heal, level knights, unlock formations</li>
       </ul>
 
       <h3 class="mt-4">Documents</h3>
