@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Death's Refrain - Lin Xin</title>
+  <meta name="author" content="Lin Xin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+</head>
+<body class="bg-dark text-light">
+  <div id="twinkle-container"></div>
+
+  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <h1 class="display-5 mb-3">Death's Refrain</h1>
+      <p class="lead">Action RPG - Team Infernumb, built on Hellmaker</p>
+
+      <p>Death's Refrain is a DigiPen team project: an action RPG set in a mythic underworld, where morality is both weapon and weight. Combat is turn-based on a grid. Narrative choices and encounters are meant to ripple through the Inferno's denizens. You fight enemies, but the pitch is that you are also confronting yourself.</p>
+      <p>I was Design Lead and mechanics / level design champion on a nine-person team. The game runs on our custom engine, <a href="Hellmaker.html" class="text-info">Hellmaker</a>. I also wrote the engine debugger and a large part of the editor ImGui (debug console, GUI manager, asset browser).</p>
+
+      <h3 class="mt-4">Design Rationale</h3>
+      <p>The loop is tactical, not twitch. You move the camera with WASD, then click the player and a green tile to commit a move. Passing the turn (T / hourglass) is a real verb: standing still is a choice. Attacking is Space plus a click, and only if you have line of sight. That makes the map a visibility puzzle as much as a damage puzzle. Q swaps melee and ranged so positioning has a weapon identity, not just a range number. G raises a shield. Fire and grease tiles change how movement feels, so the floor is part of the kit.</p>
+      <p>Tutorial and layer structure follow a skill-theme approach. Movement, weapon, shield, souls/orbs, and attack each get their own beat before they stack. Later rooms (layer 1 into layer 2, boss arena) assume you already have that language. Dialogue is skippable so the combat lesson is not locked behind a cutscene you cannot leave.</p>
+      <p>The underworld fantasy is the theme-led half: Inferno layers, named voices in the script, morality as a burden. The grid, LOS, and tile hazards are the mechanics-led half: they decide how a room is actually authored in the editor and in YAML maps.</p>
+
+      <h3 class="mt-4">Systems I designed around</h3>
+      <p>Maps are grid data (width, height, tile layers) consumed by Hellmaker. Scenes are YAML. Combat and UI live in Lua state machines on GameObjects (idle, attack, pause, portals, pickups, dialogue triggers). That split mattered for design: I could specify a room as tiles + intended verbs, then iterate in the editor without waiting on a full C++ rebuild for every layout pass.</p>
+      <p>Line of sight, turn passing, melee/ranged swap, shield, and hazard tiles are the mechanical spine. If those are unclear, the morality theme does not land, because the player is too busy fighting the controls.</p>
+
+      <h4 class="mt-5">Key Features</h4>
+      <ul>
+        <li>Grid, turn-based combat with line of sight</li>
+        <li>Melee / ranged swap, shield, hazard tiles</li>
+        <li>Layered Inferno spaces and branching dialogue</li>
+      </ul>
+
+      <h4 class="mt-5">My role</h4>
+      <ul>
+        <li>Design Lead - mechanics and level design</li>
+        <li>Hellmaker debugger and editor ImGui tools</li>
+      </ul>
+
+      <p class="project-links mt-4">
+        Built on <a href="Hellmaker.html">Hellmaker</a>, our custom C++ engine.
+      </p>
+      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
