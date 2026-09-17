@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FIVENITE — Lin Xin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+</head>
+<body class="bg-dark text-light">
+  <div id="twinkle-container"></div>
+
+  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <h1 class="display-5 mb-3">FIVENITE</h1>
+      <p class="lead">Mega Man Maker — easy combat level inspired by Fortnite</p>
+
+      <p>Fivenite is the opposite of a precision platforming exam. Inspired by Fortnite, I wanted a more carefree, almost "braindead" combat romp: pick a starting weapon, drop in, fight. Primary theme is fighting. Secondary theme is freedom — weapon choice, plus breaking and building so the rooms are not just stand-and-shoot.</p>
+
+      <h3 class="mt-4">Design Rationale</h3>
+      <p>Easy difficulty is a design constraint, not a lack of structure. Checkpoints, heals, and ammo are placed on purpose so deaths do not wipe twenty rooms of progress and so combat stays loud instead of becoming a resource puzzle. Terrain manipulation (break blocks, build blocks, alternate-build to climb) is there so players who get bored of gunplay have a second verb, and so later rooms can ask for both at once.</p>
+      <p>The cadence still ramps. You jump in and pick a weapon (A, intensity 1), then learn jump-reflect and charged-dash reflect (B + B', 3), then fight while jumping and reflecting (2). Disappearing-platform combat is the first real spike (4). Breaking a block for a new weapon, then using that weapon to build a path, is the Fortnite beat: loot changes how you traverse, not just your DPS.</p>
+      <p>The back half mixes combat with traversal under pressure — fire waves plus a frog, spring jump, climbing by alternating built blocks while an enemy is still shooting, then a key-and-boss-door setup. The boss is intensity 7 and is scored as using everything: jump, both reflects, attack, break, and build. That is the "full kit" exam for a fighting level, not a platforming one.</p>
+
+      <h3 class="mt-4">Level systems / cadence</h3>
+      <p>Notation:</p>
+      <ul>
+        <li>A jump / A' spring jump</li>
+        <li>B negate/reflect damage by jump / B' charged dash reflect or damage</li>
+        <li>C attack with chosen weapon / C' break block with weapon</li>
+        <li>E build block / E' alternate building to climb a wall</li>
+        <li>F disappearing platform</li>
+      </ul>
+      <p>Eleven challenges, boss on page 8. Intensity curve is supposed to feel like a looter-shooter match: low drop-in, mid combat toys, late build/fight mix, boss as the peak. Weapon choice at the start is the one systemic fork — later rooms are written to work with "the weapon you picked," not a single scripted loadout.</p>
+
+      <h4 class="mt-5">Skill Theme</h4>
+      <ul>
+        <li>Primary: fighting</li>
+        <li>Secondary: freedom (weapon choice, break/build)</li>
+      </ul>
+
+      <p class="project-links mt-4">
+        <a href="Assets/FIVENITE_EASY.pdf" target="_blank">Level document (map, cadence, intensity)</a>
+      </p>
+      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

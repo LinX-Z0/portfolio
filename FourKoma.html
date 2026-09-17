@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>4KOMA — Lin Xin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+</head>
+<body class="bg-dark text-light">
+  <div id="twinkle-container"></div>
+
+  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <h1 class="display-5 mb-3">4KOMA</h1>
+      <p class="lead">Mega Man Maker — mobility-focused level</p>
+
+      <p>4KOMA is a Mega Man Maker stage about getting good at two tools, not collecting ten. Primary theme is mobility (double jump and slide). Secondary theme is timing. I designed it as a skill-theme map: every challenge should ask for at least one of those verbs, often stacked, with intensity climbing as the same verbs get stricter.</p>
+
+      <h3 class="mt-4">Design Rationale</h3>
+      <p>In Maker, slide and double jump normally cannot coexist because of character restrictions. Equipping a unique attack breaks that lock. That is the level's "no idea is too crazy" hook: air slides, and one-block midair gaps that need a double jump plus a perfectly timed air slide. The gimmick is not a new mechanic from outside the game — it is an illegal-feeling combo the editor already allows.</p>
+      <p>I do not want complexity (lots of weapons, lots of enemy types). I want difficulty: the same two mobility skills, asked more precisely. Early rooms teach jump, then double jump, then slide in isolation. Mid rooms add damage-aware double jumps (B') and air slides (C'). Late rooms split the double jump around another action (B''), add breaking platforms on a timer (E), and peak at intensity 10 with double jump plus air slide.</p>
+      <p>Downbeats are deliberate. After a 5, I drop to a 1 (zone 6 is just B) so the player can reset hands before the next stack. The last screen is the exam, not a new toy.</p>
+
+      <h3 class="mt-4">Level systems / cadence</h3>
+      <p>I notate rooms the way I notate Mega Man cadence:</p>
+      <ul>
+        <li>A jump / A' spring jump</li>
+        <li>B double jump / B' place both jumps to avoid damage / B'' jump, do something else, jump</li>
+        <li>C slide / C' air slide</li>
+        <li>D timed jump</li>
+        <li>E breaking platform with a limited window</li>
+      </ul>
+      <p>Fourteen labelled challenges across five screens. Intensity is scored per zone, not guessed after play. Examples: screen 1 walks A, B, C, then B' (3), then A+C' (5). Screen 3 zone 10 is B+C'+D+E at 8 — mobility, air slide, timing, and a platform that will not wait. Screen 4 zone 13 offers a fork (B+E or C+E) so the exam still has a little player choice. Screen 5 zone 14 is B+C' at 10, the cleanest statement of the theme.</p>
+      <p>That table is the technical document for the level. If a room cannot be named in cadence, it does not belong on the map.</p>
+
+      <h4 class="mt-5">Skill Theme</h4>
+      <ul>
+        <li>Primary: mobility (double jump, slide, air slide)</li>
+        <li>Secondary: timing</li>
+      </ul>
+
+      <p class="project-links mt-4">
+        <a href="Assets/4KOMA.pdf" target="_blank">Level document (map, cadence, intensity)</a>
+      </p>
+      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

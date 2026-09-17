@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Acquit — Lin Xin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+</head>
+<body class="bg-dark text-light">
+  <div id="twinkle-container"></div>
+
+  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <h1 class="display-5 mb-3">Acquit</h1>
+      <p class="lead">A single-player courtroom strategy card game</p>
+
+      <p>Acquit puts you in the role of a defence attorney on the O.J. Simpson trial. The goal is not to recite the case — it is to build a playable legal journey: gather a case file, lock in a strategy before you enter court, then spend that preparation arguing for the jury.</p>
+      <p>I was one of six designers (Caven, Mandy, Lin Xin, Isaiah, Yan Xin, Novelie). I worked on how the legal process maps onto cards, phases, and scoring — turning investigation, pre-trial, and trial into one loop instead of a pile of themed trivia.</p>
+
+      <h3 class="mt-4">Design Rationale</h3>
+      <p>The brief asked for an adventure/journey, so the whole legal process had to be the journey. A single shared deck was simpler to set up, but cards from the wrong phase kept showing up at the wrong time. We split the decks: non-trial cards for investigation and pre-trial, arguments and tactics for the courtroom. Setup is slightly fussier. Each phase is much more readable.</p>
+      <p>Investigation is hand-building. You draw a case, then spend Investigation cards to peek, search, redraw, or filter for evidence versus arguments. At the end of that phase the extras go away, so the skill is not hoarding — it is deciding what is worth keeping.</p>
+      <p>Pre-trial is the commit. You pick one Motion with a real tradeoff. Motion to Suppress makes evidence stronger, but a failed evidence-backed argument hurts more. Motion to Dismiss boosts your argument rolls, then taxes you for every argument the other side still wins. Continuance is a redraw: safer, less swingy. That choice is the “I have a theory of the case” moment before dice start mattering.</p>
+      <p>Trial is where preparation meets uncertainty. An argument is flipped with a baseline difficulty that already leans prosecution or defence. You may play evidence and/or a tactic, then roll. Evidence is not generic +1: some cards only fit specific arguments, some work for either side, some have a worse chance but a bigger jury swing. Synergies (domestic violence history with the abuse argument, DNA with crime-scene arguments, flight with “erratic behaviour”) reward a coherent case instead of spraying every strong card.</p>
+      <p>Jury tokens start undecided and flip as arguments resolve. First to 12 wins; if nobody hits 12, it is a draw. Playtests showed raw win rates swinging hard (one set went 5–7, then 10–2, 10–2), so we kept iterating numbers, made unused leftover cards a score penalty, and treated successful cards as a plus to the final case. The player should feel they improved the odds, not that the dice were the game.</p>
+
+      <h3 class="mt-4">Systems</h3>
+      <p>The card economy settled around 40 cards: 10 arguments, 15 evidence, 3 motions, 7 tactics, 5 investigation. Turn sequence in trial is: flip argument, play up to one evidence and/or one tactic, roll, resolve jury, discard. If the hand is empty you can still roll the argument naked — so running dry is a state, not a hard lock.</p>
+      <p>Tactics are the interrupt layer. Objection and Confidence reroll failures (with a worse penalty if you fail again). Cross-Examination lets you play two evidence cards in one round. Expert Witness replays a spent card. Surprise Witness can cancel an opposing win at the cost of a discard. Motions sit on the table as a global modifier for the whole trial, so the pre-trial pick is a rules overlay, not a one-shot.</p>
+      <p>Most of the “technical” work on this project was table systems: difficulty values per argument, evidence modifiers that add or subtract from those checks, and a scoring model that could survive playtest without collapsing into auto-win or coin-flip. The card list is the spec for that.</p>
+
+      <h4 class="mt-5">Key Features</h4>
+      <ul>
+        <li>Three-phase legal flow with split decks</li>
+        <li>Investigation hand-building, Motions as trial-wide modifiers</li>
+        <li>Arguments with baseline odds, evidence synergies, jury race to 12</li>
+      </ul>
+
+      <h4 class="mt-5">Tools</h4>
+      <ul>
+        <li>Figma</li>
+        <li>PowerPoint</li>
+        <li>Physical prototyping and playtesting</li>
+      </ul>
+
+      <h3 class="mt-4">Documents</h3>
+      <p class="project-links">
+        <a href="Assets/Acquit_Presentation.pdf" target="_blank">Presentation deck</a><br>
+        <a href="Assets/Acquit_Game_Design.pdf" target="_blank">Game design notes</a><br>
+        <a href="Assets/Acquit_Cardlist.pdf" target="_blank">Card list</a><br>
+        <a href="Assets/Acquit_Print&Play.pdf" download>Print and play</a><br>
+        <a href="Assets/Acquit_RuleBook.pdf" download>Rulebook</a>
+      </p>
+
+      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

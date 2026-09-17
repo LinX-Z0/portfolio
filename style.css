@@ -1,0 +1,256 @@
+/* Fonts */
+  .norican-regular {
+    font-family: "Norican", cursive;
+    font-weight: 100;
+    font-style: normal;
+  }
+  .sriracha-regular {
+    font-family: "Sriracha", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .nunito {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  .electrolize-regular {
+  font-family: "Electrolize", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h3, h4, h5, h6 {
+  font-family: 'Electrolize', sans-serif;
+}
+
+h1, h2{
+  font-family: 'Audiowide', sans-serif;
+}
+
+/* Full-page gradient background */
+body {
+  background: #25254d;
+  background: linear-gradient(0deg,rgba(12, 12, 33, 1) 0%, rgba(3, 24, 56, 1) 50%, rgba(2, 4, 28, 1) 100%);
+    color: white; /* optional default text color */
+    min-height: 100vh;
+    font-family: 'Nunito';
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Twinkling stars overlay */
+  #twinkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+  
+  .twinkle-star {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0; /* start invisible */
+    animation: fadeTwinkle 3s forwards; /* play once */
+  }
+  
+  @keyframes fadeTwinkle {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+/* Apply the Norican font to the entire navbar */
+#navbar {
+  background: #00000083 !important;
+  color: white !important;
+}
+
+/* Ensure links are white */
+#navbar .navbar-brand,
+#navbar .nav-link {
+  color: white !important;
+  font-family: 'Audiowide', cursive !important;
+}
+
+/* Optional: highlight on hover */
+#navbar .nav-link:hover {
+  color: #cb93ff !important; /* or any accent color you like */
+}
+
+/* Optional: style brand */
+#navbar .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.navbar-toggler {
+  border: none; /* Optional: remove border if you want */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+
+.linkedin-icon-small {
+  width: 90px;      /* Much smaller width */
+  height: auto;     /* Preserve aspect ratio */
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.linkedin-icon-small:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* General Section Styling */
+section {
+    padding: 100px 0;
+  }
+  
+  @media (max-width: 576px) {
+    section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+#summary{
+    font-family: 'Nunito';
+}
+
+#summary p {
+  max-width: 78ch;
+}
+  
+.card {
+  position: relative;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to bottom right, #1e1e2f, #2c2c3a); /* Dark gradient */
+  color: #fff;
+}
+
+.card-placeholder {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Audiowide', sans-serif;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.project-doc {
+  position: relative;
+  padding-top: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.project-doc embed,
+.project-doc iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.project-links a {
+  color: #cb93ff;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.card-title {
+  font-family: 'Electrolize', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.card-text {
+  color: #ccc;
+}
+
+.card .btn {
+  background-color: #6c63ff;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background-color 0.2s ease;
+}
+
+.card .btn:hover {
+  background-color: #5548e5;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.card:hover::before {
+  left: 125%;
+}
+  
+  /* Form tweaks */
+  form .form-control {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  footer a.btn img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
