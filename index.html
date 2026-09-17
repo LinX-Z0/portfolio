@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Lin Xin — Portfolio</title>
   <meta name="author" content="Lin Xin">
-  <meta name="description" content="Portfolio of Lin Xin, IMGD student at DigiPen Singapore. Level design, systems design, and student game projects.">
+  <meta name="description" content="Portfolio of Lin Xin, IMGD student at DigiPen Singapore. Game design, level design, and gameplay programming.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -35,18 +35,39 @@
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section id="projects" class="text-light">
+  <section id="intro" class="text-light">
+    <div class="container">
+      <h1 class="display-5 mb-3">Lin Xin</h1>
+      <p class="lead">IMGD student at DigiPen Singapore. Looking for a game design, level design, or gameplay programming internship.</p>
+      <div class="contact-links">
+        <a href="mailto:lin.x@digipen.edu">Email</a>
+        <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/LinX-Z0" target="_blank" rel="noopener">GitHub</a>
+        <a href="Assets/LinXin_Game_Design_Resume.pdf" target="_blank">Design resume</a>
+        <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank">Programmer resume</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="text-light pt-0">
     <div class="container">
       <h2 class="mb-4">Projects</h2>
+      <div class="project-filters" role="tablist" aria-label="Project categories">
+        <button type="button" class="active" data-filter="all">All</button>
+        <button type="button" data-filter="video">Video games</button>
+        <button type="button" data-filter="physical">Physical games</button>
+        <button type="button" data-filter="megaman">Mega Man Maker</button>
+        <button type="button" data-filter="rpg">RPG maps</button>
+      </div>
       <div class="row">
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="video">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #1a0508, #8b1e2d);">DEATH'S REFRAIN</div>
             <div class="card-body">
@@ -57,7 +78,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="video">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #12080a, #6b2a12);">HELLMAKER</div>
             <div class="card-body">
@@ -68,7 +89,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="physical">
           <div class="card">
             <img src="Assets/Acquit.png" class="card-img-top" alt="Acquit">
             <div class="card-body">
@@ -79,18 +100,18 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="video">
           <div class="card">
             <img src="Assets/Overseas.png" class="card-img-top" alt="Overseas">
             <div class="card-body">
               <h5 class="card-title">Overseas</h5>
-              <p class="card-text">Year 1 DigiPen game project</p>
+              <p class="card-text">Mechanics design and gameplay programming</p>
               <a href="Overseas.html" class="btn btn-primary">View Project</a>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="physical">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #3b2a14, #8a5a1f);">CONQUEST</div>
             <div class="card-body">
@@ -101,7 +122,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="megaman">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #10243a, #3d7ec9);">4KOMA</div>
             <div class="card-body">
@@ -112,7 +133,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="megaman">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #1a3320, #5cb85c);">FIVENITE</div>
             <div class="card-body">
@@ -123,7 +144,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="megaman">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #2a1020, #8a3a5a);">PRISON BREAK</div>
             <div class="card-body">
@@ -134,7 +155,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="rpg">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #0e2430, #1f6f8b);">ONE MILLION</div>
             <div class="card-body">
@@ -145,7 +166,51 @@
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 project-item" data-category="rpg">
+          <div class="card">
+            <img src="Assets/rpg-scientist.png" class="card-img-top" alt="Tony and Bruce scientist house map">
+            <div class="card-body">
+              <h5 class="card-title">Tony and Bruce</h5>
+              <p class="card-text">RPG Maker — scientist and assistant house</p>
+              <a href="ScientistAssistant.html" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 project-item" data-category="rpg">
+          <div class="card">
+            <img src="Assets/rpg-pirate.png" class="card-img-top" alt="Black Diamond pirate ship map">
+            <div class="card-body">
+              <h5 class="card-title">The Black Diamond</h5>
+              <p class="card-text">RPG Maker — Captain Jacob Ravens' ship</p>
+              <a href="PirateShip.html" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 project-item" data-category="rpg">
+          <div class="card">
+            <img src="Assets/rpg-goat.jpg" class="card-img-top" alt="Gary the Goat Man farm map">
+            <div class="card-body">
+              <h5 class="card-title">Gary the Goat Man</h5>
+              <p class="card-text">RPG Maker — house built around goats</p>
+              <a href="GoatMan.html" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 project-item" data-category="rpg">
+          <div class="card">
+            <img src="Assets/rpg-zombie.jpg" class="card-img-top" alt="Sunrise Call High zombie school map">
+            <div class="card-body">
+              <h5 class="card-title">Sunrise Call High</h5>
+              <p class="card-text">RPG Maker — school turned zombie base</p>
+              <a href="ZombieSchool.html" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 project-item" data-category="video">
           <div class="card">
             <div class="card-placeholder" style="background: linear-gradient(135deg, #0b0b0b, #4a1010);">PROJECT XENO</div>
             <div class="card-body">
@@ -171,17 +236,27 @@
   <section id="about">
     <div class="container">
       <h2 class="mb-4">About Me</h2>
-      <p>I'm Lin Xin, a BSc undergraduate in IMGD at DigiPen Singapore, looking for a game design / level design internship.</p>
+      <p>I'm Lin Xin, a BSc undergraduate in IMGD at DigiPen Singapore. I'm looking for a game design, level design, or gameplay programming internship.</p>
       <p>I focus on clear, intentional player experiences: structuring each space, defining how mechanics are used, and thinking through what players should do, learn, and feel in every section.</p>
       <p>My process usually starts from either theme-led design, where identity and story shape the space, or mechanics-led design, where abilities and interactions come first. I then iterate with programmes, skill themes, pacing curves, and playtest feedback.</p>
       <p>I care about difficulty over complexity, guided freedom, and ideas that feel too unusual until they work.</p>
+      <div class="contact-links mt-4">
+        <a href="Assets/LinXin_Game_Design_Resume.pdf" target="_blank">Design resume</a>
+        <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank">Programmer resume</a>
+      </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <h2 class="mb-4">Contact Me</h2>
-      <p class="mb-4">Email: <a href="mailto:lin.x@digipen.edu" class="text-info">lin.x@digipen.edu</a></p>
+      <h2 class="mb-4">Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a>
+        <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/LinX-Z0" target="_blank" rel="noopener">GitHub</a>
+        <a href="Assets/LinXin_Game_Design_Resume.pdf" target="_blank">Design resume</a>
+        <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank">Programmer resume</a>
+      </div>
       <form target="_blank" action="https://formsubmit.co/lin.x@digipen.edu" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
@@ -202,7 +277,11 @@
 
   <footer class="text-white p-4" style="background-color: #00000083;">
     <div class="container">
-      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+      <p class="mb-2 text-end">
+        <a href="https://www.linkedin.com/in/xinl0/" class="text-info me-3" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/LinX-Z0" class="text-info me-3" target="_blank" rel="noopener">GitHub</a>
+        <span>&copy; 2026 Lin Xin</span>
+      </p>
     </div>
   </footer>
 

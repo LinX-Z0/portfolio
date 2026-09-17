@@ -76,10 +76,16 @@ body {
     100% { opacity: 0; }
   }
 
-/* Apply the Norican font to the entire navbar */
+section,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
 #navbar {
   background: #00000083 !important;
   color: white !important;
+  z-index: 1030;
 }
 
 /* Ensure links are white */
@@ -253,4 +259,68 @@ section {
   height: 20px;
   width: 20px;
   object-fit: contain;
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.project-filters button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-family: 'Electrolize', sans-serif;
+  letter-spacing: 1px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
+.project-filters button:hover,
+.project-filters button.active {
+  background: #6c63ff;
+  border-color: #6c63ff;
+}
+
+.project-item[hidden] {
+  display: none !important;
+}
+
+.map-hero {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+#intro {
+  padding-bottom: 2rem;
+}
+
+#intro .lead {
+  max-width: 42rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-links a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-family: 'Electrolize', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.contact-links a:hover {
+  background: #6c63ff;
+  border-color: #6c63ff;
+  color: #fff;
 }

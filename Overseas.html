@@ -42,7 +42,7 @@
       </div>
 
       <h1 class="display-5 mb-3">Overseas</h1>
-      <p class="lead">A survival fishing game — Year 1 DigiPen project</p>
+      <p class="lead">A survival fishing game — Year 1 DigiPen project. Mechanics designer and gameplay programmer.</p>
 
       <p>Overseas is a top-down survival game on a hostile ocean. You manage health, supplies, and money while hitting daily fishing quotas at spots that are only open for a window, dodging monsters and hazards, and spending what you catch on upgrades before the deadline hits.</p>
       <p>The team started from something most of us actually liked — fishing — and wrapped it in pixel art because the nostalgia matched the fantasy: small boat, big water, the feeling that the sea does not care about your quota.</p>
@@ -51,6 +51,9 @@
       <p>The game is built as a pressure triangle: quota, risk, and time. A safe day of fishing does not pay enough. A greedy day puts you in monster water and limited-time spots. Upgrades make later days possible, but buying them spends the same money you need to stay alive. That loop is meant to keep running rather than resolve into a final boss — “unending gameplay” as a design goal, not a missing ending.</p>
       <p>Daily quota plus a deadline is the spine. Spots opening and closing force routing: you cannot vacuum the whole map, so you choose a path, accept what you miss, and live with the inventory you bring home. Monsters are not just flavour; they tax the greedy route so the ocean reads as a place with a cost, not an empty resource field.</p>
       <p>Pixel art was a production and a design choice. A readable silhouette on water matters more than fidelity when the player is tracking quota, HP, and a timer at once. The UI has to make those three numbers feel like the real opponents.</p>
+
+      <h3 class="mt-4">My role</h3>
+      <p>I was mechanics designer and gameplay programmer. That meant owning how the loop actually plays: quota, timers, risk on the water, upgrades, and the C++ simulation that has to stay honest with the HUD. Design and implementation were the same job — if a fishing spot closes, catch value changes, or an upgrade fires, the player has to feel it immediately.</p>
 
       <h3 class="mt-4">Technical notes</h3>
       <p>Overseas was built in C++ on DigiPen's Alpha Engine. Year 1 projects on that stack are explicit about the basics: a game loop, collision, sprite animation, and state for player, world, and UI. File I/O is part of the feature set — persist enough run state that a day can end and the next day still knows your money, upgrades, and whether you are still alive.</p>
