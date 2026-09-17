@@ -43,42 +43,59 @@
       </div>
 
       <h1 class="display-5 mb-3">Overseas</h1>
-      <p class="lead">2D top-down fishing survival — DigiPen Year 1, Trimester 2. Five-person team. Mechanics designer and gameplay programmer.</p>
+      <p class="lead">Top-down pixel survival fishing &mdash; CSD1451, Spring 2025, Team IDK. Mechanics designer and gameplay programmer.</p>
 
-      <p>Overseas puts a small boat on a hostile ocean and asks you to stay alive by fishing, scavenging, and spending what you pull in on upgrades. I owned the systems that make that loop play: fishing spots, catch QTEs, the health and supply HUD, and shipwrecks as a world resource.</p>
+      <p>You skipper a small boat on a hostile ocean. A random quota and a day limit sit on the HUD. Fish to fill the quota. Manage health and supplies so you do not starve the hull. Hit a wreck for a supply dump. Miss the quota, or drop to zero health, and the run is over. Survive as long as you can.</p>
+      <p>Five people: Lin Xin, Mandy Koh, Ethan Siow, Renfred Lee, Timothy Loh. Built in C++ on DigiPen's Alpha Engine. I owned fishing, the QTE skill check, shipwrecks, the health/supply bars, and the upgrade purchases that rewrite those numbers. I also drew the player boat textures.</p>
 
       <h3 class="mt-4">Design Rationale</h3>
-      <p>Survival here is not a timer on a quota board. It is a body: supplies drain passively, health recovers or drops based on how full that bar is, and upgrades rewrite those numbers. If the HUD lies, the player cannot make a greedy or a safe decision. So the design problem and the programming problem were the same: every catch, miss, wreck, and upgrade has to show up as a readable change in supplies and health.</p>
-      <p>Fishing is the active verb. Spots spawn in the world, you collide with them, you enter a fishing state, then a QTE decides the catch. Rarity changes the QTE UI so a rare fish is a different ask, not just a bigger number after the same prompt. Catching a fish replaces the spot instead of leaving an infinite tap. That keeps the ocean moving: you route between remaining spots instead of camping one pixel.</p>
-      <p>Shipwrecks are the other sink and source. They spawn at random, collide, pay out supplies, then despawn and respawn so the map always holds a fixed number of wrecks. They exist so fishing is not the only way to refill, and so the water has objects you can choose to chase when a spot is empty or too risky.</p>
+      <p>The loop is quota versus body. Quota and days are rolled at the start of a stretch (Mandy's generator). Fishing is how you pay it down. Spots spawn in the world, you collide into one, you enter a fishing state, then a QTE decides the catch. Rarity changes the QTE so a rare fish is a different timing ask, not the same bar with a bigger payout. After a catch the spot is replaced, so you cannot camp one pixel forever.</p>
+      <p>Health and supply are the body. Supply drains over time. At 80+ supply, health regenerates. Below that, health ticks down faster the emptier you are &mdash; empty supply is the worst drain. Shipwrecks always keep three wrecks in the world. Colliding one adds 50 supply (capped at 100) and respawns a new wreck. Fishing pays the quota. Wrecks buy you time on the health curve. Upgrades I hooked into the shop change those values so a purchase has to show up on the bars, not just in a menu.</p>
+      <p>Monsters, rocks, day/night, and water are the pressure around that loop (Ethan and Renfred). Playtests later said the quota and the night vignette were too mean, and the HUD too small. That is the same loop: if the bars and the quota are unreadable, the player cannot make the greedy-or-safe call the systems were built for.</p>
 
       <h3 class="mt-4">My role</h3>
-      <p>Mechanics designer and gameplay programmer on a five-person C++ team. Primary work was fishing, environment interactions, resources, upgrades, and HUD.</p>
+      <p>Backlog assignee on fishing, UI bars, shipwrecks, QTE, and upgrades. Authored <code>Fishing</code>, <code>FishingSkill</code> / QTE, <code>shipwrecks</code>, and <code>Bar</code>. Co-author on <code>Game.cpp</code>. Player movement and quota RNG were Mandy's; I added the boat textures on that player.</p>
       <ul>
-        <li>Fishing framework: spot spawning and collision, catch-driven spot replacement, fishing states, QTE input, rarity-aware QTE interface.</li>
-        <li>Health and supply loop plus HUD: passive supply drain, health regen or penalties from supply level, values modified by upgrades, sprite-based UI that updates with those states.</li>
-        <li>Shipwreck resources: random spawn, collision, supply rewards, removal and respawn, a fixed count of wrecks in the world.</li>
+        <li>Fishing spots: spawn, collision, animated markers, catch-driven replacement, maintain a population of spots.</li>
+        <li>Fishing skill / QTE: fishing vs none state, rarity-init QTE, input check, green/red/white overlay bars.</li>
+        <li>Health and supply HUD: 11-frame sprite icons, bottom-left. Supply drains at 5/sec. Health regen above 80 supply; stepped drain at 75 / 50 / 25 / 0.</li>
+        <li>Shipwrecks: exactly three, random spawn, two textures, +50 supply on collide, then replace.</li>
+        <li>Purchasable ship upgrades, wired so they modify the same health/supply numbers the HUD reads.</li>
       </ul>
 
+      <h3 class="mt-4">Playtests</h3>
+      <p>CSD1451 user testing, 26 survey responses. I observed the first session (Chen JiuLin): tutorial missed, health/supply icons too small, fishing-to-QTE delay read as &ldquo;am I fishing?&rdquo; The wider set agreed the pixel art, controls, QTE, and upgrades were the fun. The pain was quota: 15 of 26 named unrealistic quota as the most frustrating beat. Night was too dark. Too many objects on screen. Testers asked for more upgrades that actually help survival.</p>
+      <p>What we took: tune day length, quota, and night visibility; make the tutorial unavoidable; cut spawn density; add upgrades with a survivability job. The bars I wrote were the right systems; they were just too quiet in the corner.</p>
+
       <h3 class="mt-4">Technical notes</h3>
-      <p>Built in C++ for a Year 1 DigiPen game (Alpha Engine). The hard part is not drawing the boat. It is keeping world objects, player state, and HUD on one clock. A fishing spot that does not despawn after a catch, a QTE that does not match rarity, or a supply upgrade that does not change the drain rate all break the loop in the same way: the simulation and the picture disagree.</p>
-      <p>Spot replacement and wreck count are population rules. The ocean always has something to chase, never an infinite node. Collision is the gate into fishing and scavenging, so those volumes have to match what the player sees. The HUD is sprite-based on purpose: Year 1 UI that still has to show drain, health, and upgrade-modified values without a full widget toolkit.</p>
+      <p>Alpha Engine, C++. Fishing and wrecks are population rules plus collision gates. The HUD is a 1&times;11 spritesheet: health/10 picks the frame. Game state holds quota, allocated days, and the fail check when the day counter runs out without meeting quota. File I/O for the fish log and shop reset lived on Renfred's side of the engine. RapidJSON is in the tree for that save path.</p>
 
       <h4 class="mt-5">Key Features</h4>
       <ul>
-        <li>Fishing spots with collision, states, QTE catch, rarity UI, and replacement</li>
-        <li>Supplies and health as one loop, with upgrades rewriting the numbers</li>
-        <li>Shipwrecks as a maintained world resource</li>
+        <li>Random quota and day allocation; fail the quota or hit 0 HP and the run ends</li>
+        <li>Fishing spots + rarity QTE; wrecks as a fixed supply resource</li>
+        <li>Health/supply bars, shop upgrades, monsters, day/night</li>
       </ul>
 
-      <h4 class="mt-5">Tools &amp; Technologies</h4>
+      <h4 class="mt-5">Team</h4>
       <ul>
-        <li>C++</li>
-        <li>DigiPen Alpha Engine</li>
+        <li>Lin Xin &mdash; fishing, QTE, wrecks, bars, upgrades, boat textures</li>
+        <li>Mandy Koh &mdash; player movement, death/restart, quota generator, HUD counters, UI art</li>
+        <li>Ethan Siow &mdash; rocks, monsters, hazard collision and spawn</li>
+        <li>Renfred Lee &mdash; game states, water, animation, collision, day/night vignette, fish log</li>
+        <li>Timothy Loh &mdash; menus, shop UI, tutorial, pause, skins</li>
+      </ul>
+
+      <h4 class="mt-5">Tools</h4>
+      <ul>
+        <li>C++, DigiPen Alpha Engine</li>
         <li>Sprite-based HUD</li>
       </ul>
 
-      <p class="mt-4">Team project. If you want a build to try, contact me.</p>
+      <p class="project-links mt-4">
+        <a href="Assets/Overseas_UserTest.pdf" target="_blank">User testing report (Team IDK)</a>
+      </p>
+      <p class="mt-3">If you want a build to try, contact me.</p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
