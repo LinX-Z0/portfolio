@@ -36,35 +36,31 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Project Xeno</h1>
-      <p class="lead">CSD2183, Team 19. Predator AI study and prototype &mdash; Isolation's hunt without live machine learning.</p>
+      <p class="lead">CSD2183, Team 19. Unreal prototype: a predator that feels like it learns you, without live machine learning.</p>
 
-      <p>Class research plus a playable prototype, not a full game. The question: Isolation's xenomorph feels like it learns you. What is the actual system, and how do you rebuild that feeling without an unfair learner the player cannot read?</p>
-      <p>Research and the presentation were team work. I owned the metric-gating spec, most of the NPC profiles, most of the code, and the bulk of the prototype. The four-layer architecture was a team decision; I was the one who tried to implement it. Blueprints were team.</p>
+      <p>Isolation's xenomorph feels adaptive. It is not training a model. A Director AI is omniscient &mdash; pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
+      <p>Team 19 researched that split and presented it together. I specified how our agent would adapt, designed most of the NPC test profiles, and built most of the Unreal prototype in C++. Blueprints were team. The playable is a test bed, not a full game.</p>
 
-      <h3 class="mt-4">What Isolation actually does</h3>
-      <p>The xenomorph is not training a model mid-playthrough. Creative Assembly splits the brain. A Director AI is omniscient: it sets pacing and a menace gauge, and posts jobs onto a blackboard. A behavior tree is not omniscient: it only has senses, polls those jobs, and runs search, chase, and attack on its own. The player feels figured out. What they are playing against is a director managing fear plus a creature that is allowed to miss.</p>
+      <h3 class="mt-4">Metric gating</h3>
+      <p>I owned the adaptation spec. Track how the player actually behaves. When a meter crosses a threshold, a new behavior becomes legal. Escalation is authored and readable: you can tune when the alien starts checking lockers. It does not invent an invisible cheat.</p>
+      <p>Meters we used: flamethrower uses, locker and vent hides, noise, time in line of sight, repeated escape routes. Pipeline: action &rarr; metric &rarr; threshold &rarr; gate &rarr; new behavior.</p>
 
-      <h3 class="mt-4">Spec</h3>
-      <p>Avoid an unstoppable learner that outpaces the player's ability to adapt. Escalation should force new tactics, not an invisible cheat. The team framed an agent that tracks player metrics and unlocks gated behaviors over time &mdash; a systemic illusion of learning, not a neural net.</p>
-      <p>I specified the metric gates. Example meters: flamethrower uses, locker and vent hides, noise, time in line of sight, repeated escape routes. Pipeline: player action &rarr; metric ticks &rarr; threshold &rarr; gate opens &rarr; new behavior is legal. You can tune when the alien starts checking lockers without it inventing an unreadable cheat.</p>
-      <p>Four layers, each managing the one below: omniscient pacing, high-level strategy from senses, mid-level execution, low-level search / chase / attack. That split was the team's. I attempted it in the prototype.</p>
-      <p>NPCs are part of the experiment. I designed most of the three reaction profiles: <strong>Civilian</strong> (long delay, freezes), <strong>Technician</strong> (a beat to assess, then acts), <strong>Ghost</strong> (zero delay, tracks the xenomorph, stays out of the danger zone).</p>
-
-      <h3 class="mt-4">Prototype</h3>
-      <p>I built most of the prototype and wrote most of the code. Blueprints were shared. The playable is a test bed for gating and NPC reactions, not a finished Isolation clone.</p>
+      <h3 class="mt-4">Architecture and NPCs</h3>
+      <p>The team set four layers, each managing the one below: omniscient pacing, high-level strategy, mid-level execution, low-level search / chase / attack. I implemented toward that structure in the prototype.</p>
+      <p>NPCs were the experiment around the predator. I designed most of three reaction profiles: <strong>Civilian</strong> (long delay, freezes), <strong>Technician</strong> (a beat to assess, then acts), <strong>Ghost</strong> (zero delay, tracks the xenomorph, stays out of the danger zone).</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
         <li>Metric-gating spec</li>
+        <li>Unreal prototype &mdash; most of the C++</li>
         <li>NPC profiles (majority)</li>
-        <li>Prototype and most of the code</li>
-        <li>Four-layer architecture &mdash; team design, implementation attempt</li>
-        <li>Research, presentation, and Blueprints &mdash; team</li>
+        <li>Four-layer AI &mdash; team design, implementation in prototype</li>
+        <li>Research, presentation, Blueprints &mdash; team</li>
       </ul>
 
       <h4 class="mt-5">Stack</h4>
       <ul>
-        <li>Unreal Engine (Blueprints + code)</li>
+        <li>Unreal Engine &mdash; C++ (majority), Blueprints (team)</li>
       </ul>
 
       <p class="project-links mt-4">
