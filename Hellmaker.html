@@ -36,51 +36,41 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Hellmaker</h1>
-      <p class="lead">Custom C++ engine for Death's Refrain &mdash; Team Infernumb, Year 2. Debugger and editor ImGui.</p>
+      <p class="lead">Custom C++ engine for Death's Refrain &mdash; Team Infernumb, Year 2. Engine debugger and editor tooling.</p>
 
-      <p>Hellmaker is the in-house engine under <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. Three binaries share it: Engine (static library), Editor (ImGui tool), Sandbox (the game). Technical lead / engine champion is Loh Boon Cheong, Timothy. I was Design Lead on the game, and on the engine I wrote the global debugger plus the editor GUI layer that made that design job iterable.</p>
+      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>: a static Engine library, an ImGui Editor, and a Sandbox game executable. Technical lead is Loh Boon Cheong, Timothy. I built the shared debugger and the editor UI that the team used to iterate levels and assets without a full rebuild for every change.</p>
 
       <h3 class="mt-4">Debugger</h3>
-      <p><code>global_debugger</code> is mine (engine-side, 100%). Log levels run trace through critical, plus off. Sinks are console, file, or both. A ring buffer keeps the last N messages. Init/terminate and crash helpers take a custom reason. It sits on spdlog and is linked by Engine, Editor, and Sandbox, so a gameplay fault and an editor fault hit the same pipeline.</p>
-      <p>The editor's <code>DebugConsole</code> is also mine: an ImGui window that pulls those logs live so you can filter what the engine is doing without attaching a second logger.</p>
+      <p>I implemented Hellmaker's global debug layer, used by Engine, Editor, and Sandbox. Logs run from trace through critical, can target console, file, or both, and keep a ring buffer of recent messages. Init, shutdown, and crash helpers take a custom reason so a gameplay fault and an editor fault land in the same pipeline (spdlog).</p>
+      <p>On top of that I wrote the editor Debug Console: an ImGui window that streams those logs live and lets us filter what the engine is doing without attaching a second logger.</p>
 
-      <h3 class="mt-4">ImGui editor</h3>
-      <p><code>manager_editorguirender</code> is mine. It wraps Dear ImGui so the rest of the editor can draw windows without leaking ImGui types everywhere, then drives layout (docking, FPS, editor-mode toggle, jump back to the project launcher).</p>
-      <p>The asset browser is mine. I wrote the system; Timothy co-authored a smaller share (file picking through ImGuiFileDialog). Game view is a three-way file: Alfred and Timothy on render/gizmos, I contributed the remaining slice so the view could talk to the GUI manager. That split is why placing a tile was an editor click, not a C++ rebuild.</p>
+      <h3 class="mt-4">Editor (Dear ImGui)</h3>
+      <p>I wrote the editor GUI manager: it wraps ImGui so other systems can open windows without depending on ImGui types, and it drives layout &mdash; docking, FPS, editor mode, and return to the project launcher.</p>
+      <p>I authored the asset browser (Timothy contributed a smaller share, including ImGuiFileDialog integration). From the browser, assets can be dropped onto the game view; I implemented spawn-at-mouse so a dropped file becomes a GameObject at the cursor. The game view itself is shared with Alfred Lo and Timothy (render and gizmos). Together, that path is how a room was assembled in the editor instead of in C++.</p>
 
-      <h3 class="mt-4">Why the tools existed</h3>
-      <p>Death's Refrain is data on this runtime: GameObjects with transform, sprite, collider; Lua state machines (onEnter / onUpdate / onExit); YAML scenes and grid maps. I was authoring rooms against that contract. If logs were only in a terminal, and assets were only on disk, the design lead job stalls. Debugger plus console plus asset browser were how I kept mechanics and spaces aligned with what Hellmaker could actually run.</p>
+      <h3 class="mt-4">How it supported the game</h3>
+      <p>Death's Refrain is authored as data on this runtime. The debugger, console, and asset browser were the loop I used as Design Lead: inspect what the engine was doing, pick an asset, place it, and keep going. Combat, maps, and encounter design are on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page.</p>
 
-      <h3 class="mt-4">Team stack</h3>
-      <p>C++20, CMake (Debug / Release / Shipment). GLFW windowing. FMOD audio. Lua on logic components. YAML maps. Dear ImGui in the editor, with gizmos and file dialogs. Render, physics, and the rest of the engine systems were owned by the champions below. This page is the tooling I shipped into that stack, not a claim on the renderer.</p>
-
-      <h4 class="mt-5">What I shipped</h4>
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li><code>global_debugger</code> &mdash; spdlog, levels, console/file/both, ring buffer, crash helpers</li>
-        <li><code>DebugConsole</code> &mdash; ImGui log window</li>
-        <li><code>manager_editorguirender</code> &mdash; ImGui wrap and editor layout</li>
-        <li><code>AssetBrowser</code> &mdash; authored; Timothy co-author</li>
-        <li>Game view &mdash; contribution alongside Alfred and Timothy</li>
+        <li>Global debugger (spdlog, log levels, console and file sinks, ring buffer, crash helpers)</li>
+        <li>ImGui Debug Console</li>
+        <li>Editor GUI manager (layout and ImGui wrap)</li>
+        <li>Asset browser, including drag-and-drop spawn into the game view</li>
       </ul>
 
-      <h4 class="mt-5">Team Infernumb</h4>
+      <h4 class="mt-5">Engine collaborators</h4>
       <ul>
-        <li>Loh Boon Cheong, Timothy &mdash; Technical Lead, Engine Champion</li>
-        <li>Alfred Lo Kai Xuan &mdash; Graphics / Rendering</li>
-        <li>Wong E-Ren, Jaeden &mdash; Physics / Collision</li>
-        <li>Rupak S/O Siva Kumar &mdash; Story / Level Editor</li>
-        <li>Teo Jason Jun Hao &mdash; Product Manager, gameplay systems / production / music</li>
-        <li>Lin Xin &mdash; Design Lead; debugger and editor ImGui</li>
-        <li>Ruan Peiwen &mdash; Map Champion</li>
-        <li>Ho Jia Jin &mdash; Art Lead</li>
-        <li>Ng Jared Pak Hong &mdash; Artist</li>
+        <li>Loh Boon Cheong, Timothy &mdash; Technical Lead</li>
+        <li>Alfred Lo Kai Xuan &mdash; Graphics / rendering</li>
+        <li>Wong E-Ren, Jaeden &mdash; Physics / collision</li>
       </ul>
 
       <h4 class="mt-5">Stack</h4>
       <ul>
-        <li>C++, CMake</li>
-        <li>GLFW, FMOD, Lua, Dear ImGui, spdlog</li>
-        <li>YAML scenes and grid maps</li>
+        <li>C++20, CMake</li>
+        <li>Dear ImGui, spdlog</li>
+        <li>GLFW, FMOD, Lua, YAML (team engine)</li>
       </ul>
 
       <p class="project-links mt-4">
