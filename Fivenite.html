@@ -15,60 +15,62 @@
 </head>
 <body class="bg-dark text-light">
   <div id="twinkle-container"></div>
-
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Lin Xin</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">FIVENITE</h1>
-      <p class="lead">Mega Man Maker - easy combat level inspired by Fortnite</p>
+      <p class="lead">Mega Man Maker. Easy combat stage. Pick a weapon, drop in, fight.</p>
 
-      <p>Fivenite is the opposite of a precision platforming exam. Inspired by Fortnite, I wanted an approachable combat-focused stage: pick a starting weapon, drop in, fight. Primary theme is fighting. Secondary theme is freedom - weapon choice, plus breaking and building so the rooms are not just stand-and-shoot.</p>
+      <h3 class="mt-4">Intent</h3>
+      <p>This is the opposite of <a href="FourKoma.html" class="text-info">4KOMA</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom &mdash; weapon choice, plus break and build so rooms are not stand-and-shoot.</p>
+      <p>Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once. The starting weapon is the fork: rooms are written to work with what you picked, not one scripted loadout.</p>
 
-      <h3 class="mt-4">Design Rationale</h3>
-      <p>Easy difficulty is a design constraint, not a lack of structure. Checkpoints, heals, and ammo are placed on purpose so deaths do not wipe twenty rooms of progress and so combat stays active instead of becoming a resource puzzle. Terrain manipulation (break blocks, build blocks, alternate-build to climb) is there so players who get bored of gunplay have a second verb, and so later rooms can ask for both at once.</p>
-      <p>The cadence still ramps. You jump in and pick a weapon (A, intensity 1), then learn jump-reflect and charged-dash reflect (B + B', 3), then fight while jumping and reflecting (2). Disappearing-platform combat is the first real spike (4). Breaking a block for a new weapon, then using that weapon to build a path, is the Fortnite beat: loot changes how you traverse, not just your damage.</p>
-      <p>The back half mixes combat with traversal under pressure - fire waves plus a frog, spring jump, climbing by alternating built blocks while an enemy is still shooting, then a key-and-boss-door setup. The boss is intensity 7 and is scored as using everything: jump, both reflects, attack, break, and build. That is the full-kit exam for a fighting level, not a platforming one.</p>
-
-      <h3 class="mt-4">Level systems / cadence</h3>
-      <p>Notation:</p>
+      <h3 class="mt-4">Cadence</h3>
+      <p>Same notation method as the other Maker stages, different alphabet because the theme is combat:</p>
       <ul>
         <li>A jump / A' spring jump</li>
-        <li>B negate/reflect damage by jump / B' charged dash reflect or damage</li>
-        <li>C attack with chosen weapon / C' break block with weapon</li>
-        <li>E build block / E' alternate building to climb a wall</li>
+        <li>B jump-reflect / B' charged-dash reflect</li>
+        <li>C attack / C' break block with the weapon</li>
+        <li>E build / E' alternate builds to climb</li>
         <li>F disappearing platform</li>
       </ul>
-      <p>Eleven challenges, boss on page 8. Intensity curve is supposed to feel like a match: low drop-in, mid combat toys, late build/fight mix, boss as the peak. Weapon choice at the start is the one systemic fork - later rooms are written to work with the weapon you picked, not a single scripted loadout.</p>
+      <p>Eleven challenges, boss on the last page. Drop-in is A at 1. Reflects come in at B+B' (3). Disappearing-platform combat is the first real spike (A+C+F at 4). Breaking a block for a new weapon, then building a path with it, is the loot-changes-traversal beat. The boss is scored as A+B+B'+C+C'+E at 7: jump, both reflects, attack, break, and build. That is a full-kit exam for a fighting level, not a platforming one. Full table is in the PDF.</p>
 
-      <h4 class="mt-5">Skill Theme</h4>
+      <h3 class="mt-4">Pacing</h3>
+      <p>The intensity curve is meant to feel like a match: low drop-in, mid combat toys, late climb-and-shoot, boss as the peak. Numbers sit mostly in 1&ndash;5 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was &ldquo;how do I keep a fighting stage readable and fair,&rdquo; not &ldquo;how hard can the last screen get.&rdquo;</p>
+
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Primary: fighting</li>
-        <li>Secondary: freedom (weapon choice, break/build)</li>
+        <li>Layout, skill theme, cadence notation, intensity curve</li>
       </ul>
-
+      <h4 class="mt-5">Stack</h4>
+      <ul>
+        <li>Mega Man Maker</li>
+      </ul>
       <p class="project-links mt-4">
         <a href="Assets/FIVENITE_EASY.pdf" target="_blank">Level document (map, cadence, intensity)</a>
+      </p>
+      <p class="project-links">
+        Related:
+        <a href="FourKoma.html">4KOMA</a> |
+        <a href="PrisonBreak.html">Prison Break</a>
       </p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
-
   <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
     <div class="container">
       <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>

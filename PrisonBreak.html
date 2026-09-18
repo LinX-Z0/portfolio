@@ -15,62 +15,65 @@
 </head>
 <body class="bg-dark text-light">
   <div id="twinkle-container"></div>
-
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Lin Xin</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Prison Break</h1>
-      <p class="lead">Mega Man Maker - normal puzzle-style level</p>
+      <p class="lead">Mega Man Maker. Normal puzzle stage. Juggle several tools in one room.</p>
 
-      <p>Prison Break is a normal-difficulty puzzle map. Unlike 4KOMA, which focuses two mobility skills, this one is allowed to be busy: rooms ask you to juggle several tools at once. Primary theme is puzzle rooms. Secondary is juggling - roll, card throw, keys, breaks, water, midair dash, ice gun variants.</p>
+      <h3 class="mt-4">Intent</h3>
+      <p>Where <a href="FourKoma.html" class="text-info">4KOMA</a> is difficulty over complexity (two verbs, stricter), this map is allowed to be busy. Primary theme is puzzle rooms. Secondary is juggling: the room is the test of whether you can hold several tools at once. Normal means more mechanics, not meaner spikes. Checkpoints and safe spots sit under the parkour so a missed dash is a retry, not a run killer.</p>
+      <p>I teach in layers: roll, then card throw for a key, then vertical throws, then throw-while-jumping, then midair dash alone before combining dash with jump, water, and one-block gaps. The ice gun is a late language shift &mdash; same weapon, three grades (walk on frozen fire, diagonal to wake a platform, spread to hit several targets) after dash and throw are already in muscle memory.</p>
+      <p>Purple keys look useless. If you picked them up, you skip the last room (the hardest). That is guided freedom: the gauntlet is still the intended path, but attention is a real alternate win, not a collectathon the game yells about.</p>
 
-      <h3 class="mt-4">Design Rationale</h3>
-      <p>Normal difficulty here means more mechanics, not meaner spikes. Checkpoints and safe spots sit under the parkour so a missed dash is a retry, not a run killer. The map teaches in layers: roll into the next room, then card throw for a key, then vertical throws, then throw-while-jumping, then midair dash as its own idea before combining dash with jump, water, and one-block gaps.</p>
-      <p>The ice gun is a late-map language shift. Freeze fire and walk on it (G), diagonal shot to wake a platform (G'), spread shot to hit multiple targets (G''). Same weapon, three precision grades, introduced after the player already has dash and throw in muscle memory. That is difficulty through mastery of a small kit, even though the kit is larger than 4KOMA's.</p>
-      <p>The last room is the hardest on purpose (intensity 7, midair dashes). Purple keys along the way look useless. If you bothered to pick them up, you skip that room. That is guided freedom: the intended path is still the gauntlet, but attention is a real alternate win condition, not a collectathon the game yells about.</p>
-
-      <h3 class="mt-4">Level systems / cadence</h3>
-      <p>Sixteen labelled challenges across eight pages. Notation:</p>
+      <h3 class="mt-4">Cadence</h3>
+      <p>Sixteen challenges across eight pages. Combinations are the point, so the notation is written as stacks:</p>
       <ul>
         <li>A roll</li>
         <li>B card throw / B' vertical throw</li>
-        <li>C locked door that needs a key</li>
+        <li>C keyed door</li>
         <li>D break block</li>
         <li>E jump / E' jump in water</li>
-        <li>F midair dash / F' precise midair dash through a one-block gap</li>
-        <li>G ice gun / G' diagonal ice / G'' ice spread</li>
+        <li>F midair dash / F' one-block dash</li>
+        <li>G ice / G' diagonal ice / G'' ice spread</li>
       </ul>
-      <p>Cadence is written as combinations, because the point of the map is combinations: B+C+D for the first real puzzle, E+F for dash-while-jumping, G then G' then G'' as a three-step weapon tutorial, F' as the precision dash exam before the ice sequence. Intensity climbs from 1 (just roll) to 6-7 in the dash and ice rooms, with a few 4s in between so it is not a straight staircase.</p>
+      <p>First real puzzle is B+C+D. Dash-while-jumping is E+F. Ice is G, then G', then G'' as a three-step weapon tutorial. F' is the precision-dash exam before ice. Full table is in the PDF.</p>
 
-      <h4 class="mt-5">Skill Theme</h4>
+      <h3 class="mt-4">Pacing</h3>
+      <p>Intensity climbs from 1 (just roll) through 3&ndash;4 combination rooms, then 5&ndash;6 on dash and water, with ice sitting around 4&ndash;5 so the new language is readable. The last room is 7 on purpose (midair dashes). A few 3s and 4s sit between spikes so it is not a straight staircase. The skip exists so the peak is optional if you were paying attention &mdash; the curve still has a designed exam for everyone else.</p>
+
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Primary: puzzle rooms</li>
-        <li>Secondary: juggling multiple skills</li>
+        <li>Layout, skill theme, cadence notation, intensity curve, guided-freedom skip</li>
       </ul>
-
+      <h4 class="mt-5">Stack</h4>
+      <ul>
+        <li>Mega Man Maker</li>
+      </ul>
       <p class="project-links mt-4">
         <a href="Assets/PrisonBreak_Normal.pdf" target="_blank">Level document (map, cadence, intensity)</a>
+      </p>
+      <p class="project-links">
+        Related:
+        <a href="FourKoma.html">4KOMA</a> |
+        <a href="Fivenite.html">FIVENITE</a>
       </p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
-
   <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
     <div class="container">
       <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
