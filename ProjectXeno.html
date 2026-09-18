@@ -27,7 +27,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -36,41 +36,39 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Project Xeno</h1>
-      <p class="lead">CSD2183, Team 19 - studying the perfect predator</p>
+      <p class="lead">CSD2183, Team 19. Predator AI study and prototype &mdash; Isolation's hunt without live machine learning.</p>
 
-      <p>Alien: Isolation is a first-person survival horror set fifteen years after Alien (1979). You are trapped on a station with a xenomorph that seems to learn you. The reputation is an AI predator that adapts. The research question for this study was what that system actually is, and how we would rebuild the feeling without making an unfair learning machine.</p>
+      <p>Class research plus a playable prototype, not a full game. The question: Isolation's xenomorph feels like it learns you. What is the actual system, and how do you rebuild that feeling without an unfair learner the player cannot read?</p>
+      <p>Research and the presentation were team work. I owned the metric-gating spec, most of the NPC profiles, most of the code, and the bulk of the prototype. The four-layer architecture was a team decision; I was the one who tried to implement it. Blueprints were team.</p>
 
-      <h3 class="mt-4">Design Rationale</h3>
-      <p>The xenomorph does not do machine learning mid-playthrough. Creative Assembly's trick is a split brain. A Director AI is omniscient: it sets pacing and a menace gauge, posts jobs onto a blackboard. A behavior tree is not omniscient: it only has senses, polls those jobs, and executes search, chase, and attack on its own. The player feels hunted by something that figured them out. What they are feeling is a director managing fear, plus a creature that is allowed to be fallible.</p>
-      <p>What we wanted to avoid: an unstoppable learner that outpaces the player's ability to adapt. Escalation should invite new tactics, not punish you with an invisible advantage you cannot read. What we wanted to build: an agent that tracks player-behavior metrics and unlocks gated behaviors over time, tailored to how you personally play - the same shape as Director + tree, not a neural net.</p>
-      <p>Not a self-learning machine. A systemic illusion of one.</p>
+      <h3 class="mt-4">What Isolation actually does</h3>
+      <p>The xenomorph is not training a model mid-playthrough. Creative Assembly splits the brain. A Director AI is omniscient: it sets pacing and a menace gauge, and posts jobs onto a blackboard. A behavior tree is not omniscient: it only has senses, polls those jobs, and runs search, chase, and attack on its own. The player feels figured out. What they are playing against is a director managing fear plus a creature that is allowed to miss.</p>
 
-      <h3 class="mt-4">Technical architecture</h3>
-      <p>Decision-making is layered. Each layer manages the one below it:</p>
+      <h3 class="mt-4">Spec</h3>
+      <p>Avoid an unstoppable learner that outpaces the player's ability to adapt. Escalation should force new tactics, not an invisible cheat. The team framed an agent that tracks player metrics and unlocks gated behaviors over time &mdash; a systemic illusion of learning, not a neural net.</p>
+      <p>I specified the metric gates. Example meters: flamethrower uses, locker and vent hides, noise, time in line of sight, repeated escape routes. Pipeline: player action &rarr; metric ticks &rarr; threshold &rarr; gate opens &rarr; new behavior is legal. You can tune when the alien starts checking lockers without it inventing an unreadable cheat.</p>
+      <p>Four layers, each managing the one below: omniscient pacing, high-level strategy from senses, mid-level execution, low-level search / chase / attack. That split was the team's. I attempted it in the prototype.</p>
+      <p>NPCs are part of the experiment. I designed most of the three reaction profiles: <strong>Civilian</strong> (long delay, freezes), <strong>Technician</strong> (a beat to assess, then acts), <strong>Ghost</strong> (zero delay, tracks the xenomorph, stays out of the danger zone).</p>
+
+      <h3 class="mt-4">Prototype</h3>
+      <p>I built most of the prototype and wrote most of the code. Blueprints were shared. The playable is a test bed for gating and NPC reactions, not a finished Isolation clone.</p>
+
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Omniscient - pacing curves so escalation does not become frustration</li>
-        <li>High-level - processes senses, augments or swaps strategies</li>
-        <li>Mid-level - carries out the current strategy</li>
-        <li>Low-level - search, chase, attack</li>
+        <li>Metric-gating spec</li>
+        <li>NPC profiles (majority)</li>
+        <li>Prototype and most of the code</li>
+        <li>Four-layer architecture &mdash; team design, implementation attempt</li>
+        <li>Research, presentation, and Blueprints &mdash; team</li>
       </ul>
-      <p>The technical core is metric gating. Example metrics: flamethrower uses, locker/vent hides, noise events, time in line of sight, repeated escape routes. Pipeline: player action, then metric tracked, then threshold crossed, then gate opens, then new behavior becomes available. That is designer-authored adaptation. You can tune when the alien starts checking lockers without it inventing a new, unreadable cheat.</p>
-      <p>NPCs are part of the experiment design, not extras. Three profiles, mostly as reaction delay and awareness:</p>
-      <ul>
-        <li>Civilian - unprepared, severe delay before reacting</li>
-        <li>Technician - a cautious second to assess, then acts</li>
-        <li>Ghost - zero delay, tracks the xenomorph, constantly repositions out of the danger zone</li>
-      </ul>
-      <p>The station should feel populated with people who fail at fear in different ways, while the predator's "learning" stays a gated, paced system. References in the deck include the Game Developer breakdown of Isolation's AI, the Noclip design documentary, GDC Vault on building fear, and Tommy Thompson / AI and Games.</p>
 
-      <h4 class="mt-5">Focus</h4>
+      <h4 class="mt-5">Stack</h4>
       <ul>
-        <li>Director + behavior tree, not live machine learning</li>
-        <li>Metric gating as the adaptation spec</li>
-        <li>Pacing that stays scary without becoming unfair</li>
+        <li>Unreal Engine (Blueprints + code)</li>
       </ul>
 
       <p class="project-links mt-4">
-        <a href="Assets/Project_Xeno.pdf" target="_blank">Study document</a>
+        <a href="Assets/Project_Xeno.pdf" target="_blank">Study deck</a>
       </p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>

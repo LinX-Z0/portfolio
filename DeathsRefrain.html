@@ -27,7 +27,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -36,35 +36,41 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Death's Refrain</h1>
-      <p class="lead">Action RPG - Team Infernumb, built on Hellmaker</p>
+      <p class="lead">2D top-down grid tactics &mdash; Team Infernumb, Year 2. Design Lead. Built on <a href="Hellmaker.html" class="text-info">Hellmaker</a>.</p>
 
-      <p>Death's Refrain is a DigiPen team project: an action RPG set in a mythic underworld, where morality is both weapon and weight. Combat is turn-based on a grid. Narrative choices and encounters are meant to ripple through the Inferno's denizens. You fight enemies, but the pitch is that you are also confronting yourself.</p>
-      <p>I was Design Lead and mechanics / level design champion on a nine-person team. The game runs on our custom engine, <a href="Hellmaker.html" class="text-info">Hellmaker</a>. I also wrote the engine debugger and a large part of the editor ImGui (debug console, GUI manager, asset browser).</p>
+      <p>Turn-based combat on a grid. Spend action points to move, strike, or guard, then enemies answer. Clear the room, take a heal or a permanent boost, and go through the portal.</p>
+      <p>Nine-person team. I designed every shipped mechanic, wrote the Lua, and integrated maps, assets, UI, SFX, VFX, and BGM so the game actually ran. I set the level flow. Some tile maps and the boss-room layout had help. Engine debugger and editor: <a href="Hellmaker.html" class="text-info">Hellmaker</a>.</p>
 
-      <h3 class="mt-4">Design Rationale</h3>
-      <p>The loop is tactical, not twitch. You move the camera with WASD, then click the player and a green tile to commit a move. Passing the turn (T / hourglass) is a real verb: standing still is a choice. Attacking is Space plus a click, and only if you have line of sight. That makes the map a visibility puzzle as much as a damage puzzle. Q swaps melee and ranged so positioning has a weapon identity, not just a range number. G raises a shield. Fire and grease tiles change how movement feels, so the floor is part of the kit.</p>
-      <p>Tutorial and layer structure follow a skill-theme approach. Movement, weapon, shield, souls/orbs, and attack each get their own beat before they stack. Later rooms (layer 1 into layer 2, boss arena) assume you already have that language. Dialogue is skippable so the combat lesson is not locked behind a cutscene you cannot leave.</p>
-      <p>The underworld fantasy is the theme-led half: Inferno layers, named voices in the script, morality as a burden. The grid, LOS, and tile hazards are the mechanics-led half: they decide how a room is actually authored in the editor and in YAML maps.</p>
+      <h3 class="mt-4">Combat</h3>
+      <p>Each player activation has <strong>8 AP</strong>. Movement is once per turn, <strong>1 AP per tile</strong>: highlight a path, click again to commit. Melee costs 1 AP; ranged costs 2 AP; weapon swap makes range a budget choice, not a skin. Attack mode draws line of sight &mdash; green is a legal hit, red is blocked. A shield costs 1 AP: it eats one hit, drops if you move, and cannot be used two turns in a row. You can end the activation early. Standing still is a real option.</p>
+      <p>Turns alternate. Damage is Strength minus Defense, minimum 1. The floor is part of the kit: spikes, fire that ticks each round, slow tiles that cost 2 AP to enter. Souls drop from kills. Heal, ATK, and AP orbs sit on the grid. Some rooms can also clear by securing a node or winning zone control instead of wiping every enemy.</p>
 
-      <h3 class="mt-4">Systems I designed around</h3>
-      <p>Maps are grid data (width, height, tile layers) consumed by Hellmaker. Scenes are YAML. Combat and UI live in Lua state machines on GameObjects (idle, attack, pause, portals, pickups, dialogue triggers). That split mattered for design: I could specify a room as tiles + intended verbs, then iterate in the editor without waiting on a full C++ rebuild for every layout pass.</p>
-      <p>Line of sight, turn passing, melee/ranged swap, shield, and hazard tiles are the mechanical spine. If those are unclear, the morality theme does not land, because the player is too busy fighting the controls.</p>
+      <h3 class="mt-4">Enemies and rooms</h3>
+      <p><strong>Scorpions</strong> chase and melee when adjacent. <strong>Tomes</strong> stay put and shoot on straight line of sight. <strong>Slimes</strong> collapse, skip a turn, then return; they do not block the portal, so they are optional pressure. The <strong>Lich</strong> in Layer 1 Room 5 is a two-phase fight (beam, then smash) sharing the room with scorpions and a tome. I designed that encounter; layout on the boss room had help.</p>
+      <p>I set the flow: tutorial, five Layer 1 rooms (boss on room 5), two Layer 2 rooms. After a clear: dialogue, a full-heal or permanent Strength / Defense choice, then the portal. I wrote those dialogue, reward, and portal beats. Enemy counts, traps, and pickups escalate so later rooms assume the verbs are already learned. Some tile maps I laid; some I integrated after help.</p>
+      <p>The tutorial always runs first. One verb at a time: move, attack and line of sight, weapon swap, what actually clears a room, shield, then souls and special tiles. Later rooms combine those lessons. Condemn / spare endings were a team idea and were cut for time. What shipped is the combat loop, not a branching true ending.</p>
 
-      <h4 class="mt-5">Key Features</h4>
+      <h3 class="mt-4">Lua and integration</h3>
+      <p>I wrote the Lua state machines: player combat, enemies, HUD, pause, dialogue, pickups, rewards, and the portal. I hooked YAML scenes and tile maps into Hellmaker, connected UI to that flow, and wired audio and effects so attacks, rooms, and menus played. Art and music were produced by others; getting them into the build was mine.</p>
+      <p>I authored the GDD and gameplay wiki, presented gameplay at reviews, and did most of the playtest notes and number passes after testers broke rooms.</p>
+
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Grid, turn-based combat with line of sight</li>
-        <li>Melee / ranged swap, shield, hazard tiles</li>
-        <li>Layered Inferno spaces and branching dialogue</li>
+        <li>Design Lead &mdash; all shipped mechanics</li>
+        <li>Lua &mdash; combat, UI, dialogue, pickups, portals</li>
+        <li>Integration &mdash; maps, assets, UI, SFX, VFX, BGM</li>
+        <li>Level flow; tile maps and boss layout with help</li>
+        <li>GDD, wiki, gameplay presentations, majority of balancing</li>
       </ul>
 
-      <h4 class="mt-5">My role</h4>
+      <h4 class="mt-5">Stack</h4>
       <ul>
-        <li>Design Lead - mechanics and level design</li>
-        <li>Hellmaker debugger and editor ImGui tools</li>
+        <li>Hellmaker (C++), YAML scenes and maps</li>
+        <li>Lua state machines</li>
       </ul>
 
       <p class="project-links mt-4">
-        Built on <a href="Hellmaker.html">Hellmaker</a>, our custom C++ engine.
+        Engine tools: <a href="Hellmaker.html">Hellmaker</a>
       </p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
