@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
 </head>
 <body class="bg-dark text-light">
   <div id="twinkle-container"></div>
@@ -39,7 +39,7 @@
       <p class="lead">2D top-down grid tactics &mdash; Team Infernumb, Year 2. Design Lead. Built on <a href="Hellmaker.html" class="text-info">Hellmaker</a>.</p>
 
       <p>Turn-based combat on a grid. Spend action points to move, strike, or guard, then enemies answer. Clear the room, take a heal or a permanent boost, and go through the portal.</p>
-      <p>Nine-person team. I designed every shipped mechanic, wrote the Lua, and integrated maps, assets, UI, SFX, VFX, and BGM so the game actually ran. I set the level flow. Some tile maps and the boss-room layout had help. Engine debugger and editor: <a href="Hellmaker.html" class="text-info">Hellmaker</a>.</p>
+      <p>Nine-person team. I designed every shipped mechanic, wrote the Lua, and integrated maps, assets, UI, SFX, VFX, and BGM so the game actually ran. I set the level flow. Some tile maps and the boss-room layout had help.</p>
 
       <h3 class="mt-4">Combat</h3>
       <p>Each player activation has <strong>8 AP</strong>. Movement is once per turn, <strong>1 AP per tile</strong>: highlight a path, click again to commit. Melee costs 1 AP; ranged costs 2 AP; weapon swap makes range a budget choice, not a skin. Attack mode draws line of sight &mdash; green is a legal hit, red is blocked. A shield costs 1 AP: it eats one hit, drops if you move, and cannot be used two turns in a row. You can end the activation early. Standing still is a real option.</p>
@@ -47,7 +47,7 @@
 
       <h3 class="mt-4">Enemies and rooms</h3>
       <p><strong>Scorpions</strong> chase and melee when adjacent. <strong>Tomes</strong> stay put and shoot on straight line of sight. <strong>Slimes</strong> collapse, skip a turn, then return; they do not block the portal, so they are optional pressure. The <strong>Lich</strong> in Layer 1 Room 5 is a two-phase fight (beam, then smash) sharing the room with scorpions and a tome. I designed that encounter; layout on the boss room had help.</p>
-      <p>I set the flow: tutorial, five Layer 1 rooms (boss on room 5), two Layer 2 rooms. After a clear: dialogue, a full-heal or permanent Strength / Defense choice, then the portal. I wrote those dialogue, reward, and portal beats. Enemy counts, traps, and pickups escalate so later rooms assume the verbs are already learned. Some tile maps I laid; some I integrated after help.</p>
+      <p>I set the flow: tutorial, five Layer 1 rooms (boss on room 5), two Layer 2 rooms. After a clear: dialogue, a full-heal or permanent Strength / Defense choice, then the portal. I wrote the dialogue, reward, and portal beats. Enemy counts, traps, and pickups escalate so later rooms assume the verbs are already learned. Some tile maps I laid; some I integrated after help.</p>
       <p>The tutorial always runs first. One verb at a time: move, attack and line of sight, weapon swap, what actually clears a room, shield, then souls and special tiles. Later rooms combine those lessons. Condemn / spare endings were a team idea and were cut for time. What shipped is the combat loop, not a branching true ending.</p>
 
       <h3 class="mt-4">Lua and integration</h3>

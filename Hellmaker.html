@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
 </head>
 <body class="bg-dark text-light">
   <div id="twinkle-container"></div>
@@ -38,7 +38,7 @@
       <h1 class="display-5 mb-3">Hellmaker</h1>
       <p class="lead">Custom C++ engine for Death's Refrain &mdash; Team Infernumb, Year 2. Engine debugger and editor tooling.</p>
 
-      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>: a static Engine library, an ImGui Editor, and a Sandbox game executable. Technical lead is Loh Boon Cheong, Timothy. I built the shared debugger and the editor UI that the team used to iterate levels and assets without a full rebuild for every change.</p>
+      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>: a static Engine library, an ImGui Editor, and a Sandbox game executable. Technical Lead: Loh Boon Cheong, Timothy. I built the shared debugger and the editor UI that the team used to iterate levels and assets without a full rebuild for every change.</p>
 
       <h3 class="mt-4">Debugger</h3>
       <p>I implemented Hellmaker's global debug layer, used by Engine, Editor, and Sandbox. Logs run from trace through critical, can target console, file, or both, and keep a ring buffer of recent messages. Init, shutdown, and crash helpers take a custom reason so a gameplay fault and an editor fault land in the same pipeline (spdlog).</p>

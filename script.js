@@ -5,9 +5,6 @@ function createStar() {
     const star = document.createElement('div');
     star.classList.add('twinkle-star');
   
-    star.style.background = "url('Assets/star.png') no-repeat center center";
-    star.style.backgroundSize = "contain";
-  
     star.style.top = Math.random() * 100 + 'vh';
     star.style.left = Math.random() * 100 + 'vw';
   
@@ -37,7 +34,9 @@ if (container) {
 
   function applyFilter(filter) {
     buttons.forEach((btn) => {
-      btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
+      const on = btn.getAttribute('data-filter') === filter;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     items.forEach((item) => {
       const cats = item.getAttribute('data-category').split(/\s+/);

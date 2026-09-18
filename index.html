@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sriracha&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" type="image/png" href="Assets/heart.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
   <style>
     html {
       scroll-behavior: smooth;
@@ -26,7 +26,7 @@
 
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Lin Xin</a>
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,11 +59,11 @@
     <div class="container">
       <h2 class="mb-4">Projects</h2>
       <div class="project-filters" role="tablist" aria-label="Project categories">
-        <button type="button" class="active" data-filter="all">All</button>
-        <button type="button" data-filter="video">Video games</button>
-        <button type="button" data-filter="physical">Physical games</button>
-        <button type="button" data-filter="megaman">Mega Man Maker</button>
-        <button type="button" data-filter="rpg">RPG maps</button>
+        <button type="button" class="active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="video" aria-pressed="false">Video games</button>
+        <button type="button" data-filter="physical" aria-pressed="false">Physical games</button>
+        <button type="button" data-filter="megaman" aria-pressed="false">Mega Man Maker</button>
+        <button type="button" data-filter="rpg" aria-pressed="false">RPG / campaign</button>
       </div>
       <div class="row">
 
@@ -100,6 +100,17 @@
           </div>
         </div>
 
+        <div class="col-md-4 mb-4 project-item" data-category="video">
+          <div class="card">
+            <img src="Assets/Overseas.png" class="card-img-top" alt="Overseas">
+            <div class="card-body">
+              <h5 class="card-title">Overseas</h5>
+              <p class="card-text">Fishing survival — mechanics and gameplay C++</p>
+              <a href="Overseas.html" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+
         <div class="col-md-4 mb-4 project-item" data-category="physical">
           <div class="card">
             <img src="Assets/Acquit.png" class="card-img-top" alt="Acquit">
@@ -107,17 +118,6 @@
               <h5 class="card-title">Acquit</h5>
               <p class="card-text">Courtroom cards — Design Lead, systems</p>
               <a href="Acquit.html" class="btn btn-primary">View Project</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="video">
-          <div class="card">
-            <img src="Assets/Overseas.png" class="card-img-top" alt="Overseas">
-            <div class="card-body">
-              <h5 class="card-title">Overseas</h5>
-              <p class="card-text">Team IDK fishing survival — mechanics and gameplay</p>
-              <a href="Overseas.html" class="btn btn-primary">View Project</a>
             </div>
           </div>
         </div>
@@ -236,14 +236,7 @@
   <section id="about">
     <div class="container">
       <h2 class="mb-4">About Me</h2>
-      <p>I'm Lin Xin, a BSc undergraduate in IMGD at DigiPen Singapore. I'm looking for a game design, level design, or gameplay programming internship.</p>
-      <p>I focus on clear, intentional player experiences: structuring each space, defining how mechanics are used, and thinking through what players should do, learn, and feel in every section.</p>
-      <p>My process usually starts from either theme-led design, where identity and story shape the space, or mechanics-led design, where abilities and interactions come first. I then iterate with programmes, skill themes, pacing curves, and playtest feedback.</p>
-      <p>I care about difficulty over complexity, guided freedom, and ideas that feel too unusual until they work.</p>
-      <div class="contact-links mt-4">
-        <a href="Assets/LinXin_Game_Design_Resume.pdf" target="_blank">Design resume</a>
-        <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank">Programmer resume</a>
-      </div>
+      <p>I work design and gameplay code on the same teams. Design Lead plus Lua on Death's Refrain, debugger and ImGui on Hellmaker, C++ on Overseas and Project Xeno. Design Lead on Acquit and Conquest. Solo Maker and RPG Maker work is where I write programmes, cadence, and circulation without a team to hide behind.</p>
     </div>
   </section>
 
@@ -258,6 +251,8 @@
         <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank">Programmer resume</a>
       </div>
       <form target="_blank" action="https://formsubmit.co/lin.x@digipen.edu" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Portfolio contact — Lin Xin">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" required>
