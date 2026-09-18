@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Acquit — Lin Xin</title>
+  <title>Acquit - Lin Xin</title>
+  <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -26,7 +27,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -34,47 +35,45 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <div class="mb-4">
+        <img src="Assets/Acquit.png" class="img-fluid rounded shadow" alt="Acquit cards and layout">
+      </div>
+
       <h1 class="display-5 mb-3">Acquit</h1>
-      <p class="lead">A single-player courtroom strategy card game</p>
+      <p class="lead">Physical courtroom strategy card game. Team of six. One player: investigation, one motion, then a jury race to 12.</p>
 
-      <p>Acquit puts you in the role of a defence attorney on the O.J. Simpson trial. The goal is not to recite the case — it is to build a playable legal journey: gather a case file, lock in a strategy before you enter court, then spend that preparation arguing for the jury.</p>
-      <p>I was one of six designers (Caven, Mandy, Lin Xin, Isaiah, Yan Xin, Novelie). I worked on how the legal process maps onto cards, phases, and scoring — turning investigation, pre-trial, and trial into one loop instead of a pile of themed trivia.</p>
+      <p>You play defence on the O.J. Simpson trial. Build a file, lock a theory of the case, then spend that preparation on arguments. The brief asked for an adventure; the legal process is the journey. The other side is the trial deck, not a second player.</p>
+      <p>I designed the table systems: split decks, investigation, motions, trial, scoring, and the card list. I presented the game and did the number passes after playtests. I helped on the rulebook and on Figma / card layout.</p>
 
-      <h3 class="mt-4">Design Rationale</h3>
-      <p>The brief asked for an adventure/journey, so the whole legal process had to be the journey. A single shared deck was simpler to set up, but cards from the wrong phase kept showing up at the wrong time. We split the decks: non-trial cards for investigation and pre-trial, arguments and tactics for the courtroom. Setup is slightly fussier. Each phase is much more readable.</p>
-      <p>Investigation is hand-building. You draw a case, then spend Investigation cards to peek, search, redraw, or filter for evidence versus arguments. At the end of that phase the extras go away, so the skill is not hoarding — it is deciding what is worth keeping.</p>
-      <p>Pre-trial is the commit. You pick one Motion with a real tradeoff. Motion to Suppress makes evidence stronger, but a failed evidence-backed argument hurts more. Motion to Dismiss boosts your argument rolls, then taxes you for every argument the other side still wins. Continuance is a redraw: safer, less swingy. That choice is the “I have a theory of the case” moment before dice start mattering.</p>
-      <p>Trial is where preparation meets uncertainty. An argument is flipped with a baseline difficulty that already leans prosecution or defence. You may play evidence and/or a tactic, then roll. Evidence is not generic +1: some cards only fit specific arguments, some work for either side, some have a worse chance but a bigger jury swing. Synergies (domestic violence history with the abuse argument, DNA with crime-scene arguments, flight with “erratic behaviour”) reward a coherent case instead of spraying every strong card.</p>
-      <p>Jury tokens start undecided and flip as arguments resolve. First to 12 wins; if nobody hits 12, it is a draw. Playtests showed raw win rates swinging hard (one set went 5–7, then 10–2, 10–2), so we kept iterating numbers, made unused leftover cards a score penalty, and treated successful cards as a plus to the final case. The player should feel they improved the odds, not that the dice were the game.</p>
+      <h3 class="mt-4">Three phases</h3>
+      <p>A single shared deck was easier to set up. Wrong-phase cards kept showing up at the wrong time. I split the decks: non-trial for investigation and pre-trial, arguments and tactics for court. Setup is fussier. Each phase is readable.</p>
+      <p><strong>Investigation</strong> is hand-building. Draw a case, then spend investigation cards to peek, search, redraw, or filter evidence versus arguments. Extras leave at the end of the phase: the skill is what you keep, not hoarding.</p>
+      <p><strong>Pre-trial</strong> is one Motion, with a real tradeoff. Suppress makes evidence stronger, but a failed evidence-backed argument hurts more. Dismiss boosts your argument rolls, then taxes you for every argument the other side still wins. Continuance is a redraw: safer, less swingy. That pick sits on the table for the whole trial &mdash; a rules overlay, not a one-shot.</p>
+      <p><strong>Trial</strong> flips an argument with a baseline difficulty that already leans one side. You may play evidence and/or a tactic, then roll. Evidence is not generic +1: some cards only fit specific arguments; some swing the jury harder with worse odds. Synergies reward a coherent case instead of spraying every strong card. Tactics interrupt (reroll, extra evidence, replay, cancel). An empty hand can still roll naked &mdash; dry is a state, not a lock.</p>
+      <p>Jury tokens start undecided. First to 12 wins; if nobody hits 12, a draw.</p>
 
-      <h3 class="mt-4">Systems</h3>
-      <p>The card economy settled around 40 cards: 10 arguments, 15 evidence, 3 motions, 7 tactics, 5 investigation. Turn sequence in trial is: flip argument, play up to one evidence and/or one tactic, roll, resolve jury, discard. If the hand is empty you can still roll the argument naked — so running dry is a state, not a hard lock.</p>
-      <p>Tactics are the interrupt layer. Objection and Confidence reroll failures (with a worse penalty if you fail again). Cross-Examination lets you play two evidence cards in one round. Expert Witness replays a spent card. Surprise Witness can cancel an opposing win at the cost of a discard. Motions sit on the table as a global modifier for the whole trial, so the pre-trial pick is a rules overlay, not a one-shot.</p>
-      <p>Most of the “technical” work on this project was table systems: difficulty values per argument, evidence modifiers that add or subtract from those checks, and a scoring model that could survive playtest without collapsing into auto-win or coin-flip. The card list is the spec for that.</p>
+      <h3 class="mt-4">Economy and playtests</h3>
+      <p>About 40 cards: 10 arguments, 15 evidence, 3 motions, 7 tactics, 5 investigation. Difficulty per argument and evidence modifiers had to survive playtest without auto-win or coin-flip. Early scores swung 5&ndash;7, then 10&ndash;2, 10&ndash;2. I iterated: leftover unused cards became a score penalty, successful cards a plus. You should feel you improved the odds. The dice are not the game. The card list is that spec.</p>
 
-      <h4 class="mt-5">Key Features</h4>
+      <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Three-phase legal flow with split decks</li>
-        <li>Investigation hand-building, Motions as trial-wide modifiers</li>
-        <li>Arguments with baseline odds, evidence synergies, jury race to 12</li>
+        <li>Table systems &mdash; split decks, investigation, motions, trial, jury scoring</li>
+        <li>Card list</li>
+        <li>Playtesting and number passes; presentation</li>
+        <li>Rulebook and Figma / card layout (contributor)</li>
       </ul>
 
-      <h4 class="mt-5">Tools</h4>
+      <h4 class="mt-5">Stack</h4>
       <ul>
-        <li>Figma</li>
-        <li>PowerPoint</li>
-        <li>Physical prototyping and playtesting</li>
+        <li>Physical prototype and playtesting</li>
+        <li>Figma (contributor)</li>
       </ul>
 
-      <h3 class="mt-4">Documents</h3>
-      <p class="project-links">
-        <a href="Assets/Acquit_Presentation.pdf" target="_blank">Presentation deck</a><br>
-        <a href="Assets/Acquit_Game_Design.pdf" target="_blank">Game design notes</a><br>
+      <p class="project-links mt-4">
         <a href="Assets/Acquit_Cardlist.pdf" target="_blank">Card list</a><br>
-        <a href="Assets/Acquit_Print&Play.pdf" download>Print and play</a><br>
-        <a href="Assets/Acquit_RuleBook.pdf" download>Rulebook</a>
+        <a href="Assets/Acquit_RuleBook.pdf" download>Rulebook</a><br>
+        <a href="Assets/Acquit_Print&Play.pdf" download>Print and play</a>
       </p>
-
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
