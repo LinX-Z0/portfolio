@@ -143,7 +143,8 @@ section {
     font-family: 'Nunito';
 }
 
-#summary p {
+#summary p,
+#summary ul {
   max-width: 78ch;
 }
 
@@ -156,6 +157,15 @@ section {
   --bs-table-bg: transparent;
   max-width: 34rem;
   margin-bottom: 1.5rem;
+}
+
+.tuning-list li {
+  margin-bottom: 0.6rem;
+}
+
+.tuning-list strong {
+  color: #cb93ff;
+  font-weight: 500;
 }
 
 .qte-table th {
