@@ -146,6 +146,11 @@ section {
 #summary p {
   max-width: 78ch;
 }
+
+#summary code {
+  color: #e8d4ff;
+  font-size: 0.95em;
+}
   
 .card {
   position: relative;
@@ -339,8 +344,32 @@ section {
   letter-spacing: 0.5px;
 }
 
-.contact-links a:hover {
-  background: #6c63ff;
-  border-color: #6c63ff;
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 1.75rem 0 2rem;
+  padding: 0;
+}
+
+.project-meta > div {
+  margin: 0;
+}
+
+.project-meta dt {
   color: #fff;
+  font-family: 'Electrolize', sans-serif;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+.project-meta dd {
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .project-meta {
+    grid-template-columns: 1fr 1fr;
+  }
 }

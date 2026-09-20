@@ -43,20 +43,65 @@
       </div>
 
       <h1 class="display-5 mb-3">Overseas</h1>
-      <p class="lead">Top-down pixel survival fishing. CSD1451, Team IDK, five people. Mechanics designer and gameplay programmer.</p>
+      <p class="lead">Top-down pixel survival fishing. Resource loop, quota, and a QTE on a small boat.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Mechanics designer, gameplay programmer</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>5 &mdash; Team IDK</dd>
+        </div>
+        <div>
+          <dt>Course</dt>
+          <dd>CSD1451, Year 1 Trimester 2</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>C++, DigiPen Alpha Engine</dd>
+        </div>
+      </dl>
 
       <p>You skipper a small boat. A random quota and a day limit sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve. Hit a wreck for a supply dump. Miss the quota, or hit zero health, and the run is over.</p>
       <p>I owned fishing, the QTE skill check, shipwrecks, the health/supply bars, and shop upgrades that rewrite those numbers. I also drew the player boat textures. Quota RNG and player movement were Mandy's. Monsters, rocks, water, and day/night sat with Ethan and Renfred. Menus and shop UI sat with Timothy.</p>
 
-      <h3 class="mt-4">Loop</h3>
-      <p>Quota versus body. Fishing spots spawn in the world; collide one, enter a fishing state, then a QTE decides the catch. Rarity changes the timing ask, not just the payout. After a catch the spot is replaced, so you cannot camp one pixel. Supply drains over time. Above 80 supply, health regenerates. Below that, health ticks faster the emptier you are. Exactly three wrecks stay in the world; a collide adds 50 supply (capped at 100) and a new wreck spawns. Fishing pays the quota. Wrecks buy time on the health curve. Upgrades I wired into the shop have to show up on those bars.</p>
+      <h3 class="mt-4">Design intent</h3>
+      <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. Wrecks are the only reliable way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
+
+      <h3 class="mt-4">Fishing spots</h3>
+      <p>Spots spawn in the world as a maintained population. Collide one, enter a fishing state, leave the overworld loop. Animated markers so a spot is a thing you steer at, not a silent trigger. After a catch I replace that spot somewhere else. The population stays up; the pixel you just farmed does not. That is how exploration stays in a top-down ocean that would otherwise collapse into one camp.</p>
+      <p>Authored in <code>Fishing</code>: spawn, collision, markers, catch-driven replacement.</p>
+
+      <h3 class="mt-4">QTE</h3>
+      <p>Fishing vs none is a state. In fishing, a timing bar runs; input in the right window is a catch. Rarity is chosen when the QTE inits, and it changes the window, not only the payout. Green / red / white overlays tell you where you are in the ask. A rare fish should feel like a different skill check. If it does not, rarity is flavour text on the same mash.</p>
+      <p>Authored in <code>FishingSkill</code>: state, rarity-init, input check, overlay bars.</p>
+
+      <h3 class="mt-4">Health and supply</h3>
+      <p>Two bars, bottom-left, 11-frame sprite sheets. Supply drains at 5 per second while you are on the water. At 80+ supply, health regenerates. Below that, health ticks down, faster the emptier you are: steps at 75, 50, 25, and 0. Empty supply is the worst drain. The HUD frame is health/10, so a change in the sim has to show up as a different icon. That is the body clock. Quota can be unfair in the other corner; if these icons are unreadable, you cannot make the greedy-or-safe call the loop is built for.</p>
+      <p>Authored in <code>Bar</code>. I also drew the player boat textures on Mandy's movement body.</p>
+
+      <h3 class="mt-4">Shipwrecks</h3>
+      <p>Exactly three wrecks in the world at once, random spawn, two textures. Collide one: +50 supply, capped at 100, wreck removed, a new one placed. Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
+      <p>Authored in <code>shipwrecks</code>: population of three, collide, reward, replace.</p>
+
+      <h3 class="mt-4">Shop upgrades</h3>
+      <p>Timothy owned the shop UI. I wired what a purchase actually does to the numbers the HUD reads. Four lines, split by what they touch: pools and rates.</p>
+      <p><strong>Health</strong> and <strong>Supply</strong> (base 25 each) raise the pool. A level adds 20 &times; the new level to the maximum, so the steps run +20, +40, +60, +80, +100 and a fully bought bar goes from 100 to 400. The health buy also tops up current HP, which makes it a repair as well as a cap raise &mdash; spending to survive tonight is a legal play, not only a long-term investment.</p>
+      <p><strong>Armor</strong> (base 30) and <strong>Efficiency</strong> (base 50) bend the rates instead of the pools. Each level moves the multiplier a tenth of the way toward half, so the fifth level lands on 50%: Armor cuts incoming damage to half, Efficiency takes the 5-per-second supply drain down to 2.5. They price above the pool upgrades because a rate change is permanent pressure relief, where a bigger pool still empties at the same speed.</p>
+      <p>Co-author on <code>Game.cpp</code> for hooking these into the run.</p>
 
       <h3 class="mt-4">Playtests</h3>
-      <p>CSD1451 user testing, 26 surveys. Testers liked the pixel art, controls, QTE, and upgrades. Pain: 15 of 26 named unrealistic quota as the worst beat. Night was too dark. HUD icons too small. Tutorial missed. Too many objects. They wanted upgrades that actually help survival. What we took: tune day length, quota, and night; make the tutorial unavoidable; cut spawn density; give upgrades a survivability job. The bars were the right systems; they were too quiet in the corner.</p>
+      <p>CSD1451 user testing, 26 surveys. Testers liked the pixel art, controls, QTE, and upgrades. Pain: 15 of 26 named unrealistic quota as the worst beat. Night was too dark. HUD icons too small. Tutorial missed. Too many objects. They wanted upgrades that actually help survival.</p>
+      <p>What we took: tune day length, quota, and night; make the tutorial unavoidable; cut spawn density; give upgrades a survivability job. My bars were the right systems. They were too quiet in the corner, so the body clock testers needed for the greedy-or-safe call was the one they could not see.</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Fishing spots, QTE, shipwrecks, health/supply HUD, shop upgrades</li>
+        <li>Fishing spots &mdash; population, collision, markers, replace on catch (<code>Fishing</code>)</li>
+        <li>QTE &mdash; rarity window, overlays (<code>FishingSkill</code>)</li>
+        <li>Health / supply HUD &mdash; 11-frame bars, drain, regen, step-down (<code>Bar</code>)</li>
+        <li>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
+        <li>Shop upgrades hooked to those bars; co-author <code>Game.cpp</code></li>
         <li>Player boat textures</li>
       </ul>
 
