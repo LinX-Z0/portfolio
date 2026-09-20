@@ -58,6 +58,14 @@
           <dd>CSD1451, Year 1 Trimester 2</dd>
         </div>
         <div>
+          <dt>Duration</dt>
+          <dd>14 weeks</dd>
+        </div>
+        <div>
+          <dt>Platform</dt>
+          <dd>Windows</dd>
+        </div>
+        <div>
           <dt>Stack</dt>
           <dd>C++, DigiPen Alpha Engine</dd>
         </div>
@@ -117,6 +125,12 @@
         <li><strong>Fishing spots and wrecks down to three each.</strong> The &ldquo;too many objects&rdquo; note. At the old counts one was always within reach, so the crossing never happened and the drain never bit.</li>
       </ul>
       <p>My bars were the right systems but too quiet in the corner &mdash; the body clock testers needed for the greedy-or-safe call was the one they could not see.</p>
+
+      <h3 class="mt-4">Outcome and reflection</h3>
+      <p>Overseas shipped at the end of the 14-week trimester and graded an A. The HUD readability the surveys flagged was fixed before the deadline, so the bars ended up doing the job they were built for.</p>
+      <p>What I would change is not in the tuning list above. Every entry in that list is a number I moved, and moving them was slower than it should have been. I had hardcoded values I did not expect to revisit, nothing was exposed for editing, and I had no way to watch the sim while it ran &mdash; so each retune meant a rebuild to see whether a guess was right. The habit I took out of this project is to expose tunables and stand up a debug view before a system needs tuning, because any value can become one you need to change the moment someone else plays the game, including the ones that looked settled when I typed them.</p>
+      <p>The other lesson was about building on someone else's code. We discussed implementation and ideation as a team and still finished with different understandings of the same system, which is how you end up calling a function that does almost, but not quite, what you assumed. Agreeing on an idea is not the same as sharing a model of it, and I now ask whoever wrote a thing before I build on top of it.</p>
+      <p>Both went straight into the next project. On <a href="Hellmaker.html" class="text-info">Hellmaker</a> I built the engine's debug layer and the ImGui console the team used to watch the engine while it ran &mdash; the tool I wanted here.</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
