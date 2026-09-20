@@ -74,7 +74,21 @@
       <p>Authored in <code>Fishing</code>: spawn, collision, markers, catch-driven replacement.</p>
 
       <h3 class="mt-4">QTE</h3>
-      <p>Fishing vs none is a state. In fishing, a timing bar runs; input in the right window is a catch. Rarity is chosen when the QTE inits, and it changes the window, not only the payout. Green / red / white overlays tell you where you are in the ask. A rare fish should feel like a different skill check. If it does not, rarity is flavour text on the same mash.</p>
+      <p>Fishing versus none is a state. In fishing, a marker sweeps a 360px bar and you have 10 seconds to land it inside the green window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green, red, and white overlays show where you are in the ask.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table">
+          <thead>
+            <tr><th scope="col">Tier</th><th scope="col">Window</th><th scope="col">Height</th><th scope="col">Speed</th><th scope="col">Time in window</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Common</td><td>30%</td><td>108px</td><td>200px/s</td><td>0.54s</td></tr>
+            <tr><td>Uncommon</td><td>15%</td><td>54px</td><td>400px/s</td><td>0.14s</td></tr>
+            <tr><td>Rare</td><td>7.5%</td><td>27px</td><td>800px/s</td><td>0.03s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Both multipliers apply at once, so the time the marker actually spends inside the window quarters per tier rather than halving — just over half a second on Common down to three hundredths on Rare, a sixteenth of the reaction time across two tiers. That is the whole point of tying rarity to the skill check. A rare fish is a different test, not the same bar with a bigger payout attached.</p>
+      <p>Three tiers ship in the fish data. Epic and Legendary already exist in the QTE code, so a later tier is a data change rather than new code.</p>
       <p>Authored in <code>FishingSkill</code>: state, rarity-init, input check, overlay bars.</p>
 
       <h3 class="mt-4">Health and supply</h3>
@@ -98,7 +112,7 @@
       <h4 class="mt-5">Role</h4>
       <ul>
         <li>Fishing spots &mdash; population, collision, markers, replace on catch (<code>Fishing</code>)</li>
-        <li>QTE &mdash; rarity window, overlays (<code>FishingSkill</code>)</li>
+        <li>QTE &mdash; rarity-driven window and marker speed, overlays (<code>FishingSkill</code>)</li>
         <li>Health / supply HUD &mdash; 11-frame bars, drain, regen, step-down (<code>Bar</code>)</li>
         <li>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
         <li>Shop upgrades hooked to those bars; co-author <code>Game.cpp</code></li>

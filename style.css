@@ -151,6 +151,19 @@ section {
   color: #e8d4ff;
   font-size: 0.95em;
 }
+
+.qte-table {
+  --bs-table-bg: transparent;
+  max-width: 34rem;
+  margin-bottom: 1.5rem;
+}
+
+.qte-table th {
+  font-family: 'Electrolize', sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  color: #cb93ff;
+}
   
 .card {
   position: relative;
