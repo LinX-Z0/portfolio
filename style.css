@@ -159,6 +159,60 @@ section {
   margin-bottom: 1.5rem;
 }
 
+.authored {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.shop-table {
+  max-width: 44rem;
+}
+
+.bar-table {
+  max-width: 20rem;
+}
+
+.system-diagram {
+  max-width: 44rem;
+  margin: 1.75rem 0 2rem;
+}
+
+.system-diagram svg {
+  width: 100%;
+  height: auto;
+}
+
+.system-diagram figcaption {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.dg-h {
+  font-family: 'Electrolize', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  fill: #cb93ff;
+}
+
+.dg-s {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  fill: rgba(255, 255, 255, 0.82);
+}
+
+.dg-m {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11.5px;
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.dg-l {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11.5px;
+  fill: rgba(255, 255, 255, 0.62);
+}
+
 .tuning-list li {
   margin-bottom: 0.6rem;
 }
