@@ -5,6 +5,14 @@
   <title>Project Xeno - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Unreal C++ predator AI study. Metric-gated adaptation that feels like learning, without machine learning. Spec, NPC profiles, and most of the prototype.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Project Xeno &mdash; Lin Xin">
+  <meta property="og:description" content="Unreal C++ predator AI study. Metric-gated adaptation that feels like learning, without machine learning.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/ProjectXeno.html">
+  <!-- TODO add Assets/xeno-og.png at 1200x630, then uncomment -->
+  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/xeno-og.png"> -->
+  <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -35,37 +43,225 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
-      <h1 class="display-5 mb-3">Project Xeno</h1>
-      <p class="lead">CSD2183, Team 19. Unreal prototype: a predator that feels like it learns you, without live machine learning.</p>
+      <!-- MEDIA SLOT 1 of 4 : Assets/xeno-prototype.png : the Unreal test bed in play -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/xeno-prototype.png" alt="The Project Xeno Unreal prototype running, with the predator and test NPCs in the scene.">
+        <figcaption>The Unreal test bed. A playable experiment, not a full game.</figcaption>
+      </figure>
+      -->
 
-      <p>Isolation's xenomorph feels adaptive. It is not training a model. A Director AI is omniscient &mdash; pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
+      <h1 class="display-5 mb-3">Project Xeno</h1>
+      <p class="lead">Unreal predator AI study. Make it feel like it learns you, without teaching it anything.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Adaptation spec, C++ prototype, NPC profiles</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>4 &mdash; Team 19</dd>
+        </div>
+        <div>
+          <dt>Course</dt>
+          <dd>CSD2183</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>Unreal Engine, C++ (majority), Blueprints (team)</dd>
+        </div>
+        <div>
+          <dt>State</dt>
+          <dd>Research prototype</dd>
+        </div>
+      </dl>
+
+      <p>Alien: Isolation's xenomorph feels like it adapts to you. It is not training a model. A Director AI is omniscient &mdash; pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
       <p>Team 19 researched that split and presented it together. I specified how our agent would adapt, designed most of the NPC test profiles, and built most of the Unreal prototype in C++. Blueprints were team. The playable is a test bed, not a full game.</p>
+
+      <h3 class="mt-4">Design intent</h3>
+      <p>The trap is to build an unstoppable learning machine. Escalation that invents invisible advantages eclipses the player's ability to adapt, which is the opposite of a survival horror fantasy &mdash; you stop feeling hunted and start feeling cheated. What we wanted was the systemic illusion of learning: an agent that tracks how you actually play and opens authored behaviors when those habits cross a line.</p>
+      <p>That distinction is the whole project. Machine learning would invent a cheat you cannot read. Metric gating invents a curriculum you can tune. The alien that starts checking lockers after you have lived in them three times is still playing by rules you could write on a whiteboard, which means a designer can decide <em>when</em> the pressure rises instead of discovering it after the fact.</p>
+
+      <figure class="system-diagram">
+        <svg viewBox="0 0 720 240" role="img" aria-labelledby="gateTitle gateDesc">
+          <title id="gateTitle">Metric gating pipeline</title>
+          <desc id="gateDesc">Player action feeds a tracked metric. When the metric crosses a threshold, a gate opens and a new predator behavior becomes available.</desc>
+          <defs>
+            <marker id="arrowXe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
+            </marker>
+          </defs>
+
+          <rect x="20" y="50" width="128" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="84" y="80" class="dg-h" text-anchor="middle">ACTION</text>
+          <text x="84" y="100" class="dg-m" text-anchor="middle">player habit</text>
+
+          <rect x="168" y="50" width="128" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="232" y="80" class="dg-h" text-anchor="middle">METRIC</text>
+          <text x="232" y="100" class="dg-m" text-anchor="middle">counted</text>
+
+          <rect x="316" y="50" width="128" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="380" y="80" class="dg-h" text-anchor="middle">THRESHOLD</text>
+          <text x="380" y="100" class="dg-m" text-anchor="middle">crossed</text>
+
+          <rect x="464" y="50" width="110" height="70" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.4)"/>
+          <text x="519" y="80" class="dg-h" text-anchor="middle">GATE</text>
+          <text x="519" y="100" class="dg-m" text-anchor="middle">opens</text>
+
+          <rect x="594" y="50" width="106" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="647" y="80" class="dg-h" text-anchor="middle">BEHAVIOR</text>
+          <text x="647" y="100" class="dg-m" text-anchor="middle">now legal</text>
+
+          <line x1="150" y1="85" x2="164" y2="85" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe)"/>
+          <line x1="298" y1="85" x2="312" y2="85" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe)"/>
+          <line x1="446" y1="85" x2="460" y2="85" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe)"/>
+          <line x1="576" y1="85" x2="590" y2="85" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe)"/>
+
+          <text x="360" y="175" class="dg-s" text-anchor="middle">Escalation is authored: you can tune when the alien starts checking lockers.</text>
+          <text x="360" y="200" class="dg-m" text-anchor="middle">It does not invent an invisible cheat.</text>
+        </svg>
+        <figcaption>The adaptation pipeline I specified. Habit in, gated behavior out.</figcaption>
+      </figure>
 
       <h3 class="mt-4">Metric gating</h3>
       <p>I owned the adaptation spec. Track how the player actually behaves. When a meter crosses a threshold, a new behavior becomes legal. Escalation is authored and readable: you can tune when the alien starts checking lockers. It does not invent an invisible cheat.</p>
-      <p>Meters we used: flamethrower uses, locker and vent hides, noise, time in line of sight, repeated escape routes. Pipeline: action &rarr; metric &rarr; threshold &rarr; gate &rarr; new behavior.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Metric</th><th scope="col">What it catches</th><th scope="col">Why it matters</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Flamethrower uses</td><td>How often you buy safety with fire</td><td>A player who lives on the flamethrower is not the same as one who barely touches it</td></tr>
+            <tr><td>Locker / vent hides</td><td>Reliance on static cover</td><td>The classic Isolation habit &mdash; and the one that should stop working if overused</td></tr>
+            <tr><td>Noise events</td><td>How loud your path through the ship is</td><td>Stealth versus panic, measured rather than assumed</td></tr>
+            <tr><td>Time in line of sight</td><td>How long you stay visible</td><td>Exposure as a habit, not a single mistake</td></tr>
+            <tr><td>Repeated escape routes</td><td>Using the same exit again</td><td>The agent should notice a pattern, not just a direction</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The pipeline is the same for every row: action &rarr; metric &rarr; threshold &rarr; gate &rarr; new behavior. That sameness is deliberate. One mechanism covers five habits, so adding a sixth is a data change rather than a new system, and tuning one threshold does not require rewriting the creature.</p>
+      <p>The design pressure sits on the thresholds, not on the architecture. Set them too low and the alien escalates before the player has a habit; set them too high and the adaptation never lands. The page does not list the shipped numbers because the prototype was a test bed for the mechanism, not a balance pass on Isolation's pacing curve.</p>
+      <!-- MEDIA SLOT 2 of 4 : Assets/xeno-gate-debug.png : debug view of meters / gates if you have one -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/xeno-gate-debug.png" alt="Debug overlay showing tracked player metrics and which behavior gates are open.">
+        <figcaption>Meters and gates, visible while the prototype runs.</figcaption>
+      </figure>
+      -->
 
-      <h3 class="mt-4">Architecture and NPCs</h3>
-      <p>The team set four layers, each managing the one below: omniscient pacing, high-level strategy, mid-level execution, low-level search / chase / attack. I implemented toward that structure in the prototype.</p>
-      <p>NPCs were the experiment around the predator. I designed most of three reaction profiles: <strong>Civilian</strong> (long delay, freezes), <strong>Technician</strong> (a beat to assess, then acts), <strong>Ghost</strong> (zero delay, tracks the xenomorph, stays out of the danger zone).</p>
+      <h3 class="mt-4">Four-layer architecture</h3>
+      <p>The team set four layers, each managing the one below. I implemented toward that structure in the prototype.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Layer</th><th scope="col">Owns</th><th scope="col">Job</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Omniscient</td><td>Pacing curves</td><td>Keep escalation from becoming frustration</td></tr>
+            <tr><td>High-level</td><td>Strategy</td><td>Process senses; augment or swap strategies</td></tr>
+            <tr><td>Mid-level</td><td>Execution</td><td>Carry out the current strategy</td></tr>
+            <tr><td>Low-level</td><td>Primitives</td><td>Search, chase, and attack</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The split mirrors Isolation's Director versus behavior tree. Omniscient knowledge stays out of the creature's hands, so the hunt can feel personal without the alien cheating through walls. Metric gates feed the upper layers: a threshold crossing is not a new attack animation, it is permission for a strategy change that the lower layers then execute with ordinary senses.</p>
+      <p class="authored">Layer design was team. My implementation work sat on top of that shared model.</p>
+
+      <figure class="system-diagram">
+        <svg viewBox="0 0 720 280" role="img" aria-labelledby="layerTitle layerDesc">
+          <title id="layerTitle">Four-layer predator stack</title>
+          <desc id="layerDesc">Four stacked decision layers from omniscient pacing down to low-level search, chase, and attack. Each layer manages the one below it.</desc>
+          <defs>
+            <marker id="arrowXe2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
+            </marker>
+          </defs>
+
+          <rect x="160" y="16" width="400" height="48" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.4)"/>
+          <text x="360" y="36" class="dg-h" text-anchor="middle">OMNISCIENT</text>
+          <text x="360" y="52" class="dg-s" text-anchor="middle">pacing curves &mdash; escalation stays readable</text>
+
+          <line x1="360" y1="66" x2="360" y2="84" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
+
+          <rect x="160" y="88" width="400" height="48" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="360" y="108" class="dg-h" text-anchor="middle">HIGH-LEVEL</text>
+          <text x="360" y="124" class="dg-s" text-anchor="middle">strategy &mdash; senses in, strategy swap or augment</text>
+
+          <line x1="360" y1="138" x2="360" y2="156" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
+
+          <rect x="160" y="160" width="400" height="48" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="360" y="180" class="dg-h" text-anchor="middle">MID-LEVEL</text>
+          <text x="360" y="196" class="dg-s" text-anchor="middle">execution &mdash; carry out the current strategy</text>
+
+          <line x1="360" y1="210" x2="360" y2="228" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
+
+          <rect x="160" y="232" width="400" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="360" y="258" class="dg-h" text-anchor="middle">LOW-LEVEL &mdash; search / chase / attack</text>
+        </svg>
+        <figcaption>Each layer manages the one below. Omniscient knowledge never leaks into the creature's senses.</figcaption>
+      </figure>
+
+      <h3 class="mt-4">NPC profiles</h3>
+      <p>NPCs were the experiment around the predator. I designed most of three reaction profiles, not as flavour cast, but as instruments for measuring whether the alien's pressure was readable.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Profile</th><th scope="col">Reaction</th><th scope="col">What it tests</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Civilian</td><td>Long delay, freezes</td><td>Whether panic reads as weakness the predator can exploit</td></tr>
+            <tr><td>Technician</td><td>A beat to assess, then acts</td><td>Whether a short hesitation still leaves a survivable window</td></tr>
+            <tr><td>Ghost</td><td>Zero delay; tracks the xenomorph; stays out of the danger zone</td><td>Whether skilled evasion still feels hunted rather than trivial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three delays on the same threat is a controlled experiment. If Civilian dies every time and Ghost never feels pressure, the predator is tuned to one player type. If all three profiles produce different but legible outcomes, the agent is doing the job Isolation's Director does: managing fear across a range of competence rather than winning a fight.</p>
+      <!-- MEDIA SLOT 3 of 4 : Assets/xeno-npc.gif : Ghost or Civilian reacting to the predator -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/xeno-npc.gif" alt="An NPC profile reacting to the xenomorph in the Unreal prototype.">
+        <figcaption>Same threat, different reaction delay. The profiles are the measuring stick.</figcaption>
+      </figure>
+      -->
+
+      <h3 class="mt-4">What I built</h3>
+      <p>Most of the Unreal prototype in C++. The gating pipeline, the agent structure toward the four-layer model, and the hooks the NPC profiles needed to react. Blueprints were shared team work for wiring and iteration speed where they made sense.</p>
+      <p>A research prototype has a different success condition than a shipped game. The question was not whether the alien was fun for an hour, it was whether the illusion held when you watched the meters move and the gates open. If a locker habit opened a locker-check behavior, and a Ghost still looked hunted rather than scripted, the study worked.</p>
+      <!-- MEDIA SLOT 4 of 4 : Assets/xeno-chase.gif : search or chase beat -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/xeno-chase.gif" alt="The predator searching or chasing in the Unreal prototype.">
+        <figcaption>Low-level primitives under a gated strategy change.</figcaption>
+      </figure>
+      -->
+
+      <h3 class="mt-4">Outcome and reflection</h3>
+      <p>Xeno shipped as a research prototype and a study deck, not a complete game, which is the right shape for a course whose question was &ldquo;how does Isolation's predator actually work&rdquo; rather than &ldquo;can we remake Sevastopol.&rdquo; The part I would redo is not the research. It is the order I built in, and the tools I reached for while I did.</p>
+      <p>I coded most of the prototype in C++. Looking back, I would have lived in Blueprints much earlier. C++ was the familiar hammer from Overseas and Hellmaker, and it cost me the thing Unreal is built around: iterating on behavior without a compile between every guess. Metric gating and strategy swaps are exactly the kind of system where you want to move a threshold, play ten seconds, and move it again. Paying a rebuild for each of those passes is the same trap I already wrote about on Overseas &mdash; and this time I walked into it with a better alternative sitting in the editor.</p>
+      <p>The workload split is the other half of that. I did not foresee how hard the AI behavior itself would be, so I took more of it than one person should hold on a four-person team. Specifying the gates, implementing the agent, and designing the NPC instruments are three jobs that look adjacent on a slide and become three different kinds of stuck when they live in one head. Splitting earlier would not just have been fairer. It would have forced the interfaces between those pieces into the open, which is usually where the real design work is.</p>
+      <p>The build order was wrong in a more specific way. I started with the map and the NPCs &mdash; the things you can see &mdash; and left the overall controlling AI until there was something pretty to drop it into. That feels productive and is the wrong experiment. The question Xeno was asking lived entirely in the Director-shaped layer: does pacing plus gated strategy produce the illusion of learning? You can answer that with text logs, fake meters, and a console before a single corridor exists. Building the world first meant every bug in the predator was tangled with navigation, collisions, and NPC timing, so I could not tell whether a bad hunt was a bad gate or a bad map.</p>
+      <p>If I picked it up again, the first week would be the controlling AI alone &mdash; metrics, thresholds, gates, strategy swaps &mdash; tested against printed player-action scripts and a log of which behaviors became legal when. Only once that loop was boringly clear would I put a body on it and walk it through a room. The NPCs and the map are validation for a system that already works on paper, not a substitute for building the system.</p>
+      <p>It rhymes with both earlier projects. Overseas taught me to expose tunables before I need them. Hellmaker taught me to ask before routing around a gap. Xeno is the third version: build the thing the study is actually about first, in the medium that lets you change it fastest, and treat everything else as a test harness.</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Metric-gating spec</li>
+        <li>Metric-gating adaptation spec</li>
         <li>Unreal prototype &mdash; most of the C++</li>
-        <li>NPC profiles (majority)</li>
-        <li>Four-layer AI &mdash; team design, implementation in prototype</li>
+        <li>NPC reaction profiles (majority) &mdash; Civilian, Technician, Ghost</li>
+        <li>Four-layer AI &mdash; team design, implementation toward it in the prototype</li>
         <li>Research, presentation, Blueprints &mdash; team</li>
-      </ul>
-
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>Unreal Engine &mdash; C++ (majority), Blueprints (team)</li>
       </ul>
 
       <p class="project-links mt-4">
         <a href="Assets/Project_Xeno.pdf" target="_blank">Study deck</a>
       </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Related</span> <a href="Overseas.html">Overseas</a> &mdash; earlier C++ systems work; different problem, same habit of making pressure readable.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
