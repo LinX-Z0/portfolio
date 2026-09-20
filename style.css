@@ -172,6 +172,19 @@ section {
   max-width: 20rem;
 }
 
+.case-exit {
+  max-width: 44rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 1.25rem;
+}
+
+.case-exit-label {
+  font-family: 'Electrolize', sans-serif;
+  letter-spacing: 0.5px;
+  color: #cb93ff;
+  margin-right: 0.4rem;
+}
+
 .system-diagram {
   max-width: 44rem;
   margin: 1.75rem 0 2rem;
@@ -186,6 +199,46 @@ section {
   color: rgba(255, 255, 255, 0.55);
   font-size: 0.9rem;
   margin-top: 0.6rem;
+}
+
+.shot {
+  max-width: 44rem;
+  margin: 1.75rem 0 2rem;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  image-rendering: pixelated;
+}
+
+.shot figcaption {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.shot-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+
+.shot-row figure {
+  margin: 0;
+}
+
+.shot-row figcaption {
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.shot-narrow {
+  max-width: 26rem;
 }
 
 .dg-h {
@@ -423,8 +476,9 @@ section {
 
 .project-meta {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
   gap: 1.25rem 1.5rem;
+  max-width: 44rem;
   margin: 1.75rem 0 2rem;
   padding: 0;
 }

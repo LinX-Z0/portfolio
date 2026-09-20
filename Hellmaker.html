@@ -5,6 +5,14 @@
   <title>Hellmaker - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Custom C++20 engine behind Death's Refrain. I built the shared debug layer, the ImGui debug console, the editor GUI manager, and the asset browser with drag-and-drop spawning.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hellmaker &mdash; Lin Xin">
+  <meta property="og:description" content="Custom C++20 engine behind Death's Refrain. Shared debug layer, ImGui debug console, editor GUI manager, and asset browser with drag-and-drop spawning.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/Hellmaker.html">
+  <!-- TODO add Assets/hellmaker-og.png at 1200x630, a landscape shot of the editor, then uncomment -->
+  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/hellmaker-og.png"> -->
+  <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -35,47 +43,167 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <!-- MEDIA SLOT 1 of 5 : Assets/hellmaker-editor.png : the full editor, docked, with the game view and console both visible -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with docked panels, the game view, the asset browser, and the debug console.">
+        <figcaption>The editor as the team used it. Game view, asset browser, and debug console docked together.</figcaption>
+      </figure>
+      -->
+
       <h1 class="display-5 mb-3">Hellmaker</h1>
-      <p class="lead">Custom C++ engine for Death's Refrain &mdash; Team Infernumb, Year 2. Engine debugger and editor tooling.</p>
+      <p class="lead">Custom C++ engine behind Death's Refrain. I built the tooling the team watched the engine through.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Engine tools programmer</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Team Infernumb</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>C++20, Dear ImGui, spdlog</dd>
+        </div>
+      </dl>
 
-      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>: a static Engine library, an ImGui Editor, and a Sandbox game executable. Technical Lead: Loh Boon Cheong, Timothy. I built the shared debugger and the editor UI that the team used to iterate levels and assets without a full rebuild for every change.</p>
+      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling &mdash; the console, the GUI manager, and the asset browser &mdash; which together cut the distance between changing something and seeing it.</p>
 
-      <h3 class="mt-4">Debugger</h3>
-      <p>I implemented Hellmaker's global debug layer, used by Engine, Editor, and Sandbox. Logs run from trace through critical, can target console, file, or both, and keep a ring buffer of recent messages. Init, shutdown, and crash helpers take a custom reason so a gameplay fault and an editor fault land in the same pipeline (spdlog).</p>
-      <p>On top of that I wrote the editor Debug Console: an ImGui window that streams those logs live and lets us filter what the engine is doing without attaching a second logger.</p>
+      <h3 class="mt-4">Why I asked for the tools job</h3>
+      <p>On <a href="Overseas.html" class="text-info">Overseas</a> I spent a trimester retuning values by rebuilding the game to find out whether each guess was right. Nothing was exposed, nothing was observable while it ran, and the reflection I wrote at the end of that project was that debug views and tunables belong in place before a system needs tuning, not after. Hellmaker is where I got to act on that, and the difference is that this time the user of the thing I was building was my own team.</p>
+      <p>That reframes what &ldquo;good&rdquo; means. A gameplay system is judged on how it feels; a tool is judged on how much it removes from someone else's day. Every decision below is some version of the same question: what is a designer or an artist currently paying for in rebuilds, guesswork, or lost context, and can this give it back to them? The clearest answer I got was the asset browser, which took a two-minute round trip down to well under one and did it on every placement for the rest of the project.</p>
 
-      <h3 class="mt-4">Editor (Dear ImGui)</h3>
-      <p>I wrote the editor GUI manager: it wraps ImGui so other systems can open windows without depending on ImGui types, and it drives layout &mdash; docking, FPS, editor mode, and return to the project launcher.</p>
-      <p>I authored the asset browser (Timothy contributed a smaller share, including ImGuiFileDialog integration). From the browser, assets can be dropped onto the game view; I implemented spawn-at-mouse so a dropped file becomes a GameObject at the cursor. The game view itself is shared with Alfred Lo and Timothy (render and gizmos). Together, that path is how a room was assembled in the editor instead of in C++.</p>
+      <h3 class="mt-4">The engine, in brief</h3>
+      <p>Hellmaker builds as three CMake targets. Engine is a static library holding the runtime &mdash; the GameObject scene model, rendering, physics, audio through FMOD, windowing and input through GLFW. Editor and Sandbox both link it. Editor is the ImGui toolset; Sandbox is the shipping game executable.</p>
+      <p>The consequence worth pulling out is that the editor is not a separate simulation of the game. Both targets link the same library, so the world a designer arranges in the editor is running the code the game ships on. There is no second implementation to keep in step, and no class of bug where the editor preview and the build disagree about what a scene means.</p>
+      <p>Content lives outside C++: data in YAML, behaviour scripted in Lua. Death's Refrain is authored on the runtime rather than compiled into it, and that is the decision the rest of my work depends on. If levels were C++, an asset browser would be pointless &mdash; placing an object would still mean a rebuild no matter how good the panel was. Because they are data, a tool can put an object into a room while the engine is running, and the entire question becomes how fast and how legible you can make that.</p>
+      <p class="authored">The architecture and the component model are Timothy's as Technical Lead, with rendering from Alfred and physics from Jaeden. My work sits on top: the debug layer all three targets share, and the editor panels below.</p>
+
+      <figure class="system-diagram">
+        <svg viewBox="0 0 720 300" role="img" aria-labelledby="dbgTitle dbgDesc">
+          <title id="dbgTitle">Hellmaker debug pipeline</title>
+          <desc id="dbgDesc">The Editor, the Sandbox game executable, and the Engine static library all emit into one shared debug layer built on spdlog. That layer writes to console and file sinks and holds a ring buffer of recent messages, which the ImGui debug console streams live inside the editor.</desc>
+          <defs>
+            <marker id="arrowHm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
+            </marker>
+          </defs>
+
+          <rect x="20" y="20" width="230" height="62" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="40" y="47" class="dg-h">EDITOR</text>
+          <text x="40" y="67" class="dg-m">ImGui tooling</text>
+
+          <rect x="20" y="100" width="230" height="62" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="40" y="127" class="dg-h">SANDBOX</text>
+          <text x="40" y="147" class="dg-m">game executable</text>
+
+          <rect x="20" y="180" width="230" height="62" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="40" y="207" class="dg-h">ENGINE</text>
+          <text x="40" y="227" class="dg-m">static library</text>
+
+          <line x1="252" y1="51" x2="316" y2="51" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowHm)"/>
+          <line x1="252" y1="131" x2="316" y2="131" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowHm)"/>
+          <line x1="252" y1="211" x2="316" y2="211" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowHm)"/>
+
+          <rect x="320" y="20" width="200" height="222" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.4)"/>
+          <text x="420" y="92" class="dg-h" text-anchor="middle">DEBUG LAYER</text>
+          <text x="420" y="118" class="dg-s" text-anchor="middle">trace to critical</text>
+          <text x="420" y="138" class="dg-s" text-anchor="middle">console / file sinks</text>
+          <text x="420" y="158" class="dg-s" text-anchor="middle">ring buffer</text>
+          <text x="420" y="178" class="dg-s" text-anchor="middle">crash helpers</text>
+
+          <line x1="522" y1="131" x2="586" y2="131" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowHm)"/>
+
+          <rect x="590" y="100" width="110" height="62" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="645" y="127" class="dg-h" text-anchor="middle">CONSOLE</text>
+          <text x="645" y="147" class="dg-m" text-anchor="middle">live, filtered</text>
+
+          <text x="360" y="278" class="dg-s" text-anchor="middle">One pipeline, so an editor fault and a gameplay fault arrive in the same timeline.</text>
+        </svg>
+        <figcaption>The debug path. All three build targets emit into one layer rather than carrying their own logger.</figcaption>
+      </figure>
+
+      <h3 class="mt-4">Debug layer</h3>
+      <p>One global layer on spdlog, linked into Engine, Editor, and Sandbox alike. Levels run trace through critical, each message can target the console, a file, or both, and a ring buffer keeps recent history in memory. Init, shutdown, and crash helpers each take a custom reason string.</p>
+      <p>Sharing one layer across all three targets is the decision that matters, and it is worth being precise about why. The alternative &mdash; a logger per target &mdash; is easier to write and produces three separate accounts of one event. When the editor crashes while a designer is dragging an asset into the scene, the useful information is not the fault itself, it is the sequence of engine calls that preceded it. Separate loggers put those on either side of a wall. One pipeline puts them in the same timeline, in order, which is the difference between a bug report and a reproduction.</p>
+      <p>The ring buffer exists for the same reason. A file sink is a record you read after the fact; the buffer is what lets the console show history the moment you open it, and what gives the crash helpers something to hand over about the seconds before the fault. The custom reason string is there so that the two halves of the engine do not become indistinguishable at the point of failure.</p>
+      <!-- MEDIA SLOT 2 of 5 : Assets/hellmaker-log-output.png : a slice of real log output showing levels and timestamps -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/hellmaker-log-output.png" alt="Log output from Hellmaker showing several severity levels with timestamps.">
+        <figcaption>Output from the shared layer. The same format whether it came from the engine, the editor, or the game.</figcaption>
+      </figure>
+      -->
+
+      <h3 class="mt-4">Debug console</h3>
+      <p>An ImGui window inside the editor that streams the layer live and filters it. The point is that watching the engine no longer costs anything: no second logger to attach, no rebuild with extra prints, no tabbing out to a text file that has already scrolled past the thing you wanted.</p>
+      <p>This is the tool the Overseas reflection was asking for. There, checking whether a guess was right meant a rebuild; here it meant looking at a docked panel while the game ran.</p>
+      <!-- MEDIA SLOT 3 of 5 : Assets/hellmaker-console.gif : the console streaming while the game runs, then a filter applied -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/hellmaker-console.gif" alt="The ImGui debug console streaming log lines live, then narrowing to one severity when a filter is applied.">
+        <figcaption>The console under load, then filtered. Watching the engine costs a glance rather than a rebuild.</figcaption>
+      </figure>
+      -->
+
+      <h3 class="mt-4">Editor GUI manager</h3>
+      <p>The layer other systems open windows through. It wraps ImGui so no caller needs to include an ImGui type, and it drives the shell itself: docking, the FPS readout, editor mode, and the route back to the project launcher.</p>
+      <p>The wrap is the part I would defend hardest. Letting every system include <code>imgui.h</code> works fine right up until the library moves, and then a UI upgrade becomes an edit in every file that ever drew a window. It also quietly turns gameplay and engine code into UI-aware code, which is a dependency they have no reason to carry and a habit that is far cheaper to prevent than to unwind. One seam keeps the cost of that change in one place.</p>
+
+      <h3 class="mt-4">Asset browser</h3>
+      <p>The panel the team picked content from, and the piece with the most direct effect on how a room got built. I authored it, with Timothy contributing a smaller share including the ImGuiFileDialog integration. Assets drag out of the browser and onto the game view; I implemented spawn-at-mouse, so a dropped file becomes a GameObject exactly where the cursor was. The game view itself is shared work with Alfred Lo and Timothy, who own render and gizmos.</p>
+      <p>Dropping at the cursor rather than at the origin sounds like a detail and is really the whole feature. Spawning at origin means every placement is followed by a drag to where you actually meant, which is a second action, a second chance to misjudge, and a reason to stop thinking about layout and start thinking about the tool. Landing it under the cursor makes placement a single gesture and keeps the designer's attention on the room.</p>
+      <p>What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand &mdash; name, transform, numbers &mdash; then waiting out a rebuild to see it. Roughly two minutes to answer a question as small as whether a crate sat too far left. With the browser that loop runs thirty to forty-five seconds, about two thirds off, and it comes back on every single placement rather than once.</p>
+      <p>The time is the smaller half of it. Hand-editing YAML means holding a coordinate system in your head and translating an intention into numbers, so a designer is not really placing objects, they are predicting where objects will land and then checking. Cutting the wait matters; turning the task from arithmetic into pointing is what actually changed how rooms got built.</p>
+      <!-- MEDIA SLOT 4 of 5 : Assets/hellmaker-drag-spawn.gif : dragging an asset from the browser onto the view and it landing at the cursor. Best shot on the page. -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/hellmaker-drag-spawn.gif" alt="An asset dragged out of the browser and dropped onto the game view, appearing as a GameObject under the cursor.">
+        <figcaption>Drag, drop, placed. The object lands where the cursor was rather than at the origin, so placement is one gesture.</figcaption>
+      </figure>
+      -->
+      <!-- MEDIA SLOT 5 of 5 : Assets/hellmaker-asset-browser.png : the browser panel itself, populated -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/hellmaker-asset-browser.png" alt="The Hellmaker asset browser panel showing the project's asset folders and files.">
+        <figcaption>The browser, populated with the project's content.</figcaption>
+      </figure>
+      -->
 
       <h3 class="mt-4">How it supported the game</h3>
-      <p>Death's Refrain is authored as data on this runtime. The debugger, console, and asset browser were the loop I used as Design Lead: inspect what the engine was doing, pick an asset, place it, and keep going. Mechanics, Lua, and integration are on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page.</p>
+      <p>Death's Refrain is authored as data on this runtime, so the tooling is not adjacent to the game, it is how the game was made. As Design Lead I was also the heaviest user of what I had built: inspect what the engine was doing in the console, pick an asset, place it, keep going. Being both author and user of a tool is a fast feedback loop and a biased one, and the bias is not the obvious one. The gap is less about problems that never touch you than about the ones you have already found a way around.</p>
+      <p>Mechanics, Lua, and integration are on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page.</p>
+
+      <h3 class="mt-4">Outcome and reflection</h3>
+      <p>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for &mdash; a plan that delivers all of both was not scoped ambitiously enough to start with.</p>
+      <p>The lesson I actually took out of it sits on the seam between the engine team and the game team. When the engine did not do what I needed, my instinct was to work around it in game code, and that instinct was wrong often enough to be a pattern rather than a bad day. A workaround lives in the game forever, invisible to the people maintaining the engine, and the next person to hit the same wall writes it again slightly differently. Asking the engine team to change the engine costs one conversation and fixes it once, for everyone. I spent a project building tools so other people would not have to waste time, and did not think to ask anyone to do the same for me.</p>
+      <p>The sharpest version of it was not in the engine at all. I had been authoring four versions of every tile, one per orientation, and it had never occurred to me to ask for rotation support in the tilemap &mdash; I had been doing it by hand long enough that the work had stopped registering as work. A teammate asked for the feature in a single sentence. Three quarters of those tile assets existed because I had routed around a gap instead of naming it, which is the uncomfortable shape of the lesson: the person best placed to notice a missing feature is whoever is absorbing its absence, and that is the same person least likely to raise it.</p>
+      <p>The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted: people built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because two minutes is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
+      <p>It rhymes with what <a href="Overseas.html" class="text-info">Overseas</a> taught me, one step on. There the lesson was to ask before building on someone else's code, because agreeing on an idea is not the same as sharing a model of it. Here it is that the platform is negotiable too, and the person who owns it would usually rather change it than watch you route around it.</p>
+      <p>If I picked this up again, the target would be the thirty to forty-five seconds still sitting in that loop. Taking it down from two minutes was the large, easy win. Closing the round trip completely, so that a change lands in a scene already running, is where the rest of the time is.</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Global debugger (spdlog, log levels, console and file sinks, ring buffer, crash helpers)</li>
-        <li>ImGui Debug Console</li>
-        <li>Editor GUI manager (layout and ImGui wrap)</li>
-        <li>Asset browser, including drag-and-drop spawn into the game view</li>
+        <li>Global debug layer &mdash; spdlog, trace to critical, console and file sinks, ring buffer, crash helpers with custom reasons</li>
+        <li>ImGui debug console &mdash; live streaming and filtering inside the editor</li>
+        <li>Editor GUI manager &mdash; ImGui wrap, docking, FPS, editor mode, launcher return</li>
+        <li>Asset browser &mdash; authored, with drag-and-drop spawn-at-mouse into the game view</li>
       </ul>
 
       <h4 class="mt-5">Engine collaborators</h4>
       <ul>
-        <li>Loh Boon Cheong, Timothy &mdash; Technical Lead</li>
-        <li>Alfred Lo Kai Xuan &mdash; Graphics / rendering</li>
-        <li>Wong E-Ren, Jaeden &mdash; Physics / collision</li>
+        <li>Loh Boon Cheong, Timothy &mdash; Technical Lead; ImGuiFileDialog integration, share of the asset browser and game view</li>
+        <li>Alfred Lo Kai Xuan &mdash; Graphics and rendering; share of the game view and gizmos</li>
+        <li>Wong E-Ren, Jaeden &mdash; Physics and collision</li>
       </ul>
 
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>C++20, CMake</li>
-        <li>Dear ImGui, spdlog</li>
-        <li>GLFW, FMOD, Lua, YAML (team engine)</li>
-      </ul>
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Game</span> <a href="DeathsRefrain.html">Death's Refrain</a> &mdash; what the team built on this engine, and what I designed on it.</p>
+        <p class="mb-2"><span class="case-exit-label">Before</span> <a href="Overseas.html">Overseas</a> &mdash; the project that taught me to build the debug view first.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
 
-      <p class="project-links mt-4">
-        Game: <a href="DeathsRefrain.html">Death's Refrain</a>
-      </p>
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>

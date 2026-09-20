@@ -10,6 +10,7 @@
   <meta property="og:title" content="Overseas &mdash; Lin Xin">
   <meta property="og:description" content="Top-down pixel survival fishing in C++ on DigiPen's Alpha Engine. Fishing loop, rarity-driven QTE, health and supply, shipwrecks, and shop upgrades.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Overseas.html">
+  <!-- TODO swap for a 1200x630 landscape gameplay still. Overseas.png is a square title card and link previews will centre crop it. -->
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/Overseas.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -65,8 +66,8 @@
           <dd>CSD1451, Year 1 Trimester 2</dd>
         </div>
         <div>
-          <dt>Duration</dt>
-          <dd>14 weeks</dd>
+          <dt>Timeline</dt>
+          <dd>Jan &ndash; May 2025, 14 weeks</dd>
         </div>
         <div>
           <dt>Platform</dt>
@@ -76,18 +77,24 @@
           <dt>Stack</dt>
           <dd>C++, DigiPen Alpha Engine</dd>
         </div>
+        <div>
+          <dt>State</dt>
+          <dd>Complete game</dd>
+        </div>
       </dl>
 
-      <p>You skipper a small boat. A random quota and a day limit sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve. Hit a wreck for a supply dump. Miss the quota, or hit zero health, and the run is over.</p>
+      <p>You skipper a small boat. A quota and a deadline sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve, and keep clear of the monsters that take a bite out of it. Hit a wreck for a supply dump. Clear the quota and the job renews with more days and a fresh target. Miss it, or hit zero health, and the run is over.</p>
       <p>I owned fishing, the QTE skill check, shipwrecks, the health/supply bars, and shop upgrades that rewrite those numbers. I also drew the player boat textures. Quota RNG and player movement were Mandy's. Monsters, rocks, water, and day/night sat with Ethan and Renfred. Menus and shop UI sat with Timothy.</p>
 
       <h3 class="mt-4">Design intent</h3>
-      <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. Wrecks are the only reliable way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
+      <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. There is no dock and no other source of supply in the world, so wrecks are the only way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
+      <p>The quota roll sets the terms before the player touches anything: a daily target of 300, 400, 500, or 600 gold, times a deadline of three to five days, so one contract asks for between 900 and 3,000. A day runs 61.5 seconds, which puts a contract at roughly three to five minutes of play. In fish, an easy day is six Commons and a hard one is twelve &mdash; or a single Rare and a bit of luck. Clear it early and the unspent days stay on the clock while another three to five are added and a fresh target is rolled. The run is a chain of contracts rather than a fixed job, and it ends only when you miss one or the boat gives out.</p>
+      <p>That structure is what pays off the greedy half of the loop. Fishing past the target is not wasted effort, it banks days against a contract you have not seen yet. I did not own the generator, but the daily target swings by a factor of two, so everything I did own had to stay legible at 300 a day and survivable at 600.</p>
 
       <figure class="system-diagram">
         <svg viewBox="0 0 720 396" role="img" aria-labelledby="loopTitle loopDesc">
           <title id="loopTitle">Overseas core loop</title>
-          <desc id="loopDesc">Two parallel clocks. Fishing is the only input to the quota clock and the only source of money for the shop. Shipwrecks and shop upgrades are the only relief on the body clock of health and supply. Missing the quota or reaching zero health ends the run.</desc>
+          <desc id="loopDesc">Two parallel clocks. Fishing is the only input to the quota clock and the only source of gold for the shop, and both draw on the same pool, so upgrades compete with paying the contract. Shipwrecks and shop upgrades are the only relief on the body clock of health and supply. Missing the quota or reaching zero health ends the run.</desc>
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
@@ -96,7 +103,7 @@
 
           <rect x="20" y="24" width="320" height="86" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
           <text x="40" y="53" class="dg-h">QUOTA CLOCK</text>
-          <text x="40" y="75" class="dg-s">random target, fixed day limit</text>
+          <text x="40" y="75" class="dg-s">300&#8211;600 gold/day &#215; 3&#8211;5 days</text>
           <text x="40" y="94" class="dg-m">how you fail the job</text>
 
           <rect x="380" y="24" width="320" height="86" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
@@ -127,17 +134,24 @@
           <text x="616" y="168" class="dg-l">+50 supply</text>
 
           <line x1="212" y1="250" x2="266" y2="250" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="239" y="240" class="dg-l" text-anchor="middle">money</text>
+          <text x="239" y="240" class="dg-l" text-anchor="middle">gold</text>
 
           <rect x="20" y="326" width="680" height="44" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.28)"/>
-          <text x="360" y="353" class="dg-s" text-anchor="middle">Miss the quota, or hit zero health &#8212; the run ends.</text>
+          <text x="360" y="353" class="dg-s" text-anchor="middle">Clear the quota: +3&#8211;5 days and a new target. Miss it, or hit zero health: the run ends.</text>
         </svg>
-        <figcaption>Core loop. The arrows are the only paths into each clock.</figcaption>
+        <figcaption>Core loop. The arrows are the only paths into each clock, and fishing feeds the quota and the shop out of the same pool of gold. A day runs 61.5 seconds; a starting tank of supply lasts twenty.</figcaption>
       </figure>
 
       <h3 class="mt-4">Fishing spots</h3>
       <p>Three spots exist at any time. Collide one, enter a fishing state, leave the overworld loop. Animated markers, so a spot is a thing you steer at rather than a silent trigger. A spot leaves the world two ways: you fish it, or it ages out on a random 10&ndash;20 second life. Either exit deletes that spot and immediately places a replacement elsewhere, so the count never drops below three.</p>
       <p>The timer is the half that carries the pacing. Replace-on-catch alone only reshuffles the ocean when the player acts, which means anyone who parks beside a spot keeps it indefinitely and the map goes static. A random life makes the water move whether or not you engage, so a spot you can see but have not reached is a decision with a clock on it. Random rather than fixed, so the respawn beat cannot be counted and camped.</p>
+      <!-- MEDIA SLOT 1 of 8 : Assets/overseas-spot-respawn.gif : a spot ageing out and a replacement appearing elsewhere -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/overseas-spot-respawn.gif" alt="A fishing spot marker disappears and a new one fades in elsewhere on the water, keeping three on screen.">
+        <figcaption>A spot ages out on its 10&ndash;20 second life and is replaced immediately, so the count never drops below three and the water keeps moving whether or not the player engages.</figcaption>
+      </figure>
+      -->
       <p class="authored">Authored in <code>Fishing</code>.</p>
 
       <h3 class="mt-4">QTE</h3>
@@ -145,21 +159,50 @@
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table">
           <thead>
-            <tr><th scope="col">Tier</th><th scope="col">Window</th><th scope="col">Height</th><th scope="col">Speed</th><th scope="col">Time in window</th></tr>
+            <tr><th scope="col">Tier</th><th scope="col">Window</th><th scope="col">Height</th><th scope="col">Speed</th><th scope="col">Time in window</th><th scope="col">Value</th></tr>
           </thead>
           <tbody>
-            <tr><td>Common</td><td>30%</td><td>108px</td><td>200px/s</td><td>0.54s</td></tr>
-            <tr><td>Uncommon</td><td>15%</td><td>54px</td><td>400px/s</td><td>0.14s</td></tr>
-            <tr><td>Rare</td><td>7.5%</td><td>27px</td><td>800px/s</td><td>0.03s</td></tr>
+            <tr><td>Common</td><td>30%</td><td>108px</td><td>200px/s</td><td>0.54s</td><td>50g</td></tr>
+            <tr><td>Uncommon</td><td>15%</td><td>54px</td><td>400px/s</td><td>0.14s</td><td>100g</td></tr>
+            <tr><td>Rare</td><td>7.5%</td><td>27px</td><td>800px/s</td><td>0.03s</td><td>400g</td></tr>
           </tbody>
         </table>
       </div>
+      <!-- MEDIA SLOT 2 of 8 : three stills of the bar, cropped identically, one per tier. Highest value image on the page. -->
+      <!--
+      <figure class="shot">
+        <div class="shot-row">
+          <figure>
+            <img src="Assets/overseas-qte-common.png" alt="QTE bar on a Common fish, green window 108 pixels tall.">
+            <figcaption>Common &mdash; 108px</figcaption>
+          </figure>
+          <figure>
+            <img src="Assets/overseas-qte-uncommon.png" alt="QTE bar on an Uncommon fish, green window 54 pixels tall.">
+            <figcaption>Uncommon &mdash; 54px</figcaption>
+          </figure>
+          <figure>
+            <img src="Assets/overseas-qte-rare.png" alt="QTE bar on a Rare fish, green window 27 pixels tall.">
+            <figcaption>Rare &mdash; 27px</figcaption>
+          </figure>
+        </div>
+        <figcaption>The same 360px bar at each shipped tier. The marker also doubles in speed across each step, which the stills cannot show.</figcaption>
+      </figure>
+      -->
       <p>Both multipliers apply at once, so the time the marker actually spends inside the window quarters per tier rather than halving — just over half a second on Common down to three hundredths on Rare, a sixteenth of the reaction time across two tiers. That is the whole point of tying rarity to the skill check. A rare fish is a different test, not the same bar with a bigger payout attached.</p>
+      <p>Difficulty and payout deliberately do not move together. Uncommon is four times harder than Common for double the gold; Rare is four times harder again for four times the gold. Per unit of timing precision, both of the hard tiers are worth about half what a Common is &mdash; which would be an exploit if rarity were something the player chose, but it is rolled when the QTE starts. The tiers that pay for the run are the ones you cannot farm. Trash pays 15g, so the floor is low rather than nothing.</p>
+      <p>The upper end is deliberately loud. A single Rare is 400g, enough to buy the first five upgrade levels outright, which cost 322g together. Landing one thirty-millisecond window is the difference between a day of grinding and a shopping trip, and that is the payoff that makes the brutal window read as a chance rather than a punishment.</p>
+      <!-- MEDIA SLOT 3 of 8 : Assets/overseas-qte-rare.gif : a Rare attempt at full speed -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/overseas-qte-rare.gif" alt="The QTE marker sweeping at 800 pixels per second past a 27 pixel green window on a Rare fish.">
+        <figcaption>A Rare attempt at full speed. 800px/s against a 27px window leaves about three hundredths of a second to commit.</figcaption>
+      </figure>
+      -->
       <p>Three tiers ship in the fish data. Epic and Legendary already exist in the QTE code, so a later tier is a data change rather than new code.</p>
       <p class="authored">Authored in <code>FishingSkill</code>.</p>
 
       <h3 class="mt-4">Health and supply</h3>
-      <p>Two bars, bottom-left, 11-frame sprite sheets. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health does not answer to time, it answers to supply:</p>
+      <p>Two bars, bottom-left, 11-frame sprite sheets. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health takes a discrete hit whenever you run into one of the monsters that spawn around the map, but between those hits it does not answer to time, it answers to supply:</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table bar-table">
           <thead>
@@ -175,18 +218,55 @@
           </tbody>
         </table>
       </div>
-      <p>Those thresholds are raw points, not a percentage of maximum, and that single choice does more work than anything else in the system. At the starting cap of 100 you sit in the regen band for four seconds after a top-up. At a bought-up cap of 400 you sit there for sixty-four. A bigger tank does not just delay starvation, it multiplies the time you spend healing, which makes the Supply upgrade a health upgrade the shop never advertises.</p>
+      <!-- MEDIA SLOT 4 of 8 : Assets/overseas-bars-spritesheet.png : the two 11 frame sheets, flat, at native resolution -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/overseas-bars-spritesheet.png" alt="The health and supply bar sprite sheets, eleven frames each, stepping from full to empty.">
+        <figcaption>The two sheets. Eleven frames each, so the HUD reads a bar as value/10 and steps rather than slides.</figcaption>
+      </figure>
+      -->
+      <p>A day runs 61.5 seconds, and that number is what makes the drain bite. A starting tank of 100 empties in twenty seconds, so one tank covers under a third of a day. Run it dry and health bleeds at 1 per second, which means a full boat that never picks anything up dies at around 116 seconds &mdash; just under two days. The shortest contract runs three. You cannot survive to the end of even the easiest job on the supply you start with, and with no dock in the game, the detour to a wreck is not an optimisation. It is the only reason a run continues at all.</p>
+      <p>Those thresholds are raw points, not a percentage of maximum, and that single choice does more work than anything else in the system. At the starting cap of 100 you sit in the regen band for four seconds after a top-up. At a bought-up cap of 400 you sit there for sixty-four &mdash; a full in-game day of healing rather than four seconds of it. A bigger tank does not just delay starvation, it multiplies the time you spend healing, which makes the Supply upgrade a health upgrade the shop never advertises.</p>
       <p>The gap between 75 and 80 is a dead band where health does nothing. It stops the bar flipping between regen and decay while supply hovers on the boundary &mdash; the HUD frame is health/10, and an icon that ticks up and down every second reads as broken rather than as tense.</p>
+      <!-- MEDIA SLOT 5 of 8 : Assets/overseas-bars-drain.gif : long enough to show regen stop and health turn over -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/overseas-bars-drain.gif" alt="The supply bar stepping down frame by frame while the health bar holds, then begins to fall.">
+        <figcaption>Supply falling through the thresholds. Health holds through the dead band, then starts stepping down once supply drops past 75.</figcaption>
+      </figure>
+      -->
       <p>That is the body clock. Quota can be unfair in the other corner; if these icons are unreadable, you cannot make the greedy-or-safe call the loop is built for.</p>
       <p class="authored">Authored in <code>Bar</code>. I also drew the player boat textures on Mandy's movement body.</p>
+      <!-- MEDIA SLOT 6 of 8 : Assets/overseas-boat-textures.png : the boat sheet, flat, on a transparent or flat background -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/overseas-boat-textures.png" alt="The player boat textures drawn for Overseas, shown as a flat sheet.">
+        <figcaption>Player boat textures, drawn to sit on Mandy's movement code.</figcaption>
+      </figure>
+      -->
 
       <h3 class="mt-4">Shipwrecks</h3>
-      <p>Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at 100. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
+      <p>Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at your current maximum &mdash; so a Supply upgrade quietly raises what a wreck is worth, since a bigger tank means less of the 50 spills over the top. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
+      <p>The arithmetic is tight on purpose. A day costs 307 supply at the base drain and a wreck returns 50, so simply breaking even means cashing one about every ten seconds. Nobody sustains that, which is the point &mdash; the opening run is meant to feel like bailing out a boat, and Supply and Efficiency are what turn the scramble into a job you can actually work.</p>
       <p>Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
+      <!-- MEDIA SLOT 7 of 8 : Assets/overseas-wreck.gif : the collision and the supply bar jumping -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/overseas-wreck.gif" alt="The boat colliding with a shipwreck and the supply bar jumping up several frames.">
+        <figcaption>A wreck cashed in. The +50 is capped at current maximum, so the same pickup is worth more once Supply has been bought up.</figcaption>
+      </figure>
+      -->
       <p class="authored">Authored in <code>shipwrecks</code>.</p>
 
       <h3 class="mt-4">Shop upgrades</h3>
       <p>Timothy owned the shop UI. I wired what a purchase actually does to the numbers the HUD reads. Four lines, split by what they touch: two raise a pool, two bend a rate.</p>
+      <!-- MEDIA SLOT 8 of 8 : Assets/overseas-shop.png : the shop screen with prices legible. Shoot it mid run so gold on hand is visible. -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/overseas-shop.png" alt="The Overseas shop screen showing the four upgrade lines and their current prices.">
+        <figcaption>The four lines, with prices already climbing. UI by Timothy; the numbers behind each purchase are mine.</figcaption>
+      </figure>
+      -->
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
@@ -200,11 +280,11 @@
           </tbody>
         </table>
       </div>
-      <p>Health and Supply run an identical curve. Both start at 100, both add 20 &times; the new level to the current value and the maximum together, and both open at 25 with every subsequent buy costing 1.5&times; the last, truncated to an integer. There is no level cap.</p>
+      <p>Health and Supply run an identical curve. Both start at 100, both add 20 &times; the new level to the current value and the maximum together, and both open at 25g with every subsequent buy costing 1.5&times; the last, truncated to an integer. There is no level cap.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Buy</th><th scope="col">Added</th><th scope="col">New max</th><th scope="col">Cost</th><th scope="col">Points per coin</th></tr>
+            <tr><th scope="col">Buy</th><th scope="col">Added</th><th scope="col">New max</th><th scope="col">Cost</th><th scope="col">Points per gold</th></tr>
           </thead>
           <tbody>
             <tr><td>1</td><td>+20</td><td>120</td><td>25</td><td>0.80</td></tr>
@@ -216,8 +296,10 @@
           </tbody>
         </table>
       </div>
-      <p>The gain grows linearly and the price grows geometrically, so value per coin peaks on the second and third buy and falls away after that. With no hard cap, the price curve is the cap &mdash; the run stops you from over-investing instead of a number in a config doing it. The first buy is deliberately the worst rate in the table, which keeps the opening purchase a real decision rather than an obvious one.</p>
-      <p>Health doubles as a repair because it raises the current value alongside the maximum, so spending to survive tonight is a legal play and not only a long-term investment. Rates price above pools because a rate change is permanent pressure relief, where a bigger pool still empties at the same speed.</p>
+      <p>The gain grows linearly and the price grows geometrically, so value per gold peaks on the second and third buy and falls away after that. With no hard cap, the price curve is the cap. That matters because contracts chain indefinitely: a hard level cap would eventually leave a surviving player with money and nothing to spend it on, where a geometric price always offers the next buy at a worse rate. The first buy is deliberately the worst rate in the table, which keeps the opening purchase a real decision rather than an obvious one.</p>
+      <p>Upgrades and the quota draw on one pool. There is no separate upgrade currency, so every purchase is gold not paid toward the contract &mdash; a 123g buy against a 400g day hands back roughly a third of that day's target. The shop is not a reward for a good run, it is a bet placed against the deadline.</p>
+      <p>It also makes the buy order a timing problem rather than only a value one. Gold spent early in a contract has days left to earn itself back through a faster loop; the identical purchase on the final day is pure quota risk with nothing left to recover it. The price curve and the deadline push the same way &mdash; buy early or not at all.</p>
+      <p>Health is the exception that proves it. Because it raises the current value alongside the maximum, it repairs as well as extends, so it stays rational late in a contract in a way the other three do not: when surviving the night is the only thing between you and a failed run, the heal is worth the quota it costs. Rates price above pools because a rate change is permanent pressure relief, where a bigger pool still empties at the same speed. Between them the two rate lines split the threat cleanly: Efficiency answers the drain, which is constant and predictable, and Armor answers the monsters, which are neither.</p>
       <p class="authored">Co-author on <code>Game.cpp</code> for hooking these into the run.</p>
 
       <h3 class="mt-4">Playtests</h3>
@@ -250,6 +332,12 @@
       <p class="project-links mt-4">
         <a href="Assets/Overseas_UserTest.pdf" target="_blank">User testing report (Team IDK)</a>
       </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Next</span> <a href="Hellmaker.html">Hellmaker</a> &mdash; the engine debugger and editor tooling this project taught me to build first.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
