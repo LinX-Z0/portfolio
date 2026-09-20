@@ -60,7 +60,11 @@
         </div>
         <div>
           <dt>Team</dt>
-          <dd>Team Infernumb</dd>
+          <dd>9 &mdash; Team Infernumb</dd>
+        </div>
+        <div>
+          <dt>Pair</dt>
+          <dd><a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> &mdash; the game</dd>
         </div>
         <div>
           <dt>Stack</dt>
@@ -68,7 +72,7 @@
         </div>
       </dl>
 
-      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling &mdash; the console, the GUI manager, and the asset browser &mdash; which together cut the distance between changing something and seeing it.</p>
+      <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did: this is the engine and the editor tooling, that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling &mdash; the console, the GUI manager, and the asset browser &mdash; which together cut the distance between changing something and seeing it.</p>
 
       <h3 class="mt-4">Why I asked for the tools job</h3>
       <p>On <a href="Overseas.html" class="text-info">Overseas</a> I spent a trimester retuning values by rebuilding the game to find out whether each guess was right. Nothing was exposed, nothing was observable while it ran, and the reflection I wrote at the end of that project was that debug views and tunables belong in place before a system needs tuning, not after. Hellmaker is where I got to act on that, and the difference is that this time the user of the thing I was building was my own team.</p>
@@ -176,7 +180,7 @@
       <p>Mechanics, Lua, and integration are on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page.</p>
 
       <h3 class="mt-4">Outcome and reflection</h3>
-      <p>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for &mdash; a plan that delivers all of both was not scoped ambitiously enough to start with.</p>
+      <p>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for &mdash; a plan that delivers all of both was not scoped ambitiously enough to start with. The game that closed on this engine is on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page; this one stays with the tooling.</p>
       <p>The lesson I actually took out of it sits on the seam between the engine team and the game team. When the engine did not do what I needed, my instinct was to work around it in game code, and that instinct was wrong often enough to be a pattern rather than a bad day. A workaround lives in the game forever, invisible to the people maintaining the engine, and the next person to hit the same wall writes it again slightly differently. Asking the engine team to change the engine costs one conversation and fixes it once, for everyone. I spent a project building tools so other people would not have to waste time, and did not think to ask anyone to do the same for me.</p>
       <p>The sharpest version of it was not in the engine at all. I had been authoring four versions of every tile, one per orientation, and it had never occurred to me to ask for rotation support in the tilemap &mdash; I had been doing it by hand long enough that the work had stopped registering as work. A teammate asked for the feature in a single sentence. Three quarters of those tile assets existed because I had routed around a gap instead of naming it, which is the uncomfortable shape of the lesson: the person best placed to notice a missing feature is whoever is absorbing its absence, and that is the same person least likely to raise it.</p>
       <p>The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted: people built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because two minutes is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
