@@ -70,8 +70,9 @@
       <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. Wrecks are the only reliable way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
 
       <h3 class="mt-4">Fishing spots</h3>
-      <p>Spots spawn in the world as a maintained population. Collide one, enter a fishing state, leave the overworld loop. Animated markers so a spot is a thing you steer at, not a silent trigger. After a catch I replace that spot somewhere else. The population stays up; the pixel you just farmed does not. That is how exploration stays in a top-down ocean that would otherwise collapse into one camp.</p>
-      <p>Authored in <code>Fishing</code>: spawn, collision, markers, catch-driven replacement.</p>
+      <p>Three spots exist at any time. Collide one, enter a fishing state, leave the overworld loop. Animated markers, so a spot is a thing you steer at rather than a silent trigger. A spot leaves the world two ways: you fish it, or it ages out on a random 10&ndash;20 second life. Either exit deletes that spot and immediately places a replacement elsewhere, so the count never drops below three.</p>
+      <p>The timer is the half that carries the pacing. Replace-on-catch alone only reshuffles the ocean when the player acts, which means anyone who parks beside a spot keeps it indefinitely and the map goes static. A random life makes the water move whether or not you engage, so a spot you can see but have not reached is a decision with a clock on it. Random rather than fixed, so the respawn beat cannot be counted and camped.</p>
+      <p>Authored in <code>Fishing</code>: population of three, collision, markers, timed and catch-driven replacement.</p>
 
       <h3 class="mt-4">QTE</h3>
       <p>Fishing versus none is a state. In fishing, a marker sweeps a 360px bar and you have 10 seconds to land it inside the green window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green, red, and white overlays show where you are in the ask.</p>
@@ -96,7 +97,8 @@
       <p>Authored in <code>Bar</code>. I also drew the player boat textures on Mandy's movement body.</p>
 
       <h3 class="mt-4">Shipwrecks</h3>
-      <p>Exactly three wrecks in the world at once, random spawn, two textures. Collide one: +50 supply, capped at 100, wreck removed, a new one placed. Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
+      <p>Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at 100. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
+      <p>Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
       <p>Authored in <code>shipwrecks</code>: population of three, collide, reward, replace.</p>
 
       <h3 class="mt-4">Shop upgrades</h3>
@@ -111,7 +113,7 @@
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Fishing spots &mdash; population, collision, markers, replace on catch (<code>Fishing</code>)</li>
+        <li>Fishing spots &mdash; three in world, collision, markers, timed and catch-driven replacement (<code>Fishing</code>)</li>
         <li>QTE &mdash; rarity-driven window and marker speed, overlays (<code>FishingSkill</code>)</li>
         <li>Health / supply HUD &mdash; 11-frame bars, drain, regen, step-down (<code>Bar</code>)</li>
         <li>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
