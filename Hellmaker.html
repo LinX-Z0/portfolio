@@ -10,8 +10,7 @@
   <meta property="og:title" content="Hellmaker &mdash; Lin Xin">
   <meta property="og:description" content="Custom C++20 engine behind Death's Refrain. Shared debug layer, ImGui debug console, editor GUI manager, and asset browser with drag-and-drop spawning.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Hellmaker.html">
-  <!-- TODO add Assets/hellmaker-og.png at 1200x630, a landscape shot of the editor, then uncomment -->
-  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/hellmaker-og.png"> -->
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/hellmaker-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -43,13 +42,10 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
-      <!-- MEDIA SLOT 1 of 5 : Assets/hellmaker-editor.png : the full editor, docked, with the game view and console both visible -->
-      <!--
       <figure class="shot">
-        <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with docked panels, the game view, the asset browser, and the debug console.">
-        <figcaption>The editor as the team used it. Game view, asset browser, and debug console docked together.</figcaption>
+        <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with Scene Editor, Game View playing Death's Refrain, Profiler, and Config panels docked.">
+        <figcaption>The editor as the team used it. Scene hierarchy, live game view, profiler, and config docked around the same runtime.</figcaption>
       </figure>
-      -->
 
       <h1 class="display-5 mb-3">Hellmaker</h1>
       <p class="lead">Custom C++ engine behind Death's Refrain. I built the tooling the team watched the engine through.</p>
@@ -71,6 +67,14 @@
           <dd>C++20, Dear ImGui, spdlog</dd>
         </div>
       </dl>
+
+      <ul class="scan-strip">
+        <li><strong>Debug layer</strong> &mdash; shared spdlog pipeline across Editor, Sandbox, and Engine; sinks, ring buffer, crash helpers.</li>
+        <li><strong>Debug console</strong> &mdash; ImGui live stream and severity filtering inside the editor.</li>
+        <li><strong>GUI manager</strong> &mdash; ImGui wrap so callers stay UI-agnostic; docking, FPS, editor mode, launcher return.</li>
+        <li><strong>Asset browser</strong> &mdash; authored; drag-and-drop spawn-at-mouse; placement loop from ~2 min to 30&ndash;45 s.</li>
+        <li><strong>Not mine</strong> &mdash; architecture and components (Timothy); rendering and gizmos (Alfred); physics (Jaeden); ImGuiFileDialog and share of browser / game view (Timothy).</li>
+      </ul>
 
       <p>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did: this is the engine and the editor tooling, that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling &mdash; the console, the GUI manager, and the asset browser &mdash; which together cut the distance between changing something and seeing it.</p>
 
@@ -132,24 +136,18 @@
       <p>One global layer on spdlog, linked into Engine, Editor, and Sandbox alike. Levels run trace through critical, each message can target the console, a file, or both, and a ring buffer keeps recent history in memory. Init, shutdown, and crash helpers each take a custom reason string.</p>
       <p>Sharing one layer across all three targets is the decision that matters, and it is worth being precise about why. The alternative &mdash; a logger per target &mdash; is easier to write and produces three separate accounts of one event. When the editor crashes while a designer is dragging an asset into the scene, the useful information is not the fault itself, it is the sequence of engine calls that preceded it. Separate loggers put those on either side of a wall. One pipeline puts them in the same timeline, in order, which is the difference between a bug report and a reproduction.</p>
       <p>The ring buffer exists for the same reason. A file sink is a record you read after the fact; the buffer is what lets the console show history the moment you open it, and what gives the crash helpers something to hand over about the seconds before the fault. The custom reason string is there so that the two halves of the engine do not become indistinguishable at the point of failure.</p>
-      <!-- MEDIA SLOT 2 of 5 : Assets/hellmaker-log-output.png : a slice of real log output showing levels and timestamps -->
-      <!--
       <figure class="shot">
-        <img src="Assets/hellmaker-log-output.png" alt="Log output from Hellmaker showing several severity levels with timestamps.">
-        <figcaption>Output from the shared layer. The same format whether it came from the engine, the editor, or the game.</figcaption>
+        <img src="Assets/hellmaker-log-output.png" alt="Hellmaker log output with timestamps and color-coded debug, info, and error lines.">
+        <figcaption>Output from the shared layer &mdash; timestamps, levels, and sinks. Debug, info, and error in the same pipeline.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Debug console</h3>
       <p>An ImGui window inside the editor that streams the layer live and filters it. The point is that watching the engine no longer costs anything: no second logger to attach, no rebuild with extra prints, no tabbing out to a text file that has already scrolled past the thing you wanted.</p>
       <p>This is the tool the Overseas reflection was asking for. There, checking whether a guess was right meant a rebuild; here it meant looking at a docked panel while the game ran.</p>
-      <!-- MEDIA SLOT 3 of 5 : Assets/hellmaker-console.gif : the console streaming while the game runs, then a filter applied -->
-      <!--
       <figure class="shot">
         <img src="Assets/hellmaker-console.gif" alt="The ImGui debug console streaming log lines live, then narrowing to one severity when a filter is applied.">
         <figcaption>The console under load, then filtered. Watching the engine costs a glance rather than a rebuild.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Editor GUI manager</h3>
       <p>The layer other systems open windows through. It wraps ImGui so no caller needs to include an ImGui type, and it drives the shell itself: docking, the FPS readout, editor mode, and the route back to the project launcher.</p>
@@ -160,20 +158,14 @@
       <p>Dropping at the cursor rather than at the origin sounds like a detail and is really the whole feature. Spawning at origin means every placement is followed by a drag to where you actually meant, which is a second action, a second chance to misjudge, and a reason to stop thinking about layout and start thinking about the tool. Landing it under the cursor makes placement a single gesture and keeps the designer's attention on the room.</p>
       <p>What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand &mdash; name, transform, numbers &mdash; then waiting out a rebuild to see it. Roughly two minutes to answer a question as small as whether a crate sat too far left. With the browser that loop runs thirty to forty-five seconds, about two thirds off, and it comes back on every single placement rather than once.</p>
       <p>The time is the smaller half of it. Hand-editing YAML means holding a coordinate system in your head and translating an intention into numbers, so a designer is not really placing objects, they are predicting where objects will land and then checking. Cutting the wait matters; turning the task from arithmetic into pointing is what actually changed how rooms got built.</p>
-      <!-- MEDIA SLOT 4 of 5 : Assets/hellmaker-drag-spawn.gif : dragging an asset from the browser onto the view and it landing at the cursor. Best shot on the page. -->
-      <!--
       <figure class="shot">
         <img src="Assets/hellmaker-drag-spawn.gif" alt="An asset dragged out of the browser and dropped onto the game view, appearing as a GameObject under the cursor.">
         <figcaption>Drag, drop, placed. The object lands where the cursor was rather than at the origin, so placement is one gesture.</figcaption>
       </figure>
-      -->
-      <!-- MEDIA SLOT 5 of 5 : Assets/hellmaker-asset-browser.png : the browser panel itself, populated -->
-      <!--
-      <figure class="shot shot-narrow">
-        <img src="Assets/hellmaker-asset-browser.png" alt="The Hellmaker asset browser panel showing the project's asset folders and files.">
-        <figcaption>The browser, populated with the project's content.</figcaption>
+      <figure class="shot">
+        <img src="Assets/hellmaker-asset-browser.png" alt="Hellmaker Asset Browser on the Sprites tab, showing a grid of project sprites and import tools.">
+        <figcaption>Asset Browser &mdash; Sprites tab, 118 entries. The panel the team picked content from.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">How it supported the game</h3>
       <p>Death's Refrain is authored as data on this runtime, so the tooling is not adjacent to the game, it is how the game was made. As Design Lead I was also the heaviest user of what I had built: inspect what the engine was doing in the console, pick an asset, place it, keep going. Being both author and user of a tool is a fast feedback loop and a biased one, and the bias is not the obvious one. The gap is less about problems that never touch you than about the ones you have already found a way around.</p>
