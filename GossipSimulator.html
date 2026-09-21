@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gossip Simulator - Lin Xin</title>
+  <meta name="author" content="Lin Xin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Solo behaviour-tree campus gossip epidemic in C++ on DigiPen's Rabin Engine. Four agent roles, contact rules, and formation extra credit.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gossip Simulator &mdash; Lin Xin">
+  <meta property="og:description" content="Solo behaviour-tree campus gossip epidemic. Starters, spreaders, mutators, removers — plus formation extra credit.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/GossipSimulator.html">
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/gossip-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
+</head>
+<body class="bg-dark text-light">
+  <div id="twinkle-container"></div>
+
+  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Lin Xin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#design">Design Intent</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <div class="mb-4 project-doc">
+        <iframe
+          class="rounded shadow"
+          src="https://drive.google.com/file/d/1_vC9CMKaf6cD0dm6oWwwOxSvFu78x84H/preview"
+          allow="autoplay"
+          allowfullscreen
+          title="Gossip Simulator showcase"
+        ></iframe>
+      </div>
+      <p class="project-links mb-4">
+        <a href="https://drive.google.com/file/d/1_vC9CMKaf6cD0dm6oWwwOxSvFu78x84H/view" target="_blank" rel="noopener">Open showcase on Google Drive</a>
+      </p>
+
+      <figure class="shot">
+        <img src="Assets/GossipSimulator.png" alt="Gossip Simulator running in the Rabin Engine: coloured agents on the campus map with speed, role counts, and formation controls on the right.">
+        <figcaption>The sim in play. Coloured agents on the map; speed, role counts, and formation toggles on the right.</figcaption>
+      </figure>
+
+      <h1 class="display-5 mb-3">Gossip Simulator</h1>
+      <p class="lead">Campus gossip as a spatial epidemic. Four behaviour trees, one contact rule, no scripted chase.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Solo &mdash; scenario, BT nodes, trees, formations</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Solo</dd>
+        </div>
+        <div>
+          <dt>Course</dt>
+          <dd>CSD2183, Year 2 Trimester 3</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>4 May &ndash; 11 May 2026</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>C++, DigiPen Rabin Engine, BehaviorTreeEditor</dd>
+        </div>
+        <div>
+          <dt>State</dt>
+          <dd>Assignment prototype (+ formation EC)</dd>
+        </div>
+      </dl>
+
+      <ul class="scan-strip">
+        <li><strong>Gossip sim</strong> &mdash; clean / orange / yellow state machine on spreaders; contact range 5.0, 0.5&nbsp;s dual cooldown.</li>
+        <li><strong>Four roles</strong> &mdash; Starter, Spreader, Remover, Mutator; each with its own GUI-authored tree.</li>
+        <li><strong>Custom BT nodes</strong> &mdash; eight leaves and five decorators wired into the DigiPen framework.</li>
+        <li><strong>Formations (EC)</strong> &mdash; Single, Wedge, Circle; click terrain for a group goal.</li>
+        <li><strong>Live tuning</strong> &mdash; speed and population buttons while the sim runs.</li>
+        <li><strong>Not mine</strong> &mdash; Rabin Engine, BT runtime, BehaviorTreeEditor, sample nodes (DigiPen framework).</li>
+      </ul>
+
+      <h3 class="mt-4">What we're testing</h3>
+      <p>Whether a readable multi-agent social epidemic can come from <strong>behaviour trees + blackboard + contact rules</strong> &mdash; not from a cutscene, and not from a trust or reputation model. Gossip here is a three-state colour FSM that spreads when agents touch.</p>
+      <p>The asymmetric roles are the experiment. Starters only seed orange. Mutators alone escalate orange to yellow. Yellow then spreads from mutated spreaders. Removers pull everything back to white. If any of those permissions leak, the epidemic stops being legible as design and starts looking like random colour noise.</p>
+
+      <p>Solo week inside the DigiPen AI framework. I designed the scenario, wrote the gossip and formation systems in C++, authored the four trees in the BehaviorTreeEditor, and shipped a showcase video with the assignment.</p>
+
+      <h3 class="mt-4">Design intent</h3>
+      <p>The trap is to write four scripts that walk toward each other and call it AI. Behaviour trees earn their keep when the same leaf vocabulary &mdash; find nearest, move, interact &mdash; produces different social jobs because the <em>decorators and selectors</em> change, not because each role has a private special-case function.</p>
+      <p>That is why infection, mutation, and cleanse share one contact API and one cooldown. The trees decide <em>who</em> to chase and <em>when</em> it is legal to act. The sim decides whether the touch counts. If those layers blur, every bug becomes a rewrite of both.</p>
+
+      <figure class="system-diagram">
+        <svg viewBox="0 0 720 220" role="img" aria-labelledby="gossipStateTitle gossipStateDesc">
+          <title id="gossipStateTitle">Gossip state machine</title>
+          <desc id="gossipStateDesc">Clean white becomes orange when infected, orange becomes yellow when mutated, and both return to clean when cleansed.</desc>
+          <defs>
+            <marker id="arrowGs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
+            </marker>
+          </defs>
+
+          <rect x="40" y="70" width="140" height="70" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.35)"/>
+          <text x="110" y="100" class="dg-h" text-anchor="middle">CLEAN</text>
+          <text x="110" y="120" class="dg-m" text-anchor="middle">white</text>
+
+          <rect x="290" y="70" width="140" height="70" rx="8" fill="rgba(255,140,0,0.12)" stroke="rgba(255,160,60,0.55)"/>
+          <text x="360" y="100" class="dg-h" text-anchor="middle">INFECTED</text>
+          <text x="360" y="120" class="dg-m" text-anchor="middle">orange</text>
+
+          <rect x="540" y="70" width="140" height="70" rx="8" fill="rgba(255,220,0,0.1)" stroke="rgba(255,220,80,0.5)"/>
+          <text x="610" y="100" class="dg-h" text-anchor="middle">MUTATED</text>
+          <text x="610" y="120" class="dg-m" text-anchor="middle">yellow</text>
+
+          <line x1="184" y1="105" x2="286" y2="105" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowGs)"/>
+          <text x="235" y="92" class="dg-s" text-anchor="middle">infect</text>
+
+          <line x1="434" y1="105" x2="536" y2="105" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowGs)"/>
+          <text x="485" y="92" class="dg-s" text-anchor="middle">mutate</text>
+
+          <path d="M 110 140 C 110 190, 610 190, 610 140" fill="none" stroke="rgba(120,180,255,0.7)" stroke-width="1.5" marker-end="url(#arrowGs)"/>
+          <text x="360" y="208" class="dg-s" text-anchor="middle">cleanse (remover) &mdash; orange or yellow back to white</text>
+        </svg>
+        <figcaption>Only the mutator can escalate orange to yellow. Spreaders copy whatever state they currently hold onto clean targets.</figcaption>
+      </figure>
+
+      <h3 class="mt-4">Roles</h3>
+      <p>Default spawn is sixteen agents. Live UI can add or remove each role while the sim runs (spreaders floor at one).</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Role</th><th scope="col">Count</th><th scope="col">Colour</th><th scope="col">Job</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Starter</td><td>2</td><td>Red</td><td>Seek clean spreaders; infect orange on contact</td></tr>
+            <tr><td>Spreader</td><td>10</td><td>White / orange / yellow</td><td>Carry state; orange and yellow seek clean and copy their own variant</td></tr>
+            <tr><td>Mutator</td><td>2</td><td>Green</td><td>Seek orange only; mutate to yellow</td></tr>
+            <tr><td>Remover</td><td>2</td><td>Blue</td><td>Seek orange or yellow; cleanse to white</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="authored">Authored in <code>P1_Gossip</code> + four <code>.bht</code> trees.</p>
+
+      <h3 class="mt-4">Contact rules</h3>
+      <p>Center-to-center distance &le; <strong>5.0</strong>. Both agents must be off cooldown. A successful interact starts a <strong>0.5&nbsp;s</strong> cooldown on both. That dual gate is what keeps the epidemic from becoming a single-frame flash of every colour at once.</p>
+      <p>Removers taught the sharpest rule: cleanse whoever is actually in range, not only the chase target still sitting on the blackboard. Chasing one agent and touching another is common once the map densifies; if cleanse is bound to the chase ID, removers look broken even when the contact geometry is correct.</p>
+
+      <h3 class="mt-4">Trees and nodes</h3>
+      <p>Four GUI-authored trees in the BehaviorTreeEditor &mdash; Starter, Spreader, Remover, Mutator. Spreader is the deep one (23 nodes, depth 5): formation first if active, else infected or mutated spread branches, else clean wander/idle.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Custom leaves</th><th scope="col">Custom decorators</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>L_FindNearestCleanSpreader</code>, <code>L_FindNearestInfectedOrMutatedSpreader</code>, <code>L_FindNearestOrangeSpreader</code>, <code>L_MoveToTargetAgent</code>, <code>L_SpreadGossipToTarget</code>, <code>L_CleanseGossip</code>, <code>L_MutateNearbyOrange</code>, <code>L_MoveFormationSlot</code></td>
+              <td><code>D_IsGossipClean</code>, <code>D_IsGossipInfected</code>, <code>D_IsGossipMutated</code>, <code>D_IsGossipOffCooldown</code>, <code>D_IsFormationActive</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Blackboard keys hold <code>GossipState</code>, <code>GossipCooldown</code>, and <code>TargetAgent</code> so leaves stay small and the trees stay readable.</p>
+      <figure class="shot">
+        <div class="shot-row">
+          <figure>
+            <img src="Assets/gossip-bt-spreader.png" alt="BehaviorTreeEditor open on Spreader.bht with formation, infected, mutated, and clean branches.">
+            <figcaption>Spreader.bht &mdash; deepest tree</figcaption>
+          </figure>
+          <figure>
+            <img src="Assets/gossip-bt-editor.png" alt="BehaviorTreeEditor open on Mutator.bht: cooldown-gated find, move, mutate, with wander idle fallback.">
+            <figcaption>Mutator.bht</figcaption>
+          </figure>
+        </div>
+        <figcaption>Same leaf vocabulary across roles. Spreader nests formation first, then infected / mutated spread, then clean wander. Mutator is the short escalate branch: find orange, move, mutate.</figcaption>
+      </figure>
+
+      <h3 class="mt-4">Formations (extra credit)</h3>
+      <p>Optional group movement on top of the epidemic. UI toggles Single, Wedge, Circle, or Form Off. Left-click the terrain for a goal; the lowest-ID spreader is leader. Slot spacing 6.0; circle radius 8.0. While formation is active, that branch preempts gossip chase on spreaders &mdash; so you can watch the flock hold shape, then turn Form Off and watch the epidemic resume.</p>
+      <ul>
+        <li><strong>Single</strong> &mdash; diagonal trailing slots (one grouped formation, not a single-file queue).</li>
+        <li><strong>Wedge</strong> &mdash; V rows alternating left / right behind the leader.</li>
+        <li><strong>Circle</strong> &mdash; ring around the click; leader to the center.</li>
+      </ul>
+      <figure class="shot">
+        <img src="Assets/gossip-formation.gif" alt="Spreaders moving in formation toward a click goal on the terrain.">
+        <figcaption>Formation in motion. Click sets the goal; spreaders hold slots instead of chasing gossip until Form Off.</figcaption>
+      </figure>
+      <p class="authored">Authored in <code>P1_Formation</code>.</p>
+
+      <h3 class="mt-4">Outcome and reflection</h3>
+      <p>Shipped as a one-week solo prototype that meets the node and tree requirements, plus the formation bonus. The showcase video is the proof pass; the readable colour epidemic is the design pass.</p>
+      <p>What worked: building the four trees in the BehaviorTreeEditor. Seeing selectors and decorators as a diagram made nesting less abstract than reading only C++. The blackboard kept target and state out of one giant leaf.</p>
+      <p>What hurt: editor depth and single-child composites failing Validate; registering every new node in <code>Nodes.def</code> and <code>NodeHeaders.h</code>; and the remover range-vs-chase bug until cleanse used the agent actually in contact. Formation slot overlap took a separate tuning pass after the gossip rules already worked.</p>
+      <p>If I rebuilt it, I would freeze the contact and state API first with debug logs on, then author trees against that contract &mdash; the same &ldquo;system before scenery&rdquo; lesson that shows up again on <a href="ProjectXeno.html" class="text-info">Project Xeno</a>.</p>
+
+      <h4 class="mt-5">Role</h4>
+      <ul>
+        <li>Scenario design &mdash; roles, colours, infection / mutate / cleanse rules</li>
+        <li>Gossip simulation layer (<code>P1_Gossip</code>)</li>
+        <li>Custom BT leaves and decorators; four authored trees</li>
+        <li>Formation extra credit (<code>P1_Formation</code>) and live tuning UI</li>
+        <li>Showcase video and post-mortem</li>
+      </ul>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Related</span> <a href="ProjectXeno.html">Project Xeno</a> &mdash; same trimester; multi-agent pressure with a different AI tool (metric-gated FSM vs behaviour trees).</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
+      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
