@@ -5,6 +5,14 @@
   <title>Conquest - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Solo hex strategy. As Design Lead I designed the map loop, AP, supplies, the assassin pathing and combat, and formations.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Conquest &mdash; Lin Xin">
+  <meta property="og:description" content="Solo hex strategy. Eight turns to drop the assassin's HP to zero.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/Conquest.html">
+  <!-- TODO add Assets/conquest-og.png at 1200x630 from a board photo, then uncomment -->
+  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/conquest-og.png"> -->
+  <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -49,18 +57,140 @@
       </p>
 
       <h1 class="display-5 mb-3">Conquest</h1>
-      <p class="lead">Solo hex strategy. Team of six. Design Lead. Eight turns to drop the assassin's HP to zero.</p>
+      <p class="lead">Solo hex strategy. Eight turns to drop the assassin's HP to zero.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Design Lead</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>6</dd>
+        </div>
+        <div>
+          <dt>Format</dt>
+          <dd>Solo physical hex game</dd>
+        </div>
+        <div>
+          <dt>Clock</dt>
+          <dd>8 turns &times; 3 phases &times; 10 AP</dd>
+        </div>
+        <div>
+          <dt>State</dt>
+          <dd>Playtested prototype</dd>
+        </div>
+      </dl>
 
-      <p>You command a prince and two knights (different traits) on a numbered hex map. Pick one of four strongholds; that pick also sets where the assassin starts. Lose the party or miss eight turns, and it is over. The eight turns are a rite of passage that will not wait. The assassin peeling land as he walks is the kingdom slipping. Painting the map is fuel. The win is the kill.</p>
+      <p>You command a prince and two knights on a numbered hex map. Pick one of four strongholds; that pick also sets where the assassin starts. Lose the party or miss eight turns, and it is over. The eight turns are a rite of passage that will not wait. The assassin peeling land as he walks is the kingdom slipping. Painting the map is fuel. The win is the kill.</p>
       <p>I was Design Lead. I designed the hex loop, AP, supplies, the assassin, and the combat tools. I wrote the design statement and shot the demo. Event cards, the rulebook, and print-and-play layout I helped with.</p>
 
-      <h3 class="mt-4">Turns and supplies</h3>
-      <p>Each turn opens with an event card that changes the whole board. Then three phases &mdash; morning, evening, night &mdash; with <strong>10 AP</strong> each, tracked on a D20. Traversing a territory costs 1 AP. You spend that AP to move and to conquer; held land is how supplies arrive.</p>
-      <p>Supplies spend between turns, three ways: heal, level knights, or unlock formations. You cannot fund all three well. Levelling and formations are how the retinue gets strong enough to kill. Healing is how you live long enough to use them.</p>
+      <h3 class="mt-4">Design intent</h3>
+      <p>The line on the design statement is the brief: medieval problems require management solutions. A succession fight and a time-loop assassin are ancient story machinery. The player's tools &mdash; action points as time, supplies as a three-way sink, formations as placement &mdash; are modern resource problems wearing a crown.</p>
+      <p>That split keeps the fantasy from becoming a scripted boss fight. If the assassin is a set-piece with phases, the map is scenery you cross on the way to the cutscene. If he is a pathing problem that peels your economy as he walks, every hex you paint is both fuel and a shorter path for him to take. Conquest is interesting when painting the map and hunting the killer are the same job under a closing clock.</p>
+
+      <figure class="system-diagram">
+        <svg viewBox="0 0 720 260" role="img" aria-labelledby="cqTitle cqDesc">
+          <title id="cqTitle">Conquest core loop</title>
+          <desc id="cqDesc">Each turn opens with an event, then three phases of ten action points. Conquest paints the map for supplies. Supplies fund heal, levels, and formations. The assassin peels land as he walks and must be killed before eight turns end.</desc>
+          <defs>
+            <marker id="arrowCq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
+            </marker>
+          </defs>
+
+          <rect x="20" y="24" width="160" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="100" y="52" class="dg-h" text-anchor="middle">EVENT</text>
+          <text x="100" y="72" class="dg-m" text-anchor="middle">opens the turn</text>
+
+          <rect x="210" y="24" width="160" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="290" y="52" class="dg-h" text-anchor="middle">3 &times; 10 AP</text>
+          <text x="290" y="72" class="dg-m" text-anchor="middle">move / conquer</text>
+
+          <rect x="400" y="24" width="140" height="70" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.4)"/>
+          <text x="470" y="52" class="dg-h" text-anchor="middle">SUPPLIES</text>
+          <text x="470" y="72" class="dg-m" text-anchor="middle">from held land</text>
+
+          <rect x="560" y="24" width="140" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="630" y="52" class="dg-h" text-anchor="middle">SPEND</text>
+          <text x="630" y="72" class="dg-m" text-anchor="middle">heal / level / form</text>
+
+          <line x1="182" y1="59" x2="206" y2="59" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowCq)"/>
+          <line x1="372" y1="59" x2="396" y2="59" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowCq)"/>
+          <line x1="542" y1="59" x2="556" y2="59" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowCq)"/>
+
+          <rect x="160" y="140" width="400" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="360" y="164" class="dg-h" text-anchor="middle">ASSASSIN</text>
+          <text x="360" y="182" class="dg-s" text-anchor="middle">shortest path to the prince &mdash; land he walks becomes unconquered</text>
+
+          <line x1="470" y1="96" x2="360" y2="136" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrowCq)"/>
+          <text x="445" y="120" class="dg-l">economy peels</text>
+
+          <text x="360" y="232" class="dg-s" text-anchor="middle">Eight turns. Kill him, or the loop resets.</text>
+        </svg>
+        <figcaption>Painting the map funds the hunt. The assassin taxes the same map as he walks.</figcaption>
+      </figure>
+
+      <h3 class="mt-4">AP as time</h3>
+      <p>Each turn opens with an event card that changes the whole board. Then three phases &mdash; morning, evening, night &mdash; with <strong>10 AP</strong> each, tracked on a D20. Traversing a territory costs 1 AP. You spend that pool to move and to conquer; held land is how supplies arrive.</p>
+      <p>Splitting the day into three budgets rather than one thirty-point pool matters. A single pool lets you bank the morning for a night march; three locked budgets force routing decisions inside each window, which is closer to medieval travel than to a video-game stamina bar. Night is also when the assassin moves faster, so the last ten points of the day are the most expensive ones you spend.</p>
+
+      <h3 class="mt-4">Supplies</h3>
+      <p>Supplies spend between turns, three ways. You cannot fund all three well.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Spend</th><th scope="col">Buys</th><th scope="col">If you starve it</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Heal</td><td>Survive the next intercept</td><td>You never live long enough to use the build</td></tr>
+            <tr><td>Level knights</td><td>Combat power on the figures you have</td><td>Formations arrive on a soft retinue</td></tr>
+            <tr><td>Unlock formations</td><td>Positional combat tools</td><td>Levels arrive with no shape to fight in</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Levelling and formations are how the retinue gets strong enough to kill. Healing is how you live long enough to use them. The three-way sink is the same design move as Overseas's shared gold pool: an upgrade that does not compete with survival is not a decision.</p>
+      <!-- MEDIA SLOT 1 of 3 : Assets/conquest-board.png : the hex map mid-run -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/conquest-board.png" alt="Conquest hex map mid-run with conquered territories and pieces placed.">
+        <figcaption>The map mid-run. Painted land is income; the assassin peels it as he walks.</figcaption>
+      </figure>
+      -->
 
       <h3 class="mt-4">The assassin</h3>
-      <p>He is a pathing problem, not a scripted boss. Shortest path to the prince, skip small nodes, faster at night. Land he walks through becomes unconquered &mdash; your economy peels off the map because he travelled. In a fight he picks from three reactive moves based on how many of you are in the hex.</p>
-      <p>Forests shroud him: a whole phase to enter or leave, which can buy you a full AP budget. Mortars (if you hold them) are a once-per-turn map-wide attack. Watchtowers work like mortars but only for a region. Terrain taxes his clock versus yours. Formations and knight levels are the combat layer once you intercept.</p>
+      <p>He is a pathing problem, not a scripted boss. Shortest path to the prince, skip small nodes, faster at night. Land he walks through becomes unconquered &mdash; your economy peels off the map because he travelled.</p>
+      <p>In a fight he picks from three reactive moves based on how many of you are in the hex. That keeps combat from being a fixed script: the right formation depends on whether you intercepted alone or as a full party, which is a placement problem you solved turns earlier, not a card you flip in the moment.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Tool</th><th scope="col">What it does</th><th scope="col">Job on the clock</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Forests</td><td>A whole phase to enter or leave</td><td>Buy a full AP budget of distance</td></tr>
+            <tr><td>Mortars</td><td>Once-per-turn map-wide attack, if held</td><td>Damage without intercepting</td></tr>
+            <tr><td>Watchtowers</td><td>Mortar rules, region only</td><td>Local pressure after you commit to a stronghold</td></tr>
+            <tr><td>Formations / levels</td><td>Combat layer once you meet</td><td>Convert supplies into a kill</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Terrain taxes his clock versus yours. Formations and knight levels are what you bring when the paths finally cross.</p>
+      <!-- MEDIA SLOT 2 of 3 : Assets/conquest-assassin.png : assassin token and peeled territories -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/conquest-assassin.png" alt="The assassin token on the Conquest board with territories behind him unconquered.">
+        <figcaption>He walks; the kingdom slips. The peel is the pressure, not a cutscene.</figcaption>
+      </figure>
+      -->
+
+      <h3 class="mt-4">Stronghold pick</h3>
+      <p>Four strongholds. The opening pick also sets where the assassin starts. That couples your economy plan to his opening vector: choosing a stronghold for its land is also choosing how soon the peel begins. There is no neutral spawn. The first decision on the board is already a positioning problem.</p>
+      <!-- MEDIA SLOT 3 of 3 : Assets/conquest-setup.png : stronghold selection -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/conquest-setup.png" alt="Conquest setup showing the four stronghold options.">
+        <figcaption>Opening pick. Your economy and his start are the same choice.</figcaption>
+      </figure>
+      -->
 
       <h4 class="mt-5">Role</h4>
       <ul>
@@ -69,16 +199,17 @@
         <li>Event cards, rulebook, print-and-play layout (contributor)</li>
       </ul>
 
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>Physical hex prototype and playtesting</li>
-      </ul>
-
       <p class="project-links mt-4">
         <a href="Assets/Conquest_RuleBook.pdf" download>Rulebook</a><br>
         <a href="Assets/Conquest_PrintNPlay.pdf" download>Print and play</a><br>
         <a href="Assets/CONQUEST_Design_Statement.pdf" target="_blank">Design statement</a>
       </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Also physical</span> <a href="Acquit.html">Acquit</a> &mdash; solo courtroom cards, same Design Lead seat, different pressure: a file and a jury instead of a clock and a hunter.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
