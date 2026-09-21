@@ -5,6 +5,13 @@
   <title>Prison Break - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mega Man Maker normal puzzle stage. Juggle several tools in one room. Purple keys skip the hardest screen.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prison Break &mdash; Lin Xin">
+  <meta property="og:description" content="Mega Man Maker. Normal puzzle stage. Juggle several tools in one room.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/PrisonBreak.html">
+  <!-- TODO Assets/prisonbreak-og.png — landscape crop of the labelled map -->
+  <meta name="twitter:card" content="summary">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,46 +38,108 @@
   </nav>
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <!-- MEDIA SLOT 1 of 2 : Assets/prisonbreak-map.png : labelled map export -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/prisonbreak-map.png" alt="Prison Break labelled Mega Man Maker map with sixteen challenge zones across eight pages.">
+        <figcaption>Sixteen challenges across eight pages. Combinations are the point.</figcaption>
+      </figure>
+      -->
+
       <h1 class="display-5 mb-3">Prison Break</h1>
       <p class="lead">Mega Man Maker. Normal puzzle stage. Juggle several tools in one room.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Solo level design</dd>
+        </div>
+        <div>
+          <dt>Tool</dt>
+          <dd>Mega Man Maker</dd>
+        </div>
+        <div>
+          <dt>Theme</dt>
+          <dd>Puzzle + juggling</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>16 challenges, 8 pages</dd>
+        </div>
+        <div>
+          <dt>Set</dt>
+          <dd>
+            <a href="FourKoma.html" class="text-info">4KOMA</a> &middot;
+            <a href="Fivenite.html" class="text-info">FIVENITE</a>
+          </dd>
+        </div>
+      </dl>
 
-      <h3 class="mt-4">Intent</h3>
-      <p>Where <a href="FourKoma.html" class="text-info">4KOMA</a> is difficulty over complexity (two verbs, stricter), this map is allowed to be busy. Primary theme is puzzle rooms. Secondary is juggling: the room is the test of whether you can hold several tools at once. Normal means more mechanics, not meaner spikes. Checkpoints and safe spots sit under the parkour so a missed dash is a retry, not a run killer.</p>
+      <p>Where <a href="FourKoma.html" class="text-info">4KOMA</a> is difficulty over complexity, this map is allowed to be busy. Primary theme is puzzle rooms. Secondary is juggling: the room is the test of whether you can hold several tools at once. Normal means more mechanics, not meaner spikes.</p>
+
+      <h3 class="mt-4">Design intent</h3>
+      <p>Checkpoints and safe spots sit under the parkour so a missed dash is a retry, not a run killer. The complexity budget goes into how many verbs a room asks for, not into how far a fail drops you. That is how &ldquo;normal&rdquo; and &ldquo;busy&rdquo; can coexist without becoming cruel.</p>
       <p>I teach in layers: roll, then card throw for a key, then vertical throws, then throw-while-jumping, then midair dash alone before combining dash with jump, water, and one-block gaps. The ice gun is a late language shift &mdash; same weapon, three grades (walk on frozen fire, diagonal to wake a platform, spread to hit several targets) after dash and throw are already in muscle memory.</p>
-      <p>Purple keys look useless. If you picked them up, you skip the last room (the hardest). That is guided freedom: the gauntlet is still the intended path, but attention is a real alternate win, not a collectathon the game yells about.</p>
+      <p>Purple keys look useless. If you picked them up, you skip the last room (the hardest). That is guided freedom: the gauntlet is still the intended path, but attention is a real alternate win, not a collectathon the game yells about. The skip only works if the keys never announce themselves as the skip. They have to look like dead loot until the door that accepts them.</p>
 
-      <h3 class="mt-4">Cadence</h3>
-      <p>Sixteen challenges across eight pages. Combinations are the point, so the notation is written as stacks:</p>
-      <ul>
-        <li>A roll</li>
-        <li>B card throw / B' vertical throw</li>
-        <li>C keyed door</li>
-        <li>D break block</li>
-        <li>E jump / E' jump in water</li>
-        <li>F midair dash / F' one-block dash</li>
-        <li>G ice / G' diagonal ice / G'' ice spread</li>
-      </ul>
-      <p>First real puzzle is B+C+D. Dash-while-jumping is E+F. Ice is G, then G', then G'' as a three-step weapon tutorial. F' is the precision-dash exam before ice. Full table is in the PDF.</p>
+      <h3 class="mt-4">Cadence alphabet</h3>
+      <p>Sixteen challenges. Combinations are the point, so the notation is written as stacks.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Code</th><th scope="col">Verb</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td>Roll</td></tr>
+            <tr><td>B / B'</td><td>Card throw / vertical throw</td></tr>
+            <tr><td>C</td><td>Keyed door</td></tr>
+            <tr><td>D</td><td>Break block</td></tr>
+            <tr><td>E / E'</td><td>Jump / jump in water</td></tr>
+            <tr><td>F / F'</td><td>Midair dash / one-block dash</td></tr>
+            <tr><td>G / G' / G''</td><td>Ice / diagonal ice / ice spread</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-      <h3 class="mt-4">Pacing</h3>
-      <p>Intensity climbs from 1 (just roll) through 3&ndash;4 combination rooms, then 5&ndash;6 on dash and water, with ice sitting around 4&ndash;5 so the new language is readable. The last room is 7 on purpose (midair dashes). A few 3s and 4s sit between spikes so it is not a straight staircase. The skip exists so the peak is optional if you were paying attention &mdash; the curve still has a designed exam for everyone else.</p>
+      <h3 class="mt-4">The curve</h3>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Beat</th><th scope="col">Ask</th><th scope="col">Intensity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Open</td><td>Just roll</td><td>1</td></tr>
+            <tr><td>First puzzle</td><td>B+C+D &mdash; throw, door, break</td><td>3</td></tr>
+            <tr><td>Dash language</td><td>F alone, then E+F, then F'</td><td>3 &rarr; 5</td></tr>
+            <tr><td>Ice tutorial</td><td>G, then G', then G''</td><td>4&ndash;5</td></tr>
+            <tr><td>Exam / skip</td><td>Midair dashes at 7, or purple keys out</td><td>7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Intensity climbs from 1 through 3&ndash;4 combination rooms, then 5&ndash;6 on dash and water, with ice sitting around 4&ndash;5 so the new language is readable. The last room is 7 on purpose. A few 3s and 4s sit between spikes so it is not a straight staircase. The skip exists so the peak is optional if you were paying attention &mdash; the curve still has a designed exam for everyone else.</p>
+      <p>Ice arrives late on purpose. Introducing a three-grade weapon before dash and throw are settled would turn every room into a reading test. After those verbs are muscle memory, ice can be a language shift instead of a pile-on.</p>
+      <!-- MEDIA SLOT 2 of 2 : Assets/prisonbreak-curve.png -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/prisonbreak-curve.png" alt="Prison Break intensity curve across sixteen zones.">
+        <figcaption>Busy alphabet, moderate spikes. The 7 is optional if you found the keys.</figcaption>
+      </figure>
+      -->
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Layout, skill theme, cadence notation, intensity curve, guided-freedom skip</li>
+        <li>Layout, skill theme, cadence notation, intensity curve</li>
+        <li>Layered teaching, ice as late language shift, purple-key skip</li>
       </ul>
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>Mega Man Maker</li>
-      </ul>
+
       <p class="project-links mt-4">
         <a href="Assets/PrisonBreak_Normal.pdf" target="_blank">Level document (map, cadence, intensity)</a>
       </p>
-      <p class="project-links">
-        Related:
-        <a href="FourKoma.html">4KOMA</a> |
-        <a href="Fivenite.html">FIVENITE</a>
-      </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Set</span> <a href="FourKoma.html">4KOMA</a> &mdash; two verbs, harder. <a href="Fivenite.html">FIVENITE</a> &mdash; easy combat, loadout freedom. Same method, three different briefs.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>

@@ -5,6 +5,13 @@
   <title>4KOMA - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mega Man Maker mobility stage. Two verbs getting stricter: double jump and slide. Cadence-notated, intensity scored per zone.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="4KOMA &mdash; Lin Xin">
+  <meta property="og:description" content="Mega Man Maker. Mobility stage. Two verbs, getting stricter.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/FourKoma.html">
+  <!-- TODO Assets/4koma-og.png — landscape crop of the labelled map -->
+  <meta name="twitter:card" content="summary">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,43 +38,105 @@
   </nav>
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <!-- MEDIA SLOT 1 of 2 : Assets/4koma-map.png : labelled map export from the PDF -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/4koma-map.png" alt="4KOMA labelled Mega Man Maker map with fourteen challenge zones marked.">
+        <figcaption>Fourteen challenges across five screens. Every zone is named in the cadence alphabet before it is built.</figcaption>
+      </figure>
+      -->
+
       <h1 class="display-5 mb-3">4KOMA</h1>
-      <p class="lead">Mega Man Maker. Mobility stage. Difficulty over complexity: two verbs, getting stricter.</p>
+      <p class="lead">Mega Man Maker. Mobility stage. Two verbs, getting stricter.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Solo level design</dd>
+        </div>
+        <div>
+          <dt>Tool</dt>
+          <dd>Mega Man Maker</dd>
+        </div>
+        <div>
+          <dt>Theme</dt>
+          <dd>Mobility + timing</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>14 challenges, 5 screens</dd>
+        </div>
+        <div>
+          <dt>Set</dt>
+          <dd>
+            <a href="Fivenite.html" class="text-info">FIVENITE</a> &middot;
+            <a href="PrisonBreak.html" class="text-info">Prison Break</a>
+          </dd>
+        </div>
+      </dl>
 
-      <h3 class="mt-4">Intent</h3>
-      <p>I wanted a stage that gets harder because the player gets better at the same tools, not because I keep adding weapons. Primary theme is mobility (double jump and slide). Secondary is timing. Every labelled challenge has to ask for at least one of those verbs, often stacked. If a room cannot be named in that language, it does not belong on the map.</p>
-      <p>Slide and double jump normally cannot coexist. Equipping a unique attack unlocks both. That constraint became the hook: air slides, and one-block midair gaps that need a double jump plus a timed air slide. The gimmick is already in the editor once those two tools exist together.</p>
+      <p>I wanted a stage that gets harder because the player gets better at the same tools, not because I keep adding weapons. Primary theme is mobility &mdash; double jump and slide. Secondary is timing. Every labelled challenge has to ask for at least one of those verbs, often stacked. If a room cannot be named in that language, it does not belong on the map.</p>
 
-      <h3 class="mt-4">Cadence</h3>
-      <p>I notate rooms the way I notate Mega Man cadence, then I build to that table.</p>
-      <ul>
-        <li>A jump / A' spring jump</li>
-        <li>B double jump / B' place both jumps to avoid damage / B'' jump, other action, jump</li>
-        <li>C slide / C' air slide</li>
-        <li>D timed jump</li>
-        <li>E breaking platform with a limited window</li>
-      </ul>
-      <p>Fourteen challenges across five screens. Screen 1 teaches A, B, C in isolation, then B' and A+C'. Screen 3 zone 10 is B+C'+D+E at intensity 8: mobility, air slide, timing, and a platform that will not wait. Screen 4 offers a fork (B+E or C+E). Screen 5 is B+C' at 10 &mdash; the cleanest statement of the theme. Full table is in the PDF.</p>
+      <h3 class="mt-4">Design intent</h3>
+      <p>Difficulty over complexity. That is the brief I wrote for myself, and it is the opposite of the puzzle stage in this set. Two verbs is enough if the ask on them keeps climbing. Adding a third tool would have made later rooms look harder on paper while teaching less about the ones the stage is actually about.</p>
+      <p>Slide and double jump normally cannot coexist. Equipping a unique attack unlocks both. That constraint became the hook: air slides, and one-block midair gaps that need a double jump plus a timed air slide. The gimmick is already in the editor once those two tools exist together. I did not invent a new mechanic. I forced a pairing the game usually forbids, then wrote rooms that only make sense because of that pairing.</p>
 
-      <h3 class="mt-4">Pacing</h3>
-      <p>The intensity curve is scored per zone, not guessed after play. Early rooms sit at 1&ndash;3. The first real spike is A+C' at 5. I then drop to a 1 (just B) so the player can reset before the next stack. Mid-map climbs through 4, 6, 8. The last screen is the exam, not a new toy. Downbeats are deliberate: without them, stacking the same two verbs just reads as cheap.</p>
+      <h3 class="mt-4">Cadence alphabet</h3>
+      <p>I notate rooms the way I notate Mega Man cadence, then I build to that table. The alphabet is the design before the tiles.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Code</th><th scope="col">Verb</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A / A'</td><td>Jump / spring jump</td></tr>
+            <tr><td>B / B' / B''</td><td>Double jump / place both jumps to avoid damage / jump, other action, jump</td></tr>
+            <tr><td>C / C'</td><td>Slide / air slide</td></tr>
+            <tr><td>D</td><td>Timed jump</td></tr>
+            <tr><td>E</td><td>Breaking platform with a limited window</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="mt-4">The curve</h3>
+      <p>Fourteen challenges across five screens. Intensity is scored per zone, not guessed after play.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Screen</th><th scope="col">Beat</th><th scope="col">Peak intensity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Teach A, B, C alone, then B' and A+C'</td><td>5</td></tr>
+            <tr><td>2</td><td>Stacks with timing (B'+C'+D)</td><td>6</td></tr>
+            <tr><td>3</td><td>Zone 10: B+C'+D+E &mdash; mobility, air slide, timing, a platform that will not wait</td><td>8</td></tr>
+            <tr><td>4</td><td>Fork: B+E or C+E</td><td>6</td></tr>
+            <tr><td>5</td><td>B+C' &mdash; the cleanest statement of the theme</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Early rooms sit at 1&ndash;3. The first real spike is A+C' at 5. I then drop to a 1 (just B) so the player can reset before the next stack. Mid-map climbs through 4, 6, 8. The last screen is the exam, not a new toy. Downbeats are deliberate: without them, stacking the same two verbs just reads as cheap.</p>
+      <p>Screen 4's fork is the one place the stage offers a choice inside the theme. Both paths still speak B/C and E. The freedom is which verb carries the breaking platform, not whether you can leave the alphabet.</p>
+      <!-- MEDIA SLOT 2 of 2 : Assets/4koma-curve.png : intensity curve page from the PDF -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/4koma-curve.png" alt="4KOMA intensity curve across fourteen zones.">
+        <figcaption>Intensity per zone. The drop after the first spike is intentional.</figcaption>
+      </figure>
+      -->
 
       <h4 class="mt-5">Role</h4>
       <ul>
         <li>Layout, skill theme, cadence notation, intensity curve</li>
       </ul>
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>Mega Man Maker</li>
-      </ul>
+
       <p class="project-links mt-4">
         <a href="Assets/4KOMA.pdf" target="_blank">Level document (map, cadence, intensity)</a>
       </p>
-      <p class="project-links">
-        Related:
-        <a href="Fivenite.html">FIVENITE</a> |
-        <a href="PrisonBreak.html">Prison Break</a>
-      </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Set</span> <a href="Fivenite.html">FIVENITE</a> &mdash; easy combat, freedom of loadout. <a href="PrisonBreak.html">Prison Break</a> &mdash; normal puzzle, juggling tools. Same method, three different briefs.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>

@@ -5,6 +5,13 @@
   <title>FIVENITE - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mega Man Maker easy combat stage. Pick a weapon, drop in, fight. Break and build so rooms are not stand-and-shoot.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FIVENITE &mdash; Lin Xin">
+  <meta property="og:description" content="Mega Man Maker. Easy combat stage. Pick a weapon, drop in, fight.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/Fivenite.html">
+  <!-- TODO Assets/fivenite-og.png — landscape crop of the labelled map -->
+  <meta name="twitter:card" content="summary">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,43 +38,107 @@
   </nav>
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <!-- MEDIA SLOT 1 of 2 : Assets/fivenite-map.png : labelled map export -->
+      <!--
+      <figure class="shot">
+        <img src="Assets/fivenite-map.png" alt="FIVENITE labelled Mega Man Maker map with eleven challenge zones and a boss page.">
+        <figcaption>Eleven challenges, boss on the last page. Drop-in is intensity 1 on purpose.</figcaption>
+      </figure>
+      -->
+
       <h1 class="display-5 mb-3">FIVENITE</h1>
       <p class="lead">Mega Man Maker. Easy combat stage. Pick a weapon, drop in, fight.</p>
+      <dl class="project-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Solo level design</dd>
+        </div>
+        <div>
+          <dt>Tool</dt>
+          <dd>Mega Man Maker</dd>
+        </div>
+        <div>
+          <dt>Theme</dt>
+          <dd>Fighting + freedom</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>11 challenges + boss</dd>
+        </div>
+        <div>
+          <dt>Set</dt>
+          <dd>
+            <a href="FourKoma.html" class="text-info">4KOMA</a> &middot;
+            <a href="PrisonBreak.html" class="text-info">Prison Break</a>
+          </dd>
+        </div>
+      </dl>
 
-      <h3 class="mt-4">Intent</h3>
-      <p>This is the opposite of <a href="FourKoma.html" class="text-info">4KOMA</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom &mdash; weapon choice, plus break and build so rooms are not stand-and-shoot.</p>
-      <p>Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once. The starting weapon is the fork: rooms are written to work with what you picked, not one scripted loadout.</p>
+      <p>This is the opposite of <a href="FourKoma.html" class="text-info">4KOMA</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom &mdash; weapon choice, plus break and build so rooms are not stand-and-shoot. The Fortnite joke in the title is the brief: carefree on the surface, still authored underneath.</p>
 
-      <h3 class="mt-4">Cadence</h3>
-      <p>Same notation method as the other Maker stages, different alphabet because the theme is combat:</p>
-      <ul>
-        <li>A jump / A' spring jump</li>
-        <li>B jump-reflect / B' charged-dash reflect</li>
-        <li>C attack / C' break block with the weapon</li>
-        <li>E build / E' alternate builds to climb</li>
-        <li>F disappearing platform</li>
-      </ul>
-      <p>Eleven challenges, boss on the last page. Drop-in is A at 1. Reflects come in at B+B' (3). Disappearing-platform combat is the first real spike (A+C+F at 4). Breaking a block for a new weapon, then building a path with it, is the loot-changes-traversal beat. The boss is scored as A+B+B'+C+C'+E at 7: jump, both reflects, attack, break, and build. That is a full-kit exam for a fighting level, not a platforming one. Full table is in the PDF.</p>
+      <h3 class="mt-4">Design intent</h3>
+      <p>Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once.</p>
+      <p>The starting weapon is the fork. Rooms are written to work with what you picked, not one scripted loadout. That is the hard part of an easy combat stage: if every room assumes one gun, freedom was flavour text. If every room works with several, the cadence has to name attack as a family rather than as a specific button.</p>
 
-      <h3 class="mt-4">Pacing</h3>
-      <p>The intensity curve is meant to feel like a match: low drop-in, mid combat toys, late climb-and-shoot, boss as the peak. Numbers sit mostly in 1&ndash;5 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was &ldquo;how do I keep a fighting stage readable and fair,&rdquo; not &ldquo;how hard can the last screen get.&rdquo;</p>
+      <h3 class="mt-4">Cadence alphabet</h3>
+      <p>Same notation method as the other Maker stages. Different alphabet, because the theme is combat.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Code</th><th scope="col">Verb</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A / A'</td><td>Jump / spring jump</td></tr>
+            <tr><td>B / B'</td><td>Jump-reflect / charged-dash reflect</td></tr>
+            <tr><td>C / C'</td><td>Attack / break block with the weapon</td></tr>
+            <tr><td>E / E'</td><td>Build / alternate builds to climb</td></tr>
+            <tr><td>F</td><td>Disappearing platform</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="mt-4">The curve</h3>
+      <p>Eleven challenges, boss on the last page. The intensity curve is meant to feel like a match: low drop-in, mid combat toys, late climb-and-shoot, boss as the peak.</p>
+      <div class="table-responsive">
+        <table class="table table-dark table-sm qte-table shop-table">
+          <thead>
+            <tr><th scope="col">Zone</th><th scope="col">Ask</th><th scope="col">Cadence</th><th scope="col">Intensity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Choose weapon, drop in</td><td>A</td><td>1</td></tr>
+            <tr><td>2</td><td>Both reflects</td><td>B+B'</td><td>3</td></tr>
+            <tr><td>4</td><td>Combat on disappearing platform</td><td>A+C+F</td><td>4</td></tr>
+            <tr><td>5&ndash;6</td><td>Break for a new weapon, then build with it</td><td>A+C+C' &rarr; A+E</td><td>3</td></tr>
+            <tr><td>9</td><td>Climb while shooting</td><td>C+E'</td><td>5</td></tr>
+            <tr><td>11</td><td>Boss &mdash; full kit</td><td>A+B+B'+C+C'+E</td><td>7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Numbers sit mostly in 1&ndash;5 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was &ldquo;how do I keep a fighting stage readable and fair,&rdquo; not &ldquo;how hard can the last screen get.&rdquo;</p>
+      <p>Zones 5 and 6 are the loot-changes-traversal beat. Breaking a block for a new weapon only matters if that weapon immediately opens a path the old one could not. That is freedom doing work on the map rather than on a menu.</p>
+      <!-- MEDIA SLOT 2 of 2 : Assets/fivenite-curve.png -->
+      <!--
+      <figure class="shot shot-narrow">
+        <img src="Assets/fivenite-curve.png" alt="FIVENITE intensity curve across eleven zones and a boss.">
+        <figcaption>Match-shaped curve. The boss is 7, not 10.</figcaption>
+      </figure>
+      -->
 
       <h4 class="mt-5">Role</h4>
       <ul>
         <li>Layout, skill theme, cadence notation, intensity curve</li>
+        <li>Loadout fork, break/build traversal, boss as full-kit exam</li>
       </ul>
-      <h4 class="mt-5">Stack</h4>
-      <ul>
-        <li>Mega Man Maker</li>
-      </ul>
+
       <p class="project-links mt-4">
         <a href="Assets/FIVENITE_EASY.pdf" target="_blank">Level document (map, cadence, intensity)</a>
       </p>
-      <p class="project-links">
-        Related:
-        <a href="FourKoma.html">4KOMA</a> |
-        <a href="PrisonBreak.html">Prison Break</a>
-      </p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label">Set</span> <a href="FourKoma.html">4KOMA</a> &mdash; two verbs, harder. <a href="PrisonBreak.html">Prison Break</a> &mdash; more verbs, puzzle juggle. Same method, three different briefs.</p>
+        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:lin.x@digipen.edu">lin.x@digipen.edu</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
       <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
     </div>
   </section>
