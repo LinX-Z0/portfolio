@@ -10,7 +10,7 @@
   <meta property="og:title" content="Acquit &mdash; Lin Xin">
   <meta property="og:description" content="Physical courtroom strategy card game. Investigation, one motion, then a jury race to 12.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Acquit.html">
-  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/Acquit.png">
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/acquit-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -42,6 +42,19 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
+      <div class="mb-4 project-doc">
+        <iframe
+          class="rounded shadow"
+          src="https://drive.google.com/file/d/11HQj909GCGm7ufO-VeRm9G0I5POgtJQa/preview"
+          allow="autoplay"
+          allowfullscreen
+          title="Acquit playthrough"
+        ></iframe>
+      </div>
+      <p class="project-links mb-4">
+        <a href="https://drive.google.com/file/d/11HQj909GCGm7ufO-VeRm9G0I5POgtJQa/view" target="_blank" rel="noopener">Open playthrough on Google Drive</a>
+      </p>
+
       <div class="mb-4">
         <img src="Assets/Acquit.png" class="img-fluid rounded shadow" alt="Acquit cards and table layout">
       </div>
@@ -51,11 +64,19 @@
       <dl class="project-meta">
         <div>
           <dt>Role</dt>
-          <dd>Design Lead</dd>
+          <dd>Design Lead &mdash; all gameplay systems</dd>
         </div>
         <div>
           <dt>Team</dt>
           <dd>6</dd>
+        </div>
+        <div>
+          <dt>Course</dt>
+          <dd>CSD2155, Year 1 Trimester 3</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>4 May &ndash; 15 Jun 2025</dd>
         </div>
         <div>
           <dt>Format</dt>
@@ -71,8 +92,17 @@
         </div>
       </dl>
 
+      <ul class="scan-strip">
+        <li><strong>Card mechanics</strong> &mdash; evidence, discovery, investigation; the full card list and how each type plays.</li>
+        <li><strong>Motions</strong> &mdash; Suppress / Dismiss / Continuance as a permanent trial overlay.</li>
+        <li><strong>Tactics</strong> &mdash; interrupt tools in trial (reroll, extra evidence, replay, cancel).</li>
+        <li><strong>Numbers and balance</strong> &mdash; argument difficulties, evidence modifiers, scoring; tuned after playtests.</li>
+        <li><strong>Playtests</strong> &mdash; led passes with the team; scoring and difficulty reworks from those sessions.</li>
+        <li><strong>Not mine</strong> &mdash; art (team); research (mainly team, I helped a little); rulebook and Figma / card layout (contributor).</li>
+      </ul>
+
       <p>You play defence on the O.J. Simpson trial. Build a file, lock a theory of the case, then spend that preparation on arguments. The brief asked for an adventure; the legal process is the journey. The other side is the trial deck, not a second player.</p>
-      <p>I was Design Lead. I designed the table systems: split decks, investigation, motions, trial, scoring, and the card list. I presented the game and did the number passes after playtests. I helped on the rulebook and on Figma / card layout.</p>
+      <p>I was Design Lead. Every gameplay system and mechanic on the table is mine &mdash; investigation, discovery, evidence, motions, tactics, the card list, and the numbers behind them. I ran balance passes after playtests with the team. Art was team. Research was mainly others; I helped a little. I contributed on the rulebook and on Figma / card layout, but that was not my seat.</p>
 
       <h3 class="mt-4">Design intent</h3>
       <p>A courtroom fantasy fails if it becomes a dice game with legal flavour text. The dice are how arguments resolve; they are not the game. The game is whether the file you built in investigation and the motion you locked in pre-trial actually change the odds you face when a card flips. If a player who prepared carefully and a player who rolled naked feel the same at the table, the phases were scenery.</p>
@@ -115,13 +145,6 @@
       <h3 class="mt-4">Investigation</h3>
       <p>Hand-building. Draw a case, then spend investigation cards to peek, search, redraw, or filter evidence versus arguments. Extras leave at the end of the phase: the skill is what you keep, not hoarding.</p>
       <p>Filtering matters more than raw draw power. A hand full of strong evidence that does not fit the arguments you will face is worse than a thinner hand that coheres. Investigation is where you decide what theory of the case you are actually going to try.</p>
-      <!-- MEDIA SLOT 1 of 3 : Assets/acquit-investigation.png : table during investigation -->
-      <!--
-      <figure class="shot">
-        <img src="Assets/acquit-investigation.png" alt="Acquit table during the investigation phase with the non-trial deck and a building hand.">
-        <figcaption>Investigation. The skill is what you keep.</figcaption>
-      </figure>
-      -->
 
       <h3 class="mt-4">One motion</h3>
       <p>Pre-trial is one Motion, with a real tradeoff. That pick sits on the table for the whole trial &mdash; a rules overlay, not a one-shot.</p>
@@ -143,13 +166,6 @@
       <p>Flip an argument with a baseline difficulty that already leans one side. You may play evidence and/or a tactic, then roll. An empty hand can still roll naked &mdash; dry is a state, not a lock.</p>
       <p>Evidence is not generic +1. Some cards only fit specific arguments; some swing the jury harder with worse odds. Synergies reward a coherent case instead of spraying every strong card. Tactics interrupt: reroll, extra evidence, replay, cancel.</p>
       <p>Jury tokens start undecided. First to 12 wins; if nobody hits 12, a draw.</p>
-      <!-- MEDIA SLOT 2 of 3 : Assets/acquit-trial.png : argument flip and jury tokens -->
-      <!--
-      <figure class="shot">
-        <img src="Assets/acquit-trial.png" alt="Acquit trial phase with an argument card flipped and jury tokens on the table.">
-        <figcaption>Trial. Preparation meets a leaning deck.</figcaption>
-      </figure>
-      -->
 
       <h3 class="mt-4">Economy</h3>
       <p>About 40 cards across the list:</p>
@@ -177,18 +193,15 @@
         <li><strong>Argument difficulty and evidence modifiers reworked until neither auto-win nor coin-flip survived a pass.</strong> A leaning baseline is fine; a baseline that ignores the file is not.</li>
       </ul>
       <p>The dice stayed. The scoring had to teach that they were not the game.</p>
-      <!-- MEDIA SLOT 3 of 3 : Assets/acquit-full-table.png : full setup for print-and-play clarity -->
-      <!--
-      <figure class="shot">
-        <img src="Assets/acquit-full-table.png" alt="Full Acquit table setup with both decks, motions, and jury tokens.">
-        <figcaption>Full setup. Split decks cost a minute; each phase stays readable.</figcaption>
-      </figure>
-      -->
 
       <h4 class="mt-5">Role</h4>
       <ul>
-        <li>Design Lead &mdash; table systems, card list, playtests, presentation</li>
+        <li>Design Lead &mdash; all gameplay systems and card mechanics</li>
+        <li>Evidence, discovery, investigation, tactics, motions</li>
+        <li>Card list, difficulties, modifiers, scoring, balance passes</li>
+        <li>Playtesting with the team; presentation</li>
         <li>Rulebook and Figma / card layout (contributor)</li>
+        <li>Art &mdash; team; research &mdash; mainly team (I helped a little)</li>
       </ul>
 
       <p class="project-links mt-4">
