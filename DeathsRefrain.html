@@ -42,10 +42,18 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
-      <figure class="shot">
-        <img src="Assets/dr-hero.png" alt="A Death's Refrain room mid-turn, showing the grid, the player unit, and the action point HUD.">
-        <figcaption>Mid-turn. AP 3/8 on the HUD; the unit selected on the grid.</figcaption>
-      </figure>
+      <div class="mb-4 project-doc">
+        <iframe
+          class="rounded shadow"
+          src="https://drive.google.com/file/d/1UODiH27s-zb-Jnt7zXLuvaq9DmDfhC0V/preview"
+          allow="autoplay"
+          allowfullscreen
+          title="Death's Refrain trailer"
+        ></iframe>
+      </div>
+      <p class="project-links mb-4">
+        <a href="https://drive.google.com/file/d/1UODiH27s-zb-Jnt7zXLuvaq9DmDfhC0V/view" target="_blank" rel="noopener">Open trailer on Google Drive</a>
+      </p>
 
       <h1 class="display-5 mb-3">Death's Refrain</h1>
       <p class="lead">2D top-down grid tactics on our own engine. I designed every shipped mechanic and wrote the Lua that runs them.</p>
@@ -87,6 +95,11 @@
       <p>Turn-based combat on a grid. Spend action points to move, strike, or guard, then the enemies answer. Clear the room, take a heal or a permanent boost, and step through the portal.</p>
       <p>This and <a href="Hellmaker.html" class="text-info">Hellmaker</a> are one Year 2 project across two pages, split by what I did: this is the game and the design, that one is the engine and the editor tooling underneath it.</p>
       <p>I designed every shipped mechanic, wrote the Lua behind them, set the level flow, and integrated maps, assets, UI, SFX, VFX, and BGM so that the game actually ran. Art and music were produced by others. Some tile maps and the boss-room layout had help.</p>
+
+      <figure class="shot">
+        <img src="Assets/dr-hero.png" alt="A Death's Refrain room mid-turn, showing the grid, the player unit, and the action point HUD.">
+        <figcaption>Mid-turn. AP 3/8 on the HUD; the unit selected on the grid.</figcaption>
+      </figure>
 
       <h3 class="mt-4">Design intent</h3>
       <p>A turn has eight action points and one pool to pay for everything. Moving, attacking, and guarding all draw on it, and that single decision is the game. Every tile you walk is a hit you do not land. Split movement and actions into separate budgets, as plenty of tactics games do, and positioning becomes free &mdash; you walk wherever you like and then do your damage, and the grid is scenery you cross on the way to the interesting part. Sharing one pool makes the floor cost something.</p>
