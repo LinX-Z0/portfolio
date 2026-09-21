@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infernumb — Gameplay &amp; GDD Wiki</title>
+  <style>
+    :root {
+      --bg: #f6f4f0;
+      --sidebar: #ede9e1;
+      --border: #c9c2b4;
+      --text: #1a1814;
+      --muted: #5c574e;
+      --accent: #6b2d2d;
+      --accent-soft: #f0e4e4;
+      --link: #4a6b8a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 1.25rem 1rem 2rem;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar .wiki-brand {
+      font-size: 1.05rem;
+      margin: 0 0 0.75rem;
+      color: var(--accent);
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    .sidebar .tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .search-wrap {
+      margin-bottom: 1rem;
+    }
+    .editor-tools {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .editor-tools p {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .editor-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .editor-actions button {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 4px;
+      padding: 0.45rem 0.7rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+    }
+    .editor-actions button:hover,
+    .editor-actions button:focus {
+      background: var(--accent-soft);
+      outline: none;
+    }
+    .editor-actions button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .edit-mode main > header,
+    .edit-mode main > section,
+    .edit-mode main > p.meta {
+      outline: 2px dashed var(--accent);
+      outline-offset: 6px;
+    }
+    .search-wrap label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 0.45rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font: inherit;
+      background: #fff;
+    }
+    #searchInput:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    #searchResults {
+      list-style: none;
+      margin: 0.5rem 0 0;
+      padding: 0;
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: #fff;
+      display: none;
+      font-size: 0.85rem;
+    }
+    #searchResults.visible {
+      display: block;
+    }
+    #searchResults li button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.4rem 0.55rem;
+      border: none;
+      border-bottom: 1px solid #eee;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      color: var(--link);
+    }
+    #searchResults li:last-child button {
+      border-bottom: none;
+    }
+    #searchResults li button:hover,
+    #searchResults li button:focus {
+      background: var(--accent-soft);
+    }
+    #searchResults .empty {
+      padding: 0.5rem 0.55rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      display: block;
+      padding: 0.25rem 0;
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+    main {
+      flex: 1;
+      padding: 1.75rem 2rem 3rem;
+      max-width: 52rem;
+    }
+    main > header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+    main > header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    section {
+      margin-bottom: 2.25rem;
+    }
+    section h2 {
+      font-size: 1.25rem;
+      margin: 0 0 0.75rem;
+      color: var(--accent);
+      scroll-margin-top: 1rem;
+    }
+    section h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+    p {
+      margin: 0 0 0.75rem;
+    }
+    ul {
+      margin: 0 0 0.75rem;
+      padding-left: 1.35rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin: 0.75rem 0 1rem;
+    }
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--sidebar);
+      font-weight: 600;
+    }
+    pre.diagram {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      margin: 0.75rem 0;
+    }
+    kbd {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      padding: 0.12em 0.4em;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: #fff;
+    }
+    main img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+    figure {
+      margin: 0.75rem 0 1.25rem;
+      padding: 0;
+    }
+    figcaption {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.45rem;
+      max-width: 48rem;
+    }
+    .img-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+      margin: 0.75rem 0 1rem;
+    }
+    .img-row figure {
+      margin: 0;
+      flex: 1 1 140px;
+      max-width: 240px;
+      text-align: center;
+    }
+    .img-row img {
+      max-height: 120px;
+      width: auto;
+      object-fit: contain;
+    }
+    .img-row.tight img {
+      max-height: 72px;
+    }
+    figure.logo-fig {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+    }
+    figure.logo-fig img {
+      display: block;
+      width: auto;
+      max-width: min(100%, 320px);
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .map-grid figure {
+      margin: 0;
+    }
+    .map-grid img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: #fff;
+    }
+    .asset-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-left: 3px solid var(--border);
+      padding-left: 0.75rem;
+      margin-top: 1rem;
+    }
+    figure.heal-sprite img {
+      max-height: 140px;
+      width: auto;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    figure.slime-puddle-fig img {
+      max-height: 80px;
+      width: auto;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    figure.lich-fig img {
+      max-height: 200px;
+      width: auto;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        max-height: none;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      main {
+        padding: 1.25rem 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Wiki navigation">
+      <p class="wiki-brand">Infernumb Wiki</p>
+      <p class="tagline">Gameplay, GDD &amp; narrative</p>
+      <div class="search-wrap">
+        <label for="searchInput">Search</label>
+        <input type="search" id="searchInput" placeholder="Type to find a topic…" autocomplete="off">
+        <ul id="searchResults" role="listbox" aria-label="Search results"></ul>
+      </div>
+      <div class="editor-tools" role="region" aria-label="Page editing tools">
+        <div class="editor-actions">
+          <button type="button" id="editorToggle">Enable edit mode</button>
+          <button type="button" id="exportHtml" class="primary">Export HTML</button>
+          <button type="button" id="resetEdits">Reset page</button>
+        </div>
+        <p>Edit content in the page, then export the updated HTML to save your changes.</p>
+      </div>
+      <nav aria-label="Page sections">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#inspirations">Inspirations &amp; references</a></li>
+          <li><a href="#design-gdd">Design bible (GDD)</a></li>
+          <li><a href="#game-loop-goals">Game loop &amp; goals</a></li>
+          <li><a href="#turn-order">Turn order</a></li>
+          <li><a href="#action-points">Action points</a></li>
+          <li><a href="#end-turn">End turn</a></li>
+          <li><a href="#movement">Movement</a></li>
+          <li><a href="#attack-mode">Attack mode</a></li>
+          <li><a href="#melee-ranged">Melee &amp; ranged</a></li>
+          <li><a href="#shield">Shield</a></li>
+          <li><a href="#enemies">Enemies</a></li>
+          <li><a href="#boss-lich">Boss: Lich</a></li>
+          <li><a href="#rooms-progression">Rooms &amp; progression</a></li>
+          <li><a href="#narrative-themes">Narrative &amp; themes</a></li>
+          <li><a href="#narrative-layer-1">Layer 1 — Bibliotaphos</a></li>
+          <li><a href="#narrative-layer-2">Layer 2 — Bellatoris</a></li>
+          <li><a href="#narrative-condemnation">Condemnation &amp; endings (cut content due to time constraint)</a></li>
+          <li><a href="#level-design">Level design</a></li>
+          <li><a href="#start-flow">Start flow &amp; main menu</a></li>
+          <li><a href="#tutorial">Tutorial</a></li>
+          <li><a href="#hazards">Hazards &amp; traps</a></li>
+          <li><a href="#controls">Controls</a></li>
+          <li><a href="#mission-system">Mission &amp; objective systems</a></li>
+          <li><a href="#hud-ui">HUD &amp; feedback</a></li>
+          <li><a href="#stats">Stats &amp; damage</a></li>
+          <li><a href="#win-death">Win &amp; fail</a></li>
+          <li><a href="#souls">Souls</a></li>
+          <li><a href="#pickups">Floor pickups</a></li>
+          <li><a href="#room-rewards">Room rewards</a></li>
+          <li><a href="#system-nesting">System nesting</a></li>
+          <li><a href="#changelog">Changelog</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <header>
+        <h1>Infernumb — Gameplay &amp; design wiki</h1>
+        <p class="meta" id="wiki-revision">
+          Last wiki revision: <strong>2026-04-05</strong> · Operator: <strong>Lin Xin</strong>
+          · <a href="#changelog">Changelog</a> (date, operator, change) · Matches submitted build:
+          <strong>Infernumb M6</strong> · Source GDD:
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> (Death’s Refrain design bible)
+        </p>
+      </header>
+
+      <section id="overview">
+        <h2>Overview</h2>
+        <figure class="logo-fig">
+          <img src="images/logo.png" width="256" height="256" alt="Team Infernumb logo" loading="lazy">
+          <figcaption>Project branding</figcaption>
+        </figure>
+        <p>
+          Infernumb is a tactical, turn-based experience: you spend <strong>action points (AP)</strong> each player
+          activation to move, attack, or guard. Enemies act in a fixed alternating sequence with the player.
+          Clearing rooms advances dialogue and rewards before the next combat space.
+        </p>
+        <p><strong>At a glance (GDD):</strong> turn-based action · 2D top-down · grid-based map exploration · single-player · keyboard-first controls (mouse used on the tactical grid).</p>
+        <p>
+          This page merges <strong>Infernumb M6 implementation-accurate mechanics</strong> with
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> (<strong>Death’s Refrain</strong> design bible).
+          Where the PDF and the shipped build differ, the <strong>mechanics sections</strong> below reflect
+          <strong>M6</strong>.
+        </p>
+        <p class="asset-note">
+          Art below is bundled in this wiki’s <strong>images</strong> folder so the page opens cleanly on its own.
+        </p>
+      </section>
+
+      <section id="inspirations">
+        <h2>Inspirations &amp; references</h2>
+        <p>
+          Formal bibliography-style citations are usually <strong>not required</strong> for a “games that inspired us” list
+          in a design wiki, unless your course rubric says otherwise. Still, a short list with <strong>official or
+          primary links</strong> is worth adding: it gives credit, helps readers understand your references, and makes
+          it clear Infernumb is an <strong>original project</strong> drawing on public influences only.
+        </p>
+        <ul>
+          <li>
+            <a href="https://www.supergiantgames.com/games/hades/" rel="noopener noreferrer">Hades</a>
+            (Supergiant Games) — narrative pacing, run structure, tone
+          </li>
+          <li>
+            <a href="https://subsetgames.com/itb.html" rel="noopener noreferrer">Into the Breach</a>
+            (Subset Games) — grid tactics, readable turns, telegraphed enemy intent
+          </li>
+          <li>
+            <a href="https://www.mewgenics.run/" rel="noopener noreferrer">Mewgenics</a>
+            — turn-based tactical combat on a grid, roguelite progression
+          </li>
+          <li>
+            <a href="https://roguetrader.owlcatgames.com/" rel="noopener noreferrer">Warhammer 40,000: Rogue Trader</a>
+            (Owlcat Games) — CRPG scope, party / build fantasy in a grim setting
+          </li>
+          <li>
+            <a href="https://www.warhammer.com/en-GB/other-games-kill-team-LP" rel="noopener noreferrer">Warhammer 40,000: Kill Team</a>
+            (Games Workshop) — small-model skirmish positioning and scenario play
+          </li>
+          <li>
+            <a href="https://www.manticgames.com/halo-flashpoint/" rel="noopener noreferrer">Halo: Flashpoint</a>
+            (Mantic Games) — squad-scale skirmish tabletop pacing and objectives
+          </li>
+        </ul>
+
+        <h3>Music direction</h3>
+        <ul>
+          <li>
+            <a href="https://atlus.com/persona/" rel="noopener noreferrer">Persona</a> (Atlus) — soundtrack energy, vocal
+            hooks, battle themes as mood reference
+          </li>
+          <li>
+            <a href="https://www.guiltygear.com/" rel="noopener noreferrer">Guilty Gear</a> (Arc System Works) — high-intensity
+            rock/metal score, character-driven musical identity
+          </li>
+        </ul>
+
+        <h3>Character design</h3>
+        <ul>
+          <li>
+            <a href="https://www.hollowknight.com/" rel="noopener noreferrer">Hollow Knight</a> (Team Cherry) — readable
+            silhouettes, mood, and creature / hero design tone
+          </li>
+        </ul>
+
+        <h3>Mechanics &amp; audio inspiration — removed due to time constraints</h3>
+        <p>These were discussed for mechanics, pacing, or music direction; <strong>they are not implemented in Infernumb M6</strong>.</p>
+        <ul>
+          <li>
+            <a href="https://www.metalhellsinger.com/" rel="noopener noreferrer">Metal: Hellsinger</a> — rhythm-layered
+            combat pacing (cut)
+          </li>
+          <li>
+            <a href="https://store.steampowered.com/app/1289310/Helltaker/" rel="noopener noreferrer">Helltaker</a> — tight
+            grid-adjacent encounter puzzles / encounter framing (cut)
+          </li>
+          <li>
+            <a href="https://na.finalfantasyxiv.com/endwalker/" rel="noopener noreferrer">Final Fantasy XIV</a>
+            — <strong>Ultima Thule</strong> (Endwalker) as a reference for <strong>music progression shifting as the player
+            moves from zone to zone</strong> (cut)
+          </li>
+        </ul>
+
+        <p>
+          <strong>Also named in <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> (references table):</strong>
+          <a href="https://www.supergiantgames.com/games/hades/" rel="noopener noreferrer">Hades</a>
+          — underworld setting, room-by-room progression, dialogue between runs, enemy variety.
+        </p>
+        <p class="asset-note">
+          Replace or extend this list to match what your team actually discussed in design reviews. If a link goes stale,
+          swap in the publisher’s current product page or store listing.
+        </p>
+      </section>
+
+      <section id="design-gdd">
+        <h2>Design bible (GDD)</h2>
+        <p>
+          Source: <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> — <strong>Death’s Refrain</strong> game design document
+          (21-page design bible). Keep the PDF beside this HTML. <strong>Infernumb</strong> is the team / shipping name;
+          mechanics sections target build <strong>Infernumb M6</strong>.
+        </p>
+
+        <h3>Introduction</h3>
+        <p>
+          Death’s Refrain is a <strong>top-down, turn-based 2D action</strong> game built around tight,
+          <strong>room-clearing combat</strong> and a <strong>narrative-driven progression</strong> loop. The player
+          fights through <strong>procedurally structured environments</strong>, eliminating enemies room by room using a
+          turn-based combat system that rewards <strong>positioning</strong> and <strong>strategic decision-making</strong>.
+        </p>
+        <p>
+          The game was <strong>prototyped in Unity</strong>, built in a <strong>custom engine</strong>, and targets
+          <strong>Windows</strong>.
+        </p>
+
+        <h3>Game story (pitch)</h3>
+        <p>
+          The protagonist is a <strong>soul descending through a fractured underworld</strong>, each layer a graveyard of
+          civilization’s mistakes, haunted by the dead who still cannot let go. She is not only passing through: every soul
+          she meets is trapped in the echoes of their choices, and <strong>you must judge them</strong>.
+        </p>
+        <p>
+          <strong>Condemn</strong> them, and she absorbs their power; the underworld bends to her will.
+          <strong>Spare</strong> them all, and something stranger happens: a truth buried deeper than death itself begins
+          to surface. The question is not whether she can survive the descent, but <strong>what kind of person she will
+          be when she reaches the bottom</strong>.
+        </p>
+
+        <h3>Core pillars (GDD)</h3>
+        <ul>
+          <li>Turn-based action</li>
+          <li>2D top-down perspective</li>
+          <li>Grid-based map exploration</li>
+          <li>Single player</li>
+          <li>Keyboard controls</li>
+        </ul>
+
+        <h3>GDD action costs (reference)</h3>
+        <p>Same values as the mechanics section; repeated here for design-doc parity.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>AP cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Move (per tile)</td>
+              <td>1 AP</td>
+            </tr>
+            <tr>
+              <td>Melee attack</td>
+              <td>1 AP</td>
+            </tr>
+            <tr>
+              <td>Ranged attack</td>
+              <td>2 AP</td>
+            </tr>
+            <tr>
+              <td>Shield</td>
+              <td>1 AP</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="asset-note">
+          The PDF’s table of contents also references <strong>Resources &amp; more</strong> (inspiration, game audio, and
+          other notes). Those pages were not fully reproduced here — keep <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> alongside
+          this wiki for any sections not inlined.
+        </p>
+      </section>
+
+      <section id="game-loop-goals">
+        <h2>Game loop &amp; goals (GDD)</h2>
+        <p>
+          From the design bible; <strong>room flow in the current build</strong> is detailed under
+          <a href="#rooms-progression">Rooms &amp; progression</a> (dialogue → reward light → next room).
+        </p>
+
+        <h3>High-level loop</h3>
+        <p>Every level asks the player to <strong>clear all enemies</strong> and reach the next space. How she gets there is up to her.</p>
+        <ul>
+          <li><strong>Choose where to move</strong> on the grid</li>
+          <li><strong>Attack</strong> enemies when the opportunity arises</li>
+          <li><strong>Clear all enemies</strong> in the room / level beat</li>
+          <li><strong>Find the portal</strong> / exit to advance (GDD wording); the build uses the <strong>mysterious light</strong> after dialogue</li>
+          <li><strong>Avoid hazards</strong> along the way</li>
+          <li><strong>Collect power-ups</strong> when safe — they stack and matter in harder rooms</li>
+        </ul>
+        <p>
+          Enemies hit back on their turns; some can <strong>regain HP or refuse to stay down</strong> (e.g. Slimes
+          respawn indefinitely). Sloppy fights drag and get punishing fast if you ignore priority targets.
+        </p>
+        <p>
+          A harder level might require <strong>farming power-ups</strong> before a fight; an easier one can be blitzed.
+        </p>
+
+        <h3>Winning condition</h3>
+        <p>
+          <strong>Clear every enemy</strong> standing in the Wanderer’s path without dying. Each space is packed with
+          hazards, traps, obstacles, and enemies. Combat is turn-based: the player acts in <strong>activations</strong> with a
+          pool of <strong>AP</strong> (see <a href="#action-points">Action points</a>) to spend on a
+          <strong>single movement</strong> (once per activation) and <strong>attacks</strong> until AP is exhausted or the player ends the turn.
+        </p>
+
+        <p>
+          Enemies hit back with their own patterns; some threats <strong>regenerate</strong> or otherwise prolong fights if
+          handled sloppily (e.g. <a href="#enemies">Slime</a> respawn). Prioritisation matters.
+        </p>
+        <p>
+          Power-ups are placed across levels; detours to grab them when safe are worthwhile. Ultimate victory: defeat
+          enemies across all levels, reach the <strong>final floor alive</strong>, and clear each stage’s exit condition
+          (room clear + progression gate in the shipped game).
+        </p>
+      </section>
+
+      <section id="turn-order">
+        <h2>Turn order</h2>
+        <p>
+          The game uses a <strong>scripted action sequence</strong> that alternates the player with each enemy in
+          order. With <strong>two enemies</strong>, the pattern is:
+        </p>
+        <p>
+          <strong>Player → Enemy 1 → Player → Enemy 2 → Player → Enemy 1 → Player → Enemy 2 → …</strong>
+        </p>
+        <p>
+          With <strong>more enemies</strong>, the same idea continues: the player alternates with each enemy in
+          rotation for that stage.
+        </p>
+
+        <h3>Enemy activation order</h3>
+        <p>When multiple enemies are alive in a room, they activate in a fixed priority order (lower number = activates sooner):</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Enemy</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Scorpion</td><td>40 — first</td></tr>
+            <tr><td>Slime</td><td>45</td></tr>
+            <tr><td>Tome</td><td>50</td></tr>
+            <tr><td>Lich</td><td>60 — last</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="action-points">
+        <h2>Action points (AP)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pool size</td>
+              <td><strong>8 AP</strong> per player activation</td>
+            </tr>
+            <tr>
+              <td>Display</td>
+              <td>Shown at the <strong>top of the screen</strong></td>
+            </tr>
+            <tr>
+              <td>Available moves</td>
+              <td><strong>Click the player</strong> to see what you can do with your remaining AP</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="images/ap.png" width="320" height="120" alt="AP meter UI sprite" loading="lazy">
+          <figcaption>Action points indicator</figcaption>
+        </figure>
+      </section>
+
+      <section id="end-turn">
+        <h2>Ending your turn</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>T</kbd></td>
+              <td>End the current player activation</td>
+            </tr>
+            <tr>
+              <td>Hourglass (UI)</td>
+              <td>Bottom-right of the screen — same as ending turn</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="images/end-turn.png" width="120" height="120" alt="End Turn button sprite" loading="lazy">
+          <figcaption>End turn</figcaption>
+        </figure>
+      </section>
+
+      <section id="movement">
+        <h2>Movement</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Select destination</td>
+              <td><strong>Click</strong> the tile you want to move to</td>
+            </tr>
+            <tr>
+              <td>Once per turn</td>
+              <td>You can only move <strong>once per turn</strong> — after committing a move you cannot move again that activation</td>
+            </tr>
+            <tr>
+              <td>Validity</td>
+              <td>Only if reachable within <strong>remaining AP</strong></td>
+            </tr>
+            <tr>
+              <td>Path preview</td>
+              <td>A <strong>highlighted path</strong> appears for valid targets</td>
+            </tr>
+            <tr>
+              <td>Confirm move</td>
+              <td><strong>Click the same tile again</strong> to queue the move</td>
+            </tr>
+            <tr>
+              <td>Cost</td>
+              <td><strong>1 AP</strong> per tile entered</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="images/greenhighlight.png" width="128" height="128" alt="Green path tile highlight" loading="lazy">
+          <figcaption>Move path highlight</figcaption>
+        </figure>
+      </section>
+
+      <section id="attack-mode">
+        <h2>Attack mode</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Enter attack mode</td>
+              <td>Press <kbd>Space</kbd></td>
+            </tr>
+            <tr>
+              <td>Line of sight</td>
+              <td>While in attack mode, <strong>line of sight</strong> to each enemy is shown</td>
+            </tr>
+            <tr>
+              <td>Valid target</td>
+              <td><strong>Green</strong> line to the enemy</td>
+            </tr>
+            <tr>
+              <td>Invalid target</td>
+              <td><strong>Red</strong> line to the enemy</td>
+            </tr>
+            <tr>
+              <td>What affects validity</td>
+              <td>Current <strong>attack type</strong> (melee vs ranged), plus <strong>obstacles</strong> such as rocks and walls</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="img-row" role="group" aria-label="Line of sight color reference">
+          <figure>
+            <img src="images/greenline.png" width="128" height="32" alt="Green aim line" loading="lazy">
+            <figcaption>Valid target</figcaption>
+          </figure>
+          <figure>
+            <img src="images/redline.png" width="128" height="32" alt="Red aim line" loading="lazy">
+            <figcaption>Invalid target</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="melee-ranged">
+        <h2>Melee &amp; ranged</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Switch attack</td>
+              <td><kbd>Q</kbd> toggles <strong>melee</strong> and <strong>ranged</strong></td>
+            </tr>
+            <tr>
+              <td>Execute attack</td>
+              <td>In attack mode, <strong>click a valid enemy</strong></td>
+            </tr>
+            <tr>
+              <td>Melee AP cost</td>
+              <td><strong>1 AP</strong></td>
+            </tr>
+            <tr>
+              <td>Ranged AP cost</td>
+              <td><strong>2 AP</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="img-row" role="group" aria-label="Melee and ranged HUD icons">
+          <figure>
+            <img src="images/ui-melee.png" width="160" height="160" alt="Melee charge UI" loading="lazy">
+            <figcaption>Melee — <strong>1 AP</strong> per strike</figcaption>
+          </figure>
+          <figure>
+            <img src="images/ui-ranged.png" width="160" height="160" alt="Ranged reticle UI" loading="lazy">
+            <figcaption>Ranged — <strong>2 AP</strong> per shot</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="shield">
+        <h2>Shield</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Activate</td>
+              <td>Press <kbd>G</kbd></td>
+            </tr>
+            <tr>
+              <td>AP cost</td>
+              <td><strong>1 AP</strong></td>
+            </tr>
+            <tr>
+              <td>Cooldown</td>
+              <td><strong>1 turn</strong> — you <strong>cannot use the shield on two consecutive turns</strong></td>
+            </tr>
+            <tr>
+              <td>Movement</td>
+              <td>Shield <strong>deactivates if you move</strong> while it is active; to keep it, <strong>do not move</strong> after activating</td>
+            </tr>
+            <tr>
+              <td>When hit</td>
+              <td>The shield <strong>negates one hit</strong>, then <strong>deactivates</strong></td>
+            </tr>
+            <tr>
+              <td>Next player turn</td>
+              <td>If the shield is still up when your <strong>next</strong> player activation begins (you did not move and were not hit), it <strong>deactivates</strong> then</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="images/ui-shield.png" width="200" height="200" alt="Shield HUD ring sprite" loading="lazy">
+          <figcaption>Shield</figcaption>
+        </figure>
+      </section>
+
+      <section id="enemies">
+        <h2>Enemies</h2>
+        <div class="img-row tight" role="group" aria-label="Enemy portraits">
+          <figure>
+            <img src="images/enemy-scorpion.png" width="128" height="128" alt="Scorpion enemy" loading="lazy">
+            <figcaption>Scorpion Enemy</figcaption>
+          </figure>
+          <figure>
+            <img src="images/enemy-tome.png" width="128" height="128" alt="Tome enemy" loading="lazy">
+            <figcaption>Tome Enemy</figcaption>
+          </figure>
+          <figure>
+            <img src="images/enemy-slime.png" width="170" height="172" alt="Slime enemy" loading="lazy">
+            <figcaption>Slime enemy</figcaption>
+          </figure>
+        </div>
+
+        <h3>Scorpion</h3>
+        <ul>
+          <li><strong>Melee</strong>-focused; uses A* pathfinding to chase the player</li>
+          <li>Moves <strong>one tile per activation</strong> toward the player</li>
+          <li>Attacks when <strong>cardinally adjacent</strong>; attack has a <strong>2.5 second cooldown</strong></li>
+          <li>Drops <strong>+10 souls</strong> on death</li>
+        </ul>
+
+        <h3>Tome</h3>
+        <ul>
+          <li><strong>Ranged sentry</strong> — <strong>does not move</strong></li>
+          <li>Fires a <strong>projectile</strong> each turn if it has straight line of sight to the player</li>
+          <li><strong>Unlimited range</strong>; projectile has a <strong>3.5 second cooldown</strong></li>
+          <li>Drops <strong>+15 souls</strong> on death</li>
+        </ul>
+
+        <h3>Slime</h3>
+        <ul>
+          <li>Can use both <strong>ranged</strong> and <strong>melee</strong> attacks</li>
+          <li>Melee: <strong>2.5 s cooldown</strong> | Ranged spike: <strong>3.5 s cooldown</strong>, deals 1 damage</li>
+          <li><strong>Respawns indefinitely</strong> — no cap on respawn count</li>
+        </ul>
+        <h4>Respawn cycle</h4>
+        <ol>
+          <li>Slime HP drops to <strong>1</strong> (it cannot fully die in normal flow)</li>
+          <li>Enters <strong>dormant state</strong> — awards <strong>+10 souls</strong> immediately</li>
+          <li>On its next turn, the slime <strong>skips the turn</strong> (pauses for ~2 seconds)</li>
+          <li>On the turn after that, it plays its <strong>death animation in reverse</strong></li>
+          <li>Fully <strong>heals to max HP</strong> and returns to active AI — chasing the player again</li>
+        </ol>
+        <p>Slimes are <strong>never permanently removed</strong> from the map. To unlock a portal, the player must kill all <strong>Scorpions</strong> and <strong>Tomes</strong>. Slimes do not block portal unlock and can remain dormant or active.</p>
+        <figure class="slime-puddle-fig">
+          <img src="images/slime-puddle.png" width="128" height="76" alt="Slime puddle" loading="lazy">
+          <figcaption>Slime puddle</figcaption>
+        </figure>
+      </section>
+
+      <section id="boss-lich">
+        <h2>Boss: Lich</h2>
+        <figure class="lich-fig">
+          <img src="images/enemy-lich.png" width="384" height="384" alt="Lich enemy" loading="lazy">
+          <figcaption>Lich Enemy</figcaption>
+        </figure>
+        <p>The Lich has two phases and two attacks, with a <strong>cooldown of 4 seconds</strong> between attacks:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Trigger</th>
+              <th>Behavior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Phase 1</td>
+              <td>Start of fight</td>
+              <td>Moves to align on the <strong>same row</strong> as the player, then fires <strong>Beam</strong></td>
+            </tr>
+            <tr>
+              <td>Phase 2</td>
+              <td>HP drops to threshold</td>
+              <td>Switches to chasing the player and using <strong>Smash</strong> when adjacent</td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Attack</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Cooldown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Beam</td>
+              <td>Ranged</td>
+              <td>Fires a beam <strong>horizontally</strong> up to <strong>13 tiles</strong> in the direction the Lich faces</td>
+              <td>4 s</td>
+            </tr>
+            <tr>
+              <td>Smash</td>
+              <td>Melee AoE</td>
+              <td>Hits all <strong>cardinally adjacent</strong> tiles around the Lich</td>
+              <td>4 s</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Drops <strong>+50 souls</strong> on death.</p>
+        <h3>Boss room (L1 Room 5)</h3>
+        <p>
+          The Lich encountered in <strong>L1 Room 5</strong> is a <strong>weakened variant</strong> with different stats
+          than the full Lich profile. It shares the room with 2 Scorpions and 1 Tome. Boss music plays for this room.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Full Lich profile</th>
+              <th>L1 Room 5 Lich</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>HP</td><td>10</td><td><strong>4</strong></td></tr>
+            <tr><td>AP</td><td>3</td><td>3</td></tr>
+            <tr><td>Beam range</td><td>13 tiles</td><td><strong>5 tiles</strong></td></tr>
+            <tr><td>Attack cooldown</td><td>4 s</td><td>2 s</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="rooms-progression">
+        <h2>Rooms &amp; progression</h2>
+        <ol>
+          <li><strong>Clear the room</strong> of threats.</li>
+          <li>
+            <strong>Dialogue</strong> plays, showing the conflict between <strong>two characters</strong> that
+            <strong>created</strong> that room.
+          </li>
+          <li>After dialogue, enter the <strong>mysterious light</strong>.</li>
+          <li>
+            Choose either <strong>full heal</strong> or a <strong>permanent power-up</strong> (one option per stop).
+          </li>
+          <li>After choosing, proceed to the <strong>next room</strong>.</li>
+        </ol>
+        <div class="img-row" role="group" aria-label="Reward pickup sprites">
+          <figure class="heal-sprite">
+            <img src="images/pickup-heal.png" width="678" height="825" alt="Heal pickup — first frame only" loading="lazy">
+            <figcaption>Heal option (first frame only)</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pickup-buff.png" width="128" height="128" alt="Attack buff pickup sprite" loading="lazy">
+            <figcaption>Permanent power-up</figcaption>
+          </figure>
+        </div>
+        <figure>
+          <img src="images/reward-choice.png" width="400" height="220" alt="Choice screen UI still" loading="lazy">
+          <figcaption>Room reward choice</figcaption>
+        </figure>
+      </section>
+
+      <section id="narrative-themes">
+        <h2>Narrative &amp; themes (GDD)</h2>
+        <p>
+          The <strong>Wanderer</strong> descends through a <strong>layered underworld</strong> where each domain embodies
+          fragments of civilization’s downfall. These places are shaped not only by ruins but by souls still bound within
+          them, caught in endless dialogue over their choices in life.
+        </p>
+        <p>
+          In each layer, the Wanderer does not merely listen but must pass <strong>judgment</strong>. To
+          <strong>condemn</strong> a denizen is to gain their power, bending the underworld toward survival. To
+          <strong>spare all</strong> and walk a path of empathy is to approach a truth that can <strong>unmake death
+          itself</strong>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Story axis</th>
+              <th>Notes (GDD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Setting</td>
+              <td>Underworld (Hell); Egyptian, Greek, and Roman cultural echoes</td>
+            </tr>
+            <tr>
+              <td>Themes</td>
+              <td>Judgment &amp; morality, condemnation, dialogue between extremes</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Narrative layers in <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite>:</strong>
+          <strong>Layer&nbsp;1</strong> is Bibliotaphos (Bruno &amp; Belac), which aligns with the <strong>L1</strong>
+          combat rooms you play first. <strong>Layer&nbsp;2</strong> is Bellatoris Runiara (Alaric &amp; Farin), which
+          aligns with <strong>L2</strong> rooms. The level-progression table’s “Layer 1 / Layer 2” column is the same
+          map progression.
+        </p>
+      </section>
+
+      <section id="narrative-layer-1">
+        <h2>Layer 1 — Bibliotaphos: The Tomb of Books</h2>
+        <p>
+          The Wanderer steps into a <strong>drowned library</strong> beneath a black sun, where ink bleeds and silence
+          smothers. Here walk <strong>Bruno</strong> and <strong>Belac</strong>, two intellectuals once loved for their
+          brilliance but damned for how they faced rejection.
+        </p>
+        <p>
+          <strong>Bruno</strong>, the scholar and teacher, was ridiculed and condemned for forbidden love, yet he still
+          carried warmth and compassion despite the world’s cruelty. <strong>Belac</strong>, the physician, was discredited
+          for mistakes and later paralyzed by fear of judgment. He withheld his knowledge in the hour of need, and
+          countless lives were lost.
+        </p>
+        <p>
+          Though both were once respected, their falls diverged: Bruno resisted bitterness and remained steadfast in
+          empathy, while Belac withdrew, condemning himself in silence. Now they clash endlessly, each believing the
+          other’s reaction to ridicule was cowardice.
+        </p>
+        <p>
+          The Wanderer again faces judgment: <strong>condemn one</strong> and claim their knowledge, or
+          <strong>leave both</strong> to their unending dispute.
+        </p>
+      </section>
+
+      <section id="narrative-layer-2">
+        <h2>Layer 2 — Bellatoris Runiara: The Endless War of Ruin</h2>
+        <p>
+          The shattered capital burns with the embers of civil strife. Ruined walls echo with chants for justice, order,
+          and revolt — none answered, none silenced. Within this city, the Wanderer finds two souls forever bound by their
+          past:
+        </p>
+        <p>
+          <strong>Alaric</strong>, the warrior-commander, was tasked in life with putting down riots in the name of order.
+          He sought to protect his people, yet his campaigns left blood on the cobblestones. Like Luthen Rael, his vision
+          was burdened by necessity — sacrifice for stability, ruin for salvation.
+        </p>
+        <p>
+          <strong>Farin</strong>, the scholar-magistrate, incited unrest, believing that only through turmoil could a
+          better world emerge. He preached ideals, proud and unyielding, knowing lives would be lost in pursuit of the
+          greater good.
+        </p>
+        <p>
+          In life they opposed one another: Farin’s fire fueling rebellion, Alaric’s duty forcing his hand against the
+          very people he sought to protect. In death their quarrel continues: Alaric laments unintended suffering, while
+          Farin justifies it as noble sacrifice.
+        </p>
+        <p>
+          The Wanderer must choose: <strong>condemn one</strong> and take their strength, or <strong>let the debate stand
+          unresolved</strong>.
+        </p>
+      </section>
+
+      <section id="narrative-condemnation">
+        <h2>Condemnation &amp; endings (cut content due to time constraint)</h2>
+        <h3>Mechanic of condemnation</h3>
+        <p>
+          At the end of each layer, the Wanderer may <strong>condemn one denizen</strong>, taking a fragment of their
+          essence. This grants power — for example Alaric’s strength as vitality, Farin’s cunning as perception, Bruno’s
+          wisdom as resistance to despair, or Belac’s knowledge as new tools against corruption. These choices
+          <strong>stain the soul</strong>; wielding that strength means inheriting the weight of their damnation.
+        </p>
+        <h3>Withholding judgment (true ending path)</h3>
+        <p>
+          If the Wanderer <strong>refuses to condemn any soul</strong> throughout the descent, then at the journey’s end
+          a <strong>hidden path</strong> opens. Empathy allows her to merge with the <strong>Death Singer</strong>,
+          regaining her full strength not by power seized, but by understanding the condemned. This path reveals the
+          <strong>true ending</strong>, in which death itself is rewritten through compassion.
+        </p>
+        <p class="asset-note">
+          Tie-in to build: room rewards that offer <strong>heal vs permanent power-up</strong> echo the GDD’s moral economy;
+          align final narrative beats with whatever your submitted build implements.
+        </p>
+      </section>
+
+      <section id="level-design">
+        <h2>Level design (overview)</h2>
+        <p>
+          High-level flow is <strong>room-based</strong>: combat arenas tie into narrative dialogue, then a reward gate
+          before the next space.
+        </p>
+        <p>
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> describes the campaign as <strong>eight rooms</strong>
+          spanning a tutorial, two level bands, and a boss encounter, with difficulty rising as the Wanderer descends.
+          The table below matches <strong>Infernumb M6</strong> room content and rewards.
+        </p>
+
+        <h3>Room progression order</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Room</th>
+              <th>Layer</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>—</td><td>Tutorial</td><td>—</td><td>1 tutorial NPC (non-hostile); teaches movement, attack, shield, souls</td></tr>
+            <tr><td>1</td><td>L1 Room 1</td><td>Layer 1</td><td>2× Scorpion, 3 traps; reward: +1 Strength</td></tr>
+            <tr><td>2</td><td>L1 Room 2</td><td>Layer 1</td><td>3× Tome; 1× AP pickup; reward: +1 Defense</td></tr>
+            <tr><td>3</td><td>L1 Room 3</td><td>Layer 1</td><td>3× Scorpion, 1× Tome, 3 traps; 1× AP + 1× Heal pickup; reward: +1 Defense</td></tr>
+            <tr><td>4</td><td>L1 Room 4</td><td>Layer 1</td><td>1× Scorpion, 1× Tome, 3 traps; 1× AP + 1× Heal + 1× Buff pickup; reward: +1 Strength</td></tr>
+            <tr><td>5</td><td>L1 Room 5</td><td>Layer 1 — <strong>Boss</strong></td><td>2× Scorpion, 1× Tome, <strong>Lich</strong> (HP 4); 3 traps; pickups; boss music; no reward choice</td></tr>
+            <tr><td>6</td><td>L2 Room 1</td><td>Layer 2</td><td>3× Scorpion, 4× Tome, 1× Slime, 3 traps; 1× Buff + 3× AP + 3× Heal pickup; reward: +1 Strength</td></tr>
+            <tr><td>7</td><td>L2 Room 2</td><td>Layer 2 (end)</td><td>2× Scorpion, 2× Tome, 2× Slime; reward: +1 Defense</td></tr>
+          </tbody>
+        </table>
+        <pre class="diagram">Tutorial → L1R1 → L1R2 → L1R3 → L1R4 → L1R5 → L2R1 → L2R2 → Ending</pre>
+
+        <h3>Maps</h3>
+        <p>Planning maps from production assets:</p>
+        <div class="map-grid">
+          <figure>
+            <img src="images/map-tutorial.png" width="400" height="300" alt="Tutorial level map" loading="lazy">
+            <figcaption>Tutorial map</figcaption>
+          </figure>
+          <figure>
+            <img src="images/map-level-01.png" width="400" height="300" alt="Level 01 map" loading="lazy">
+            <figcaption>Level 01 map</figcaption>
+          </figure>
+          <figure>
+            <img src="images/map-level-02.png" width="400" height="300" alt="Level 02 map" loading="lazy">
+            <figcaption>Level 02 map</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="start-flow">
+        <h2>Start flow &amp; main menu</h2>
+        <p>
+          Selecting <strong>Play</strong> from the main menu starts the game at <strong>Tutorial_New.yaml</strong>.
+          The main menu also includes a <strong>How to Play</strong> overlay and a <strong>Quit</strong> confirm flow.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Main menu option</th>
+              <th>Behavior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Play</td>
+              <td>Starts the tutorial</td>
+            </tr>
+            <tr>
+              <td>How to Play</td>
+              <td>Opens an in-game help / keybind overlay; can be closed with ESC or the back button</td>
+            </tr>
+            <tr>
+              <td>Quit</td>
+              <td>Opens a confirmation box before leaving the game</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Note:</strong> The normal shipped flow does <strong>not</strong> skip straight to Level 1 from the main menu. Play always opens the tutorial first.</p>
+      </section>
+
+      <section id="tutorial">
+        <h2>Tutorial</h2>
+        <p>
+          The game opens with a dedicated tutorial room. In the shipped menu flow, pressing Play always opens the tutorial first.
+          A narrator (<strong>Lucifer</strong>) teaches the following topics in order:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>What you learn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Movement</td>
+              <td>Click yourself, then click a highlighted tile to preview, click again to confirm. You can only move <strong>once per turn</strong>. Press T to skip your turn.</td>
+            </tr>
+            <tr>
+              <td>Attack</td>
+              <td>Press Q to swap weapon mode; press Space to enter combat. Click a valid (highlighted) target to attack. Turns go: player acts, then enemies act.</td>
+            </tr>
+            <tr>
+              <td>Weapon mode</td>
+              <td>Shows the weapon holder UI and attack readout. Q swaps between modes when more than one is available.</td>
+            </tr>
+            <tr>
+              <td>Clearing rooms</td>
+              <td>Rooms are cleared by killing all <strong>Scorpions</strong> and <strong>Tomes</strong>. Slimes do not prevent portal unlock.</td>
+            </tr>
+            <tr>
+              <td>Shield</td>
+              <td>Press G to guard against attacks for the next turn. Good defense lets you survive longer and set up counter-attacks.</td>
+            </tr>
+            <tr>
+              <td>Souls &amp; special tiles</td>
+              <td>Right-click yourself to view your profile sheet. Pick up orbs to restore or boost stats. Watch for fire and other special tiles — they affect movement and positioning.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="hazards">
+        <h2>Hazards &amp; traps</h2>
+        <p>Rooms contain environmental dangers beyond enemies.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hazard</th>
+              <th>Effect</th>
+              <th>Active in game?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Trap / Spike</td>
+              <td>Deal <strong>1 damage</strong> when triggered. L1R1 has 3; L1R3 has 3; L1R4 has 3; L1R5 has 3; L2R1 has 3.</td>
+              <td>Yes — in all combat rooms</td>
+            </tr>
+            <tr>
+              <td>Fire (VFX)</td>
+              <td>Deals <strong>1 damage per round</strong> to any unit on the tile. Detected from fire VFX objects, not a tile ID.</td>
+              <td>Yes — decorative fire in rooms</td>
+            </tr>
+            <tr>
+              <td>Slow tile (ID 17)</td>
+              <td>Moving into costs <strong>2 AP per tile</strong> instead of 1, for both player and enemies.</td>
+              <td>Yes — tile ID 17 on maps</td>
+            </tr>
+            <tr>
+              <td>Lava</td>
+              <td><strong>Instant kill</strong> for player; 999 damage to enemies.</td>
+              <td>Coded; no current map deploys it</td>
+            </tr>
+            <tr>
+              <td>Poison tile</td>
+              <td><strong>1 damage per step</strong> taken on tile.</td>
+              <td>Coded; no current map deploys it</td>
+            </tr>
+            <tr>
+              <td>Boon tile</td>
+              <td>Grants <strong>+1 AP</strong> and <strong>+5 souls</strong> once per round while standing on it.</td>
+              <td>Coded; no current map deploys it</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Invulnerability after damage:</strong> After taking a hit, the player gains <strong>1.5 seconds</strong> of invulnerability. Hits during this window cancel the i-frames but deal no damage.</p>
+      </section>
+
+      <section id="controls">
+        <h2>Controls reference</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>Left click</kbd> (player)</td>
+              <td>Select the Wanderer; reveals move range and available actions</td>
+            </tr>
+            <tr>
+              <td><kbd>Left click</kbd> (tile)</td>
+              <td>Preview path to tile; click again to confirm and queue move</td>
+            </tr>
+            <tr>
+              <td><kbd>Left click</kbd> (enemy in attack mode)</td>
+              <td>Attack a valid highlighted target</td>
+            </tr>
+            <tr>
+              <td><kbd>Right click</kbd></td>
+              <td>Open context menu on player or enemy — shows HP, AP, STR, DEF stats. Also cancels attack selection</td>
+            </tr>
+            <tr>
+              <td><kbd>Space</kbd></td>
+              <td>Enter attack targeting mode</td>
+            </tr>
+            <tr>
+              <td><kbd>Q</kbd></td>
+              <td>Toggle between Melee and Ranged attack</td>
+            </tr>
+            <tr>
+              <td><kbd>G</kbd></td>
+              <td>Activate Shield (brace)</td>
+            </tr>
+            <tr>
+              <td><kbd>T</kbd></td>
+              <td>End turn</td>
+            </tr>
+            <tr>
+              <td><kbd>ESC</kbd></td>
+              <td>Cancel current selection. If nothing is selected, opens or navigates pause / overlay menus</td>
+            </tr>
+            <tr>
+              <td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td>
+              <td>Pan camera freely during player turn</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Pause menu</h3>
+        <p>Press <kbd>ESC</kbd> or click the pause button to open the pause menu. Options: <strong>Resume</strong>, <strong>Sound</strong> (SFX &amp; music volume sliders), <strong>Controls</strong>, <strong>Retry</strong> (restart current room), <strong>Main Menu</strong>.</p>
+      </section>
+
+      <section id="mission-system">
+        <h2>Mission &amp; objective systems</h2>
+        <p>
+          Some rooms support alternate victory conditions beyond simply defeating every enemy. These systems are tracked in the HUD
+          and can resolve a room even while enemies remain alive.
+        </p>
+        <h3>Objective actions</h3>
+        <ul>
+          <li>Stand <strong>adjacent</strong> to an objective node</li>
+          <li>Press <kbd>E</kbd> to secure it</li>
+          <li>Each secure action costs <strong>2 AP</strong></li>
+          <li>Completing all required objective actions resolves the room as <strong>objective</strong></li>
+        </ul>
+        <h3>Zone control</h3>
+        <ul>
+          <li>If the player stands alone on a control zone, the player score increases by <strong>+1</strong> that round</li>
+          <li>If enemies stand alone on the zone, the enemy score increases by <strong>+1</strong></li>
+          <li>The default target score is <strong>2</strong></li>
+          <li>If no side makes progress for 2 rounds, the zone target drops by 1 (anti-stall rule)</li>
+        </ul>
+        <h3>Mission outcomes</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Outcome</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>objective</code></td><td>Portal may unlock without killing every enemy</td></tr>
+            <tr><td><code>zone_player</code></td><td>Player wins the zone mission; portal may unlock</td></tr>
+            <tr><td><code>zone_enemy</code></td><td>Immediate loss; sends player to the death screen</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="hud-ui">
+        <h2>HUD &amp; feedback</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>UI element</th>
+              <th>What it shows</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>AP line</td><td><strong>PLAYER AP</strong>, <strong>ENEMY AP</strong>, or <strong>FOCUS AP</strong> depending on phase</td></tr>
+            <tr><td>Status line</td><td>Control hints, <strong>BRACE</strong>, <strong>BRACE CD</strong>, temp STR / DEF buffs</td></tr>
+            <tr><td>Mission line</td><td><strong>OBJ x/y | ZONE a:b</strong>, and <strong>RESULT ...</strong> when resolved</td></tr>
+            <tr><td>Enemy intent line</td><td><strong>INTENT</strong> text during enemy turn and camera focus</td></tr>
+            <tr><td>Room-clear overlay</td><td>Animated win-screen banner when a portal unlocks</td></tr>
+          </tbody>
+        </table>
+        <p>The room-clear overlay plays forward, holds briefly, then plays in reverse before disappearing.</p>
+      </section>
+
+      <section id="stats">
+        <h2>Stats &amp; damage</h2>
+        <h3>Player base stats</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Max HP</td><td>10</td></tr>
+            <tr><td>Max AP</td><td>8</td></tr>
+            <tr><td>Strength</td><td>4</td></tr>
+            <tr><td>Defense</td><td>2</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Enemy base stats</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Enemy</th>
+              <th>HP</th>
+              <th>AP</th>
+              <th>Strength</th>
+              <th>Defense</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Scorpion</td><td>4</td><td>5</td><td>4</td><td>2</td></tr>
+            <tr><td>Tome</td><td>4</td><td>1</td><td>5</td><td>1</td></tr>
+            <tr><td>Slime</td><td>4</td><td>5</td><td>4</td><td>2</td></tr>
+            <tr><td>Lich</td><td>10</td><td>3</td><td>4</td><td>3</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Damage formula</h3>
+        <p>All combat (player attacking enemy, enemy attacking player, traps) uses:</p>
+        <pre class="diagram">Damage = max(1, Attacker Strength − Defender Defense)</pre>
+        <p>The minimum is always <strong>1</strong> — attacks never deal zero damage. Using default stats:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Attacker</th>
+              <th>Target</th>
+              <th>Damage dealt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Player (STR 4)</td><td>Scorpion (DEF 2)</td><td>2</td></tr>
+            <tr><td>Player (STR 4)</td><td>Tome (DEF 1)</td><td>3</td></tr>
+            <tr><td>Player (STR 4)</td><td>Slime (DEF 2)</td><td>2</td></tr>
+            <tr><td>Player (STR 4)</td><td>Lich (DEF 3)</td><td>1</td></tr>
+            <tr><td>Scorpion (STR 4)</td><td>Player (DEF 2)</td><td>2</td></tr>
+            <tr><td>Tome (STR 5)</td><td>Player (DEF 2)</td><td>3 (projectile overrides to 1)</td></tr>
+            <tr><td>Trap</td><td>Player</td><td>1 (trap STR treated as 1)</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Note:</strong> Ranged attack does <strong>no knockback</strong>. Melee knockback is <strong>2 tiles</strong> by default. Player knockback when hit is <strong>1 tile</strong>.</p>
+      </section>
+
+      <section id="win-death">
+        <h2>Win &amp; fail conditions</h2>
+        <p class="asset-note">
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> frames the campaign goal as defeating enemies
+          across all levels and reaching the <strong>final floor alive</strong>. In <strong>M6</strong>, room clears,
+          portal unlock, slime exceptions, and mission shortcuts follow the rules below and under
+          <a href="#rooms-progression">Rooms &amp; progression</a>.
+        </p>
+        <h3>Winning a room</h3>
+        <p>
+          The usual path is to defeat <strong>all enemies</strong> in the room. Once the last required enemy falls the <strong>portal unlocks</strong> (door blocker disappears and the room-clear animation plays). You must also have <strong>claimed the reward</strong> from the light before the portal will let you through.</p>
+        <p>Some rooms can also unlock via <strong>mission victory</strong>: completing the room objective or winning the zone system can open the portal even if enemies remain alive.
+        </p>
+        <h3>Winning the game</h3>
+        <p>Clear every room across both levels and exit through the final portal. The game ends with an ending cutscene.</p>
+        <h3>Death</h3>
+        <p>
+          The Wanderer's HP reaching <strong>0</strong> triggers the death animation and transitions to the
+          <strong>death screen</strong>. From there you can retry or return to the main menu.
+        </p>
+      </section>
+
+      <section id="souls">
+        <h2>Souls</h2>
+        <p>
+          Souls are a currency earned by <strong>defeating enemies</strong>. Your current soul count is visible on
+          the <strong>right-click profile sheet</strong>. Boon tiles on the map also grant souls.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Souls gained</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Kill Scorpion</td><td>+10</td></tr>
+            <tr><td>Kill Tome</td><td>+15</td></tr>
+            <tr><td>Kill Lich</td><td>+50</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="pickups">
+        <h2>Floor pickups</h2>
+        <p>
+          Some rooms have <strong>floor pickups</strong> placed on the map — separate from the post-room reward light.
+          Step on them during your turn to collect.
+        </p>
+        <p class="asset-note">
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> describes the buff pickup as boosting damage
+          <strong>for the rest of the run</strong>. <strong>Infernumb M6</strong> implements the ATK orb as
+          <strong>temporary</strong> (+1 Strength until your next attack) — see the table below.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Pickup</th>
+              <th>Effect</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Heal orb</td>
+              <td>Restore <strong>+2 HP</strong></td>
+              <td>Single use; only works if not at full HP</td>
+            </tr>
+            <tr>
+              <td>ATK orb</td>
+              <td>+1 Strength until next attack</td>
+              <td>Temporary — consumed on next attack</td>
+            </tr>
+            <tr>
+              <td>AP orb</td>
+              <td>+1 AP to current pool</td>
+              <td>Only if not already at max AP</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="img-row" role="group" aria-label="Floor pickup sprites">
+          <figure>
+            <img src="images/pickup-buff.png" width="160" height="160" alt="ATK orb pickup" loading="lazy">
+            <figcaption>ATK orb</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pickup-heal.png" width="160" height="160" alt="Heal orb pickup" loading="lazy">
+            <figcaption>Heal orb</figcaption>
+          </figure>
+          <figure>
+            <img src="images/ap.png" width="160" height="160" alt="AP orb pickup" loading="lazy">
+            <figcaption>AP orb</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="room-rewards">
+        <h2>Room rewards</h2>
+        <p>
+          After clearing each room and completing the dialogue, enter the <strong>mysterious light</strong> to choose
+          between a <strong>full heal</strong> (restore HP to max) or the room's <strong>permanent stat upgrade</strong>.
+          The upgrade varies per room:
+        </p>
+        <p class="asset-note">
+          <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> labels the light’s options as
+          <strong>Healing power-up</strong> (full heal), <strong>Attack power-up</strong> (+Strength), and
+          <strong>Defense power-up</strong> (+Defense), depending on the room’s scripted reward.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Room</th>
+              <th>Permanent upgrade option</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tutorial</td><td><em>No reward choice</em></td></tr>
+            <tr><td>Layer 1 room 1</td><td>+1 Strength</td></tr>
+            <tr><td>Layer 1 room 2</td><td>+1 Defense</td></tr>
+            <tr><td>Layer 1 room 3</td><td>+1 Defense</td></tr>
+            <tr><td>Layer 1 room 4</td><td>+1 Strength</td></tr>
+            <tr><td>Layer 2 room 1</td><td>+1 Strength</td></tr>
+            <tr><td>Layer 2 room 2</td><td>+1 Defense</td></tr>
+            <tr><td>Boss room</td><td><em>No reward choice</em> — portal and reward node share the same tile; node auto-completes</td></tr>
+          </tbody>
+        </table>
+        <p>Upgrades are <strong>permanent</strong> and carry through to subsequent rooms. Press <kbd>Y</kbd> for full heal or <kbd>N</kbd> for the stat upgrade (also clickable).</p>
+      </section>
+
+      <section id="system-nesting">
+        <h2>System nesting</h2>
+        <p>How major systems stack:</p>
+        <pre class="diagram">Round / activation order
+└── Player activation (8 AP)
+    ├── Movement (once per turn; 1 AP per tile; preview path → confirm same tile)
+    ├── End turn (T or hourglass)
+    ├── Attack mode (Space)
+    │   ├── Attack type (Q: melee 1 AP / ranged 2 AP)
+    │   └── Target validity (attack rules + line of sight + obstacles)
+    └── Shield (G, 1 AP, cooldown; ends on move / hit / next-turn rule)
+└── Enemy activations (per-enemy behavior: scorpion, tome, slime, lich, …)</pre>
+      </section>
+
+      <section id="changelog">
+        <h2>Changelog</h2>
+        <p>
+          Course wiki format (e.g. 2101): each row is a <strong>lookup</strong> for <strong>date</strong>,
+          <strong>operator</strong>, and <strong>what changed</strong>. <strong>Newest revision first.</strong>
+          Update the <a href="#wiki-revision">header summary</a> when you add a row. Tabular mechanics and room data live
+          in HTML tables here; attach a separate <code>.xlsx</code> only if your instructor asks for Excel in addition.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Operator</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-04-05</td>
+              <td>Lin Xin</td>
+              <td>
+                Synced with <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> + build label
+                <strong>Infernumb M6</strong>: PDF copied beside wiki; all cites point to new filename; narrative
+                <strong>Layer&nbsp;1 = Bibliotaphos</strong>, <strong>Layer&nbsp;2 = Bellatoris</strong> per GDD; added
+                PDF-only notes (8-room summary, win framing, reward naming, buff run vs M6, enemy pressure, Hades ref row).
+                Earlier: rubric header/changelog operator column, validation, edit/export, duplicate <code>start-flow</code>
+                removed, pickups images, sidebar order.
+              </td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Initial HTML wiki + search</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Added <code>wiki/images/</code> copies of game PNGs; figures for UI, enemies, rewards, and level maps</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Renamed wiki files <code>greenhighlight.png</code>, <code>greenline.png</code>, <code>redline.png</code>; captions use <code>assets/…</code> paths (no old folder naming in text)</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Integrated GDD PDF (Death’s Refrain): design bible, loop/goals, narrative layers, condemnation; cross-linked with mechanics</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td><code>pickup-heal.png</code> = first frame of Health VFX strip; <code>enemy-slime.png</code> = first frame of <code>slime_idle_1r4c_128x128px</code></td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Lich art: first frame of idle sheet; stripped file-path text from figure captions</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Narrative note (superseded 2026-04-05): wiki briefly used inverted layer labels; <cite><a href="Infernumb_GDD.pdf">Infernumb_GDD.pdf</a></cite> and M6 wiki now use Layer 1 = Bibliotaphos, Layer 2 = Bellatoris</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Added: Controls, Stats &amp; damage, Win/fail, Souls, Floor pickups, Room rewards. Fixed: Scorpion/Tome/Lich accuracy; movement once-per-turn</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Full room composition table (all rooms); slime respawn cycle detail; L1R5 boss room + weakened Lich stats; hazards table corrected (deployed vs coded-only)</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Added: Tutorial overview, Hazards &amp; traps, room progression order table, enemy activation priority order</td>
+            </tr>
+            <tr>
+              <td>2026-04-04</td>
+              <td>Lin Xin</td>
+              <td>Added: Start flow &amp; main menu, mission/objective/zone systems, HUD notes; corrected win-condition and ESC wording to match implementation</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <p class="meta">Authored by : Lin Xin</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var DEBOUNCE_MS = 150;
+      var sections = document.querySelectorAll("main section[id]");
+      var input = document.getElementById("searchInput");
+      var list = document.getElementById("searchResults");
+      var editableNodes = document.querySelectorAll("main > header, main > section, main > p.meta");
+      var editorToggle = document.getElementById("editorToggle");
+      var exportHtml = document.getElementById("exportHtml");
+      var resetEdits = document.getElementById("resetEdits");
+      var index = [];
+      var debounceTimer = null;
+      var isEditMode = false;
+
+      function buildIndex() {
+        index = [];
+        sections.forEach(function (sec) {
+          var id = sec.id;
+          if (!id) return;
+          var h2 = sec.querySelector("h2");
+          var title = h2 ? h2.textContent.trim() : id;
+          var haystack = (title + " " + sec.textContent).toLowerCase().replace(/\s+/g, " ");
+          index.push({ id: id, title: title, haystack: haystack });
+        });
+      }
+
+      function scoreEntry(entry, tokens) {
+        if (tokens.length === 0) return 0;
+        var s = 0;
+        for (var i = 0; i < tokens.length; i++) {
+          if (entry.haystack.indexOf(tokens[i]) !== -1) s++;
+        }
+        return s;
+      }
+
+      function renderResults(tokens) {
+        list.innerHTML = "";
+        if (tokens.length === 0) {
+          list.classList.remove("visible");
+          return;
+        }
+        var ranked = index
+          .map(function (e) {
+            return { entry: e, score: scoreEntry(e, tokens) };
+          })
+          .filter(function (x) {
+            return x.score > 0;
+          })
+          .sort(function (a, b) {
+            return b.score - a.score || a.entry.title.localeCompare(b.entry.title);
+          });
+
+        if (ranked.length === 0) {
+          var li0 = document.createElement("li");
+          li0.className = "empty";
+          li0.textContent = "No matches";
+          list.appendChild(li0);
+          list.classList.add("visible");
+          return;
+        }
+
+        ranked.forEach(function (x) {
+          var li = document.createElement("li");
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = x.entry.title;
+          btn.addEventListener("click", function () {
+            goToSection(x.entry.id);
+          });
+          li.appendChild(btn);
+          list.appendChild(li);
+        });
+        list.classList.add("visible");
+      }
+
+      function goToSection(id) {
+        var el = document.getElementById(id);
+        location.hash = id;
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        input.value = "";
+        list.innerHTML = "";
+        list.classList.remove("visible");
+        input.blur();
+      }
+
+      function tokenize(q) {
+        return q
+          .toLowerCase()
+          .trim()
+          .split(/[\s,.;:/\\]+/)
+          .filter(function (t) {
+            return t.length > 0;
+          });
+      }
+
+      function onSearchInput() {
+        buildIndex();
+        var tokens = tokenize(input.value);
+        renderResults(tokens);
+      }
+
+      function setEditMode(nextValue) {
+        if (!editorToggle) return;
+        isEditMode = nextValue;
+        document.body.classList.toggle("edit-mode", isEditMode);
+        editableNodes.forEach(function (node) {
+          if (isEditMode) {
+            node.setAttribute("contenteditable", "true");
+            node.setAttribute("spellcheck", "true");
+          } else {
+            node.removeAttribute("contenteditable");
+            node.removeAttribute("spellcheck");
+          }
+        });
+        editorToggle.textContent = isEditMode ? "Disable edit mode" : "Enable edit mode";
+      }
+
+      function exportCurrentHtml() {
+        var clone = document.documentElement.cloneNode(true);
+        var cloneBody = clone.querySelector("body");
+        if (cloneBody) cloneBody.classList.remove("edit-mode");
+        clone.querySelectorAll("[contenteditable], [spellcheck]").forEach(function (node) {
+          node.removeAttribute("contenteditable");
+          node.removeAttribute("spellcheck");
+        });
+        var cloneToggle = clone.querySelector("#editorToggle");
+        if (cloneToggle) cloneToggle.textContent = "Enable edit mode";
+
+        var html = "<!DOCTYPE html>\n" + clone.outerHTML;
+        var blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "GDD wiki edited.html";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 1000);
+      }
+
+      input.addEventListener("input", function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(onSearchInput, DEBOUNCE_MS);
+      });
+
+      input.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape") {
+          list.innerHTML = "";
+          list.classList.remove("visible");
+        }
+      });
+
+      document.addEventListener("click", function (ev) {
+        if (!list.classList.contains("visible")) return;
+        var t = ev.target;
+        if (t === input || input.contains(t)) return;
+        if (list.contains(t)) return;
+        list.innerHTML = "";
+        list.classList.remove("visible");
+      });
+
+      if (editorToggle) {
+        editorToggle.addEventListener("click", function () {
+          setEditMode(!isEditMode);
+        });
+      }
+
+      if (exportHtml) {
+        exportHtml.addEventListener("click", function () {
+          exportCurrentHtml();
+        });
+      }
+
+      if (resetEdits) {
+        resetEdits.addEventListener("click", function () {
+          var shouldReset = window.confirm("Discard unsaved edits and reload the page?");
+          if (shouldReset) window.location.reload();
+        });
+      }
+
+      buildIndex();
+      if (editorToggle) setEditMode(false);
+    })();
+  </script>
+</body>
+</html>
