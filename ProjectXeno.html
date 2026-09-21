@@ -10,8 +10,8 @@
   <meta property="og:title" content="Project Xeno &mdash; Lin Xin">
   <meta property="og:description" content="Unreal C++ predator AI study. Metric-gated adaptation that feels like learning, without machine learning.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/ProjectXeno.html">
-  <!-- TODO add Assets/xeno-og.png at 1200x630, then uncomment -->
-  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/xeno-og.png"> -->
+  <!-- og:image set from Assets/xeno-og.png (1200x630, title card) -->
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/xeno-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -44,12 +44,10 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <!-- MEDIA SLOT 1 of 4 : Assets/xeno-prototype.png : the Unreal test bed in play -->
-      <!--
       <figure class="shot">
-        <img src="Assets/xeno-prototype.png" alt="The Project Xeno Unreal prototype running, with the predator and test NPCs in the scene.">
-        <figcaption>The Unreal test bed. A playable experiment, not a full game.</figcaption>
+        <img src="Assets/xeno-prototype.png" alt="Top-down Unreal test bed: red predator, green NPC mid-task, Adaptive Hunting Debug modifiers on the right.">
+        <figcaption>The Unreal test bed. Red is the predator, green is the NPC (task progress floating above it). Top-right is the Adaptive Hunting Debug panel &mdash; profile, difficulty, cabinet/vent gates, noise viz, and the modifiers I used to tune runs.</figcaption>
       </figure>
-      -->
 
       <h1 class="display-5 mb-3">Project Xeno</h1>
       <p class="lead">Unreal predator AI study. Make it feel like it learns you, without teaching it anything.</p>
@@ -64,7 +62,11 @@
         </div>
         <div>
           <dt>Course</dt>
-          <dd>CSD2183</dd>
+          <dd>CSD2183, Year 2 Trimester 3</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>4 May &ndash; 26 Jul 2026</dd>
         </div>
         <div>
           <dt>Stack</dt>
@@ -75,6 +77,21 @@
           <dd>Research prototype</dd>
         </div>
       </dl>
+
+      <ul class="scan-strip">
+        <li><strong>Metric gating</strong> &mdash; adaptation spec: action &rarr; metric &rarr; threshold &rarr; gate &rarr; behavior.</li>
+        <li><strong>Unreal prototype</strong> &mdash; most of the C++ test bed (agent, gates, search and chase hooks).</li>
+        <li><strong>NPC profiles</strong> &mdash; Noob / Normal / Pro as measuring sticks.</li>
+        <li><strong>Adaptive Hunting Debug</strong> &mdash; live meters, cabinet/vent unlocks, profile and difficulty modifiers.</li>
+        <li><strong>Four-layer AI</strong> &mdash; implemented toward the team stack in the prototype.</li>
+        <li><strong>Not mine</strong> &mdash; architecture design and research presentation (team); Blueprints (team).</li>
+      </ul>
+
+      <h3 class="mt-4">What we're testing</h3>
+      <p>Two mechanics, stacked: a <strong>multi-layer</strong> hunt AI, and <strong>fake self-learning</strong> &mdash; the Isolation illusion that the predator adapts to you, built with authored rules rather than a model that trains.</p>
+      <p>Multi-layer means the pressure is not one brain. A session layer watches survival and captures and pushes Easy / Medium / Hard. A learning component counts hide habits and unlocks cabinet and vent checks when those counters cross a threshold. Under that, a hand-authored FSM runs Patrol, Investigate, Chase, and CheckArea. The creature only gets senses; the escalation above it decides what it is allowed to do.</p>
+      <p>Fake self-learning is the point of the gates. Hide in cabinets enough and checking cabinets becomes legal and more likely. It reads as &ldquo;it learned my trick.&rdquo; It is counters and thresholds &mdash; <code>UAlienLearningComponent</code> &mdash; not machine learning. You can tune when the cheat starts. You can also turn it off.</p>
+      <p>NPC profiles (Noob / Normal / Pro) are the measuring stick: same predator, different competence, so we can tell whether the illusion holds across panic and evasion rather than winning against one prey type.</p>
 
       <p>Alien: Isolation's xenomorph feels like it adapts to you. It is not training a model. A Director AI is omniscient &mdash; pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
       <p>Team 19 researched that split and presented it together. I specified how our agent would adapt, designed most of the NPC test profiles, and built most of the Unreal prototype in C++. Blueprints were team. The playable is a test bed, not a full game.</p>
@@ -125,30 +142,29 @@
       </figure>
 
       <h3 class="mt-4">Metric gating</h3>
-      <p>I owned the adaptation spec. Track how the player actually behaves. When a meter crosses a threshold, a new behavior becomes legal. Escalation is authored and readable: you can tune when the alien starts checking lockers. It does not invent an invisible cheat.</p>
+      <p>I owned the adaptation spec and wired the gates that actually run in the Unreal test bed. Track habits and session outcomes. When a counter or pacing metric crosses a threshold, new pressure becomes legal or gets scaled. Escalation is authored and readable: you can tune when the alien starts checking cabinets. It does not invent an invisible cheat.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Metric</th><th scope="col">What it catches</th><th scope="col">Why it matters</th></tr>
+            <tr><th scope="col">Metric</th><th scope="col">What it catches</th><th scope="col">What opens / scales</th></tr>
           </thead>
           <tbody>
-            <tr><td>Flamethrower uses</td><td>How often you buy safety with fire</td><td>A player who lives on the flamethrower is not the same as one who barely touches it</td></tr>
-            <tr><td>Locker / vent hides</td><td>Reliance on static cover</td><td>The classic Isolation habit &mdash; and the one that should stop working if overused</td></tr>
-            <tr><td>Noise events</td><td>How loud your path through the ship is</td><td>Stealth versus panic, measured rather than assumed</td></tr>
-            <tr><td>Time in line of sight</td><td>How long you stay visible</td><td>Exposure as a habit, not a single mistake</td></tr>
-            <tr><td>Repeated escape routes</td><td>Using the same exit again</td><td>The agent should notice a pattern, not just a direction</td></tr>
+            <tr><td>Cabinet hide count</td><td>How often prey uses cabinets</td><td>Unlocks cabinet checks; chance rises with the counter (<code>UAlienLearningComponent</code>)</td></tr>
+            <tr><td>Vent hide count</td><td>How often prey uses vents</td><td>Same gate path for vents, tracked separately</td></tr>
+            <tr><td>Avg survival time</td><td>How long prey lasts between captures</td><td>Feeds auto difficulty (Easy / Medium / Hard)</td></tr>
+            <tr><td>Captures per minute</td><td>How often the hunt ends</td><td>With survival, votes difficulty; scales move speed, check chance, and CheckArea duration</td></tr>
+            <tr><td>Noise peak</td><td>How loud the map is right now</td><td>Not a gate &mdash; drives Investigate, then CheckArea at the peak</td></tr>
           </tbody>
         </table>
       </div>
-      <p>The pipeline is the same for every row: action &rarr; metric &rarr; threshold &rarr; gate &rarr; new behavior. That sameness is deliberate. One mechanism covers five habits, so adding a sixth is a data change rather than a new system, and tuning one threshold does not require rewriting the creature.</p>
-      <p>The design pressure sits on the thresholds, not on the architecture. Set them too low and the alien escalates before the player has a habit; set them too high and the adaptation never lands. The page does not list the shipped numbers because the prototype was a test bed for the mechanism, not a balance pass on Isolation's pacing curve.</p>
-      <!-- MEDIA SLOT 2 of 4 : Assets/xeno-gate-debug.png : debug view of meters / gates if you have one -->
-      <!--
-      <figure class="shot">
-        <img src="Assets/xeno-gate-debug.png" alt="Debug overlay showing tracked player metrics and which behavior gates are open.">
-        <figcaption>Meters and gates, visible while the prototype runs.</figcaption>
+      <p>The learning pipeline is the same for both hide types: action &rarr; counter &rarr; unlock step &rarr; check chance &rarr; CheckArea can pick that hide. Difficulty sits one layer above and multiplies those chances once they exist. Noise is a sense, not a curriculum row &mdash; it tells the FSM where to look, not whether a new behavior is legal.</p>
+      <p>The study deck also listed a fuller Isolation-style set (flamethrower, LOS time, repeated escape routes). Those stayed research targets. The prototype instruments the hide gates and the session difficulty loop, which is enough to test whether authored &ldquo;learning&rdquo; reads as intentional rather than random.</p>
+      <p>The design pressure sits on the unlock step and the difficulty thresholds, not on the architecture. Set them too low and the alien escalates before the prey has a habit; set them too high and the adaptation never lands.</p>
+      <!-- MEDIA SLOT 2 of 4 : Assets/xeno-gate-debug.png : Adaptive Hunting Debug panel -->
+      <figure class="shot shot-narrow">
+        <img src="Assets/xeno-gate-debug.png" alt="Adaptive Hunting Debug panel: NPC profile and survival stats, alien state, cabinet and vent gate chances, and modifier buttons for profile, difficulty, and sim speed.">
+        <figcaption>Adaptive Hunting Debug. Live meters on top (survival, captures, cabinet/vent chance and unlock). Modifiers below &mdash; swap NPC profile, difficulty, and gate weights without rebuilding.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Four-layer architecture</h3>
       <p>The team set four layers, each managing the one below. I implemented toward that structure in the prototype.</p>
@@ -203,38 +219,34 @@
       </figure>
 
       <h3 class="mt-4">NPC profiles</h3>
-      <p>NPCs were the experiment around the predator. I designed most of three reaction profiles, not as flavour cast, but as instruments for measuring whether the alien's pressure was readable.</p>
+      <p>NPCs were the experiment around the predator. I designed most of three profiles, not as flavour cast, but as instruments for measuring whether the alien's pressure was readable. Study-deck names mapped onto the build as Civilian &rarr; Noob, Technician &rarr; Normal, Ghost &rarr; Pro.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Profile</th><th scope="col">Reaction</th><th scope="col">What it tests</th></tr>
+            <tr><th scope="col">Profile</th><th scope="col">Behaviour in the build</th><th scope="col">What it tests</th></tr>
           </thead>
           <tbody>
-            <tr><td>Civilian</td><td>Long delay, freezes</td><td>Whether panic reads as weakness the predator can exploit</td></tr>
-            <tr><td>Technician</td><td>A beat to assess, then acts</td><td>Whether a short hesitation still leaves a survivable window</td></tr>
-            <tr><td>Ghost</td><td>Zero delay; tracks the xenomorph; stays out of the danger zone</td><td>Whether skilled evasion still feels hunted rather than trivial</td></tr>
+            <tr><td>Noob</td><td>Slow; small threat radius; finishes the task under threat; cannot hide</td><td>Whether panic and stubbornness read as weakness the predator can exploit</td></tr>
+            <tr><td>Normal</td><td>Base speed; mid threat radius; flees; cannot hide</td><td>Whether a short assessment and flee still leave a survivable window</td></tr>
+            <tr><td>Pro</td><td>Fast; wide threat sense; can hide in cabinets / vents</td><td>Whether skilled evasion and hide use still feel hunted rather than trivial</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Three delays on the same threat is a controlled experiment. If Civilian dies every time and Ghost never feels pressure, the predator is tuned to one player type. If all three profiles produce different but legible outcomes, the agent is doing the job Isolation's Director does: managing fear across a range of competence rather than winning a fight.</p>
-      <!-- MEDIA SLOT 3 of 4 : Assets/xeno-npc.gif : Ghost or Civilian reacting to the predator -->
-      <!--
+      <p>Three competence levels on the same threat is a controlled experiment. If Noob dies every time and Pro never feels pressure, the predator is tuned to one prey type. If all three produce different but legible outcomes, the agent is doing the job Isolation's Director does: managing fear across a range of competence rather than winning a fight.</p>
+      <!-- MEDIA SLOT 3 of 4 : Assets/xeno-npc.gif : NPC sees alien, hides in cabinet -->
       <figure class="shot">
-        <img src="Assets/xeno-npc.gif" alt="An NPC profile reacting to the xenomorph in the Unreal prototype.">
-        <figcaption>Same threat, different reaction delay. The profiles are the measuring stick.</figcaption>
+        <img src="Assets/xeno-npc.gif" alt="NPC spots the predator and ducks into a cabinet to hide.">
+        <figcaption>NPC sees the alien, then hides in a cabinet. The profiles exist so this kind of reaction can be delayed, assessed, or skipped &mdash; same threat, different competence.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">What I built</h3>
       <p>Most of the Unreal prototype in C++. The gating pipeline, the agent structure toward the four-layer model, and the hooks the NPC profiles needed to react. Blueprints were shared team work for wiring and iteration speed where they made sense.</p>
-      <p>A research prototype has a different success condition than a shipped game. The question was not whether the alien was fun for an hour, it was whether the illusion held when you watched the meters move and the gates open. If a locker habit opened a locker-check behavior, and a Ghost still looked hunted rather than scripted, the study worked.</p>
-      <!-- MEDIA SLOT 4 of 4 : Assets/xeno-chase.gif : search or chase beat -->
-      <!--
+      <p>A research prototype has a different success condition than a shipped game. The question was not whether the alien was fun for an hour, it was whether the illusion held when you watched the meters move and the gates open. If a cabinet habit opened cabinet-check behavior, and a Pro still looked hunted rather than scripted, the study worked.</p>
+      <!-- MEDIA SLOT 4 of 4 : Assets/xeno-chase.gif : chase beat -->
       <figure class="shot">
-        <img src="Assets/xeno-chase.gif" alt="The predator searching or chasing in the Unreal prototype.">
-        <figcaption>Low-level primitives under a gated strategy change.</figcaption>
+        <img src="Assets/xeno-chase.gif" alt="The predator chasing in the Unreal prototype.">
+        <figcaption>Chase beat. Low-level pursue under whatever strategy the gates have made legal.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Outcome and reflection</h3>
       <p>Xeno shipped as a research prototype and a study deck, not a complete game, which is the right shape for a course whose question was &ldquo;how does Isolation's predator actually work&rdquo; rather than &ldquo;can we remake Sevastopol.&rdquo; The part I would redo is not the research. It is the order I built in, and the tools I reached for while I did.</p>
@@ -248,7 +260,7 @@
       <ul>
         <li>Metric-gating adaptation spec</li>
         <li>Unreal prototype &mdash; most of the C++</li>
-        <li>NPC reaction profiles (majority) &mdash; Civilian, Technician, Ghost</li>
+        <li>NPC reaction profiles (majority) &mdash; Noob, Normal, Pro</li>
         <li>Four-layer AI &mdash; team design, implementation toward it in the prototype</li>
         <li>Research, presentation, Blueprints &mdash; team</li>
       </ul>
