@@ -10,8 +10,7 @@
   <meta property="og:title" content="Death's Refrain &mdash; Lin Xin">
   <meta property="og:description" content="2D top-down grid tactics on a custom C++ engine. Every shipped mechanic, the Lua state machines, the level flow, and the integration.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/DeathsRefrain.html">
-  <!-- TODO add Assets/dr-og.png at 1200x630, a landscape shot of a room mid-turn, then uncomment -->
-  <!-- <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/dr-og.png"> -->
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/dr-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -43,13 +42,10 @@
 
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
-      <!-- MEDIA SLOT 1 of 5 : Assets/dr-hero.png or .mp4 : a room mid-turn with the movement range and HUD visible -->
-      <!--
       <figure class="shot">
-        <img src="Assets/dr-hero.png" alt="A Death's Refrain room mid-turn, showing the grid, the player unit, enemies, and the action point HUD.">
-        <figcaption>A Layer 1 room mid-turn.</figcaption>
+        <img src="Assets/dr-hero.png" alt="A Death's Refrain room mid-turn, showing the grid, the player unit, and the action point HUD.">
+        <figcaption>Mid-turn. AP 3/8 on the HUD; the unit selected on the grid.</figcaption>
       </figure>
-      -->
 
       <h1 class="display-5 mb-3">Death's Refrain</h1>
       <p class="lead">2D top-down grid tactics on our own engine. I designed every shipped mechanic and wrote the Lua that runs them.</p>
@@ -67,10 +63,26 @@
           <dd><a href="Hellmaker.html" class="text-info">Hellmaker</a> &mdash; engine and tools</dd>
         </div>
         <div>
+          <dt>Courses</dt>
+          <dd>GAM200 (SEP 3), Year 2 Tri 1 &middot; GAM250 (SEP 4), Year 2 Tri 2</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>31 Aug 2025 &ndash; 3 May 2026</dd>
+        </div>
+        <div>
           <dt>Stack</dt>
           <dd>Lua, YAML scenes and maps</dd>
         </div>
       </dl>
+
+      <ul class="scan-strip">
+        <li><strong>AP combat</strong> &mdash; eight-point pool; move, melee, ranged, shield, and slow tiles all draw on it.</li>
+        <li><strong>Enemies</strong> &mdash; scorpion, tome, slime behaviours; Lich two-phase encounter (beam then smash).</li>
+        <li><strong>Run flow</strong> &mdash; tutorial through Layer 2; post-room heal vs permanent +STR / +DEF; portal.</li>
+        <li><strong>Lua + integration</strong> &mdash; state machines for combat, HUD, dialogue, pickups, rewards; YAML, UI, audio, VFX wired in.</li>
+        <li><strong>Not mine</strong> &mdash; art and music; some tile maps and the boss-room layout had help.</li>
+      </ul>
 
       <p>Turn-based combat on a grid. Spend action points to move, strike, or guard, then the enemies answer. Clear the room, take a heal or a permanent boost, and step through the portal.</p>
       <p>This and <a href="Hellmaker.html" class="text-info">Hellmaker</a> are one Year 2 project across two pages, split by what I did: this is the game and the design, that one is the engine and the editor tooling underneath it.</p>
@@ -116,13 +128,10 @@
       <p>The shield is the clearest example of a cost that is not its price. One point is nothing out of eight. What it actually costs is your movement, since it drops the moment you step, and your next turn, since it cannot run twice in a row. Priced purely in AP it would be an obvious buy every single turn; priced in mobility and tempo it is a read on whether you are about to be hit.</p>
       <p>Damage is Strength minus Defense with a floor of one, so nothing in the game is ever immune to anything. A wall of armour slows you down rather than stopping you, which keeps a bad matchup expensive instead of unwinnable.</p>
       <p>Pickups sit on the grid rather than in a menu &mdash; heal, ATK, and AP orbs, all of which cost movement to reach. The AP orb is the neatest of them, because collecting it means spending points to gain points, and the detour only pays if the path is short enough. Souls drop from kills and track score.</p>
-      <!-- MEDIA SLOT 2 of 5 : Assets/dr-los.png : attack mode with a green legal line and a red blocked one, side by side if possible -->
-      <!--
       <figure class="shot">
-        <img src="Assets/dr-los.png" alt="Attack mode showing a green line to a legal target and a red line to a blocked one.">
-        <figcaption>Line of sight resolved before you commit. Green is a legal hit, red is blocked.</figcaption>
+        <img src="Assets/dr-los.png" alt="Attack mode showing a green line of sight to a legal target and a red tile under the cursor where the shot is blocked.">
+        <figcaption>Line of sight before commit. Green reaches a legal target; the red tile under the cursor is blocked.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Enemies</h3>
       <p>Three shipped types, and each one attacks a different part of your positioning rather than a different part of your health bar.</p>
@@ -142,13 +151,14 @@
       <p>Souls cut against it, which is worth admitting. They track score and score rewards kills, so the slime is the one thing the scoreboard wants you to take and the tactics want you to walk past. It is a small contradiction and nobody tripped over it in testing, but it is the first place I would look if I revisited the scoring.</p>
       <p>Between the three, the questions do not overlap. Scorpions ask how close you are, tomes ask what you are lined up with, and slimes ask what is worth your points. Three behaviours is a small roster, so they had to test different things or the rooms would all read the same.</p>
       <p>The <strong>Lich</strong> in Layer 1 Room 5 is a two-phase fight, beam then smash, sharing the room with scorpions and a tome. I designed the encounter; the room layout had help.</p>
-      <!-- MEDIA SLOT 3 of 5 : Assets/dr-lich.gif : the Lich fight, ideally showing both phases -->
-      <!--
       <figure class="shot">
-        <img src="Assets/dr-lich.gif" alt="The Lich boss fight, showing the beam phase and the smash phase with scorpions and a tome in the room.">
-        <figcaption>The Layer 1 boss. Two phases, fought while the room's regular threats are still live.</figcaption>
+        <img src="Assets/dr-lich-beam.gif" alt="The Lich boss fight in the beam phase, with other enemies still in the room.">
+        <figcaption>Phase one &mdash; beam. Fought while the room's regular threats are still live.</figcaption>
       </figure>
-      -->
+      <figure class="shot">
+        <img src="Assets/dr-lich-smash.gif" alt="The Lich boss fight in the smash phase, with other enemies still in the room.">
+        <figcaption>Phase two &mdash; smash. Same encounter, different pressure.</figcaption>
+      </figure>
 
       <h3 class="mt-4">The run</h3>
       <p>I set the flow: a tutorial, five Layer 1 rooms with the Lich at the fifth, then two Layer 2 rooms. Enemy counts, traps, and pickups escalate across them, so later rooms are written assuming the verbs are already known.</p>
@@ -192,25 +202,19 @@
       <h3 class="mt-4">Teaching it</h3>
       <p>The tutorial always runs first and introduces one verb at a time: move, then attack and line of sight, then the weapon swap, then what actually clears a room, then the shield, then souls and special tiles. Later rooms combine what the earlier ones taught rather than adding new rules.</p>
       <p>The ordering is the design. Movement comes before attacking because the AP pool means nothing until you have felt something else compete for it. The weapon swap is only introduced after line of sight exists, since the choice between melee and ranged is meaningless before you know what can see you. The shield is in that sequence because testing put it there, and late in it because it is a reaction &mdash; you cannot teach a reaction to someone who has not yet been punished.</p>
-      <!-- MEDIA SLOT 4 of 5 : Assets/dr-move-range.gif : highlighting a path and committing it, with the AP counter ticking down -->
-      <!--
       <figure class="shot">
         <img src="Assets/dr-move-range.gif" alt="A movement path being highlighted across the grid and then committed, with action points decreasing.">
         <figcaption>Path preview, then commit. The cost is visible before the decision is final.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Lua and integration</h3>
       <p>I wrote the Lua state machines behind all of it: player combat, enemies, HUD, pause, dialogue, pickups, rewards, and the portal. I hooked YAML scenes and tile maps into <a href="Hellmaker.html" class="text-info">Hellmaker</a>, connected the UI to that flow, and wired audio and effects so that attacks, rooms, and menus actually played.</p>
       <p>Integration is the part that does not show up in a feature list and decides whether a project ships. Art, music, and effects were produced by other people; none of it is in the game until something calls it at the right moment, and on a nine-person team that seam is where the schedule usually goes. Being the person holding it is also how I ended up with the clearest picture of what the build actually did, which is why the balance passes landed with me.</p>
       <p>I authored the GDD and the gameplay wiki, and presented gameplay at reviews.</p>
-      <!-- MEDIA SLOT 5 of 5 : Assets/dr-reward.png : the post-room reward choice screen -->
-      <!--
-      <figure class="shot shot-narrow">
-        <img src="Assets/dr-reward.png" alt="The reward screen offering a full heal or a permanent Strength or Defense increase.">
-        <figcaption>The only permanent decision in the run.</figcaption>
+      <figure class="shot">
+        <img src="Assets/dr-reward.png" alt="The post-room reward screen offering a full heal or a permanent Defense increase.">
+        <figcaption>Post-room choice. Heal the damage you just took, or take a permanent boost for every room after.</figcaption>
       </figure>
-      -->
 
       <h3 class="mt-4">Playtests</h3>
       <p>The complaint that mattered was pace. Testers found combat slow and came away frustrated rather than challenged, and separately could not work out what the shield was for. I ran most of the number passes that followed.</p>

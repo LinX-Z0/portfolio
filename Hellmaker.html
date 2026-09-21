@@ -63,6 +63,14 @@
           <dd><a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> &mdash; the game</dd>
         </div>
         <div>
+          <dt>Courses</dt>
+          <dd>GAM200 (SEP 3), Year 2 Tri 1 &middot; GAM250 (SEP 4), Year 2 Tri 2</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>31 Aug 2025 &ndash; 3 May 2026</dd>
+        </div>
+        <div>
           <dt>Stack</dt>
           <dd>C++20, Dear ImGui, spdlog</dd>
         </div>
@@ -72,7 +80,7 @@
         <li><strong>Debug layer</strong> &mdash; shared spdlog pipeline across Editor, Sandbox, and Engine; sinks, ring buffer, crash helpers.</li>
         <li><strong>Debug console</strong> &mdash; ImGui live stream and severity filtering inside the editor.</li>
         <li><strong>GUI manager</strong> &mdash; ImGui wrap so callers stay UI-agnostic; docking, FPS, editor mode, launcher return.</li>
-        <li><strong>Asset browser</strong> &mdash; authored; drag-and-drop spawn-at-mouse; placement loop from ~2 min to 30&ndash;45 s.</li>
+        <li><strong>Asset browser</strong> &mdash; authored; drag-and-drop spawn-at-mouse; placement loop from ~1 min to ~5 s.</li>
         <li><strong>Not mine</strong> &mdash; architecture and components (Timothy); rendering and gizmos (Alfred); physics (Jaeden); ImGuiFileDialog and share of browser / game view (Timothy).</li>
       </ul>
 
@@ -80,7 +88,7 @@
 
       <h3 class="mt-4">Why I asked for the tools job</h3>
       <p>On <a href="Overseas.html" class="text-info">Overseas</a> I spent a trimester retuning values by rebuilding the game to find out whether each guess was right. Nothing was exposed, nothing was observable while it ran, and the reflection I wrote at the end of that project was that debug views and tunables belong in place before a system needs tuning, not after. Hellmaker is where I got to act on that, and the difference is that this time the user of the thing I was building was my own team.</p>
-      <p>That reframes what &ldquo;good&rdquo; means. A gameplay system is judged on how it feels; a tool is judged on how much it removes from someone else's day. Every decision below is some version of the same question: what is a designer or an artist currently paying for in rebuilds, guesswork, or lost context, and can this give it back to them? The clearest answer I got was the asset browser, which took a two-minute round trip down to well under one and did it on every placement for the rest of the project.</p>
+      <p>That reframes what &ldquo;good&rdquo; means. A gameplay system is judged on how it feels; a tool is judged on how much it removes from someone else's day. Every decision below is some version of the same question: what is a designer or an artist currently paying for in rebuilds, guesswork, or lost context, and can this give it back to them? The clearest answer I got was the asset browser, which took a roughly one-minute round trip down to about five seconds and did it on every placement for the rest of the project.</p>
 
       <h3 class="mt-4">The engine, in brief</h3>
       <p>Hellmaker builds as three CMake targets. Engine is a static library holding the runtime &mdash; the GameObject scene model, rendering, physics, audio through FMOD, windowing and input through GLFW. Editor and Sandbox both link it. Editor is the ImGui toolset; Sandbox is the shipping game executable.</p>
@@ -156,7 +164,7 @@
       <h3 class="mt-4">Asset browser</h3>
       <p>The panel the team picked content from, and the piece with the most direct effect on how a room got built. I authored it, with Timothy contributing a smaller share including the ImGuiFileDialog integration. Assets drag out of the browser and onto the game view; I implemented spawn-at-mouse, so a dropped file becomes a GameObject exactly where the cursor was. The game view itself is shared work with Alfred Lo and Timothy, who own render and gizmos.</p>
       <p>Dropping at the cursor rather than at the origin sounds like a detail and is really the whole feature. Spawning at origin means every placement is followed by a drag to where you actually meant, which is a second action, a second chance to misjudge, and a reason to stop thinking about layout and start thinking about the tool. Landing it under the cursor makes placement a single gesture and keeps the designer's attention on the room.</p>
-      <p>What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand &mdash; name, transform, numbers &mdash; then waiting out a rebuild to see it. Roughly two minutes to answer a question as small as whether a crate sat too far left. With the browser that loop runs thirty to forty-five seconds, about two thirds off, and it comes back on every single placement rather than once.</p>
+      <p>What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand &mdash; name, transform, numbers &mdash; then waiting out a rebuild to see it. Roughly a minute to answer a question as small as whether a crate sat too far left. With the browser that loop runs about five seconds, and it comes back on every single placement rather than once.</p>
       <p>The time is the smaller half of it. Hand-editing YAML means holding a coordinate system in your head and translating an intention into numbers, so a designer is not really placing objects, they are predicting where objects will land and then checking. Cutting the wait matters; turning the task from arithmetic into pointing is what actually changed how rooms got built.</p>
       <figure class="shot">
         <img src="Assets/hellmaker-drag-spawn.gif" alt="An asset dragged out of the browser and dropped onto the game view, appearing as a GameObject under the cursor.">
@@ -175,9 +183,9 @@
       <p>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for &mdash; a plan that delivers all of both was not scoped ambitiously enough to start with. The game that closed on this engine is on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page; this one stays with the tooling.</p>
       <p>The lesson I actually took out of it sits on the seam between the engine team and the game team. When the engine did not do what I needed, my instinct was to work around it in game code, and that instinct was wrong often enough to be a pattern rather than a bad day. A workaround lives in the game forever, invisible to the people maintaining the engine, and the next person to hit the same wall writes it again slightly differently. Asking the engine team to change the engine costs one conversation and fixes it once, for everyone. I spent a project building tools so other people would not have to waste time, and did not think to ask anyone to do the same for me.</p>
       <p>The sharpest version of it was not in the engine at all. I had been authoring four versions of every tile, one per orientation, and it had never occurred to me to ask for rotation support in the tilemap &mdash; I had been doing it by hand long enough that the work had stopped registering as work. A teammate asked for the feature in a single sentence. Three quarters of those tile assets existed because I had routed around a gap instead of naming it, which is the uncomfortable shape of the lesson: the person best placed to notice a missing feature is whoever is absorbing its absence, and that is the same person least likely to raise it.</p>
-      <p>The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted: people built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because two minutes is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
+      <p>The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted: people built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because a minute is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
       <p>It rhymes with what <a href="Overseas.html" class="text-info">Overseas</a> taught me, one step on. There the lesson was to ask before building on someone else's code, because agreeing on an idea is not the same as sharing a model of it. Here it is that the platform is negotiable too, and the person who owns it would usually rather change it than watch you route around it.</p>
-      <p>If I picked this up again, the target would be the thirty to forty-five seconds still sitting in that loop. Taking it down from two minutes was the large, easy win. Closing the round trip completely, so that a change lands in a scene already running, is where the rest of the time is.</p>
+      <p>If I picked this up again, the target would be the five seconds still sitting in that loop. Taking it down from a minute was the large win. Closing the round trip completely, so that a change lands in a scene already running, is where the rest of the time is.</p>
 
       <h4 class="mt-5">Role</h4>
       <ul>
