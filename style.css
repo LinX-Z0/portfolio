@@ -159,9 +159,36 @@ section {
   margin-bottom: 1.5rem;
 }
 
-.authored {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.9rem;
+.scan-strip {
+  max-width: 44rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.scan-strip li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.45rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.scan-strip li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #cb93ff;
+}
+
+.scan-strip strong {
+  color: #cb93ff;
+  font-weight: 500;
 }
 
 .shop-table {

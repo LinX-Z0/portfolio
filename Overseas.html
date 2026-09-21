@@ -10,8 +10,7 @@
   <meta property="og:title" content="Overseas &mdash; Lin Xin">
   <meta property="og:description" content="Top-down pixel survival fishing in C++ on DigiPen's Alpha Engine. Fishing loop, rarity-driven QTE, health and supply, shipwrecks, and shop upgrades.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Overseas.html">
-  <!-- TODO swap for a 1200x630 landscape gameplay still. Overseas.png is a square title card and link previews will centre crop it. -->
-  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/Overseas.png">
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/overseas-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -44,7 +43,7 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <div class="mb-4">
-        <video class="w-100 rounded shadow" controls poster="Assets/Overseas.png" preload="metadata">
+        <video class="w-100 rounded shadow" controls poster="Assets/overseas-gameplay.png" preload="metadata">
           <source src="Assets/Overseas.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -83,8 +82,21 @@
         </div>
       </dl>
 
+      <ul class="scan-strip">
+        <li><strong>Fishing spots</strong> &mdash; three in world, collision, markers, timed and catch-driven replacement.</li>
+        <li><strong>QTE</strong> &mdash; rarity-driven red window and marker speed, Common / Uncommon / Rare.</li>
+        <li><strong>Health and supply</strong> &mdash; twelve-frame HUD, drain, regen, step-down thresholds.</li>
+        <li><strong>Shipwrecks</strong> &mdash; three in world, +50 supply, respawn on consume.</li>
+        <li><strong>Shop upgrades</strong> &mdash; wired Health, Supply, Armor, and Efficiency into the run numbers.</li>
+        <li><strong>Not mine</strong> &mdash; quota RNG and movement (Mandy); world art and day/night (Ethan, Renfred); menus and shop UI (Timothy).</li>
+      </ul>
+
       <p>You skipper a small boat. A quota and a deadline sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve, and keep clear of the monsters that take a bite out of it. Hit a wreck for a supply dump. Clear the quota and the job renews with more days and a fresh target. Miss it, or hit zero health, and the run is over.</p>
-      <p>I owned fishing, the QTE skill check, shipwrecks, the health/supply bars, and shop upgrades that rewrite those numbers. I also drew the player boat textures. Quota RNG and player movement were Mandy's. Monsters, rocks, water, and day/night sat with Ethan and Renfred. Menus and shop UI sat with Timothy.</p>
+
+      <figure class="shot">
+        <img src="Assets/overseas-gameplay.png" alt="Overseas overworld: the boat on open water with quota, days, day-night bar, and health and supply icons.">
+        <figcaption>On the water. Quota and days sit top-right; health and supply bottom-left. Fishing spots and wrecks share the map with rocks and debris.</figcaption>
+      </figure>
 
       <h3 class="mt-4">Design intent</h3>
       <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. There is no dock and no other source of supply in the world, so wrecks are the only way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
@@ -145,17 +157,14 @@
       <h3 class="mt-4">Fishing spots</h3>
       <p>Three spots exist at any time. Collide one, enter a fishing state, leave the overworld loop. Animated markers, so a spot is a thing you steer at rather than a silent trigger. A spot leaves the world two ways: you fish it, or it ages out on a random 10&ndash;20 second life. Either exit deletes that spot and immediately places a replacement elsewhere, so the count never drops below three.</p>
       <p>The timer is the half that carries the pacing. Replace-on-catch alone only reshuffles the ocean when the player acts, which means anyone who parks beside a spot keeps it indefinitely and the map goes static. A random life makes the water move whether or not you engage, so a spot you can see but have not reached is a decision with a clock on it. Random rather than fixed, so the respawn beat cannot be counted and camped.</p>
-      <!-- MEDIA SLOT 1 of 8 : Assets/overseas-spot-respawn.gif : a spot ageing out and a replacement appearing elsewhere -->
-      <!--
       <figure class="shot">
         <img src="Assets/overseas-spot-respawn.gif" alt="A fishing spot marker disappears and a new one fades in elsewhere on the water, keeping three on screen.">
         <figcaption>A spot ages out on its 10&ndash;20 second life and is replaced immediately, so the count never drops below three and the water keeps moving whether or not the player engages.</figcaption>
       </figure>
-      -->
       <p class="authored">Authored in <code>Fishing</code>.</p>
 
       <h3 class="mt-4">QTE</h3>
-      <p>Fishing versus none is a state. In fishing, a marker sweeps a 360px bar and you have 10 seconds to land it inside the green window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green, red, and white overlays show where you are in the ask.</p>
+      <p>Fishing versus none is a state. In fishing, a marker sweeps a 360px green bar and you have 10 seconds to land it inside the red window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green track, red window, white marker.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table">
           <thead>
@@ -168,41 +177,35 @@
           </tbody>
         </table>
       </div>
-      <!-- MEDIA SLOT 2 of 8 : three stills of the bar, cropped identically, one per tier. Highest value image on the page. -->
-      <!--
       <figure class="shot">
         <div class="shot-row">
           <figure>
-            <img src="Assets/overseas-qte-common.png" alt="QTE bar on a Common fish, green window 108 pixels tall.">
+            <img src="Assets/overseas-qte-common.png" alt="QTE bar on a Common fish, red window about 108 pixels tall.">
             <figcaption>Common &mdash; 108px</figcaption>
           </figure>
           <figure>
-            <img src="Assets/overseas-qte-uncommon.png" alt="QTE bar on an Uncommon fish, green window 54 pixels tall.">
+            <img src="Assets/overseas-qte-uncommon.png" alt="QTE bar on an Uncommon fish, red window about 54 pixels tall.">
             <figcaption>Uncommon &mdash; 54px</figcaption>
           </figure>
           <figure>
-            <img src="Assets/overseas-qte-rare.png" alt="QTE bar on a Rare fish, green window 27 pixels tall.">
+            <img src="Assets/overseas-qte-rare.png" alt="QTE bar on a Rare fish, red window about 27 pixels tall.">
             <figcaption>Rare &mdash; 27px</figcaption>
           </figure>
         </div>
-        <figcaption>The same 360px bar at each shipped tier. The marker also doubles in speed across each step, which the stills cannot show.</figcaption>
+        <figcaption>The same green bar at each shipped tier. The red window halves each step; the white marker also doubles in speed, which the stills cannot show.</figcaption>
       </figure>
-      -->
       <p>Both multipliers apply at once, so the time the marker actually spends inside the window quarters per tier rather than halving — just over half a second on Common down to three hundredths on Rare, a sixteenth of the reaction time across two tiers. That is the whole point of tying rarity to the skill check. A rare fish is a different test, not the same bar with a bigger payout attached.</p>
       <p>Difficulty and payout deliberately do not move together. Uncommon is four times harder than Common for double the gold; Rare is four times harder again for four times the gold. Per unit of timing precision, both of the hard tiers are worth about half what a Common is &mdash; which would be an exploit if rarity were something the player chose, but it is rolled when the QTE starts. The tiers that pay for the run are the ones you cannot farm. Trash pays 15g, so the floor is low rather than nothing.</p>
       <p>The upper end is deliberately loud. A single Rare is 400g, enough to buy the first five upgrade levels outright, which cost 322g together. Landing one thirty-millisecond window is the difference between a day of grinding and a shopping trip, and that is the payoff that makes the brutal window read as a chance rather than a punishment.</p>
-      <!-- MEDIA SLOT 3 of 8 : Assets/overseas-qte-rare.gif : a Rare attempt at full speed -->
-      <!--
       <figure class="shot">
-        <img src="Assets/overseas-qte-rare.gif" alt="The QTE marker sweeping at 800 pixels per second past a 27 pixel green window on a Rare fish.">
+        <img src="Assets/overseas-qte-rare.gif" alt="The QTE marker sweeping at 800 pixels per second past a 27 pixel red window on a Rare fish.">
         <figcaption>A Rare attempt at full speed. 800px/s against a 27px window leaves about three hundredths of a second to commit.</figcaption>
       </figure>
-      -->
       <p>Three tiers ship in the fish data. Epic and Legendary already exist in the QTE code, so a later tier is a data change rather than new code.</p>
       <p class="authored">Authored in <code>FishingSkill</code>.</p>
 
       <h3 class="mt-4">Health and supply</h3>
-      <p>Two bars, bottom-left, 11-frame sprite sheets. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health takes a discrete hit whenever you run into one of the monsters that spawn around the map, but between those hits it does not answer to time, it answers to supply:</p>
+      <p>Two bars, bottom-left, twelve-frame sprite sheets from empty to full. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health takes a discrete hit whenever you run into one of the monsters that spawn around the map, but between those hits it does not answer to time, it answers to supply:</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table bar-table">
           <thead>
@@ -218,55 +221,44 @@
           </tbody>
         </table>
       </div>
-      <!-- MEDIA SLOT 4 of 8 : Assets/overseas-bars-spritesheet.png : the two 11 frame sheets, flat, at native resolution -->
-      <!--
       <figure class="shot">
-        <img src="Assets/overseas-bars-spritesheet.png" alt="The health and supply bar sprite sheets, eleven frames each, stepping from full to empty.">
-        <figcaption>The two sheets. Eleven frames each, so the HUD reads a bar as value/10 and steps rather than slides.</figcaption>
+        <img src="Assets/overseas-bars-spritesheet.png" alt="Health heart and supply barrel sprite sheets, twelve frames each from empty to full.">
+        <figcaption>Health (heart) and supply (barrel). Twelve frames each from empty to full &mdash; the HUD steps rather than slides.</figcaption>
       </figure>
-      -->
       <p>A day runs 61.5 seconds, and that number is what makes the drain bite. A starting tank of 100 empties in twenty seconds, so one tank covers under a third of a day. Run it dry and health bleeds at 1 per second, which means a full boat that never picks anything up dies at around 116 seconds &mdash; just under two days. The shortest contract runs three. You cannot survive to the end of even the easiest job on the supply you start with, and with no dock in the game, the detour to a wreck is not an optimisation. It is the only reason a run continues at all.</p>
       <p>Those thresholds are raw points, not a percentage of maximum, and that single choice does more work than anything else in the system. At the starting cap of 100 you sit in the regen band for four seconds after a top-up. At a bought-up cap of 400 you sit there for sixty-four &mdash; a full in-game day of healing rather than four seconds of it. A bigger tank does not just delay starvation, it multiplies the time you spend healing, which makes the Supply upgrade a health upgrade the shop never advertises.</p>
-      <p>The gap between 75 and 80 is a dead band where health does nothing. It stops the bar flipping between regen and decay while supply hovers on the boundary &mdash; the HUD frame is health/10, and an icon that ticks up and down every second reads as broken rather than as tense.</p>
-      <!-- MEDIA SLOT 5 of 8 : Assets/overseas-bars-drain.gif : long enough to show regen stop and health turn over -->
-      <!--
+      <p>The gap between 75 and 80 is a dead band where health does nothing. It stops the bar flipping between regen and decay while supply hovers on the boundary &mdash; the HUD steps in discrete frames, and an icon that ticks up and down every second reads as broken rather than as tense.</p>
       <figure class="shot shot-narrow">
         <img src="Assets/overseas-bars-drain.gif" alt="The supply bar stepping down frame by frame while the health bar holds, then begins to fall.">
         <figcaption>Supply falling through the thresholds. Health holds through the dead band, then starts stepping down once supply drops past 75.</figcaption>
       </figure>
-      -->
       <p>That is the body clock. Quota can be unfair in the other corner; if these icons are unreadable, you cannot make the greedy-or-safe call the loop is built for.</p>
-      <p class="authored">Authored in <code>Bar</code>. I also drew the player boat textures on Mandy's movement body.</p>
-      <!-- MEDIA SLOT 6 of 8 : Assets/overseas-boat-textures.png : the boat sheet, flat, on a transparent or flat background -->
-      <!--
-      <figure class="shot shot-narrow">
-        <img src="Assets/overseas-boat-textures.png" alt="The player boat textures drawn for Overseas, shown as a flat sheet.">
-        <figcaption>Player boat textures, drawn to sit on Mandy's movement code.</figcaption>
-      </figure>
-      -->
+      <p class="authored">Authored in <code>Bar</code>.</p>
 
       <h3 class="mt-4">Shipwrecks</h3>
       <p>Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at your current maximum &mdash; so a Supply upgrade quietly raises what a wreck is worth, since a bigger tank means less of the 50 spills over the top. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
       <p>The arithmetic is tight on purpose. A day costs 307 supply at the base drain and a wreck returns 50, so simply breaking even means cashing one about every ten seconds. Nobody sustains that, which is the point &mdash; the opening run is meant to feel like bailing out a boat, and Supply and Efficiency are what turn the scramble into a job you can actually work.</p>
       <p>Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
-      <!-- MEDIA SLOT 7 of 8 : Assets/overseas-wreck.gif : the collision and the supply bar jumping -->
-      <!--
       <figure class="shot">
         <img src="Assets/overseas-wreck.gif" alt="The boat colliding with a shipwreck and the supply bar jumping up several frames.">
         <figcaption>A wreck cashed in. The +50 is capped at current maximum, so the same pickup is worth more once Supply has been bought up.</figcaption>
       </figure>
-      -->
       <p class="authored">Authored in <code>shipwrecks</code>.</p>
 
       <h3 class="mt-4">Shop upgrades</h3>
       <p>Timothy owned the shop UI. I wired what a purchase actually does to the numbers the HUD reads. Four lines, split by what they touch: two raise a pool, two bend a rate.</p>
-      <!-- MEDIA SLOT 8 of 8 : Assets/overseas-shop.png : the shop screen with prices legible. Shoot it mid run so gold on hand is visible. -->
-      <!--
       <figure class="shot">
-        <img src="Assets/overseas-shop.png" alt="The Overseas shop screen showing the four upgrade lines and their current prices.">
-        <figcaption>The four lines, with prices already climbing. UI by Timothy; the numbers behind each purchase are mine.</figcaption>
+        <div class="shot-row">
+          <figure>
+            <img src="Assets/overseas-shop.png" alt="Overseas upgrade shop open as a book: Health and Supply on the left page, Armour and Efficiency on the right, base prices 25, 25, 30, and 50.">
+            <figcaption>Upgrade shop. The four lines at base price. UI by Timothy; the numbers behind each buy are mine.</figcaption>
+          </figure>
+          <figure>
+            <img src="Assets/overseas-shop-skins.png" alt="Overseas skin shop open as a book: Default, Black, Red, and Gold boat skins with prices.">
+            <figcaption>Skin shop. Same book UI; cosmetics rather than the pool and rate lines.</figcaption>
+          </figure>
+        </div>
       </figure>
-      -->
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
@@ -323,10 +315,9 @@
       <ul>
         <li>Fishing spots &mdash; three in world, collision, markers, timed and catch-driven replacement (<code>Fishing</code>)</li>
         <li>QTE &mdash; rarity-driven window and marker speed, overlays (<code>FishingSkill</code>)</li>
-        <li>Health / supply HUD &mdash; 11-frame bars, drain, regen, step-down (<code>Bar</code>)</li>
+        <li>Health / supply HUD &mdash; twelve-frame heart and barrel, drain, regen, step-down (<code>Bar</code>)</li>
         <li>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
         <li>Shop upgrades hooked to those bars; co-author <code>Game.cpp</code></li>
-        <li>Player boat textures</li>
       </ul>
 
       <p class="project-links mt-4">
