@@ -491,6 +491,40 @@ section {
   max-width: 42rem;
 }
 
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) 1fr;
+  gap: 1.5rem 2rem;
+  align-items: start;
+  max-width: 48rem;
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+.about-copy p {
+  margin-bottom: 0.85rem;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 14rem;
+  }
+}
+
 .contact-links {
   display: flex;
   flex-wrap: wrap;
