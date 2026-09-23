@@ -407,6 +407,12 @@ section {
   height: 200px;
 }
 
+.card-img-top.card-img-doc {
+  object-fit: cover;
+  object-position: top center;
+  background: #f4f4f4;
+}
+
 .card-body {
   position: relative;
   z-index: 2;
