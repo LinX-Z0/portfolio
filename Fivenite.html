@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" data-i18n-title="fn.meta.title">
   <div id="twinkle-container"></div>
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
     <div class="container-fluid">
@@ -31,10 +31,10 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about" data-i18n="nav.about">About Me</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
-                  <li class="nav-item">
+          <li class="nav-item">
             <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
           </li>
-</ul>
+        </ul>
       </div>
     </div>
   </nav>
@@ -42,39 +42,39 @@
     <div class="container">
       <figure class="shot">
         <img src="Assets/fivenite-map.png" alt="FIVENITE labelled Mega Man Maker map with eleven challenge zones and a boss page.">
-        <figcaption>Eleven challenges, boss on the last page. Drop-in is intensity 1 on purpose.</figcaption>
+        <figcaption data-i18n="fn.fig.map.cap">Eleven challenges, boss on the last page. Drop-in is intensity 1 on purpose.</figcaption>
       </figure>
 
       <h1 class="display-5 mb-3">FIVENITE</h1>
-      <p class="lead">Mega Man Maker. Easy combat stage. Pick a weapon, drop in, fight.</p>
+      <p class="lead" data-i18n="fn.lead">Mega Man Maker. Easy combat stage. Pick a weapon, drop in, fight.</p>
       <dl class="project-meta">
         <div>
-          <dt>Role</dt>
-          <dd>Solo level design</dd>
+          <dt data-i18n="fn.meta.role">Role</dt>
+          <dd data-i18n="fn.meta.roleVal">Solo level design</dd>
         </div>
         <div>
-          <dt>Course</dt>
-          <dd>CSD2541</dd>
+          <dt data-i18n="fn.meta.course">Course</dt>
+          <dd data-i18n="fn.meta.courseVal">CSD2541</dd>
         </div>
         <div>
-          <dt>Timeline</dt>
-          <dd>15 Jun &ndash; 12 Jul 2026</dd>
+          <dt data-i18n="fn.meta.timeline">Timeline</dt>
+          <dd data-i18n="fn.meta.timelineVal">15 Jun &ndash; 12 Jul 2026</dd>
         </div>
         <div>
-          <dt>Tool</dt>
-          <dd>Mega Man Maker</dd>
+          <dt data-i18n="fn.meta.tool">Tool</dt>
+          <dd data-i18n="fn.meta.toolVal">Mega Man Maker</dd>
         </div>
         <div>
-          <dt>Theme</dt>
-          <dd>Fighting + freedom</dd>
+          <dt data-i18n="fn.meta.theme">Theme</dt>
+          <dd data-i18n="fn.meta.themeVal">Fighting + freedom</dd>
         </div>
         <div>
-          <dt>Scope</dt>
-          <dd>11 challenges + boss</dd>
+          <dt data-i18n="fn.meta.scope">Scope</dt>
+          <dd data-i18n="fn.meta.scopeVal">11 challenges + boss</dd>
         </div>
         <div>
-          <dt>Set</dt>
-          <dd>
+          <dt data-i18n="fn.meta.set">Set</dt>
+          <dd data-i18n="fn.meta.setVal" data-i18n-html>
             <a href="MegaManMaker.html" class="text-info">Mega Man Maker</a> &middot;
             <a href="JumpMan.html" class="text-info">JumpMan</a> &middot;
             <a href="PrisonBreak.html" class="text-info">Prison Break</a>
@@ -82,48 +82,48 @@
         </div>
       </dl>
 
-      <p>This is the opposite of <a href="JumpMan.html" class="text-info">JumpMan</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom &mdash; weapon choice, plus break and build so rooms are not stand-and-shoot. The Fortnite joke in the title is the brief: carefree on the surface, still authored underneath.</p>
+      <p data-i18n="fn.p.intro" data-i18n-html>This is the opposite of <a href="JumpMan.html" class="text-info">JumpMan</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom &mdash; weapon choice, plus break and build so rooms are not stand-and-shoot. The Fortnite joke in the title is the brief: carefree on the surface, still authored underneath.</p>
 
-      <h3 class="mt-4">Design intent</h3>
-      <p>Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once.</p>
-      <p>The starting weapon is the fork. Rooms are written to work with what you picked, not one scripted loadout. That is the hard part of an easy combat stage: if every room assumes one gun, freedom was flavour text. If every room works with several, the cadence has to name attack as a family rather than as a specific button.</p>
+      <h3 class="mt-4" data-i18n="fn.h.intent">Design intent</h3>
+      <p data-i18n="fn.p.intent1">Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once.</p>
+      <p data-i18n="fn.p.intent2">The starting weapon is the fork. Rooms are written to work with what you picked, not one scripted loadout. That is the hard part of an easy combat stage: if every room assumes one gun, freedom was flavour text. If every room works with several, the cadence has to name attack as a family rather than as a specific button.</p>
 
-      <h3 class="mt-4">Cadence alphabet</h3>
-      <p>Same notation method as the other Maker stages. Different alphabet, because the theme is combat.</p>
+      <h3 class="mt-4" data-i18n="fn.h.cadence">Cadence alphabet</h3>
+      <p data-i18n="fn.p.cadence1">Same notation method as the other Maker stages. Different alphabet, because the theme is combat.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Code</th><th scope="col">Verb</th></tr>
+            <tr><th scope="col" data-i18n="fn.cad.th.code">Code</th><th scope="col" data-i18n="fn.cad.th.verb">Verb</th></tr>
           </thead>
           <tbody>
-            <tr><td>A / A'</td><td>Jump / spring jump</td></tr>
-            <tr><td>B / B'</td><td>Jump-reflect / charged-dash reflect</td></tr>
-            <tr><td>C / C'</td><td>Attack / break block with the weapon</td></tr>
-            <tr><td>E / E'</td><td>Build / alternate builds to climb</td></tr>
-            <tr><td>F</td><td>Disappearing platform</td></tr>
+            <tr><td data-i18n="fn.cad.a.code">A / A'</td><td data-i18n="fn.cad.a.verb">Jump / spring jump</td></tr>
+            <tr><td data-i18n="fn.cad.b.code">B / B'</td><td data-i18n="fn.cad.b.verb">Jump-reflect / charged-dash reflect</td></tr>
+            <tr><td data-i18n="fn.cad.c.code">C / C'</td><td data-i18n="fn.cad.c.verb">Attack / break block with the weapon</td></tr>
+            <tr><td data-i18n="fn.cad.e.code">E / E'</td><td data-i18n="fn.cad.e.verb">Build / alternate builds to climb</td></tr>
+            <tr><td data-i18n="fn.cad.f.code">F</td><td data-i18n="fn.cad.f.verb">Disappearing platform</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="mt-4">The curve</h3>
-      <p>Eleven challenges, boss on the last page. The intensity curve is meant to feel like a match: low drop-in, mid combat toys, late climb-and-shoot, boss as the peak.</p>
+      <h3 class="mt-4" data-i18n="fn.h.curve">The curve</h3>
+      <p data-i18n="fn.p.curve1">Eleven challenges, boss on the last page. The intensity curve is meant to feel like a match: low drop-in, mid combat toys, late climb-and-shoot, boss as the peak.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Zone</th><th scope="col">Ask</th><th scope="col">Cadence</th><th scope="col">Intensity</th></tr>
+            <tr><th scope="col" data-i18n="fn.curve.th.zone">Zone</th><th scope="col" data-i18n="fn.curve.th.ask">Ask</th><th scope="col" data-i18n="fn.curve.th.cadence">Cadence</th><th scope="col" data-i18n="fn.curve.th.intensity">Intensity</th></tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Choose weapon, drop in</td><td>A</td><td>1</td></tr>
-            <tr><td>2</td><td>Both reflects</td><td>B+B'</td><td>3</td></tr>
-            <tr><td>4</td><td>Combat on disappearing platform</td><td>A+C+F</td><td>4</td></tr>
-            <tr><td>5&ndash;6</td><td>Break for a new weapon, then build with it</td><td>A+C+C' &rarr; A+E</td><td>3</td></tr>
-            <tr><td>9</td><td>Climb while shooting</td><td>C+E'</td><td>5</td></tr>
-            <tr><td>11</td><td>Boss &mdash; full kit</td><td>A+B+B'+C+C'+E</td><td>7</td></tr>
+            <tr><td data-i18n="fn.curve.z1.zone">1</td><td data-i18n="fn.curve.z1.ask">Choose weapon, drop in</td><td data-i18n="fn.curve.z1.cadence">A</td><td data-i18n="fn.curve.z1.intensity">1</td></tr>
+            <tr><td data-i18n="fn.curve.z2.zone">2</td><td data-i18n="fn.curve.z2.ask">Both reflects</td><td data-i18n="fn.curve.z2.cadence">B+B'</td><td data-i18n="fn.curve.z2.intensity">3</td></tr>
+            <tr><td data-i18n="fn.curve.z4.zone">4</td><td data-i18n="fn.curve.z4.ask">Combat on disappearing platform</td><td data-i18n="fn.curve.z4.cadence">A+C+F</td><td data-i18n="fn.curve.z4.intensity">4</td></tr>
+            <tr><td data-i18n="fn.curve.z56.zone">5&ndash;6</td><td data-i18n="fn.curve.z56.ask">Break for a new weapon, then build with it</td><td data-i18n="fn.curve.z56.cadence">A+C+C' &rarr; A+E</td><td data-i18n="fn.curve.z56.intensity">3</td></tr>
+            <tr><td data-i18n="fn.curve.z9.zone">9</td><td data-i18n="fn.curve.z9.ask">Climb while shooting</td><td data-i18n="fn.curve.z9.cadence">C+E'</td><td data-i18n="fn.curve.z9.intensity">5</td></tr>
+            <tr><td data-i18n="fn.curve.z11.zone">11</td><td data-i18n="fn.curve.z11.ask">Boss &mdash; full kit</td><td data-i18n="fn.curve.z11.cadence">A+B+B'+C+C'+E</td><td data-i18n="fn.curve.z11.intensity">7</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Numbers sit mostly in 1&ndash;5 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was &ldquo;how do I keep a fighting stage readable and fair,&rdquo; not &ldquo;how hard can the last screen get.&rdquo;</p>
-      <p>Zones 5 and 6 are the loot-changes-traversal beat. Breaking a block for a new weapon only matters if that weapon immediately opens a path the old one could not. That is freedom doing work on the map rather than on a menu.</p>
+      <p data-i18n="fn.p.curve2">Numbers sit mostly in 1&ndash;5 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was &ldquo;how do I keep a fighting stage readable and fair,&rdquo; not &ldquo;how hard can the last screen get.&rdquo;</p>
+      <p data-i18n="fn.p.curve3">Zones 5 and 6 are the loot-changes-traversal beat. Breaking a block for a new weapon only matters if that weapon immediately opens a path the old one could not. That is freedom doing work on the map rather than on a menu.</p>
       <!-- MEDIA SLOT 2 of 2 : Assets/fivenite-curve.png -->
       <!--
       <figure class="shot shot-narrow">
@@ -132,18 +132,18 @@
       </figure>
       -->
 
-      <h4 class="mt-5">Role</h4>
+      <h4 class="mt-5" data-i18n="fn.h.role">Role</h4>
       <ul>
-        <li>Layout, skill theme, cadence notation, intensity curve</li>
-        <li>Loadout fork, break/build traversal, boss as full-kit exam</li>
+        <li data-i18n="fn.role.1">Layout, skill theme, cadence notation, intensity curve</li>
+        <li data-i18n="fn.role.2">Loadout fork, break/build traversal, boss as full-kit exam</li>
       </ul>
 
       <p class="project-links mt-4">
-        <a href="Assets/FIVENITE_EASY.pdf" target="_blank">Level document (map, cadence, intensity)</a>
+        <a href="Assets/FIVENITE_EASY.pdf" target="_blank" data-i18n="fn.links.doc">Level document (map, cadence, intensity)</a>
       </p>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label">Set</span> <a href="MegaManMaker.html">Mega Man Maker</a> &mdash; all three stages. <a href="JumpMan.html">JumpMan</a> &mdash; two verbs, harder. <a href="PrisonBreak.html">Prison Break</a> &mdash; puzzle juggle.</p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="fn.exit.set">Set</span> <span data-i18n="fn.exit.setBody" data-i18n-html><a href="MegaManMaker.html">Mega Man Maker</a> &mdash; all three stages. <a href="JumpMan.html">JumpMan</a> &mdash; two verbs, harder. <a href="PrisonBreak.html">Prison Break</a> &mdash; puzzle juggle.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
@@ -156,6 +156,7 @@
     </div>
   </footer>
   <script src="translations.js"></script>
+  <script src="i18n/fivenite.js"></script>
   <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>

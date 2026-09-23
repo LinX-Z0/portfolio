@@ -55,7 +55,7 @@ window.PORTFOLIO_I18N = {
     "chrome.questions": "Questions"
   },
   zh: {
-    "meta.title": "\u6797\u6615 \u2014 \u4f5c\u54c1\u96c6",
+    "meta.title": "\u6797\u946b \u2014 \u4f5c\u54c1\u96c6",
     "nav.projects": "\u9879\u76ee",
     "nav.about": "\u5173\u4e8e\u6211",
     "nav.contact": "\u8054\u7cfb",
@@ -105,8 +105,15 @@ window.PORTFOLIO_I18N = {
     "contact.emailPh": "\u7535\u5b50\u90ae\u7bb1",
     "contact.messagePh": "\u4f60\u7684\u7559\u8a00",
     "contact.send": "\u53d1\u9001",
-    "contact.subject": "\u4f5c\u54c1\u96c6\u8054\u7cfb \u2014 \u6797\u6615",
+    "contact.subject": "\u4f5c\u54c1\u96c6\u8054\u7cfb \u2014 \u6797\u946b",
     "chrome.back": "\u2190 \u8fd4\u56de\u9879\u76ee",
     "chrome.questions": "\u8054\u7cfb"
   }
+};
+window.PortfolioI18nMerge = function (pack) {
+  if (!window.PORTFOLIO_I18N) window.PORTFOLIO_I18N = { en: {}, zh: {} };
+  if (!window.PORTFOLIO_I18N.en) window.PORTFOLIO_I18N.en = {};
+  if (!window.PORTFOLIO_I18N.zh) window.PORTFOLIO_I18N.zh = {};
+  if (pack && pack.en) Object.assign(window.PORTFOLIO_I18N.en, pack.en);
+  if (pack && pack.zh) Object.assign(window.PORTFOLIO_I18N.zh, pack.zh);
 };

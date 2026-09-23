@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" data-i18n-title="mmm.meta.title">
   <div id="twinkle-container"></div>
 
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
@@ -34,10 +34,10 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about" data-i18n="nav.about">About Me</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
-                  <li class="nav-item">
+          <li class="nav-item">
             <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
           </li>
-</ul>
+        </ul>
       </div>
     </div>
   </nav>
@@ -45,53 +45,53 @@
   <section id="summary" class="pt-5 mt-5">
     <div class="container">
       <h1 class="display-5 mb-3">Mega Man Maker</h1>
-      <p class="lead">Three stages, one method. Cadence-named challenges, intensity scored per zone &mdash; then three different briefs.</p>
+      <p class="lead" data-i18n="mmm.lead">Three stages, one method. Cadence-named challenges, intensity scored per zone &mdash; then three different briefs.</p>
       <dl class="project-meta">
         <div>
-          <dt>Role</dt>
-          <dd>Solo level design</dd>
+          <dt data-i18n="mmm.meta.role">Role</dt>
+          <dd data-i18n="mmm.meta.roleVal">Solo level design</dd>
         </div>
         <div>
-          <dt>Course</dt>
-          <dd>CSD2541</dd>
+          <dt data-i18n="mmm.meta.course">Course</dt>
+          <dd data-i18n="mmm.meta.courseVal">CSD2541</dd>
         </div>
         <div>
-          <dt>Timeline</dt>
-          <dd>15 Jun &ndash; 12 Jul 2026</dd>
+          <dt data-i18n="mmm.meta.timeline">Timeline</dt>
+          <dd data-i18n="mmm.meta.timelineVal">15 Jun &ndash; 12 Jul 2026</dd>
         </div>
         <div>
-          <dt>Tool</dt>
-          <dd>Mega Man Maker</dd>
+          <dt data-i18n="mmm.meta.tool">Tool</dt>
+          <dd data-i18n="mmm.meta.toolVal">Mega Man Maker</dd>
         </div>
         <div>
-          <dt>Set</dt>
-          <dd>3 stages</dd>
+          <dt data-i18n="mmm.meta.set">Set</dt>
+          <dd data-i18n="mmm.meta.setVal">3 stages</dd>
         </div>
         <div>
-          <dt>Category</dt>
-          <dd>Level Design</dd>
+          <dt data-i18n="mmm.meta.category">Category</dt>
+          <dd data-i18n="mmm.meta.categoryVal">Level Design</dd>
         </div>
       </dl>
 
       <ul class="scan-strip">
-        <li><strong>Shared method</strong> &mdash; name the challenge in a cadence alphabet before building; score intensity per zone.</li>
-        <li><strong>JumpMan</strong> &mdash; mobility + timing; two verbs getting stricter.</li>
-        <li><strong>FIVENITE</strong> &mdash; easy combat; loadout freedom, break and build.</li>
-        <li><strong>Prison Break</strong> &mdash; normal puzzle; juggle tools; purple-key skip on the hardest screen.</li>
+        <li data-i18n="mmm.scan.method" data-i18n-html><strong>Shared method</strong> &mdash; name the challenge in a cadence alphabet before building; score intensity per zone.</li>
+        <li data-i18n="mmm.scan.jm" data-i18n-html><strong>JumpMan</strong> &mdash; mobility + timing; two verbs getting stricter.</li>
+        <li data-i18n="mmm.scan.fn" data-i18n-html><strong>FIVENITE</strong> &mdash; easy combat; loadout freedom, break and build.</li>
+        <li data-i18n="mmm.scan.pb" data-i18n-html><strong>Prison Break</strong> &mdash; normal puzzle; juggle tools; purple-key skip on the hardest screen.</li>
       </ul>
 
-      <p>These are not three unrelated Maker uploads. They are one level-design practice run three ways: lock a brief, name every room in that language, then build only what the name asks for. If a room cannot be named, it does not ship.</p>
-      <p>Each stage has its own case study with the map document, cadence, and intensity tables.</p>
+      <p data-i18n="mmm.p.intro1">These are not three unrelated Maker uploads. They are one level-design practice run three ways: lock a brief, name every room in that language, then build only what the name asks for. If a room cannot be named, it does not ship.</p>
+      <p data-i18n="mmm.p.intro2">Each stage has its own case study with the map document, cadence, and intensity tables.</p>
 
-      <h3 class="mt-4">The three stages</h3>
+      <h3 class="mt-4" data-i18n="mmm.h.stages">The three stages</h3>
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <img src="Assets/jumpman-map.png" class="card-img-top" alt="JumpMan">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">JumpMan</h5>
-              <p class="card-text">Mobility stage. Double jump and slide, getting stricter. 14 challenges, 5 screens.</p>
-              <a href="JumpMan.html" class="btn btn-primary mt-auto">View JumpMan</a>
+              <h5 class="card-title" data-i18n="mmm.card.jm.title">JumpMan</h5>
+              <p class="card-text" data-i18n="mmm.card.jm.text">Mobility stage. Double jump and slide, getting stricter. 14 challenges, 5 screens.</p>
+              <a href="JumpMan.html" class="btn btn-primary mt-auto" data-i18n="mmm.card.jm.cta">View JumpMan</a>
             </div>
           </div>
         </div>
@@ -99,9 +99,9 @@
           <div class="card h-100">
             <img src="Assets/fivenite-map.png" class="card-img-top" alt="FIVENITE">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">FIVENITE</h5>
-              <p class="card-text">Easy combat. Pick a weapon, drop in, fight. Break and build so rooms are not stand-and-shoot.</p>
-              <a href="Fivenite.html" class="btn btn-primary mt-auto">View FIVENITE</a>
+              <h5 class="card-title" data-i18n="mmm.card.fn.title">FIVENITE</h5>
+              <p class="card-text" data-i18n="mmm.card.fn.text">Easy combat. Pick a weapon, drop in, fight. Break and build so rooms are not stand-and-shoot.</p>
+              <a href="Fivenite.html" class="btn btn-primary mt-auto" data-i18n="mmm.card.fn.cta">View FIVENITE</a>
             </div>
           </div>
         </div>
@@ -109,16 +109,16 @@
           <div class="card h-100">
             <img src="Assets/prisonbreak-map.png" class="card-img-top" alt="Prison Break">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Prison Break</h5>
-              <p class="card-text">Normal puzzle. Juggle several tools in one room. Purple keys skip the hardest screen.</p>
-              <a href="PrisonBreak.html" class="btn btn-primary mt-auto">View Prison Break</a>
+              <h5 class="card-title" data-i18n="mmm.card.pb.title">Prison Break</h5>
+              <p class="card-text" data-i18n="mmm.card.pb.text">Normal puzzle. Juggle several tools in one room. Purple keys skip the hardest screen.</p>
+              <a href="PrisonBreak.html" class="btn btn-primary mt-auto" data-i18n="mmm.card.pb.cta">View Prison Break</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label">Also level design</span> <a href="OneMillion.html">ONE million</a> &mdash; campaign document. <a href="RpgMaps.html">RPG Maker maps</a> &mdash; four house programmes.</p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="mmm.exit.also">Also level design</span> <span data-i18n="mmm.exit.alsoBody" data-i18n-html><a href="OneMillion.html">ONE million</a> &mdash; campaign document. <a href="RpgMaps.html">RPG Maker maps</a> &mdash; four house programmes.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
@@ -132,6 +132,7 @@
     </div>
   </footer>
   <script src="translations.js"></script>
+  <script src="i18n/megaman.js"></script>
   <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>

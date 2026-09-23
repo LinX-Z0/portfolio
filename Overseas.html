@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Norican&family=Nunito&family=Sriracha&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/svg+xml" href="Assets/heart.svg">
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" data-i18n-title="ov.meta.title">
   <div id="twinkle-container"></div>
 
   <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
@@ -34,10 +34,10 @@
           <li class="nav-item"><a class="nav-link" href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#about" data-i18n="nav.about">About Me</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
-                  <li class="nav-item">
+          <li class="nav-item">
             <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
           </li>
-</ul>
+        </ul>
       </div>
     </div>
   </nav>
@@ -47,68 +47,68 @@
       <div class="mb-4">
         <video class="w-100 rounded shadow" controls poster="Assets/overseas-gameplay.png" preload="metadata">
           <source src="Assets/Overseas.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+          <span data-i18n="ov.video.fallback">Your browser does not support the video tag.</span>
         </video>
       </div>
 
       <h1 class="display-5 mb-3">Overseas</h1>
-      <p class="lead">Top-down pixel survival fishing. Resource loop, quota, and a QTE on a small boat.</p>
+      <p class="lead" data-i18n="ov.lead">Top-down pixel survival fishing. Resource loop, quota, and a QTE on a small boat.</p>
       <dl class="project-meta">
         <div>
-          <dt>Role</dt>
-          <dd>Mechanics designer, gameplay programmer</dd>
+          <dt data-i18n="ov.meta.role">Role</dt>
+          <dd data-i18n="ov.meta.roleVal">Mechanics designer, gameplay programmer</dd>
         </div>
         <div>
-          <dt>Team</dt>
-          <dd>5 &mdash; Team IDK</dd>
+          <dt data-i18n="ov.meta.team">Team</dt>
+          <dd data-i18n="ov.meta.teamVal">5 &mdash; Team IDK</dd>
         </div>
         <div>
-          <dt>Course</dt>
-          <dd>CSD1451, Year 1 Trimester 2</dd>
+          <dt data-i18n="ov.meta.course">Course</dt>
+          <dd data-i18n="ov.meta.courseVal">CSD1451, Year 1 Trimester 2</dd>
         </div>
         <div>
-          <dt>Timeline</dt>
-          <dd>Jan &ndash; May 2025, 14 weeks</dd>
+          <dt data-i18n="ov.meta.timeline">Timeline</dt>
+          <dd data-i18n="ov.meta.timelineVal">Jan &ndash; May 2025, 14 weeks</dd>
         </div>
         <div>
-          <dt>Platform</dt>
-          <dd>Windows</dd>
+          <dt data-i18n="ov.meta.platform">Platform</dt>
+          <dd data-i18n="ov.meta.platformVal">Windows</dd>
         </div>
         <div>
-          <dt>Stack</dt>
-          <dd>C++, DigiPen Alpha Engine</dd>
+          <dt data-i18n="ov.meta.stack">Stack</dt>
+          <dd data-i18n="ov.meta.stackVal">C++, DigiPen Alpha Engine</dd>
         </div>
         <div>
-          <dt>State</dt>
-          <dd>Complete game</dd>
+          <dt data-i18n="ov.meta.state">State</dt>
+          <dd data-i18n="ov.meta.stateVal">Complete game</dd>
         </div>
       </dl>
 
       <ul class="scan-strip">
-        <li><strong>Fishing spots</strong> &mdash; three in world, collision, markers, timed and catch-driven replacement.</li>
-        <li><strong>QTE</strong> &mdash; rarity-driven red window and marker speed, Common / Uncommon / Rare.</li>
-        <li><strong>Health and supply</strong> &mdash; twelve-frame HUD, drain, regen, step-down thresholds.</li>
-        <li><strong>Shipwrecks</strong> &mdash; three in world, +50 supply, respawn on consume.</li>
-        <li><strong>Shop upgrades</strong> &mdash; wired Health, Supply, Armor, and Efficiency into the run numbers.</li>
-        <li><strong>Not mine</strong> &mdash; quota RNG and movement (Mandy); world art and day/night (Ethan, Renfred); menus and shop UI (Timothy).</li>
+        <li data-i18n="ov.scan.spots"><strong>Fishing spots</strong> &mdash; three in world, collision, markers, timed and catch-driven replacement.</li>
+        <li data-i18n="ov.scan.qte"><strong>QTE</strong> &mdash; rarity-driven red window and marker speed, Common / Uncommon / Rare.</li>
+        <li data-i18n="ov.scan.bars"><strong>Health and supply</strong> &mdash; twelve-frame HUD, drain, regen, step-down thresholds.</li>
+        <li data-i18n="ov.scan.wrecks"><strong>Shipwrecks</strong> &mdash; three in world, +50 supply, respawn on consume.</li>
+        <li data-i18n="ov.scan.shop"><strong>Shop upgrades</strong> &mdash; wired Health, Supply, Armor, and Efficiency into the run numbers.</li>
+        <li data-i18n="ov.scan.notMine"><strong>Not mine</strong> &mdash; quota RNG and movement (Mandy); world art and day/night (Ethan, Renfred); menus and shop UI (Timothy).</li>
       </ul>
 
-      <p>You skipper a small boat. A quota and a deadline sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve, and keep clear of the monsters that take a bite out of it. Hit a wreck for a supply dump. Clear the quota and the job renews with more days and a fresh target. Miss it, or hit zero health, and the run is over.</p>
+      <p data-i18n="ov.p.pitch">You skipper a small boat. A quota and a deadline sit on the HUD. Fish to pay the quota. Manage health and supply so the hull does not starve, and keep clear of the monsters that take a bite out of it. Hit a wreck for a supply dump. Clear the quota and the job renews with more days and a fresh target. Miss it, or hit zero health, and the run is over.</p>
 
       <figure class="shot">
         <img src="Assets/overseas-gameplay.png" alt="Overseas overworld: the boat on open water with quota, days, day-night bar, and health and supply icons.">
-        <figcaption>On the water. Quota and days sit top-right; health and supply bottom-left. Fishing spots and wrecks share the map with rocks and debris.</figcaption>
+        <figcaption data-i18n="ov.fig.overworld.cap">On the water. Quota and days sit top-right; health and supply bottom-left. Fishing spots and wrecks share the map with rocks and debris.</figcaption>
       </figure>
 
-      <h3 class="mt-4">Design intent</h3>
-      <p>The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. There is no dock and no other source of supply in the world, so wrecks are the only way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
-      <p>The quota roll sets the terms before the player touches anything: a daily target of 300, 400, 500, or 600 gold, times a deadline of three to five days, so one contract asks for between 900 and 3,000. A day runs 61.5 seconds, which puts a contract at roughly three to five minutes of play. In fish, an easy day is six Commons and a hard one is twelve &mdash; or a single Rare and a bit of luck. Clear it early and the unspent days stay on the clock while another three to five are added and a fresh target is rolled. The run is a chain of contracts rather than a fixed job, and it ends only when you miss one or the boat gives out.</p>
-      <p>That structure is what pays off the greedy half of the loop. Fishing past the target is not wasted effort, it banks days against a contract you have not seen yet. I did not own the generator, but the daily target swings by a factor of two, so everything I did own had to stay legible at 300 a day and survivable at 600.</p>
+      <h3 class="mt-4" data-i18n="ov.h.intent">Design intent</h3>
+      <p data-i18n="ov.p.intent1">The run is two clocks. Quota (Mandy's generator) is how you fail the job. The body &mdash; my health and supply bars &mdash; is how you fail the boat. Fishing is the only way to pay the quota. There is no dock and no other source of supply in the world, so wrecks are the only way to buy time on the health curve. If those two verbs feel the same, the loop is mush. They should not: one is greedy, one is survival, and every system below had to keep that split honest.</p>
+      <p data-i18n="ov.p.intent2">The quota roll sets the terms before the player touches anything: a daily target of 300, 400, 500, or 600 gold, times a deadline of three to five days, so one contract asks for between 900 and 3,000. A day runs 61.5 seconds, which puts a contract at roughly three to five minutes of play. In fish, an easy day is six Commons and a hard one is twelve &mdash; or a single Rare and a bit of luck. Clear it early and the unspent days stay on the clock while another three to five are added and a fresh target is rolled. The run is a chain of contracts rather than a fixed job, and it ends only when you miss one or the boat gives out.</p>
+      <p data-i18n="ov.p.intent3">That structure is what pays off the greedy half of the loop. Fishing past the target is not wasted effort, it banks days against a contract you have not seen yet. I did not own the generator, but the daily target swings by a factor of two, so everything I did own had to stay legible at 300 a day and survivable at 600.</p>
 
       <figure class="system-diagram">
         <svg viewBox="0 0 720 396" role="img" aria-labelledby="loopTitle loopDesc">
-          <title id="loopTitle">Overseas core loop</title>
-          <desc id="loopDesc">Two parallel clocks. Fishing is the only input to the quota clock and the only source of gold for the shop, and both draw on the same pool, so upgrades compete with paying the contract. Shipwrecks and shop upgrades are the only relief on the body clock of health and supply. Missing the quota or reaching zero health ends the run.</desc>
+          <title id="loopTitle" data-i18n="ov.loop.title">Overseas core loop</title>
+          <desc id="loopDesc" data-i18n="ov.loop.desc">Two parallel clocks. Fishing is the only input to the quota clock and the only source of gold for the shop, and both draw on the same pool, so upgrades compete with paying the contract. Shipwrecks and shop upgrades are the only relief on the body clock of health and supply. Missing the quota or reaching zero health ends the run.</desc>
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#cb93ff"/>
@@ -116,66 +116,66 @@
           </defs>
 
           <rect x="20" y="24" width="320" height="86" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="40" y="53" class="dg-h">QUOTA CLOCK</text>
-          <text x="40" y="75" class="dg-s">300&#8211;600 gold/day &#215; 3&#8211;5 days</text>
-          <text x="40" y="94" class="dg-m">how you fail the job</text>
+          <text x="40" y="53" class="dg-h" data-i18n="ov.loop.quotaH">QUOTA CLOCK</text>
+          <text x="40" y="75" class="dg-s" data-i18n="ov.loop.quotaS">300&#8211;600 gold/day &#215; 3&#8211;5 days</text>
+          <text x="40" y="94" class="dg-m" data-i18n="ov.loop.quotaM">how you fail the job</text>
 
           <rect x="380" y="24" width="320" height="86" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="400" y="53" class="dg-h">BODY CLOCK</text>
-          <text x="400" y="75" class="dg-s">supply drains 5/s, then health</text>
-          <text x="400" y="94" class="dg-m">how you fail the boat</text>
+          <text x="400" y="53" class="dg-h" data-i18n="ov.loop.bodyH">BODY CLOCK</text>
+          <text x="400" y="75" class="dg-s" data-i18n="ov.loop.bodyS">supply drains 5/s, then health</text>
+          <text x="400" y="94" class="dg-m" data-i18n="ov.loop.bodyM">how you fail the boat</text>
 
           <rect x="20" y="215" width="190" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="115" y="245" class="dg-h" text-anchor="middle">FISHING</text>
-          <text x="115" y="266" class="dg-s" text-anchor="middle">three spots, QTE per catch</text>
+          <text x="115" y="245" class="dg-h" text-anchor="middle" data-i18n="ov.loop.fishH">FISHING</text>
+          <text x="115" y="266" class="dg-s" text-anchor="middle" data-i18n="ov.loop.fishS">three spots, QTE per catch</text>
 
           <rect x="270" y="215" width="180" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="360" y="245" class="dg-h" text-anchor="middle">SHOP</text>
-          <text x="360" y="266" class="dg-s" text-anchor="middle">pools and rates</text>
+          <text x="360" y="245" class="dg-h" text-anchor="middle" data-i18n="ov.loop.shopH">SHOP</text>
+          <text x="360" y="266" class="dg-s" text-anchor="middle" data-i18n="ov.loop.shopS">pools and rates</text>
 
           <rect x="510" y="215" width="190" height="70" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="605" y="245" class="dg-h" text-anchor="middle">WRECKS</text>
-          <text x="605" y="266" class="dg-s" text-anchor="middle">three in world</text>
+          <text x="605" y="245" class="dg-h" text-anchor="middle" data-i18n="ov.loop.wreckH">WRECKS</text>
+          <text x="605" y="266" class="dg-s" text-anchor="middle" data-i18n="ov.loop.wreckS">three in world</text>
 
           <line x1="115" y1="213" x2="115" y2="116" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="126" y="168" class="dg-l">pays the quota</text>
+          <text x="126" y="168" class="dg-l" data-i18n="ov.loop.pays">pays the quota</text>
 
           <line x1="360" y1="213" x2="428" y2="116" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="394" y="178" class="dg-l">raises pools,</text>
-          <text x="394" y="192" class="dg-l">bends rates</text>
+          <text x="394" y="178" class="dg-l" data-i18n="ov.loop.raises1">raises pools,</text>
+          <text x="394" y="192" class="dg-l" data-i18n="ov.loop.raises2">bends rates</text>
 
           <line x1="605" y1="213" x2="605" y2="116" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="616" y="168" class="dg-l">+50 supply</text>
+          <text x="616" y="168" class="dg-l" data-i18n="ov.loop.supply">+50 supply</text>
 
           <line x1="212" y1="250" x2="266" y2="250" stroke="#cb93ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="239" y="240" class="dg-l" text-anchor="middle">gold</text>
+          <text x="239" y="240" class="dg-l" text-anchor="middle" data-i18n="ov.loop.gold">gold</text>
 
           <rect x="20" y="326" width="680" height="44" rx="8" fill="rgba(203,147,255,0.07)" stroke="rgba(203,147,255,0.28)"/>
-          <text x="360" y="353" class="dg-s" text-anchor="middle">Clear the quota: +3&#8211;5 days and a new target. Miss it, or hit zero health: the run ends.</text>
+          <text x="360" y="353" class="dg-s" text-anchor="middle" data-i18n="ov.loop.footer">Clear the quota: +3&#8211;5 days and a new target. Miss it, or hit zero health: the run ends.</text>
         </svg>
-        <figcaption>Core loop. The arrows are the only paths into each clock, and fishing feeds the quota and the shop out of the same pool of gold. A day runs 61.5 seconds; a starting tank of supply lasts twenty.</figcaption>
+        <figcaption data-i18n="ov.fig.loop.cap">Core loop. The arrows are the only paths into each clock, and fishing feeds the quota and the shop out of the same pool of gold. A day runs 61.5 seconds; a starting tank of supply lasts twenty.</figcaption>
       </figure>
 
-      <h3 class="mt-4">Fishing spots</h3>
-      <p>Three spots exist at any time. Collide one, enter a fishing state, leave the overworld loop. Animated markers, so a spot is a thing you steer at rather than a silent trigger. A spot leaves the world two ways: you fish it, or it ages out on a random 10&ndash;20 second life. Either exit deletes that spot and immediately places a replacement elsewhere, so the count never drops below three.</p>
-      <p>The timer is the half that carries the pacing. Replace-on-catch alone only reshuffles the ocean when the player acts, which means anyone who parks beside a spot keeps it indefinitely and the map goes static. A random life makes the water move whether or not you engage, so a spot you can see but have not reached is a decision with a clock on it. Random rather than fixed, so the respawn beat cannot be counted and camped.</p>
+      <h3 class="mt-4" data-i18n="ov.h.spots">Fishing spots</h3>
+      <p data-i18n="ov.p.spots1">Three spots exist at any time. Collide one, enter a fishing state, leave the overworld loop. Animated markers, so a spot is a thing you steer at rather than a silent trigger. A spot leaves the world two ways: you fish it, or it ages out on a random 10&ndash;20 second life. Either exit deletes that spot and immediately places a replacement elsewhere, so the count never drops below three.</p>
+      <p data-i18n="ov.p.spots2">The timer is the half that carries the pacing. Replace-on-catch alone only reshuffles the ocean when the player acts, which means anyone who parks beside a spot keeps it indefinitely and the map goes static. A random life makes the water move whether or not you engage, so a spot you can see but have not reached is a decision with a clock on it. Random rather than fixed, so the respawn beat cannot be counted and camped.</p>
       <figure class="shot">
         <img src="Assets/overseas-spot-respawn.gif" alt="A fishing spot marker disappears and a new one fades in elsewhere on the water, keeping three on screen.">
-        <figcaption>A spot ages out on its 10&ndash;20 second life and is replaced immediately, so the count never drops below three and the water keeps moving whether or not the player engages.</figcaption>
+        <figcaption data-i18n="ov.fig.spots.cap">A spot ages out on its 10&ndash;20 second life and is replaced immediately, so the count never drops below three and the water keeps moving whether or not the player engages.</figcaption>
       </figure>
-      <p class="authored">Authored in <code>Fishing</code>.</p>
+      <p class="authored" data-i18n="ov.authored.fishing" data-i18n-html>Authored in <code>Fishing</code>.</p>
 
-      <h3 class="mt-4">QTE</h3>
-      <p>Fishing versus none is a state. In fishing, a marker sweeps a 360px green bar and you have 10 seconds to land it inside the red window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green track, red window, white marker.</p>
+      <h3 class="mt-4" data-i18n="ov.h.qte">QTE</h3>
+      <p data-i18n="ov.p.qte1">Fishing versus none is a state. In fishing, a marker sweeps a 360px green bar and you have 10 seconds to land it inside the red window. Rarity is picked when the QTE inits, and it drives both numbers that matter: each tier halves the window and doubles the marker speed. Green track, red window, white marker.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table">
           <thead>
-            <tr><th scope="col">Tier</th><th scope="col">Window</th><th scope="col">Height</th><th scope="col">Speed</th><th scope="col">Time in window</th><th scope="col">Value</th></tr>
+            <tr><th scope="col" data-i18n="ov.qte.th.tier">Tier</th><th scope="col" data-i18n="ov.qte.th.window">Window</th><th scope="col" data-i18n="ov.qte.th.height">Height</th><th scope="col" data-i18n="ov.qte.th.speed">Speed</th><th scope="col" data-i18n="ov.qte.th.time">Time in window</th><th scope="col" data-i18n="ov.qte.th.value">Value</th></tr>
           </thead>
           <tbody>
-            <tr><td>Common</td><td>30%</td><td>108px</td><td>200px/s</td><td>0.54s</td><td>50g</td></tr>
-            <tr><td>Uncommon</td><td>15%</td><td>54px</td><td>400px/s</td><td>0.14s</td><td>100g</td></tr>
-            <tr><td>Rare</td><td>7.5%</td><td>27px</td><td>800px/s</td><td>0.03s</td><td>400g</td></tr>
+            <tr><td data-i18n="ov.qte.common">Common</td><td>30%</td><td>108px</td><td>200px/s</td><td>0.54s</td><td>50g</td></tr>
+            <tr><td data-i18n="ov.qte.uncommon">Uncommon</td><td>15%</td><td>54px</td><td>400px/s</td><td>0.14s</td><td>100g</td></tr>
+            <tr><td data-i18n="ov.qte.rare">Rare</td><td>7.5%</td><td>27px</td><td>800px/s</td><td>0.03s</td><td>400g</td></tr>
           </tbody>
         </table>
       </div>
@@ -183,102 +183,102 @@
         <div class="shot-row">
           <figure>
             <img src="Assets/overseas-qte-common.png" alt="QTE bar on a Common fish, red window about 108 pixels tall.">
-            <figcaption>Common &mdash; 108px</figcaption>
+            <figcaption data-i18n="ov.fig.qteCommon.cap">Common &mdash; 108px</figcaption>
           </figure>
           <figure>
             <img src="Assets/overseas-qte-uncommon.png" alt="QTE bar on an Uncommon fish, red window about 54 pixels tall.">
-            <figcaption>Uncommon &mdash; 54px</figcaption>
+            <figcaption data-i18n="ov.fig.qteUncommon.cap">Uncommon &mdash; 54px</figcaption>
           </figure>
           <figure>
             <img src="Assets/overseas-qte-rare.png" alt="QTE bar on a Rare fish, red window about 27 pixels tall.">
-            <figcaption>Rare &mdash; 27px</figcaption>
+            <figcaption data-i18n="ov.fig.qteRare.cap">Rare &mdash; 27px</figcaption>
           </figure>
         </div>
-        <figcaption>The same green bar at each shipped tier. The red window halves each step; the white marker also doubles in speed, which the stills cannot show.</figcaption>
+        <figcaption data-i18n="ov.fig.qteTiers.cap">The same green bar at each shipped tier. The red window halves each step; the white marker also doubles in speed, which the stills cannot show.</figcaption>
       </figure>
-      <p>Both multipliers apply at once, so the time the marker actually spends inside the window quarters per tier rather than halving — just over half a second on Common down to three hundredths on Rare, a sixteenth of the reaction time across two tiers. That is the whole point of tying rarity to the skill check. A rare fish is a different test, not the same bar with a bigger payout attached.</p>
-      <p>Difficulty and payout deliberately do not move together. Uncommon is four times harder than Common for double the gold; Rare is four times harder again for four times the gold. Per unit of timing precision, both of the hard tiers are worth about half what a Common is &mdash; which would be an exploit if rarity were something the player chose, but it is rolled when the QTE starts. The tiers that pay for the run are the ones you cannot farm. Trash pays 15g, so the floor is low rather than nothing.</p>
-      <p>The upper end is deliberately loud. A single Rare is 400g, enough to buy the first five upgrade levels outright, which cost 322g together. Landing one thirty-millisecond window is the difference between a day of grinding and a shopping trip, and that is the payoff that makes the brutal window read as a chance rather than a punishment.</p>
+      <p data-i18n="ov.p.qte2">Both multipliers apply at once, so the time the marker actually spends inside the window quarters per tier rather than halving — just over half a second on Common down to three hundredths on Rare, a sixteenth of the reaction time across two tiers. That is the whole point of tying rarity to the skill check. A rare fish is a different test, not the same bar with a bigger payout attached.</p>
+      <p data-i18n="ov.p.qte3">Difficulty and payout deliberately do not move together. Uncommon is four times harder than Common for double the gold; Rare is four times harder again for four times the gold. Per unit of timing precision, both of the hard tiers are worth about half what a Common is &mdash; which would be an exploit if rarity were something the player chose, but it is rolled when the QTE starts. The tiers that pay for the run are the ones you cannot farm. Trash pays 15g, so the floor is low rather than nothing.</p>
+      <p data-i18n="ov.p.qte4">The upper end is deliberately loud. A single Rare is 400g, enough to buy the first five upgrade levels outright, which cost 322g together. Landing one thirty-millisecond window is the difference between a day of grinding and a shopping trip, and that is the payoff that makes the brutal window read as a chance rather than a punishment.</p>
       <figure class="shot">
         <img src="Assets/overseas-qte-rare.gif" alt="The QTE marker sweeping at 800 pixels per second past a 27 pixel red window on a Rare fish.">
-        <figcaption>A Rare attempt at full speed. 800px/s against a 27px window leaves about three hundredths of a second to commit.</figcaption>
+        <figcaption data-i18n="ov.fig.qteRareGif.cap">A Rare attempt at full speed. 800px/s against a 27px window leaves about three hundredths of a second to commit.</figcaption>
       </figure>
-      <p>Three tiers ship in the fish data. Epic and Legendary already exist in the QTE code, so a later tier is a data change rather than new code.</p>
-      <p class="authored">Authored in <code>FishingSkill</code>.</p>
+      <p data-i18n="ov.p.qte5">Three tiers ship in the fish data. Epic and Legendary already exist in the QTE code, so a later tier is a data change rather than new code.</p>
+      <p class="authored" data-i18n="ov.authored.fishingSkill" data-i18n-html>Authored in <code>FishingSkill</code>.</p>
 
-      <h3 class="mt-4">Health and supply</h3>
-      <p>Two bars, bottom-left, twelve-frame sprite sheets from empty to full. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health takes a discrete hit whenever you run into one of the monsters that spawn around the map, but between those hits it does not answer to time, it answers to supply:</p>
+      <h3 class="mt-4" data-i18n="ov.h.bars">Health and supply</h3>
+      <p data-i18n="ov.p.bars1">Two bars, bottom-left, twelve-frame sprite sheets from empty to full. Supply drains at a flat 5 per second on the water and does not stop until it is empty. Health takes a discrete hit whenever you run into one of the monsters that spawn around the map, but between those hits it does not answer to time, it answers to supply:</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table bar-table">
           <thead>
-            <tr><th scope="col">Supply</th><th scope="col">Health</th></tr>
+            <tr><th scope="col" data-i18n="ov.bar.th.supply">Supply</th><th scope="col" data-i18n="ov.bar.th.health">Health</th></tr>
           </thead>
           <tbody>
-            <tr><td>80 and above</td><td>+2.0 /s</td></tr>
-            <tr><td>75 to 80</td><td>no change</td></tr>
-            <tr><td>75 and below</td><td>&minus;0.1 /s</td></tr>
-            <tr><td>50 and below</td><td>&minus;0.2 /s</td></tr>
-            <tr><td>25 and below</td><td>&minus;0.5 /s</td></tr>
-            <tr><td>empty</td><td>&minus;1.0 /s</td></tr>
+            <tr><td data-i18n="ov.bar.r1.s">80 and above</td><td data-i18n="ov.bar.r1.h">+2.0 /s</td></tr>
+            <tr><td data-i18n="ov.bar.r2.s">75 to 80</td><td data-i18n="ov.bar.r2.h">no change</td></tr>
+            <tr><td data-i18n="ov.bar.r3.s">75 and below</td><td data-i18n="ov.bar.r3.h">&minus;0.1 /s</td></tr>
+            <tr><td data-i18n="ov.bar.r4.s">50 and below</td><td data-i18n="ov.bar.r4.h">&minus;0.2 /s</td></tr>
+            <tr><td data-i18n="ov.bar.r5.s">25 and below</td><td data-i18n="ov.bar.r5.h">&minus;0.5 /s</td></tr>
+            <tr><td data-i18n="ov.bar.r6.s">empty</td><td data-i18n="ov.bar.r6.h">&minus;1.0 /s</td></tr>
           </tbody>
         </table>
       </div>
       <figure class="shot">
         <img src="Assets/overseas-bars-spritesheet.png" alt="Health heart and supply barrel sprite sheets, twelve frames each from empty to full.">
-        <figcaption>Health (heart) and supply (barrel). Twelve frames each from empty to full &mdash; the HUD steps rather than slides.</figcaption>
+        <figcaption data-i18n="ov.fig.barsSheet.cap">Health (heart) and supply (barrel). Twelve frames each from empty to full &mdash; the HUD steps rather than slides.</figcaption>
       </figure>
-      <p>A day runs 61.5 seconds, and that number is what makes the drain bite. A starting tank of 100 empties in twenty seconds, so one tank covers under a third of a day. Run it dry and health bleeds at 1 per second, which means a full boat that never picks anything up dies at around 116 seconds &mdash; just under two days. The shortest contract runs three. You cannot survive to the end of even the easiest job on the supply you start with, and with no dock in the game, the detour to a wreck is not an optimisation. It is the only reason a run continues at all.</p>
-      <p>Those thresholds are raw points, not a percentage of maximum, and that single choice does more work than anything else in the system. At the starting cap of 100 you sit in the regen band for four seconds after a top-up. At a bought-up cap of 400 you sit there for sixty-four &mdash; a full in-game day of healing rather than four seconds of it. A bigger tank does not just delay starvation, it multiplies the time you spend healing, which makes the Supply upgrade a health upgrade the shop never advertises.</p>
-      <p>The gap between 75 and 80 is a dead band where health does nothing. It stops the bar flipping between regen and decay while supply hovers on the boundary &mdash; the HUD steps in discrete frames, and an icon that ticks up and down every second reads as broken rather than as tense.</p>
+      <p data-i18n="ov.p.bars2">A day runs 61.5 seconds, and that number is what makes the drain bite. A starting tank of 100 empties in twenty seconds, so one tank covers under a third of a day. Run it dry and health bleeds at 1 per second, which means a full boat that never picks anything up dies at around 116 seconds &mdash; just under two days. The shortest contract runs three. You cannot survive to the end of even the easiest job on the supply you start with, and with no dock in the game, the detour to a wreck is not an optimisation. It is the only reason a run continues at all.</p>
+      <p data-i18n="ov.p.bars3">Those thresholds are raw points, not a percentage of maximum, and that single choice does more work than anything else in the system. At the starting cap of 100 you sit in the regen band for four seconds after a top-up. At a bought-up cap of 400 you sit there for sixty-four &mdash; a full in-game day of healing rather than four seconds of it. A bigger tank does not just delay starvation, it multiplies the time you spend healing, which makes the Supply upgrade a health upgrade the shop never advertises.</p>
+      <p data-i18n="ov.p.bars4">The gap between 75 and 80 is a dead band where health does nothing. It stops the bar flipping between regen and decay while supply hovers on the boundary &mdash; the HUD steps in discrete frames, and an icon that ticks up and down every second reads as broken rather than as tense.</p>
       <figure class="shot shot-narrow">
         <img src="Assets/overseas-bars-drain.gif" alt="The supply bar stepping down frame by frame while the health bar holds, then begins to fall.">
-        <figcaption>Supply falling through the thresholds. Health holds through the dead band, then starts stepping down once supply drops past 75.</figcaption>
+        <figcaption data-i18n="ov.fig.barsDrain.cap">Supply falling through the thresholds. Health holds through the dead band, then starts stepping down once supply drops past 75.</figcaption>
       </figure>
-      <p>That is the body clock. Quota can be unfair in the other corner; if these icons are unreadable, you cannot make the greedy-or-safe call the loop is built for.</p>
-      <p class="authored">Authored in <code>Bar</code>.</p>
+      <p data-i18n="ov.p.bars5">That is the body clock. Quota can be unfair in the other corner; if these icons are unreadable, you cannot make the greedy-or-safe call the loop is built for.</p>
+      <p class="authored" data-i18n="ov.authored.bar" data-i18n-html>Authored in <code>Bar</code>.</p>
 
-      <h3 class="mt-4">Shipwrecks</h3>
-      <p>Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at your current maximum &mdash; so a Supply upgrade quietly raises what a wreck is worth, since a bigger tank means less of the 50 spills over the top. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
-      <p>The arithmetic is tight on purpose. A day costs 307 supply at the base drain and a wreck returns 50, so simply breaking even means cashing one about every ten seconds. Nobody sustains that, which is the point &mdash; the opening run is meant to feel like bailing out a boat, and Supply and Efficiency are what turn the scramble into a job you can actually work.</p>
-      <p>Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
+      <h3 class="mt-4" data-i18n="ov.h.wrecks">Shipwrecks</h3>
+      <p data-i18n="ov.p.wrecks1">Wrecks reuse the fishing-spot population rule: three in the world at once, random placement, replaced the moment one is consumed. Two textures. Collide one for +50 supply, capped at your current maximum &mdash; so a Supply upgrade quietly raises what a wreck is worth, since a bigger tank means less of the 50 spills over the top. Wrecks hold no despawn timer, though &mdash; an unclaimed wreck waits, because it is the thing you divert toward when the health curve turns on you, and a resource that expires on its own is not something you can plan a detour around.</p>
+      <p data-i18n="ov.p.wrecks2">The arithmetic is tight on purpose. A day costs 307 supply at the base drain and a wreck returns 50, so simply breaking even means cashing one about every ten seconds. Nobody sustains that, which is the point &mdash; the opening run is meant to feel like bailing out a boat, and Supply and Efficiency are what turn the scramble into a job you can actually work.</p>
+      <p data-i18n="ov.p.wrecks3">Wrecks are not a second fishing verb. They dump time back onto the health curve so you can keep fishing. If wrecks paid the quota, they would steal fishing's job. They do not.</p>
       <figure class="shot">
         <img src="Assets/overseas-wreck.gif" alt="The boat colliding with a shipwreck and the supply bar jumping up several frames.">
-        <figcaption>A wreck cashed in. The +50 is capped at current maximum, so the same pickup is worth more once Supply has been bought up.</figcaption>
+        <figcaption data-i18n="ov.fig.wreck.cap">A wreck cashed in. The +50 is capped at current maximum, so the same pickup is worth more once Supply has been bought up.</figcaption>
       </figure>
-      <p class="authored">Authored in <code>shipwrecks</code>.</p>
+      <p class="authored" data-i18n="ov.authored.shipwrecks" data-i18n-html>Authored in <code>shipwrecks</code>.</p>
 
-      <h3 class="mt-4">Shop upgrades</h3>
-      <p>Timothy owned the shop UI. I wired what a purchase actually does to the numbers the HUD reads. Four lines, split by what they touch: two raise a pool, two bend a rate.</p>
+      <h3 class="mt-4" data-i18n="ov.h.shop">Shop upgrades</h3>
+      <p data-i18n="ov.p.shop1">Timothy owned the shop UI. I wired what a purchase actually does to the numbers the HUD reads. Four lines, split by what they touch: two raise a pool, two bend a rate.</p>
       <figure class="shot">
         <div class="shot-row">
           <figure>
             <img src="Assets/overseas-shop.png" alt="Overseas upgrade shop open as a book: Health and Supply on the left page, Armour and Efficiency on the right, base prices 25, 25, 30, and 50.">
-            <figcaption>Upgrade shop. The four lines at base price. UI by Timothy; the numbers behind each buy are mine.</figcaption>
+            <figcaption data-i18n="ov.fig.shop.cap">Upgrade shop. The four lines at base price. UI by Timothy; the numbers behind each buy are mine.</figcaption>
           </figure>
           <figure>
             <img src="Assets/overseas-shop-skins.png" alt="Overseas skin shop open as a book: Default, Black, Red, and Gold boat skins with prices.">
-            <figcaption>Skin shop. Same book UI; cosmetics rather than the pool and rate lines.</figcaption>
+            <figcaption data-i18n="ov.fig.skins.cap">Skin shop. Same book UI; cosmetics rather than the pool and rate lines.</figcaption>
           </figure>
         </div>
       </figure>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Upgrade</th><th scope="col">Base cost</th><th scope="col">Touches</th><th scope="col">Per level</th><th scope="col">Fully bought</th></tr>
+            <tr><th scope="col" data-i18n="ov.shop.th.upgrade">Upgrade</th><th scope="col" data-i18n="ov.shop.th.base">Base cost</th><th scope="col" data-i18n="ov.shop.th.touches">Touches</th><th scope="col" data-i18n="ov.shop.th.perLevel">Per level</th><th scope="col" data-i18n="ov.shop.th.fully">Fully bought</th></tr>
           </thead>
           <tbody>
-            <tr><td>Health</td><td>25</td><td>Pool</td><td>+20 &times; level to current and max</td><td>400 max</td></tr>
-            <tr><td>Supply</td><td>25</td><td>Pool</td><td>+20 &times; level to current and max</td><td>400 max</td></tr>
-            <tr><td>Armor</td><td>30</td><td>Rate</td><td>Incoming damage &minus;10%</td><td>&minus;50% damage</td></tr>
-            <tr><td>Efficiency</td><td>50</td><td>Rate</td><td>Supply drain &minus;10%</td><td>2.5/s drain</td></tr>
+            <tr><td data-i18n="ov.shop.health.name">Health</td><td>25</td><td data-i18n="ov.shop.health.touches">Pool</td><td data-i18n="ov.shop.health.per">+20 &times; level to current and max</td><td data-i18n="ov.shop.health.full">400 max</td></tr>
+            <tr><td data-i18n="ov.shop.supply.name">Supply</td><td>25</td><td data-i18n="ov.shop.supply.touches">Pool</td><td data-i18n="ov.shop.supply.per">+20 &times; level to current and max</td><td data-i18n="ov.shop.supply.full">400 max</td></tr>
+            <tr><td data-i18n="ov.shop.armor.name">Armor</td><td>30</td><td data-i18n="ov.shop.armor.touches">Rate</td><td data-i18n="ov.shop.armor.per">Incoming damage &minus;10%</td><td data-i18n="ov.shop.armor.full">&minus;50% damage</td></tr>
+            <tr><td data-i18n="ov.shop.eff.name">Efficiency</td><td>50</td><td data-i18n="ov.shop.eff.touches">Rate</td><td data-i18n="ov.shop.eff.per">Supply drain &minus;10%</td><td data-i18n="ov.shop.eff.full">2.5/s drain</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Health and Supply run an identical curve. Both start at 100, both add 20 &times; the new level to the current value and the maximum together, and both open at 25g with every subsequent buy costing 1.5&times; the last, truncated to an integer. There is no level cap.</p>
+      <p data-i18n="ov.p.shop2">Health and Supply run an identical curve. Both start at 100, both add 20 &times; the new level to the current value and the maximum together, and both open at 25g with every subsequent buy costing 1.5&times; the last, truncated to an integer. There is no level cap.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
-            <tr><th scope="col">Buy</th><th scope="col">Added</th><th scope="col">New max</th><th scope="col">Cost</th><th scope="col">Points per gold</th></tr>
+            <tr><th scope="col" data-i18n="ov.shopBuy.th.buy">Buy</th><th scope="col" data-i18n="ov.shopBuy.th.added">Added</th><th scope="col" data-i18n="ov.shopBuy.th.newMax">New max</th><th scope="col" data-i18n="ov.shopBuy.th.cost">Cost</th><th scope="col" data-i18n="ov.shopBuy.th.ppg">Points per gold</th></tr>
           </thead>
           <tbody>
             <tr><td>1</td><td>+20</td><td>120</td><td>25</td><td>0.80</td></tr>
@@ -290,44 +290,44 @@
           </tbody>
         </table>
       </div>
-      <p>The gain grows linearly and the price grows geometrically, so value per gold peaks on the second and third buy and falls away after that. With no hard cap, the price curve is the cap. That matters because contracts chain indefinitely: a hard level cap would eventually leave a surviving player with money and nothing to spend it on, where a geometric price always offers the next buy at a worse rate. The first buy is deliberately the worst rate in the table, which keeps the opening purchase a real decision rather than an obvious one.</p>
-      <p>Upgrades and the quota draw on one pool. There is no separate upgrade currency, so every purchase is gold not paid toward the contract &mdash; a 123g buy against a 400g day hands back roughly a third of that day's target. The shop is not a reward for a good run, it is a bet placed against the deadline.</p>
-      <p>It also makes the buy order a timing problem rather than only a value one. Gold spent early in a contract has days left to earn itself back through a faster loop; the identical purchase on the final day is pure quota risk with nothing left to recover it. The price curve and the deadline push the same way &mdash; buy early or not at all.</p>
-      <p>Health is the exception that proves it. Because it raises the current value alongside the maximum, it repairs as well as extends, so it stays rational late in a contract in a way the other three do not: when surviving the night is the only thing between you and a failed run, the heal is worth the quota it costs. Rates price above pools because a rate change is permanent pressure relief, where a bigger pool still empties at the same speed. Between them the two rate lines split the threat cleanly: Efficiency answers the drain, which is constant and predictable, and Armor answers the monsters, which are neither.</p>
-      <p class="authored">Co-author on <code>Game.cpp</code> for hooking these into the run.</p>
+      <p data-i18n="ov.p.shop3">The gain grows linearly and the price grows geometrically, so value per gold peaks on the second and third buy and falls away after that. With no hard cap, the price curve is the cap. That matters because contracts chain indefinitely: a hard level cap would eventually leave a surviving player with money and nothing to spend it on, where a geometric price always offers the next buy at a worse rate. The first buy is deliberately the worst rate in the table, which keeps the opening purchase a real decision rather than an obvious one.</p>
+      <p data-i18n="ov.p.shop4">Upgrades and the quota draw on one pool. There is no separate upgrade currency, so every purchase is gold not paid toward the contract &mdash; a 123g buy against a 400g day hands back roughly a third of that day's target. The shop is not a reward for a good run, it is a bet placed against the deadline.</p>
+      <p data-i18n="ov.p.shop5">It also makes the buy order a timing problem rather than only a value one. Gold spent early in a contract has days left to earn itself back through a faster loop; the identical purchase on the final day is pure quota risk with nothing left to recover it. The price curve and the deadline push the same way &mdash; buy early or not at all.</p>
+      <p data-i18n="ov.p.shop6">Health is the exception that proves it. Because it raises the current value alongside the maximum, it repairs as well as extends, so it stays rational late in a contract in a way the other three do not: when surviving the night is the only thing between you and a failed run, the heal is worth the quota it costs. Rates price above pools because a rate change is permanent pressure relief, where a bigger pool still empties at the same speed. Between them the two rate lines split the threat cleanly: Efficiency answers the drain, which is constant and predictable, and Armor answers the monsters, which are neither.</p>
+      <p class="authored" data-i18n="ov.authored.gameCpp" data-i18n-html>Co-author on <code>Game.cpp</code> for hooking these into the run.</p>
 
-      <h3 class="mt-4">Playtests</h3>
-      <p>CSD1451 user testing, 26 surveys. Testers liked the pixel art, controls, QTE, and upgrades. The complaints: 15 of 26 named unrealistic quota as the worst beat, night was too dark, HUD icons too small, the tutorial was missed, and there were too many objects in the water. As a team we tuned day length, quota, and night, and made the tutorial unavoidable.</p>
-      <p>What I changed, and why:</p>
+      <h3 class="mt-4" data-i18n="ov.h.playtests">Playtests</h3>
+      <p data-i18n="ov.p.play1">CSD1451 user testing, 26 surveys. Testers liked the pixel art, controls, QTE, and upgrades. The complaints: 15 of 26 named unrealistic quota as the worst beat, night was too dark, HUD icons too small, the tutorial was missed, and there were too many objects in the water. As a team we tuned day length, quota, and night, and made the tutorial unavoidable.</p>
+      <p data-i18n="ov.p.play2">What I changed, and why:</p>
       <ul class="tuning-list">
-        <li><strong>QTE rarity curve &mdash; 10% shrink per tier to a halving.</strong> The old curve ran 30%, 27%, 24.3%, or 108px, 97px, and 88px on a 360px bar. Testers could not tell the tiers apart, so rarity was only changing the payout. Both curves are geometric, so the fix was step size rather than curve shape: 0.9 per tier is not a difference you can feel mid-action.</li>
-        <li><strong>Supply drain up to 5 per second, regen threshold up to 80.</strong> A full bar used to outlast anyone's attention, and healing was the resting state rather than a reward. Supply was scenery, not a clock. It also gave Efficiency a job: against a 5-per-second drain, maxing it saves two and a half points a second, which is what testers meant by upgrades that help you survive.</li>
-        <li><strong>Shipwreck payout up to +50 supply.</strong> Once supply actually bit, wrecks did not return enough to justify the detour, so testers ignored them. At +50 a wreck buys ten seconds of drain.</li>
-        <li><strong>Fishing spots and wrecks down to three each.</strong> The &ldquo;too many objects&rdquo; note. At the old counts one was always within reach, so the crossing never happened and the drain never bit.</li>
+        <li data-i18n="ov.play.qte"><strong>QTE rarity curve &mdash; 10% shrink per tier to a halving.</strong> The old curve ran 30%, 27%, 24.3%, or 108px, 97px, and 88px on a 360px bar. Testers could not tell the tiers apart, so rarity was only changing the payout. Both curves are geometric, so the fix was step size rather than curve shape: 0.9 per tier is not a difference you can feel mid-action.</li>
+        <li data-i18n="ov.play.drain"><strong>Supply drain up to 5 per second, regen threshold up to 80.</strong> A full bar used to outlast anyone's attention, and healing was the resting state rather than a reward. Supply was scenery, not a clock. It also gave Efficiency a job: against a 5-per-second drain, maxing it saves two and a half points a second, which is what testers meant by upgrades that help you survive.</li>
+        <li data-i18n="ov.play.wreck"><strong>Shipwreck payout up to +50 supply.</strong> Once supply actually bit, wrecks did not return enough to justify the detour, so testers ignored them. At +50 a wreck buys ten seconds of drain.</li>
+        <li data-i18n="ov.play.spots"><strong>Fishing spots and wrecks down to three each.</strong> The &ldquo;too many objects&rdquo; note. At the old counts one was always within reach, so the crossing never happened and the drain never bit.</li>
       </ul>
-      <p>My bars were the right systems but too quiet in the corner &mdash; the body clock testers needed for the greedy-or-safe call was the one they could not see.</p>
+      <p data-i18n="ov.p.play3">My bars were the right systems but too quiet in the corner &mdash; the body clock testers needed for the greedy-or-safe call was the one they could not see.</p>
 
-      <h3 class="mt-4">Outcome and reflection</h3>
-      <p>Overseas shipped at the end of the 14-week trimester and graded an A. The HUD readability the surveys flagged was fixed before the deadline, so the bars ended up doing the job they were built for.</p>
-      <p>What I would change is not in the tuning list above. Every entry in that list is a number I moved, and moving them was slower than it should have been. I had hardcoded values I did not expect to revisit, nothing was exposed for editing, and I had no way to watch the sim while it ran &mdash; so each retune meant a rebuild to see whether a guess was right. The habit I took out of this project is to expose tunables and stand up a debug view before a system needs tuning, because any value can become one you need to change the moment someone else plays the game, including the ones that looked settled when I typed them.</p>
-      <p>The other lesson was about building on someone else's code. We discussed implementation and ideation as a team and still finished with different understandings of the same system, which is how you end up calling a function that does almost, but not quite, what you assumed. Agreeing on an idea is not the same as sharing a model of it, and I now ask whoever wrote a thing before I build on top of it.</p>
-      <p>Both went straight into the next project. On <a href="Hellmaker.html" class="text-info">Hellmaker</a> I built the engine's debug layer and the ImGui console the team used to watch the engine while it ran &mdash; the tool I wanted here.</p>
+      <h3 class="mt-4" data-i18n="ov.h.outcome">Outcome and reflection</h3>
+      <p data-i18n="ov.p.out1">Overseas shipped at the end of the 14-week trimester and graded an A. The HUD readability the surveys flagged was fixed before the deadline, so the bars ended up doing the job they were built for.</p>
+      <p data-i18n="ov.p.out2">What I would change is not in the tuning list above. Every entry in that list is a number I moved, and moving them was slower than it should have been. I had hardcoded values I did not expect to revisit, nothing was exposed for editing, and I had no way to watch the sim while it ran &mdash; so each retune meant a rebuild to see whether a guess was right. The habit I took out of this project is to expose tunables and stand up a debug view before a system needs tuning, because any value can become one you need to change the moment someone else plays the game, including the ones that looked settled when I typed them.</p>
+      <p data-i18n="ov.p.out3">The other lesson was about building on someone else's code. We discussed implementation and ideation as a team and still finished with different understandings of the same system, which is how you end up calling a function that does almost, but not quite, what you assumed. Agreeing on an idea is not the same as sharing a model of it, and I now ask whoever wrote a thing before I build on top of it.</p>
+      <p data-i18n="ov.p.out4" data-i18n-html>Both went straight into the next project. On <a href="Hellmaker.html" class="text-info">Hellmaker</a> I built the engine's debug layer and the ImGui console the team used to watch the engine while it ran &mdash; the tool I wanted here.</p>
 
-      <h4 class="mt-5">Role</h4>
+      <h4 class="mt-5" data-i18n="ov.h.role">Role</h4>
       <ul>
-        <li>Fishing spots &mdash; three in world, collision, markers, timed and catch-driven replacement (<code>Fishing</code>)</li>
-        <li>QTE &mdash; rarity-driven window and marker speed, overlays (<code>FishingSkill</code>)</li>
-        <li>Health / supply HUD &mdash; twelve-frame heart and barrel, drain, regen, step-down (<code>Bar</code>)</li>
-        <li>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
-        <li>Shop upgrades hooked to those bars; co-author <code>Game.cpp</code></li>
+        <li data-i18n="ov.role.spots" data-i18n-html>Fishing spots &mdash; three in world, collision, markers, timed and catch-driven replacement (<code>Fishing</code>)</li>
+        <li data-i18n="ov.role.qte" data-i18n-html>QTE &mdash; rarity-driven window and marker speed, overlays (<code>FishingSkill</code>)</li>
+        <li data-i18n="ov.role.bars" data-i18n-html>Health / supply HUD &mdash; twelve-frame heart and barrel, drain, regen, step-down (<code>Bar</code>)</li>
+        <li data-i18n="ov.role.wrecks" data-i18n-html>Shipwrecks &mdash; three in world, +50 supply, respawn (<code>shipwrecks</code>)</li>
+        <li data-i18n="ov.role.shop" data-i18n-html>Shop upgrades hooked to those bars; co-author <code>Game.cpp</code></li>
       </ul>
 
       <p class="project-links mt-4">
-        <a href="Assets/Overseas_UserTest.pdf" target="_blank">User testing report (Team IDK)</a>
+        <a href="Assets/Overseas_UserTest.pdf" target="_blank" data-i18n="ov.links.usertest">User testing report (Team IDK)</a>
       </p>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label">Next</span> <a href="Hellmaker.html">Hellmaker</a> &mdash; the engine debugger and editor tooling this project taught me to build first.</p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="ov.exit.nextLabel">Next</span> <span data-i18n="ov.exit.next"><a href="Hellmaker.html">Hellmaker</a> &mdash; the engine debugger and editor tooling this project taught me to build first.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
@@ -341,6 +341,7 @@
     </div>
   </footer>
   <script src="translations.js"></script>
+  <script src="i18n/overseas.js"></script>
   <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
