@@ -532,6 +532,36 @@ footer a.btn img {
   color: var(--fog);
 }
 
+.looking-label {
+  margin: 1.25rem 0 0.55rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.looking-for {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  max-width: 40rem;
+}
+
+.looking-for li {
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--fog);
+}
+
 .about-layout {
   display: grid;
   grid-template-columns: minmax(10rem, 16rem) 1fr;
