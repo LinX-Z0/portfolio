@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -27,11 +27,14 @@
       <a class="navbar-brand" href="index.html">Lin Xin</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-        </ul>
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about" data-i18n="nav.about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+                  <li class="nav-item">
+            <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
+          </li>
+</ul>
       </div>
     </div>
   </nav>
@@ -142,10 +145,10 @@
 
       <div class="case-exit mt-5">
         <p class="mb-2"><span class="case-exit-label">Set</span> <a href="MegaManMaker.html">Mega Man Maker</a> &mdash; all three stages. <a href="JumpMan.html">JumpMan</a> &mdash; two verbs, harder. <a href="Fivenite.html">FIVENITE</a> &mdash; easy combat.</p>
-        <p class="mb-0"><span class="case-exit-label">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+        <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
-      <a href="index.html#projects" class="btn btn-outline-light mt-4">&larr; Back to Projects</a>
+      <a href="index.html#projects" class="btn btn-outline-light mt-4" data-i18n="chrome.back">&larr; Back to Projects</a>
     </div>
   </section>
   <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
@@ -153,6 +156,8 @@
       <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
     </div>
   </footer>
+  <script src="translations.js"></script>
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
