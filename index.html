@@ -6,46 +6,29 @@
   <meta name="author" content="Lin Xin">
   <meta name="description" content="Portfolio of Lin Xin — DigiPen Singapore. Systems, combat, quest design, and game programming.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+  <link rel="stylesheet" href="style.css?v=carousel2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/svg+xml" href="Assets/favicon.svg">
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
-  <div id="twinkle-container"></div>
-
-  <nav id="navbar" class="navbar text-white navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Lin Xin</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
-          <li class="nav-item">
-            <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
-          </li>
-        </ul>
-      </div>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Lin Xin</a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav">
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#about" data-i18n="nav.about">About Me</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <section id="intro" class="text-light">
-    <div class="container">
-      <h1 class="display-5 mb-2">Lin Xin <span class="intro-cname" lang="zh-Hans">林鑫</span></h1>
+  <section id="intro">
+    <div class="wrap">
+      <h1 class="intro-name">Lin Xin <span class="intro-cname" lang="zh-Hans">林鑫</span></h1>
       <p class="lead" data-i18n="intro.lead">Game Design &amp; Computer Science student at DigiPen Singapore. I finish games thoroughly, then break down what I enjoyed most and least — and why.</p>
       <p class="looking-label" data-i18n="intro.looking">Looking for</p>
       <ul class="looking-for" aria-label="Roles of interest">
@@ -64,9 +47,91 @@
     </div>
   </section>
 
-  <section id="projects" class="text-light pt-0">
-    <div class="container">
-      <h2 class="mb-4" data-i18n="projects.title">Projects</h2>
+  <section id="projects" class="band band-alt">
+    <div class="wrap">
+      <p class="section-kicker">Selected</p>
+      <h2>Featured work</h2>
+
+      <div class="feature-carousel" data-carousel aria-roledescription="carousel" aria-label="Featured work">
+        <div class="feature-track" data-carousel-track>
+          <a class="feature-slide is-active" href="Hellmaker.html" data-carousel-slide aria-label="1 of 6">
+            <div class="feature-visual">
+              <img src="Assets/hellmaker-editor.png" alt="Hellmaker editor">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.hm.tag">Custom engine</p>
+              <h3 class="feature-title">Hellmaker</h3>
+              <p class="feature-blurb" data-i18n="card.hm.blurb">Engine for Death's Refrain — debugger and ImGui</p>
+              <span class="feature-go" data-i18n="card.view">View Project</span>
+            </div>
+          </a>
+          <a class="feature-slide" href="DeathsRefrain.html" data-carousel-slide aria-label="2 of 6" hidden>
+            <div class="feature-visual">
+              <img src="Assets/DeathsRefrain.png" alt="Death's Refrain">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.dr.tag">Game with custom engine</p>
+              <h3 class="feature-title">Death's Refrain</h3>
+              <p class="feature-blurb" data-i18n="card.dr.blurb">Grid tactics — Design Lead, Lua. Same project as Hellmaker.</p>
+              <span class="feature-go" data-i18n="card.view">View Project</span>
+            </div>
+          </a>
+          <a class="feature-slide" href="Acquit.html" data-carousel-slide aria-label="3 of 6" hidden>
+            <div class="feature-visual feature-fill">
+              <img src="Assets/Acquit.png" alt="Acquit">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.acq.tag">Physical card game</p>
+              <h3 class="feature-title">Acquit</h3>
+              <p class="feature-blurb" data-i18n="card.acq.blurb">Courtroom cards — Design Lead, three-phase systems</p>
+              <span class="feature-go" data-i18n="card.view">View Project</span>
+            </div>
+          </a>
+          <a class="feature-slide" href="RpgMaps.html" data-carousel-slide aria-label="4 of 6" hidden>
+            <div class="feature-visual feature-visual-mosaic">
+              <img src="Assets/rpg-scientist.png" alt="">
+              <img src="Assets/rpg-pirate.png" alt="">
+              <img src="Assets/rpg-goat.jpg" alt="">
+              <img src="Assets/rpg-zombie.jpg" alt="">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.rpg.tag">Level Design</p>
+              <h3 class="feature-title">RPG Maker maps</h3>
+              <p class="feature-blurb" data-i18n="card.rpg.blurb">Four house maps — theme, programme, circulation</p>
+              <span class="feature-go" data-i18n="card.view">View Project</span>
+            </div>
+          </a>
+          <a class="feature-slide" href="Assets/My_Design_Intent.pdf" target="_blank" rel="noopener" data-carousel-slide aria-label="5 of 6" hidden>
+            <div class="feature-visual">
+              <img class="feature-doc" src="Assets/other-design-intent.png" alt="Design Intent cover">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.di.tag">My thinking</p>
+              <h3 class="feature-title" data-i18n="card.di.title">Design Intent</h3>
+              <p class="feature-blurb" data-i18n="card.di.blurb">How I approach level design — programmes, pacing, difficulty over complexity, and guided freedom.</p>
+              <span class="feature-go" data-i18n="card.openPdf">Open PDF</span>
+            </div>
+          </a>
+          <a class="feature-slide" href="ProjectXeno.html" data-carousel-slide aria-label="6 of 6" hidden>
+            <div class="feature-visual">
+              <img src="Assets/ProjectXeno.png" alt="Project Xeno">
+            </div>
+            <div class="feature-copy">
+              <p class="feature-tag" data-i18n="feat.xeno.tag">Mechanics Prototypes</p>
+              <h3 class="feature-title">Project Xeno</h3>
+              <p class="feature-blurb" data-i18n="card.xeno.blurb">Predator AI study — metric gating, Unreal C++</p>
+              <span class="feature-go" data-i18n="card.view">View Project</span>
+            </div>
+          </a>
+        </div>
+        <div class="feature-controls">
+          <button type="button" class="feature-arrow" data-carousel-prev aria-label="Previous featured">‹</button>
+          <div class="feature-dots" data-carousel-dots role="tablist" aria-label="Featured slides"></div>
+          <button type="button" class="feature-arrow" data-carousel-next aria-label="Next featured">›</button>
+        </div>
+      </div>
+
+      <h2 data-i18n="projects.title">Projects</h2>
       <div class="project-filters" role="tablist" aria-label="Project categories">
         <button type="button" class="active" data-filter="all" aria-pressed="true" data-i18n="filter.all">All</button>
         <button type="button" data-filter="video" aria-pressed="false" data-i18n="filter.video">Video games</button>
@@ -75,174 +140,160 @@
         <button type="button" data-filter="mechanics" aria-pressed="false" data-i18n="filter.mechanics">Mechanics prototypes</button>
         <button type="button" data-filter="other" aria-pressed="false" data-i18n="filter.other">Other Works</button>
       </div>
-      <div class="row">
 
-        <div class="col-md-4 mb-4 project-item" data-category="video">
-          <div class="card">
-            <img src="Assets/DeathsRefrain.png" class="card-img-top" alt="Death's Refrain">
-            <div class="card-body">
-              <h5 class="card-title">Death's Refrain</h5>
-              <p class="card-text" data-i18n="card.dr.blurb">Grid tactics — Design Lead, Lua. Same project as Hellmaker.</p>
-              <a href="DeathsRefrain.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+      <ul class="project-index">
+        <li class="project-item" data-category="video">
+          <a class="project-row" href="DeathsRefrain.html">
+            <img class="project-thumb" src="Assets/DeathsRefrain.png" alt="">
+            <div>
+              <p class="project-row-title">Death's Refrain</p>
+              <p class="project-row-blurb" data-i18n="card.dr.blurb">Grid tactics — Design Lead, Lua. Same project as Hellmaker.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="video">
-          <div class="card">
-            <img src="Assets/hellmaker-editor.png" class="card-img-top" alt="Hellmaker editor">
-            <div class="card-body">
-              <h5 class="card-title">Hellmaker</h5>
-              <p class="card-text" data-i18n="card.hm.blurb">Engine for Death's Refrain — debugger and ImGui</p>
-              <a href="Hellmaker.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="video">
+          <a class="project-row" href="Hellmaker.html">
+            <img class="project-thumb" src="Assets/hellmaker-editor.png" alt="">
+            <div>
+              <p class="project-row-title">Hellmaker</p>
+              <p class="project-row-blurb" data-i18n="card.hm.blurb">Engine for Death's Refrain — debugger and ImGui</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="video">
-          <div class="card">
-            <img src="Assets/Overseas.png" class="card-img-top" alt="Overseas">
-            <div class="card-body">
-              <h5 class="card-title">Overseas</h5>
-              <p class="card-text" data-i18n="card.ov.blurb">Fishing survival — mechanics and gameplay C++</p>
-              <a href="Overseas.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="video">
+          <a class="project-row" href="Overseas.html">
+            <img class="project-thumb" src="Assets/Overseas.png" alt="">
+            <div>
+              <p class="project-row-title">Overseas</p>
+              <p class="project-row-blurb" data-i18n="card.ov.blurb">Fishing survival — mechanics and gameplay C++</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="physical">
-          <div class="card">
-            <img src="Assets/Acquit.png" class="card-img-top" alt="Acquit">
-            <div class="card-body">
-              <h5 class="card-title">Acquit</h5>
-              <p class="card-text" data-i18n="card.acq.blurb">Courtroom cards — Design Lead, three-phase systems</p>
-              <a href="Acquit.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="physical">
+          <a class="project-row" href="Acquit.html">
+            <img class="project-thumb" src="Assets/Acquit.png" alt="">
+            <div>
+              <p class="project-row-title">Acquit</p>
+              <p class="project-row-blurb" data-i18n="card.acq.blurb">Courtroom cards — Design Lead, three-phase systems</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="physical">
-          <div class="card">
-            <img src="Assets/Conquest.png" class="card-img-top" alt="Conquest">
-            <div class="card-body">
-              <h5 class="card-title">Conquest</h5>
-              <p class="card-text" data-i18n="card.cq.blurb">Solo hex hunt — Design Lead, assassin pathing</p>
-              <a href="Conquest.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="physical">
+          <a class="project-row" href="Conquest.html">
+            <img class="project-thumb" src="Assets/Conquest.png" alt="">
+            <div>
+              <p class="project-row-title">Conquest</p>
+              <p class="project-row-blurb" data-i18n="card.cq.blurb">Solo hex hunt — Design Lead, assassin pathing</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="level">
-          <div class="card">
-            <img src="Assets/MegaManMaker.png" class="card-img-top" alt="Mega Man Maker">
-            <div class="card-body">
-              <h5 class="card-title">Mega Man Maker</h5>
-              <p class="card-text" data-i18n="card.mmm.blurb">Three stages — mobility, combat, puzzle. One method.</p>
-              <a href="MegaManMaker.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="level">
+          <a class="project-row" href="MegaManMaker.html">
+            <img class="project-thumb" src="Assets/MegaManMaker.png" alt="">
+            <div>
+              <p class="project-row-title">Mega Man Maker</p>
+              <p class="project-row-blurb" data-i18n="card.mmm.blurb">Three stages — mobility, combat, puzzle. One method.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="level">
-          <div class="card">
-            <img src="Assets/OneMillion.png" class="card-img-top" alt="ONE million">
-            <div class="card-body">
-              <h5 class="card-title">ONE million</h5>
-              <p class="card-text" data-i18n="card.om.blurb">Campaign document — 5 phases, gold curve, help-flag ending</p>
-              <a href="OneMillion.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="level">
+          <a class="project-row" href="OneMillion.html">
+            <img class="project-thumb" src="Assets/OneMillion.png" alt="">
+            <div>
+              <p class="project-row-title">ONE million</p>
+              <p class="project-row-blurb" data-i18n="card.om.blurb">Campaign document — 5 phases, gold curve, help-flag ending</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="level">
-          <div class="card">
-            <div class="card-mosaic">
-              <img src="Assets/rpg-scientist.png" alt="Tony and Bruce">
-              <img src="Assets/rpg-pirate.png" alt="The Black Diamond">
-              <img src="Assets/rpg-goat.jpg" alt="Gary the Goat Man">
-              <img src="Assets/rpg-zombie.jpg" alt="Sunrise Call High">
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="level">
+          <a class="project-row" href="RpgMaps.html">
+            <div class="project-thumb-mosaic" aria-hidden="true">
+              <img src="Assets/rpg-scientist.png" alt="">
+              <img src="Assets/rpg-pirate.png" alt="">
+              <img src="Assets/rpg-goat.jpg" alt="">
+              <img src="Assets/rpg-zombie.jpg" alt="">
             </div>
-            <div class="card-body">
-              <h5 class="card-title">RPG Maker maps</h5>
-              <p class="card-text" data-i18n="card.rpg.blurb">Four house maps — theme, programme, circulation</p>
-              <a href="RpgMaps.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <div>
+              <p class="project-row-title">RPG Maker maps</p>
+              <p class="project-row-blurb" data-i18n="card.rpg.blurb">Four house maps — theme, programme, circulation</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="mechanics">
-          <div class="card">
-            <img src="Assets/ProjectXeno.png" class="card-img-top" alt="Project Xeno">
-            <div class="card-body">
-              <h5 class="card-title">Project Xeno</h5>
-              <p class="card-text" data-i18n="card.xeno.blurb">Predator AI study — metric gating, Unreal C++</p>
-              <a href="ProjectXeno.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="mechanics">
+          <a class="project-row" href="ProjectXeno.html">
+            <img class="project-thumb" src="Assets/ProjectXeno.png" alt="">
+            <div>
+              <p class="project-row-title">Project Xeno</p>
+              <p class="project-row-blurb" data-i18n="card.xeno.blurb">Predator AI study — metric gating, Unreal C++</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="mechanics">
-          <div class="card">
-            <img src="Assets/GossipSimulator.png" class="card-img-top" alt="Gossip Simulator">
-            <div class="card-body">
-              <h5 class="card-title">Gossip Simulator</h5>
-              <p class="card-text" data-i18n="card.gossip.blurb">Behaviour-tree gossip epidemic — solo, C++</p>
-              <a href="GossipSimulator.html" class="btn btn-primary" data-i18n="card.view">View Project</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="mechanics">
+          <a class="project-row" href="GossipSimulator.html">
+            <img class="project-thumb" src="Assets/GossipSimulator.png" alt="">
+            <div>
+              <p class="project-row-title">Gossip Simulator</p>
+              <p class="project-row-blurb" data-i18n="card.gossip.blurb">Behaviour-tree gossip epidemic — solo, C++</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="other">
-          <div class="card">
-            <img src="Assets/DeathsRefrainWiki.png" class="card-img-top" alt="Death's Refrain Wiki">
-            <div class="card-body">
-              <h5 class="card-title" data-i18n="card.wiki.title">Death's Refrain Wiki</h5>
-              <p class="card-text" data-i18n="card.wiki.blurb">A searchable interactive wiki for my game Death's Refrain.</p>
-              <a href="wiki/index.html" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="card.openWiki">Open Wiki</a>
+            <span class="project-row-cta" data-i18n="card.view">View Project</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="other">
+          <a class="project-row" href="wiki/index.html" target="_blank" rel="noopener">
+            <img class="project-thumb" src="Assets/DeathsRefrainWiki.png" alt="">
+            <div>
+              <p class="project-row-title" data-i18n="card.wiki.title">Death's Refrain Wiki</p>
+              <p class="project-row-blurb" data-i18n="card.wiki.blurb">A searchable interactive wiki for my game Death's Refrain.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="other">
-          <div class="card">
-            <img src="Assets/other-cyberpunk.png" class="card-img-top card-img-doc" alt="Cyberpunk physics analysis cover">
-            <div class="card-body">
-              <h5 class="card-title" data-i18n="card.cp.title">Cyberpunk Physics Analysis</h5>
-              <p class="card-text" data-i18n="card.cp.blurb">A write-up of how Cyberpunk 2077's physics systems behave in play — forces, collisions, and what the feel costs.</p>
-              <a href="Assets/Cyberpunk_PhysicsAnalysis.pdf" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="card.openPdf">Open PDF</a>
+            <span class="project-row-cta" data-i18n="card.openWiki">Open Wiki</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="other">
+          <a class="project-row" href="Assets/Cyberpunk_PhysicsAnalysis.pdf" target="_blank" rel="noopener">
+            <img class="project-thumb thumb-doc" src="Assets/other-cyberpunk.png" alt="">
+            <div>
+              <p class="project-row-title" data-i18n="card.cp.title">Cyberpunk Physics Analysis</p>
+              <p class="project-row-blurb" data-i18n="card.cp.blurb">A write-up of how Cyberpunk 2077's physics systems behave in play — forces, collisions, and what the feel costs.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="other">
-          <div class="card">
-            <img src="Assets/other-dark-souls.png" class="card-img-top card-img-doc" alt="Dark Souls game analysis cover">
-            <div class="card-body">
-              <h5 class="card-title" data-i18n="card.ds.title">Dark Souls Psych Analysis</h5>
-              <p class="card-text" data-i18n="card.ds.blurb">A psychological read of Dark Souls — how death, mastery, and opacity shape player motivation and fear.</p>
-              <a href="Assets/DarkSouls_PsychAnalysis.pdf" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="card.openPdf">Open PDF</a>
+            <span class="project-row-cta" data-i18n="card.openPdf">Open PDF</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="other">
+          <a class="project-row" href="Assets/DarkSouls_PsychAnalysis.pdf" target="_blank" rel="noopener">
+            <img class="project-thumb thumb-doc" src="Assets/other-dark-souls.png" alt="">
+            <div>
+              <p class="project-row-title" data-i18n="card.ds.title">Dark Souls Psych Analysis</p>
+              <p class="project-row-blurb" data-i18n="card.ds.blurb">A psychological read of Dark Souls — how death, mastery, and opacity shape player motivation and fear.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 project-item" data-category="other">
-          <div class="card">
-            <img src="Assets/other-design-intent.png" class="card-img-top card-img-doc" alt="Design Intent document cover">
-            <div class="card-body">
-              <h5 class="card-title" data-i18n="card.di.title">Design Intent</h5>
-              <p class="card-text" data-i18n="card.di.blurb">How I approach level design — programmes, pacing, difficulty over complexity, and guided freedom.</p>
-              <a href="Assets/My_Design_Intent.pdf" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="card.openPdf">Open PDF</a>
+            <span class="project-row-cta" data-i18n="card.openPdf">Open PDF</span>
+          </a>
+        </li>
+        <li class="project-item" data-category="other">
+          <a class="project-row" href="Assets/My_Design_Intent.pdf" target="_blank" rel="noopener">
+            <img class="project-thumb thumb-doc" src="Assets/other-design-intent.png" alt="">
+            <div>
+              <p class="project-row-title" data-i18n="card.di.title">Design Intent</p>
+              <p class="project-row-blurb" data-i18n="card.di.blurb">How I approach level design — programmes, pacing, difficulty over complexity, and guided freedom.</p>
             </div>
-          </div>
-        </div>
-
-      </div>
+            <span class="project-row-cta" data-i18n="card.openPdf">Open PDF</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="mb-4" data-i18n="about.title">About Me</h2>
+  <section id="about" class="band">
+    <div class="wrap">
+      <h2 data-i18n="about.title">About Me</h2>
       <div class="about-layout">
         <img src="Assets/about-me.jpg" class="about-photo" alt="Lin Xin">
         <div class="about-copy">
@@ -253,9 +304,9 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2 class="mb-4" data-i18n="contact.title">Contact</h2>
+  <section id="contact" class="band band-alt">
+    <div class="wrap">
+      <h2 data-i18n="contact.title">Contact</h2>
       <div class="contact-links">
         <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a>
         <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a>
@@ -263,33 +314,33 @@
         <a href="Assets/LinXin_Game_Design_Resume.pdf" target="_blank" data-i18n="intro.designResume">Design resume</a>
         <a href="Assets/LinXin_Game_Programmer_Resume.pdf" target="_blank" data-i18n="intro.progResume">Programmer resume</a>
       </div>
-      <form target="_blank" action="https://formsubmit.co/soniclinxin@gmail.com" method="POST">
+      <form class="contact-form" target="_blank" action="https://formsubmit.co/soniclinxin@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="Portfolio contact — Lin Xin" data-i18n-value="contact.subject">
-        <div class="mb-3">
-          <label for="name" class="form-label" data-i18n="contact.name">Name</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" data-i18n-placeholder="contact.namePh" required>
+        <div class="field">
+          <label for="name" data-i18n="contact.name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Full Name" data-i18n-placeholder="contact.namePh" required>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label" data-i18n="contact.email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" data-i18n-placeholder="contact.emailPh" required>
+        <div class="field">
+          <label for="email" data-i18n="contact.email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Email Address" data-i18n-placeholder="contact.emailPh" required>
         </div>
-        <div class="mb-3">
-          <label for="message" class="form-label" data-i18n="contact.message">Message</label>
-          <textarea id="message" placeholder="Your Message" class="form-control" name="message" rows="10" data-i18n-placeholder="contact.messagePh" required></textarea>
+        <div class="field">
+          <label for="message" data-i18n="contact.message">Message</label>
+          <textarea id="message" name="message" rows="8" placeholder="Your Message" data-i18n-placeholder="contact.messagePh" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" data-i18n="contact.send">Send</button>
+        <button type="submit" class="btn" data-i18n="contact.send">Send</button>
       </form>
     </div>
   </section>
 
-  <footer class="text-white p-4" style="background-color: #00000083;">
-    <div class="container">
-      <p class="mb-2 text-end">
-        <a href="https://www.linkedin.com/in/xinl0/" class="text-info me-3" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/LinX-Z0" class="text-info me-3" target="_blank" rel="noopener">GitHub</a>
-        <span>&copy; 2026 Lin Xin</span>
-      </p>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/LinX-Z0" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <span>&copy; 2026 Lin Xin</span>
     </div>
   </footer>
 
