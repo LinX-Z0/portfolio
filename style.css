@@ -532,6 +532,16 @@ footer a.btn img {
   color: var(--fog);
 }
 
+.intro-cname {
+  margin-left: 0.35em;
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  font-size: 0.55em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  vertical-align: middle;
+}
+
 .looking-label {
   margin: 1.25rem 0 0.55rem;
   font-family: 'Space Grotesk', sans-serif;
