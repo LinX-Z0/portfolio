@@ -19,7 +19,7 @@ PortfolioI18nMerge({
     "jm.meta.scopeVal": "14 challenges, 5 screens",
     "jm.meta.set": "Set",
     "jm.meta.setVal": "<a href=\"MegaManMaker.html\" class=\"text-info\">Mega Man Maker</a> \u00b7 <a href=\"Fivenite.html\" class=\"text-info\">FIVENITE</a> \u00b7 <a href=\"PrisonBreak.html\" class=\"text-info\">Prison Break</a>",
-    "jm.p.intro": "I wanted a stage that gets harder because the player gets better at the same tools, not because I keep adding weapons. Primary theme is mobility \u2014 double jump and slide. Secondary is timing. Every labelled challenge has to ask for at least one of those verbs, often stacked. If a room cannot be named in that language, it does not belong on the map.",
+    "jm.p.intro": "I wanted a stage that gets harder because the player gets better at the same tools, not because I keep adding weapons. Primary theme is mobility: double jump and slide. Secondary is timing. Every labelled challenge has to ask for at least one of those verbs, often stacked. If a room cannot be named in that language, it does not belong on the map.",
     "jm.h.intent": "Design intent",
     "jm.p.intent1": "Difficulty over complexity. That is the brief I wrote for myself, and it is the opposite of the puzzle stage in this set. Two verbs is enough if the ask on them keeps climbing. Adding a third tool would have made later rooms look harder on paper while teaching less about the ones the stage is actually about.",
     "jm.p.intent2": "Slide and double jump normally cannot coexist. Equipping a unique attack unlocks both. That constraint became the hook: air slides, and one-block midair gaps that need a double jump plus a timed air slide. The gimmick is already in the editor once those two tools exist together. I did not invent a new mechanic. I forced a pairing the game usually forbids, then wrote rooms that only make sense because of that pairing.",
@@ -49,13 +49,13 @@ PortfolioI18nMerge({
     "jm.curve.s2.beat": "Stacks with timing (B'+C'+D)",
     "jm.curve.s2.peak": "6",
     "jm.curve.s3.screen": "3",
-    "jm.curve.s3.beat": "Zone 10: B+C'+D+E \u2014 mobility, air slide, timing, a platform that will not wait",
+    "jm.curve.s3.beat": "Zone 10 · B+C'+D+E · mobility, air slide, timing, a platform that will not wait",
     "jm.curve.s3.peak": "8",
     "jm.curve.s4.screen": "4",
-    "jm.curve.s4.beat": "Fork: B+E or C+E",
+    "jm.curve.s4.beat": "Fork · B+E or C+E",
     "jm.curve.s4.peak": "6",
     "jm.curve.s5.screen": "5",
-    "jm.curve.s5.beat": "B+C' \u2014 the cleanest statement of the theme",
+    "jm.curve.s5.beat": "B+C' · the cleanest statement of the theme",
     "jm.curve.s5.peak": "10",
     "jm.p.curve2": "Early rooms sit at 1\u20133. The first real spike is A+C' at 5. I then drop to a 1 (just B) so the player can reset before the next stack. Mid-map climbs through 4, 6, 8. The last screen is the exam, not a new toy. Downbeats are deliberate: without them, stacking the same two verbs just reads as cheap.",
     "jm.p.curve3": "Screen 4's fork is the one place the stage offers a choice inside the theme. Both paths still speak B/C and E. The freedom is which verb carries the breaking platform, not whether you can leave the alphabet.",
@@ -63,7 +63,7 @@ PortfolioI18nMerge({
     "jm.role.1": "Layout, skill theme, cadence notation, intensity curve",
     "jm.links.doc": "Level document (map, cadence, intensity)",
     "jm.exit.set": "Set",
-    "jm.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> \u2014 all three stages. <a href=\"Fivenite.html\">FIVENITE</a> \u2014 easy combat. <a href=\"PrisonBreak.html\">Prison Break</a> \u2014 normal puzzle."
+    "jm.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> · all three stages. <a href=\"Fivenite.html\">FIVENITE</a> · easy combat. <a href=\"PrisonBreak.html\">Prison Break</a> · normal puzzle."
   },
   zh: {
     "jm.meta.title": "JumpMan - \u6797\u946b",
@@ -85,7 +85,7 @@ PortfolioI18nMerge({
     "jm.meta.scopeVal": "14 \u4e2a\u6311\u6218\uff0c5 \u5c4f",
     "jm.meta.set": "\u96c6\u5408",
     "jm.meta.setVal": "<a href=\"MegaManMaker.html\" class=\"text-info\">Mega Man Maker</a> \u00b7 <a href=\"Fivenite.html\" class=\"text-info\">FIVENITE</a> \u00b7 <a href=\"PrisonBreak.html\" class=\"text-info\">Prison Break</a>",
-    "jm.p.intro": "\u6211\u60f3\u8981\u4e00\u5173\u53d8\u96be\u662f\u56e0\u4e3a\u73a9\u5bb6\u628a\u540c\u4e00\u5957\u5de5\u5177\u7528\u5f97\u66f4\u597d\uff0c\u800c\u4e0d\u662f\u56e0\u4e3a\u6211\u4e0d\u65ad\u52a0\u6b66\u5668\u3002\u4e3b\u4e3b\u9898\u662f\u673a\u52a8 \u2014 \u4e8c\u6bb5\u8df3\u4e0e\u6ed1\u94f2\u3002\u6b21\u4e3b\u9898\u662f\u65f6\u673a\u3002\u6bcf\u4e2a\u6807\u6ce8\u6311\u6218\u81f3\u5c11\u8981\u5176\u4e2d\u4e00\u4e2a\u52a8\u8bcd\uff0c\u5e38\u5e38\u53e0\u7528\u3002\u82e5\u4e00\u95f4\u623f\u65e0\u6cd5\u7528\u90a3\u5957\u8bed\u8a00\u547d\u540d\uff0c\u5c31\u4e0d\u8be5\u4e0a\u5730\u56fe\u3002",
+    "jm.p.intro": "\u6211\u60f3\u8981\u4e00\u5173\u53d8\u96be\u662f\u56e0\u4e3a\u73a9\u5bb6\u628a\u540c\u4e00\u5957\u5de5\u5177\u7528\u5f97\u66f4\u597d\uff0c\u800c\u4e0d\u662f\u56e0\u4e3a\u6211\u4e0d\u65ad\u52a0\u6b66\u5668\u3002\u4e3b\u4e3b\u9898\u662f\u673a\u52a8: \u4e8c\u6bb5\u8df3\u4e0e\u6ed1\u94f2\u3002\u6b21\u4e3b\u9898\u662f\u65f6\u673a\u3002\u6bcf\u4e2a\u6807\u6ce8\u6311\u6218\u81f3\u5c11\u8981\u5176\u4e2d\u4e00\u4e2a\u52a8\u8bcd\uff0c\u5e38\u5e38\u53e0\u7528\u3002\u82e5\u4e00\u95f4\u623f\u65e0\u6cd5\u7528\u90a3\u5957\u8bed\u8a00\u547d\u540d\uff0c\u5c31\u4e0d\u8be5\u4e0a\u5730\u56fe\u3002",
     "jm.h.intent": "\u8bbe\u8ba1\u610f\u56fe",
     "jm.p.intent1": "\u96be\u5ea6\u5148\u4e8e\u590d\u6742\u5ea6\u3002\u90a3\u662f\u6211\u7ed9\u81ea\u5df1\u5199\u7684 brief\uff0c\u4e5f\u662f\u672c\u96c6\u5408\u4e2d\u89e3\u8c1c\u5173\u7684\u53cd\u9762\u3002\u4e24\u4e2a\u52a8\u8bcd\u5c31\u591f\uff0c\u53ea\u8981\u5bf9\u5b83\u4eec\u7684\u8981\u6c42\u6301\u7eed\u722c\u5347\u3002\u52a0\u7b2c\u4e09\u4ef6\u5de5\u5177\u4f1a\u8ba9\u540e\u623f\u5728\u7eb8\u9762\u4e0a\u66f4\u96be\uff0c\u5374\u66f4\u5c11\u6559\u5173\u5361\u771f\u6b63\u5173\u4e8e\u7684\u90a3\u4e9b\u3002",
     "jm.p.intent2": "\u6ed1\u94f2\u4e0e\u4e8c\u6bb5\u8df3\u901a\u5e38\u4e0d\u80fd\u5171\u5b58\u3002\u88c5\u5907\u72ec\u7279\u653b\u51fb\u4f1a\u540c\u65f6\u89e3\u9501\u4e24\u8005\u3002\u90a3\u7ea6\u675f\u6210\u4e86\u94a9\u5b50\uff1a\u7a7a\u4e2d\u6ed1\u94f2\uff0c\u4ee5\u53ca\u9700\u8981\u4e8c\u6bb5\u8df3\u52a0\u5b9a\u65f6\u7a7a\u6ed1\u7684\u4e00\u683c\u7a7a\u4e2d\u95f4\u8ddd\u3002\u4e24\u4ef6\u5de5\u5177\u4e00\u8d77\u5b58\u5728\u65f6\uff0c\u5671\u5934\u5df2\u5728\u7f16\u8f91\u5668\u91cc\u3002\u6211\u6ca1\u6709\u53d1\u660e\u65b0\u673a\u5236\u3002\u6211\u5f3a\u8feb\u4e86\u6e38\u620f\u901a\u5e38\u7981\u6b62\u7684\u914d\u5bf9\uff0c\u518d\u5199\u53ea\u56e0\u90a3\u914d\u5bf9\u624d\u8bf4\u5f97\u901a\u7684\u623f\u95f4\u3002",
@@ -115,13 +115,13 @@ PortfolioI18nMerge({
     "jm.curve.s2.beat": "\u53e0\u65f6\u673a\uff08B'+C'+D\uff09",
     "jm.curve.s2.peak": "6",
     "jm.curve.s3.screen": "3",
-    "jm.curve.s3.beat": "Zone 10\uff1aB+C'+D+E \u2014 \u673a\u52a8\u3001\u7a7a\u6ed1\u3001\u65f6\u673a\u3001\u4e0d\u7b49\u4f60\u7684\u5e73\u53f0",
+    "jm.curve.s3.beat": "Zone 10 · B+C'+D+E · \u673a\u52a8\u3001\u7a7a\u6ed1\u3001\u65f6\u673a\u3001\u4e0d\u7b49\u4f60\u7684\u5e73\u53f0",
     "jm.curve.s3.peak": "8",
     "jm.curve.s4.screen": "4",
     "jm.curve.s4.beat": "\u5206\u53c9\uff1aB+E \u6216 C+E",
     "jm.curve.s4.peak": "6",
     "jm.curve.s5.screen": "5",
-    "jm.curve.s5.beat": "B+C' \u2014 \u4e3b\u9898\u6700\u5e72\u51c0\u7684\u9648\u8ff0",
+    "jm.curve.s5.beat": "B+C' · \u4e3b\u9898\u6700\u5e72\u51c0\u7684\u9648\u8ff0",
     "jm.curve.s5.peak": "10",
     "jm.p.curve2": "\u65e9\u671f\u623f\u5728 1\u20133\u3002\u7b2c\u4e00\u6b21\u771f\u5c16\u5cf0\u662f 5 \u5206\u7684 A+C'\u3002\u7136\u540e\u843d\u5230 1\uff08\u4ec5 B\uff09\uff0c\u8ba9\u73a9\u5bb6\u5728\u4e0b\u4e00\u53e0\u524d\u91cd\u7f6e\u3002\u4e2d\u56fe\u7ecf 4\u30016\u30018 \u722c\u5347\u3002\u672b\u5c4f\u662f\u8003\u8bd5\uff0c\u4e0d\u662f\u65b0\u73a9\u5177\u3002\u5f31\u62cd\u662f\u523b\u610f\u7684\uff1a\u6ca1\u6709\u5b83\u4eec\uff0c\u53e0\u540c\u4e00\u5bf9\u52a8\u8bcd\u53ea\u50cf\u5ec9\u4ef7\u3002",
     "jm.p.curve3": "\u7b2c 4 \u5c4f\u7684\u5206\u53c9\u662f\u5173\u5361\u5728\u4e3b\u9898\u5185\u63d0\u4f9b\u9009\u62e9\u7684\u552f\u4e00\u5904\u3002\u4e24\u6761\u8def\u4ecd\u8bf4 B/C \u4e0e E\u3002\u81ea\u7531\u662f\u54ea\u4e2a\u52a8\u8bcd\u625b\u7834\u788e\u5e73\u53f0\uff0c\u4e0d\u662f\u4f60\u80fd\u5426\u79bb\u5f00\u5b57\u6bcd\u8868\u3002",
@@ -129,6 +129,6 @@ PortfolioI18nMerge({
     "jm.role.1": "\u5e03\u5c40\u3001\u6280\u80fd\u4e3b\u9898\u3001\u8282\u594f\u8bb0\u8c31\u3001\u5f3a\u5ea6\u66f2\u7ebf",
     "jm.links.doc": "\u5173\u5361\u6587\u6863\uff08\u5730\u56fe\u3001\u8282\u594f\u3001\u5f3a\u5ea6\uff09",
     "jm.exit.set": "\u96c6\u5408",
-    "jm.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> \u2014 \u5168\u90e8\u4e09\u5173\u3002<a href=\"Fivenite.html\">FIVENITE</a> \u2014 \u7b80\u5355\u6218\u6597\u3002<a href=\"PrisonBreak.html\">Prison Break</a> \u2014 \u666e\u901a\u89e3\u8c1c\u3002"
+    "jm.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> · 全部三关。<a href=\"Fivenite.html\">FIVENITE</a> · 简单战斗。<a href=\"PrisonBreak.html\">Prison Break</a> · 普通解谜。"
   }
 });

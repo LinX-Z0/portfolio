@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Custom C++20 engine behind Death's Refrain. I built the shared debug layer, the ImGui debug console, the editor GUI manager, and the asset browser with drag-and-drop spawning.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hellmaker &mdash; Lin Xin">
+  <meta property="og:title" content="Hellmaker · Lin Xin">
   <meta property="og:description" content="Custom C++20 engine behind Death's Refrain. Shared debug layer, ImGui debug console, editor GUI manager, and asset browser with drag-and-drop spawning.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Hellmaker.html">
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/hellmaker-og.png">
@@ -47,11 +47,11 @@
         </div>
         <div>
           <dt data-i18n="hm.meta.team">Team</dt>
-          <dd data-i18n="hm.meta.teamVal">9 &mdash; Team Infernumb</dd>
+          <dd data-i18n="hm.meta.teamVal">9 · Team Infernumb</dd>
         </div>
         <div>
           <dt data-i18n="hm.meta.pair">Pair</dt>
-          <dd data-i18n="hm.meta.pairVal" data-i18n-html><a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> &mdash; the game</dd>
+          <dd data-i18n="hm.meta.pairVal" data-i18n-html><a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> · the game</dd>
         </div>
         <div>
           <dt data-i18n="hm.meta.courses">Courses</dt>
@@ -68,24 +68,24 @@
       </dl>
 
       <ul class="scan-strip">
-        <li data-i18n="hm.scan.debug" data-i18n-html><strong>Debug layer</strong> &mdash; shared spdlog pipeline across Editor, Sandbox, and Engine; sinks, ring buffer, crash helpers.</li>
-        <li data-i18n="hm.scan.console" data-i18n-html><strong>Debug console</strong> &mdash; ImGui live stream and severity filtering inside the editor.</li>
-        <li data-i18n="hm.scan.gui" data-i18n-html><strong>GUI manager</strong> &mdash; ImGui wrap so callers stay UI-agnostic; docking, FPS, editor mode, launcher return.</li>
-        <li data-i18n="hm.scan.browser" data-i18n-html><strong>Asset browser</strong> &mdash; authored; drag-and-drop spawn-at-mouse; placement loop from ~1 min to ~5 s.</li>
-        <li data-i18n="hm.scan.notMine" data-i18n-html><strong>Not mine</strong> &mdash; architecture and components (Timothy); rendering and gizmos (Alfred); physics (Jaeden); ImGuiFileDialog and share of browser / game view (Timothy).</li>
+        <li data-i18n="hm.scan.debug" data-i18n-html><strong>Debug layer</strong> · shared spdlog pipeline across Editor, Sandbox, and Engine; sinks, ring buffer, crash helpers.</li>
+        <li data-i18n="hm.scan.console" data-i18n-html><strong>Debug console</strong> · ImGui live stream and severity filtering inside the editor.</li>
+        <li data-i18n="hm.scan.gui" data-i18n-html><strong>GUI manager</strong> · ImGui wrap so callers stay UI-agnostic; docking, FPS, editor mode, launcher return.</li>
+        <li data-i18n="hm.scan.browser" data-i18n-html><strong>Asset browser</strong> · authored; drag-and-drop spawn-at-mouse; placement loop from ~1 min to ~5 s.</li>
+        <li data-i18n="hm.scan.notMine" data-i18n-html><strong>Not mine</strong> · architecture and components (Timothy); rendering and gizmos (Alfred); physics (Jaeden); ImGuiFileDialog and share of browser / game view (Timothy).</li>
       </ul>
 
-      <p data-i18n="hm.p.intro" data-i18n-html>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did: this is the engine and the editor tooling, that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling &mdash; the console, the GUI manager, and the asset browser &mdash; which together cut the distance between changing something and seeing it.</p>
+      <p data-i18n="hm.p.intro" data-i18n-html>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did. This is the engine and the editor tooling; that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling (the console, the GUI manager, and the asset browser), which together cut the distance between changing something and seeing it.</p>
 
       <h3 class="mt-4" data-i18n="hm.h.why">Why I asked for the tools job</h3>
       <p data-i18n="hm.p.why1" data-i18n-html>On <a href="Overseas.html" class="text-info">Overseas</a> I spent a trimester retuning values by rebuilding the game to find out whether each guess was right. Nothing was exposed, nothing was observable while it ran, and the reflection I wrote at the end of that project was that debug views and tunables belong in place before a system needs tuning, not after. Hellmaker is where I got to act on that, and the difference is that this time the user of the thing I was building was my own team.</p>
       <p data-i18n="hm.p.why2">That reframes what &ldquo;good&rdquo; means. A gameplay system is judged on how it feels; a tool is judged on how much it removes from someone else's day. Every decision below is some version of the same question: what is a designer or an artist currently paying for in rebuilds, guesswork, or lost context, and can this give it back to them? The clearest answer I got was the asset browser, which took a roughly one-minute round trip down to about five seconds and did it on every placement for the rest of the project.</p>
 
       <h3 class="mt-4" data-i18n="hm.h.engine">The engine, in brief</h3>
-      <p data-i18n="hm.p.engine1">Hellmaker builds as three CMake targets. Engine is a static library holding the runtime &mdash; the GameObject scene model, rendering, physics, audio through FMOD, windowing and input through GLFW. Editor and Sandbox both link it. Editor is the ImGui toolset; Sandbox is the shipping game executable.</p>
+      <p data-i18n="hm.p.engine1">Hellmaker builds as three CMake targets. Engine is a static library holding the runtime: the GameObject scene model, rendering, physics, audio through FMOD, windowing and input through GLFW. Editor and Sandbox both link it. Editor is the ImGui toolset; Sandbox is the shipping game executable.</p>
       <p data-i18n="hm.p.engine2">The consequence worth pulling out is that the editor is not a separate simulation of the game. Both targets link the same library, so the world a designer arranges in the editor is running the code the game ships on. There is no second implementation to keep in step, and no class of bug where the editor preview and the build disagree about what a scene means.</p>
-      <p data-i18n="hm.p.engine3">Content lives outside C++: data in YAML, behaviour scripted in Lua. Death's Refrain is authored on the runtime rather than compiled into it, and that is the decision the rest of my work depends on. If levels were C++, an asset browser would be pointless &mdash; placing an object would still mean a rebuild no matter how good the panel was. Because they are data, a tool can put an object into a room while the engine is running, and the entire question becomes how fast and how legible you can make that.</p>
-      <p class="authored" data-i18n="hm.p.engineNote">The architecture and the component model are Timothy's as Technical Lead, with rendering from Alfred and physics from Jaeden. My work sits on top: the debug layer all three targets share, and the editor panels below.</p>
+      <p data-i18n="hm.p.engine3">Content lives outside C++: data in YAML, behaviour scripted in Lua. Death's Refrain is authored on the runtime rather than compiled into it, and that is the decision the rest of my work depends on. If levels were C++, an asset browser would be pointless, since placing an object would still mean a rebuild no matter how good the panel was. Because they are data, a tool can put an object into a room while the engine is running, and the entire question becomes how fast and how legible you can make that.</p>
+      <p class="authored" data-i18n="hm.p.engineNote">The architecture and the component model are Timothy's as Technical Lead, with rendering from Alfred and physics from Jaeden. My work sits on top (the debug layer all three targets share, and the editor panels below).</p>
 
       <figure class="system-diagram">
         <svg viewBox="0 0 720 300" role="img" aria-labelledby="dbgTitle dbgDesc">
@@ -133,11 +133,11 @@
 
       <h3 class="mt-4" data-i18n="hm.h.debug">Debug layer</h3>
       <p data-i18n="hm.p.debug1">One global layer on spdlog, linked into Engine, Editor, and Sandbox alike. Levels run trace through critical, each message can target the console, a file, or both, and a ring buffer keeps recent history in memory. Init, shutdown, and crash helpers each take a custom reason string.</p>
-      <p data-i18n="hm.p.debug2">Sharing one layer across all three targets is the decision that matters, and it is worth being precise about why. The alternative &mdash; a logger per target &mdash; is easier to write and produces three separate accounts of one event. When the editor crashes while a designer is dragging an asset into the scene, the useful information is not the fault itself, it is the sequence of engine calls that preceded it. Separate loggers put those on either side of a wall. One pipeline puts them in the same timeline, in order, which is the difference between a bug report and a reproduction.</p>
+      <p data-i18n="hm.p.debug2">Sharing one layer across all three targets is the decision that matters, and it is worth being precise about why. The alternative: a logger per target: is easier to write and produces three separate accounts of one event. When the editor crashes while a designer is dragging an asset into the scene, the useful information is not the fault itself, it is the sequence of engine calls that preceded it. Separate loggers put those on either side of a wall. One pipeline puts them in the same timeline, in order, which is the difference between a bug report and a reproduction.</p>
       <p data-i18n="hm.p.debug3">The ring buffer exists for the same reason. A file sink is a record you read after the fact; the buffer is what lets the console show history the moment you open it, and what gives the crash helpers something to hand over about the seconds before the fault. The custom reason string is there so that the two halves of the engine do not become indistinguishable at the point of failure.</p>
       <figure class="shot">
         <img src="Assets/hellmaker-log-output.png" alt="Hellmaker log output with timestamps and color-coded debug, info, and error lines.">
-        <figcaption data-i18n="hm.fig.log">Output from the shared layer &mdash; timestamps, levels, and sinks. Debug, info, and error in the same pipeline.</figcaption>
+        <figcaption data-i18n="hm.fig.log">Output from the shared layer: timestamps, levels, and sinks. Debug, info, and error in the same pipeline.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="hm.h.console">Debug console</h3>
@@ -155,7 +155,7 @@
       <h3 class="mt-4" data-i18n="hm.h.browser">Asset browser</h3>
       <p data-i18n="hm.p.browser1">The panel the team picked content from, and the piece with the most direct effect on how a room got built. I authored it, with Timothy contributing a smaller share including the ImGuiFileDialog integration. Assets drag out of the browser and onto the game view; I implemented spawn-at-mouse, so a dropped file becomes a GameObject exactly where the cursor was. The game view itself is shared work with Alfred Lo and Timothy, who own render and gizmos.</p>
       <p data-i18n="hm.p.browser2">Dropping at the cursor rather than at the origin sounds like a detail and is really the whole feature. Spawning at origin means every placement is followed by a drag to where you actually meant, which is a second action, a second chance to misjudge, and a reason to stop thinking about layout and start thinking about the tool. Landing it under the cursor makes placement a single gesture and keeps the designer's attention on the room.</p>
-      <p data-i18n="hm.p.browser3">What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand &mdash; name, transform, numbers &mdash; then waiting out a rebuild to see it. Roughly a minute to answer a question as small as whether a crate sat too far left. With the browser that loop runs about five seconds, and it comes back on every single placement rather than once.</p>
+      <p data-i18n="hm.p.browser3">What it replaced is the clearest measure of it. Before the browser, putting an object in a room meant opening the scene YAML and typing the entry by hand: name, transform, numbers: then waiting out a rebuild to see it. Roughly a minute to answer a question as small as whether a crate sat too far left. With the browser that loop runs about five seconds, and it comes back on every single placement rather than once.</p>
       <p data-i18n="hm.p.browser4">The time is the smaller half of it. Hand-editing YAML means holding a coordinate system in your head and translating an intention into numbers, so a designer is not really placing objects, they are predicting where objects will land and then checking. Cutting the wait matters; turning the task from arithmetic into pointing is what actually changed how rooms got built.</p>
       <figure class="shot">
         <img src="Assets/hellmaker-drag-spawn.gif" alt="An asset dragged out of the browser and dropped onto the game view, appearing as a GameObject under the cursor.">
@@ -163,7 +163,7 @@
       </figure>
       <figure class="shot">
         <img src="Assets/hellmaker-asset-browser.png" alt="Hellmaker Asset Browser on the Sprites tab, showing a grid of project sprites and import tools.">
-        <figcaption data-i18n="hm.fig.sprites">Asset Browser &mdash; Sprites tab, 118 entries. The panel the team picked content from.</figcaption>
+        <figcaption data-i18n="hm.fig.sprites">Asset Browser: Sprites tab, 118 entries. The panel the team picked content from.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="hm.h.support">How it supported the game</h3>
@@ -171,31 +171,31 @@
       <p data-i18n="hm.p.support2" data-i18n-html>Mechanics, Lua, and integration are on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page.</p>
 
       <h3 class="mt-4" data-i18n="hm.h.outcome">Outcome and reflection</h3>
-      <p data-i18n="hm.p.outcome1" data-i18n-html>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for &mdash; a plan that delivers all of both was not scoped ambitiously enough to start with. The game that closed on this engine is on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page; this one stays with the tooling.</p>
+      <p data-i18n="hm.p.outcome1" data-i18n-html>The project closed its final milestone at an A. We shipped every must-have and not every want-to-have, which is what a priority split is for: a plan that delivers all of both was not scoped ambitiously enough to start with. The game that closed on this engine is on the <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a> page; this one stays with the tooling.</p>
       <p data-i18n="hm.p.outcome2">The lesson I actually took out of it sits on the seam between the engine team and the game team. When the engine did not do what I needed, my instinct was to work around it in game code, and that instinct was wrong often enough to be a pattern rather than a bad day. A workaround lives in the game forever, invisible to the people maintaining the engine, and the next person to hit the same wall writes it again slightly differently. Asking the engine team to change the engine costs one conversation and fixes it once, for everyone. I spent a project building tools so other people would not have to waste time, and did not think to ask anyone to do the same for me.</p>
-      <p data-i18n="hm.p.outcome3">The sharpest version of it was not in the engine at all. I had been authoring four versions of every tile, one per orientation, and it had never occurred to me to ask for rotation support in the tilemap &mdash; I had been doing it by hand long enough that the work had stopped registering as work. A teammate asked for the feature in a single sentence. Three quarters of those tile assets existed because I had routed around a gap instead of naming it, which is the uncomfortable shape of the lesson: the person best placed to notice a missing feature is whoever is absorbing its absence, and that is the same person least likely to raise it.</p>
-      <p data-i18n="hm.p.outcome4">The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted: people built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because a minute is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
+      <p data-i18n="hm.p.outcome3">The sharpest version of it was not in the engine at all. I had been authoring four versions of every tile, one per orientation, and it had never occurred to me to ask for rotation support in the tilemap. I had been doing it by hand long enough that the work had stopped registering as work. A teammate asked for the feature in a single sentence. Three quarters of those tile assets existed because I had routed around a gap instead of naming it, which is the uncomfortable shape of the lesson. The person best placed to notice a missing feature is whoever is absorbing its absence, and that is the same person least likely to raise it.</p>
+      <p data-i18n="hm.p.outcome4">The other lesson I want to phrase carefully, because &ldquo;we should have had more meetings&rdquo; is the easy version and not quite the problem. What went wrong was that assumptions drifted. People built against slightly different pictures of the same thing, and we found out late, when it was expensive to correct. More meetings is one fix, but the useful framing is that the gap between forming an assumption and having it checked was too long. That is the same problem this entire page is about. The asset browser exists because a minute is too long to wait to learn whether a crate is in the right place; a team is that system with slower moving parts.</p>
       <p data-i18n="hm.p.outcome5" data-i18n-html>It rhymes with what <a href="Overseas.html" class="text-info">Overseas</a> taught me, one step on. There the lesson was to ask before building on someone else's code, because agreeing on an idea is not the same as sharing a model of it. Here it is that the platform is negotiable too, and the person who owns it would usually rather change it than watch you route around it.</p>
       <p data-i18n="hm.p.outcome6">If I picked this up again, the target would be the five seconds still sitting in that loop. Taking it down from a minute was the large win. Closing the round trip completely, so that a change lands in a scene already running, is where the rest of the time is.</p>
 
       <h4 class="mt-5" data-i18n="hm.h.role">Role</h4>
       <ul>
-        <li data-i18n="hm.role.1">Global debug layer &mdash; spdlog, trace to critical, console and file sinks, ring buffer, crash helpers with custom reasons</li>
-        <li data-i18n="hm.role.2">ImGui debug console &mdash; live streaming and filtering inside the editor</li>
-        <li data-i18n="hm.role.3">Editor GUI manager &mdash; ImGui wrap, docking, FPS, editor mode, launcher return</li>
-        <li data-i18n="hm.role.4">Asset browser &mdash; authored, with drag-and-drop spawn-at-mouse into the game view</li>
+        <li data-i18n="hm.role.1">Global debug layer: spdlog, trace to critical, console and file sinks, ring buffer, crash helpers with custom reasons</li>
+        <li data-i18n="hm.role.2">ImGui debug console: live streaming and filtering inside the editor</li>
+        <li data-i18n="hm.role.3">Editor GUI manager: ImGui wrap, docking, FPS, editor mode, launcher return</li>
+        <li data-i18n="hm.role.4">Asset browser: authored, with drag-and-drop spawn-at-mouse into the game view</li>
       </ul>
 
       <h4 class="mt-5" data-i18n="hm.h.collab">Engine collaborators</h4>
       <ul>
-        <li data-i18n="hm.collab.1">Loh Boon Cheong, Timothy &mdash; Technical Lead; ImGuiFileDialog integration, share of the asset browser and game view</li>
-        <li data-i18n="hm.collab.2">Alfred Lo Kai Xuan &mdash; Graphics and rendering; share of the game view and gizmos</li>
-        <li data-i18n="hm.collab.3">Wong E-Ren, Jaeden &mdash; Physics and collision</li>
+        <li data-i18n="hm.collab.1">Loh Boon Cheong, Timothy · Technical Lead; ImGuiFileDialog integration, share of the asset browser and game view</li>
+        <li data-i18n="hm.collab.2">Alfred Lo Kai Xuan · Graphics and rendering; share of the game view and gizmos</li>
+        <li data-i18n="hm.collab.3">Wong E-Ren, Jaeden · Physics and collision</li>
       </ul>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label" data-i18n="hm.exit.game">Game</span> <span data-i18n="hm.exit.gameBody" data-i18n-html><a href="DeathsRefrain.html">Death's Refrain</a> &mdash; what the team built on this engine, and what I designed on it.</span></p>
-        <p class="mb-2"><span class="case-exit-label" data-i18n="hm.exit.before">Before</span> <span data-i18n="hm.exit.beforeBody" data-i18n-html><a href="Overseas.html">Overseas</a> &mdash; the project that taught me to build the debug view first.</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="hm.exit.game">Game</span> <span data-i18n="hm.exit.gameBody" data-i18n-html><a href="DeathsRefrain.html">Death's Refrain</a> · what the team built on this engine, and what I designed on it.</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="hm.exit.before">Before</span> <span data-i18n="hm.exit.beforeBody" data-i18n-html><a href="Overseas.html">Overseas</a> · the project that taught me to build the debug view first.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 

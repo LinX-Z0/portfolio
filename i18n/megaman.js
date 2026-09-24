@@ -2,7 +2,7 @@ PortfolioI18nMerge({
   en: {
     "mmm.meta.title": "Mega Man Maker - Lin Xin",
     "mmm.meta.desc": "Three Mega Man Maker stages as one level-design set: JumpMan mobility, FIVENITE easy combat, Prison Break puzzle juggle.",
-    "mmm.lead": "Three stages, one method. Cadence-named challenges, intensity scored per zone \u2014 then three different briefs.",
+    "mmm.lead": "Three stages, one method. Cadence-named challenges, intensity scored per zone: then three different briefs.",
     "mmm.meta.role": "Role",
     "mmm.meta.roleVal": "Solo level design",
     "mmm.meta.course": "Course",
@@ -15,10 +15,10 @@ PortfolioI18nMerge({
     "mmm.meta.setVal": "3 stages",
     "mmm.meta.category": "Category",
     "mmm.meta.categoryVal": "Level Design",
-    "mmm.scan.method": "<strong>Shared method</strong> \u2014 name the challenge in a cadence alphabet before building; score intensity per zone.",
-    "mmm.scan.jm": "<strong>JumpMan</strong> \u2014 mobility + timing; two verbs getting stricter.",
-    "mmm.scan.fn": "<strong>FIVENITE</strong> \u2014 easy combat; loadout freedom, break and build.",
-    "mmm.scan.pb": "<strong>Prison Break</strong> \u2014 normal puzzle; juggle tools; purple-key skip on the hardest screen.",
+    "mmm.scan.method": "<strong>Shared method</strong> · name the challenge in a cadence alphabet before building; score intensity per zone.",
+    "mmm.scan.jm": "<strong>JumpMan</strong> · mobility + timing; two verbs getting stricter.",
+    "mmm.scan.fn": "<strong>FIVENITE</strong> · easy combat; loadout freedom, break and build.",
+    "mmm.scan.pb": "<strong>Prison Break</strong> · normal puzzle; juggle tools; purple-key skip on the hardest screen.",
     "mmm.p.intro1": "These are not three unrelated Maker uploads. They are one level-design practice run three ways: lock a brief, name every room in that language, then build only what the name asks for. If a room cannot be named, it does not ship.",
     "mmm.p.intro2": "Each stage has its own case study with the map document, cadence, and intensity tables.",
     "mmm.h.stages": "The three stages",
@@ -32,12 +32,12 @@ PortfolioI18nMerge({
     "mmm.card.pb.text": "Normal puzzle. Juggle several tools in one room. Purple keys skip the hardest screen.",
     "mmm.card.pb.cta": "View Prison Break",
     "mmm.exit.also": "Also level design",
-    "mmm.exit.alsoBody": "<a href=\"OneMillion.html\">ONE million</a> \u2014 campaign document. <a href=\"RpgMaps.html\">RPG Maker maps</a> \u2014 four house programmes."
+    "mmm.exit.alsoBody": "<a href=\"OneMillion.html\">ONE million</a> (campaign document. <a href=\"RpgMaps.html\">RPG Maker maps</a>) four house programmes."
   },
   zh: {
     "mmm.meta.title": "Mega Man Maker - \u6797\u946b",
     "mmm.meta.desc": "\u4e09\u5173 Mega Man Maker \u4f5c\u4e3a\u4e00\u4e2a\u5173\u5361\u8bbe\u8ba1\u96c6\u5408\uff1aJumpMan \u673a\u52a8\u3001FIVENITE \u7b80\u5355\u6218\u6597\u3001Prison Break \u89e3\u8c1c\u6742\u800d\u3002",
-    "mmm.lead": "\u4e09\u5173\uff0c\u4e00\u5957\u65b9\u6cd5\u3002\u7528\u8282\u594f\u5b57\u6bcd\u8868\u547d\u540d\u6311\u6218\uff0c\u6309\u533a\u6253\u5f3a\u5ea6\u5206 \u2014 \u518d\u63a5\u4e09\u4efd\u4e0d\u540c brief\u3002",
+    "mmm.lead": "\u4e09\u5173\uff0c\u4e00\u5957\u65b9\u6cd5\u3002\u7528\u8282\u594f\u5b57\u6bcd\u8868\u547d\u540d\u6311\u6218\uff0c\u6309\u533a\u6253\u5f3a\u5ea6\u5206: \u518d\u63a5\u4e09\u4efd\u4e0d\u540c brief\u3002",
     "mmm.meta.role": "\u89d2\u8272",
     "mmm.meta.roleVal": "\u5355\u4eba\u5173\u5361\u8bbe\u8ba1",
     "mmm.meta.course": "\u8bfe\u7a0b",
@@ -50,10 +50,10 @@ PortfolioI18nMerge({
     "mmm.meta.setVal": "3 \u5173",
     "mmm.meta.category": "\u7c7b\u522b",
     "mmm.meta.categoryVal": "Level Design",
-    "mmm.scan.method": "<strong>\u5171\u4eab\u65b9\u6cd5</strong> \u2014 \u5efa\u9020\u524d\u7528\u8282\u594f\u5b57\u6bcd\u8868\u547d\u540d\u6311\u6218\uff1b\u6309\u533a\u6253\u5f3a\u5ea6\u5206\u3002",
-    "mmm.scan.jm": "<strong>JumpMan</strong> \u2014 \u673a\u52a8 + \u65f6\u673a\uff1b\u4e24\u4e2a\u52a8\u8bcd\u8d8a\u6765\u8d8a\u4e25\u3002",
-    "mmm.scan.fn": "<strong>FIVENITE</strong> \u2014 \u7b80\u5355\u6218\u6597\uff1b\u914d\u88c5\u81ea\u7531\uff0c\u7834\u574f\u4e0e\u5efa\u9020\u3002",
-    "mmm.scan.pb": "<strong>Prison Break</strong> \u2014 \u666e\u901a\u89e3\u8c1c\uff1b\u540c\u623f\u6742\u800d\u5de5\u5177\uff1b\u7d2b\u94a5\u5319\u8df3\u8fc7\u6700\u96be\u5c4f\u3002",
+    "mmm.scan.method": "<strong>\u5171\u4eab\u65b9\u6cd5</strong> · \u5efa\u9020\u524d\u7528\u8282\u594f\u5b57\u6bcd\u8868\u547d\u540d\u6311\u6218\uff1b\u6309\u533a\u6253\u5f3a\u5ea6\u5206\u3002",
+    "mmm.scan.jm": "<strong>JumpMan</strong> · \u673a\u52a8 + \u65f6\u673a\uff1b\u4e24\u4e2a\u52a8\u8bcd\u8d8a\u6765\u8d8a\u4e25\u3002",
+    "mmm.scan.fn": "<strong>FIVENITE</strong> · \u7b80\u5355\u6218\u6597\uff1b\u914d\u88c5\u81ea\u7531\uff0c\u7834\u574f\u4e0e\u5efa\u9020\u3002",
+    "mmm.scan.pb": "<strong>Prison Break</strong> · \u666e\u901a\u89e3\u8c1c\uff1b\u540c\u623f\u6742\u800d\u5de5\u5177\uff1b\u7d2b\u94a5\u5319\u8df3\u8fc7\u6700\u96be\u5c4f\u3002",
     "mmm.p.intro1": "\u8fd9\u4e0d\u662f\u4e09\u4efd\u4e92\u4e0d\u76f8\u5173\u7684 Maker \u4e0a\u4f20\u3002\u5b83\u4eec\u662f\u540c\u4e00\u5957\u5173\u5361\u8bbe\u8ba1\u7ec3\u4e60\u7684\u4e09\u79cd\u8dd1\u6cd5\uff1a\u9501\u5b9a brief\uff0c\u7528\u90a3\u5957\u8bed\u8a00\u7ed9\u6bcf\u95f4\u623f\u547d\u540d\uff0c\u518d\u53ea\u5efa\u9020\u540d\u5b57\u8981\u6c42\u7684\u4e1c\u897f\u3002\u82e5\u4e00\u95f4\u623f\u65e0\u6cd5\u547d\u540d\uff0c\u5c31\u4e0d\u51fa\u8d27\u3002",
     "mmm.p.intro2": "\u6bcf\u5173\u6709\u72ec\u7acb\u6848\u4f8b\u7814\u7a76\uff0c\u542b\u5730\u56fe\u6587\u6863\u3001\u8282\u594f\u4e0e\u5f3a\u5ea6\u8868\u3002",
     "mmm.h.stages": "\u4e09\u5173",
@@ -67,6 +67,6 @@ PortfolioI18nMerge({
     "mmm.card.pb.text": "\u666e\u901a\u89e3\u8c1c\u3002\u540c\u623f\u6742\u800d\u591a\u4ef6\u5de5\u5177\u3002\u7d2b\u94a5\u5319\u8df3\u8fc7\u6700\u96be\u5c4f\u3002",
     "mmm.card.pb.cta": "\u67e5\u770b Prison Break",
     "mmm.exit.also": "\u540c\u4e3a\u5173\u5361\u8bbe\u8ba1",
-    "mmm.exit.alsoBody": "<a href=\"OneMillion.html\">ONE million</a> \u2014 \u6218\u5f79\u6587\u6863\u3002<a href=\"RpgMaps.html\">RPG Maker maps</a> \u2014 \u56db\u5957\u623f\u5c4b\u529f\u80fd\u5206\u533a\u3002"
+    "mmm.exit.alsoBody": "<a href=\"OneMillion.html\">ONE million</a> (\u6218\u5f79\u6587\u6863\u3002<a href=\"RpgMaps.html\">RPG Maker maps</a>) \u56db\u5957\u623f\u5c4b\u529f\u80fd\u5206\u533a\u3002"
   }
 });

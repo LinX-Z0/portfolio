@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="2D top-down grid tactics on a custom C++ engine. As Design Lead I designed every shipped mechanic, wrote the Lua state machines, set the level flow, and integrated the build.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Death's Refrain &mdash; Lin Xin">
+  <meta property="og:title" content="Death's Refrain · Lin Xin">
   <meta property="og:description" content="2D top-down grid tactics on a custom C++ engine. Every shipped mechanic, the Lua state machines, the level flow, and the integration.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/DeathsRefrain.html">
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/dr-og.png">
@@ -55,11 +55,11 @@
         </div>
         <div>
           <dt data-i18n="dr.meta.team.dt">Team</dt>
-          <dd data-i18n="dr.meta.team.dd">9 &mdash; Team Infernumb</dd>
+          <dd data-i18n="dr.meta.team.dd">9 · Team Infernumb</dd>
         </div>
         <div>
           <dt data-i18n="dr.meta.pair.dt">Pair</dt>
-          <dd data-i18n="dr.meta.pair.dd" data-i18n-html><a href="Hellmaker.html" class="text-info">Hellmaker</a> &mdash; engine and tools</dd>
+          <dd data-i18n="dr.meta.pair.dd" data-i18n-html><a href="Hellmaker.html" class="text-info">Hellmaker</a> · engine and tools</dd>
         </div>
         <div>
           <dt data-i18n="dr.meta.courses.dt">Courses</dt>
@@ -76,11 +76,11 @@
       </dl>
 
       <ul class="scan-strip">
-        <li data-i18n="dr.scan.ap" data-i18n-html><strong>AP combat</strong> &mdash; eight-point pool; move, melee, ranged, shield, and slow tiles all draw on it.</li>
-        <li data-i18n="dr.scan.enemies" data-i18n-html><strong>Enemies</strong> &mdash; scorpion, tome, slime behaviours; Lich two-phase encounter (beam then smash).</li>
-        <li data-i18n="dr.scan.run" data-i18n-html><strong>Run flow</strong> &mdash; tutorial through Layer 2; post-room heal vs permanent +STR / +DEF; portal.</li>
-        <li data-i18n="dr.scan.lua" data-i18n-html><strong>Lua + integration</strong> &mdash; state machines for combat, HUD, dialogue, pickups, rewards; YAML, UI, audio, VFX wired in.</li>
-        <li data-i18n="dr.scan.notMine" data-i18n-html><strong>Not mine</strong> &mdash; art and music; some tile maps and the boss-room layout had help.</li>
+        <li data-i18n="dr.scan.ap" data-i18n-html><strong>AP combat</strong> · eight-point pool; move, melee, ranged, shield, and slow tiles all draw on it.</li>
+        <li data-i18n="dr.scan.enemies" data-i18n-html><strong>Enemies</strong> · scorpion, tome, slime behaviours; Lich two-phase encounter (beam then smash).</li>
+        <li data-i18n="dr.scan.run" data-i18n-html><strong>Run flow</strong> · tutorial through Layer 2; post-room heal vs permanent +STR / +DEF; portal.</li>
+        <li data-i18n="dr.scan.lua" data-i18n-html><strong>Lua + integration</strong> · state machines for combat, HUD, dialogue, pickups, rewards; YAML, UI, audio, VFX wired in.</li>
+        <li data-i18n="dr.scan.notMine" data-i18n-html><strong>Not mine</strong> · art and music; some tile maps and the boss-room layout had help.</li>
       </ul>
 
       <p data-i18n="dr.p.loop">Turn-based combat on a grid. Spend action points to move, strike, or guard, then the enemies answer. Clear the room, take a heal or a permanent boost, and step through the portal.</p>
@@ -93,8 +93,8 @@
       </figure>
 
       <h3 class="mt-4" data-i18n="dr.h.intent">Design intent</h3>
-      <p data-i18n="dr.intent.p1">A turn has eight action points and one pool to pay for everything. Moving, attacking, and guarding all draw on it, and that single decision is the game. Every tile you walk is a hit you do not land. Split movement and actions into separate budgets, as plenty of tactics games do, and positioning becomes free &mdash; you walk wherever you like and then do your damage, and the grid is scenery you cross on the way to the interesting part. Sharing one pool makes the floor cost something.</p>
-      <p data-i18n="dr.intent.p2">There is one unit, not a squad, and that constraint is why the pool has to be tight. None of the usual tactics levers are available &mdash; no flanking, no overwatch net, no synergy between characters &mdash; so every decision has to come out of one figure on a grid. A squad game can afford a generous action economy because the interaction between units carries the depth. A single unit cannot, so the pool had to be tight enough to force a choice. Where exactly that line sat was not something I got right by reasoning about it, and the section on playtests below is mostly the story of finding it.</p>
+      <p data-i18n="dr.intent.p1">A turn has eight action points and one pool to pay for everything. Moving, attacking, and guarding all draw on it, and that single decision is the game. Every tile you walk is a hit you do not land. Split movement and actions into separate budgets, as plenty of tactics games do, and positioning becomes free: you walk wherever you like and then do your damage, and the grid is scenery you cross on the way to the interesting part. Sharing one pool makes the floor cost something.</p>
+      <p data-i18n="dr.intent.p2">There is one unit, not a squad, and that constraint is why the pool has to be tight. None of the usual tactics levers are available: no flanking, no overwatch net, no synergy between characters: so every decision has to come out of one figure on a grid. A squad game can afford a generous action economy because the interaction between units carries the depth. A single unit cannot, so the pool had to be tight enough to force a choice. Where exactly that line sat was not something I got right by reasoning about it, and the section on playtests below is mostly the story of finding it.</p>
       <p data-i18n="dr.intent.p3">Everything else presses on that same pool from a different direction. Ranged costs double melee, so reach is bought with output. Slow tiles cost two to enter, so terrain taxes the same currency as attacking. The shield is cheap in points and expensive in freedom. None of these are separate systems; they are all the same question asked again with different framing, which is what keeps a small verb set from running out of decisions by room three.</p>
 
       <h3 class="mt-4" data-i18n="dr.h.ap">The AP budget</h3>
@@ -131,7 +131,7 @@
       <p data-i18n="dr.ap.p.weapons">Melee lands twice the hits per point that ranged does, so the weapon swap is not a skin, it is a rate. Choosing range means choosing to do half the damage in exchange for the enemy spending its turn walking toward you, which against a scorpion is a trade and against a stationary tome is simply a loss of tempo. That is the weapon swap earning its place: the right answer changes per room rather than per player preference.</p>
       <p data-i18n="dr.ap.p.shield">The shield is the clearest example of a cost that is not its price. One point is nothing out of eight. What it actually costs is your movement, since it drops the moment you step, and your next turn, since it cannot run twice in a row. Priced purely in AP it would be an obvious buy every single turn; priced in mobility and tempo it is a read on whether you are about to be hit.</p>
       <p data-i18n="dr.ap.p.damage">Damage is Strength minus Defense with a floor of one, so nothing in the game is ever immune to anything. A wall of armour slows you down rather than stopping you, which keeps a bad matchup expensive instead of unwinnable.</p>
-      <p data-i18n="dr.ap.p.pickups">Pickups sit on the grid rather than in a menu &mdash; heal, ATK, and AP orbs, all of which cost movement to reach. The AP orb is the neatest of them, because collecting it means spending points to gain points, and the detour only pays if the path is short enough. Souls drop from kills and track score.</p>
+      <p data-i18n="dr.ap.p.pickups">Pickups sit on the grid rather than in a menu: heal, ATK, and AP orbs, all of which cost movement to reach. The AP orb is the neatest of them, because collecting it means spending points to gain points, and the detour only pays if the path is short enough. Souls drop from kills and track score.</p>
       <figure class="shot">
         <img src="Assets/dr-los.png" alt="Attack mode showing a green line of sight to a legal target and a red tile under the cursor where the shot is blocked.">
         <figcaption data-i18n="dr.cap.los">Line of sight before commit. Green reaches a legal target; the red tile under the cursor is blocked.</figcaption>
@@ -151,17 +151,17 @@
           </tbody>
         </table>
       </div>
-      <p data-i18n="dr.enemies.p.slime">The slime is the one I am happiest with. It is not a threat, it is a temptation. Every point spent killing it is a point not spent on the room, it returns anyway, and it never stands between you and the exit &mdash; so the correct play is usually to walk past something that is actively attacking you. That is a harder lesson to teach than &ldquo;kill the dangerous one&rdquo;, and it is the one that turns a clear-the-room game into a target-priority game.</p>
+      <p data-i18n="dr.enemies.p.slime">The slime is the one I am happiest with. It is not a threat, it is a temptation. Every point spent killing it is a point not spent on the room, it returns anyway, and it never stands between you and the exit: so the correct play is usually to walk past something that is actively attacking you. That is a harder lesson to teach than &ldquo;kill the dangerous one&rdquo;, and it is the one that turns a clear-the-room game into a target-priority game.</p>
       <p data-i18n="dr.enemies.p.souls">Souls cut against it, which is worth admitting. They track score and score rewards kills, so the slime is the one thing the scoreboard wants you to take and the tactics want you to walk past. It is a small contradiction and nobody tripped over it in testing, but it is the first place I would look if I revisited the scoring.</p>
       <p data-i18n="dr.enemies.p.roster">Between the three, the questions do not overlap. Scorpions ask how close you are, tomes ask what you are lined up with, and slimes ask what is worth your points. Three behaviours is a small roster, so they had to test different things or the rooms would all read the same.</p>
       <p data-i18n="dr.enemies.p.lich" data-i18n-html>The <strong>Lich</strong> in Layer 1 Room 5 is a two-phase fight, beam then smash, sharing the room with scorpions and a tome. I designed the encounter; the room layout had help.</p>
       <figure class="shot">
         <img src="Assets/dr-lich-beam.gif" alt="The Lich boss fight in the beam phase, with other enemies still in the room.">
-        <figcaption data-i18n="dr.cap.lichBeam">Phase one &mdash; beam. Fought while the room's regular threats are still live.</figcaption>
+        <figcaption data-i18n="dr.cap.lichBeam">Phase one: beam. Fought while the room's regular threats are still live.</figcaption>
       </figure>
       <figure class="shot">
         <img src="Assets/dr-lich-smash.gif" alt="The Lich boss fight in the smash phase, with other enemies still in the room.">
-        <figcaption data-i18n="dr.cap.lichSmash">Phase two &mdash; smash. Same encounter, different pressure.</figcaption>
+        <figcaption data-i18n="dr.cap.lichSmash">Phase two: smash. Same encounter, different pressure.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="dr.h.run">The run</h3>
@@ -201,11 +201,11 @@
       </figure>
 
       <p data-i18n="dr.run.p.reward">The reward is the only permanent decision in the run, and it is deliberately awkward. A full heal solves the room you just survived; Strength or Defense solves every room after it. Taking the heal is an admission that you will not reach the end at current health, and taking the stat is a bet that you will. Because it lands immediately after a fight, the player is asked to choose while the damage they just took is still the most recent thing on screen, which is exactly when the safe option is most tempting and least correct.</p>
-      <p data-i18n="dr.run.p.objectives">Not every room clears by killing everything. Some resolve by securing a node or winning zone control, which changes what the eight points are for &mdash; the same budget now buys presence instead of damage, and the slime's whole argument gets louder.</p>
+      <p data-i18n="dr.run.p.objectives">Not every room clears by killing everything. Some resolve by securing a node or winning zone control, which changes what the eight points are for: the same budget now buys presence instead of damage, and the slime's whole argument gets louder.</p>
 
       <h3 class="mt-4" data-i18n="dr.h.teach">Teaching it</h3>
       <p data-i18n="dr.teach.p1">The tutorial always runs first and introduces one verb at a time: move, then attack and line of sight, then the weapon swap, then what actually clears a room, then the shield, then souls and special tiles. Later rooms combine what the earlier ones taught rather than adding new rules.</p>
-      <p data-i18n="dr.teach.p2">The ordering is the design. Movement comes before attacking because the AP pool means nothing until you have felt something else compete for it. The weapon swap is only introduced after line of sight exists, since the choice between melee and ranged is meaningless before you know what can see you. The shield is in that sequence because testing put it there, and late in it because it is a reaction &mdash; you cannot teach a reaction to someone who has not yet been punished.</p>
+      <p data-i18n="dr.teach.p2">The ordering is the design. Movement comes before attacking because the AP pool means nothing until you have felt something else compete for it. The weapon swap is only introduced after line of sight exists, since the choice between melee and ranged is meaningless before you know what can see you. The shield is in that sequence because testing put it there, and late in it because it is a reaction: you cannot teach a reaction to someone who has not yet been punished.</p>
       <figure class="shot">
         <img src="Assets/dr-move-range.gif" alt="A movement path being highlighted across the grid and then committed, with action points decreasing.">
         <figcaption data-i18n="dr.cap.move">Path preview, then commit. The cost is visible before the decision is final.</figcaption>
@@ -224,28 +224,28 @@
       <p data-i18n="dr.play.p1">The complaint that mattered was pace. Testers found combat slow and came away frustrated rather than challenged, and separately could not work out what the shield was for. I ran most of the number passes that followed.</p>
       <p data-i18n="dr.play.changed">What I changed, and why:</p>
       <ul class="tuning-list">
-        <li data-i18n="dr.play.li.ap" data-i18n-html><strong>AP raised, landing at eight.</strong> I had tuned the pool for tension and produced restriction instead. Below a certain budget a turn stops being a decision and becomes a single obvious line &mdash; there is only one thing you can afford, so you do it. A constraint only generates a choice if more than one plan fits inside it, and I had priced the pool below that threshold.</li>
+        <li data-i18n="dr.play.li.ap" data-i18n-html><strong>AP raised, landing at eight.</strong> I had tuned the pool for tension and produced restriction instead. Below a certain budget a turn stops being a decision and becomes a single obvious line: there is only one thing you can afford, so you do it. A constraint only generates a choice if more than one plan fits inside it, and I had priced the pool below that threshold.</li>
         <li data-i18n="dr.play.li.damage" data-i18n-html><strong>Damage values raised.</strong> The same complaint attacked from the other side, and the reason for doing both is that they fix different halves of it. More points means more happens per turn; more damage means fewer turns are needed. Raising AP alone would have made each turn take longer in real time while still requiring the same number of them, which is a strange way to answer &ldquo;this is slow&rdquo;.</li>
-        <li data-i18n="dr.play.li.shield" data-i18n-html><strong>Shield moved into the tutorial.</strong> It was the only verb with conditional rules &mdash; it drops if you move, it cannot run twice in a row &mdash; and the only one players were meeting for the first time in the middle of a fight. It is also the one verb you cannot learn by experimenting, because using it wrong means taking the hit you were trying to avoid. Everything else survives being discovered; this did not.</li>
+        <li data-i18n="dr.play.li.shield" data-i18n-html><strong>Shield moved into the tutorial.</strong> It was the only verb with conditional rules: it drops if you move, it cannot run twice in a row, and the only one players were meeting for the first time in the middle of a fight. It is also the one verb you cannot learn by experimenting, because using it wrong means taking the hit you were trying to avoid. Everything else survives being discovered; this did not.</li>
       </ul>
-      <p data-i18n="dr.play.p2">The pace notes were the useful ones. I had been designing the budget as though scarcity were the same thing as tension, and it is not &mdash; scarcity produces tension right up to the point where it starts producing obedience.</p>
+      <p data-i18n="dr.play.p2">The pace notes were the useful ones. I had been designing the budget as though scarcity were the same thing as tension, and it is not: scarcity produces tension right up to the point where it starts producing obedience.</p>
 
       <h3 class="mt-4" data-i18n="dr.h.outcome">Outcome and reflection</h3>
-      <p data-i18n="dr.outcome.p1" data-i18n-html>Same close as <a href="Hellmaker.html" class="text-info">Hellmaker</a>: final milestone an A, every must-have shipped, not every want-to-have. This page is the game half of that result. The condemn and spare endings are the clearest cut &mdash; a team idea everybody liked, dropped because the combat loop was the part that had to work. Stacking a branching ending on a loop still being tuned would have been two unfinished things. What shipped is the combat loop.</p>
+      <p data-i18n="dr.outcome.p1" data-i18n-html>Same close as <a href="Hellmaker.html" class="text-info">Hellmaker</a> · final milestone an A, every must-have shipped, not every want-to-have. This page is the game half of that result. The condemn and spare endings are the clearest cut: a team idea everybody liked, dropped because the combat loop was the part that had to work. Stacking a branching ending on a loop still being tuned would have been two unfinished things. What shipped is the combat loop.</p>
       <p data-i18n="dr.outcome.p2">The design lesson is the action point one, and it is not that I picked a bad number. I had been treating scarcity and tension as the same property. A tight budget does create pressure, but past a point it stops offering a choice and starts issuing an instruction, and from inside the design those two feel identical. I could have argued confidently for the smaller pool right up until I watched somebody play with it. Reasoning carefully about a constraint is not a substitute for putting it in front of a stranger.</p>
       <p data-i18n="dr.outcome.p3">That is the same shape as the engine half, which is probably not a coincidence. On Hellmaker the lesson was that the gap between forming an assumption and having it checked was too long. Here the assumption was mine, about my own system, and it still took someone else playing it to close. One project, two pages, one problem: how long you wait before you find out you were wrong.</p>
 
       <h4 class="mt-5" data-i18n="dr.role.h">Role</h4>
       <ul>
-        <li data-i18n="dr.role.li1">Design Lead &mdash; every shipped mechanic</li>
-        <li data-i18n="dr.role.li2">Lua state machines &mdash; combat, enemies, HUD, pause, dialogue, pickups, rewards, portal</li>
+        <li data-i18n="dr.role.li1">Design Lead · every shipped mechanic</li>
+        <li data-i18n="dr.role.li2">Lua state machines · combat, enemies, HUD, pause, dialogue, pickups, rewards, portal</li>
         <li data-i18n="dr.role.li3">Level flow and encounter design, including the Lich; some tile maps and the boss layout with help</li>
-        <li data-i18n="dr.role.li4">Integration &mdash; YAML scenes and maps into Hellmaker, UI, SFX, VFX, BGM</li>
+        <li data-i18n="dr.role.li4">Integration · YAML scenes and maps into Hellmaker, UI, SFX, VFX, BGM</li>
         <li data-i18n="dr.role.li5">GDD, gameplay wiki, review presentations, majority of the balance passes</li>
       </ul>
 
       <div class="case-exit mt-5">
-        <p class="mb-2" data-i18n="dr.exit.engine" data-i18n-html><span class="case-exit-label">Engine</span> <a href="Hellmaker.html">Hellmaker</a> &mdash; the runtime and the editor tooling I built underneath this.</p>
+        <p class="mb-2" data-i18n="dr.exit.engine" data-i18n-html><span class="case-exit-label">Engine</span> <a href="Hellmaker.html">Hellmaker</a> · the runtime and the editor tooling I built underneath this.</p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 

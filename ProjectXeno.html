@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Unreal C++ predator AI study. Metric-gated adaptation that feels like learning, without machine learning. Spec, NPC profiles, and most of the prototype.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Project Xeno &mdash; Lin Xin">
+  <meta property="og:title" content="Project Xeno · Lin Xin">
   <meta property="og:description" content="Unreal C++ predator AI study. Metric-gated adaptation that feels like learning, without machine learning.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/ProjectXeno.html">
   <!-- og:image set from Assets/xeno-og.png (1200x630, title card) -->
@@ -37,7 +37,7 @@
       <!-- MEDIA SLOT 1 of 4 : Assets/xeno-prototype.png : the Unreal test bed in play -->
       <figure class="shot">
         <img src="Assets/xeno-prototype.png" alt="Top-down Unreal test bed: red predator, green NPC mid-task, Adaptive Hunting Debug modifiers on the right.">
-        <figcaption data-i18n="xeno.fig.proto.cap">The Unreal test bed. Red is the predator, green is the NPC (task progress floating above it). Top-right is the Adaptive Hunting Debug panel &mdash; profile, difficulty, cabinet/vent gates, noise viz, and the modifiers I used to tune runs.</figcaption>
+        <figcaption data-i18n="xeno.fig.proto.cap">The Unreal test bed. Red is the predator, green is the NPC (task progress floating above it). Top-right is the Adaptive Hunting Debug panel: profile, difficulty, cabinet/vent gates, noise viz, and the modifiers I used to tune runs.</figcaption>
       </figure>
 
       <h1 class="display-5 mb-3">Project Xeno</h1>
@@ -49,7 +49,7 @@
         </div>
         <div>
           <dt data-i18n="xeno.meta.team">Team</dt>
-          <dd data-i18n="xeno.meta.teamVal">4 &mdash; Team 19</dd>
+          <dd data-i18n="xeno.meta.teamVal">4 · Team 19</dd>
         </div>
         <div>
           <dt data-i18n="xeno.meta.course">Course</dt>
@@ -70,25 +70,25 @@
       </dl>
 
       <ul class="scan-strip">
-        <li data-i18n="xeno.scan.gating" data-i18n-html><strong>Metric gating</strong> &mdash; adaptation spec: action &rarr; metric &rarr; threshold &rarr; gate &rarr; behavior.</li>
-        <li data-i18n="xeno.scan.proto" data-i18n-html><strong>Unreal prototype</strong> &mdash; most of the C++ test bed (agent, gates, search and chase hooks).</li>
-        <li data-i18n="xeno.scan.npc" data-i18n-html><strong>NPC profiles</strong> &mdash; Noob / Normal / Pro as measuring sticks.</li>
-        <li data-i18n="xeno.scan.debug" data-i18n-html><strong>Adaptive Hunting Debug</strong> &mdash; live meters, cabinet/vent unlocks, profile and difficulty modifiers.</li>
-        <li data-i18n="xeno.scan.layers" data-i18n-html><strong>Four-layer AI</strong> &mdash; implemented toward the team stack in the prototype.</li>
-        <li data-i18n="xeno.scan.notMine" data-i18n-html><strong>Not mine</strong> &mdash; architecture design and research presentation (team); Blueprints (team).</li>
+        <li data-i18n="xeno.scan.gating" data-i18n-html><strong>Metric gating</strong> · adaptation spec: action &rarr; metric &rarr; threshold &rarr; gate &rarr; behavior.</li>
+        <li data-i18n="xeno.scan.proto" data-i18n-html><strong>Unreal prototype</strong> · most of the C++ test bed (agent, gates, search and chase hooks).</li>
+        <li data-i18n="xeno.scan.npc" data-i18n-html><strong>NPC profiles</strong> · Noob / Normal / Pro as measuring sticks.</li>
+        <li data-i18n="xeno.scan.debug" data-i18n-html><strong>Adaptive Hunting Debug</strong> · live meters, cabinet/vent unlocks, profile and difficulty modifiers.</li>
+        <li data-i18n="xeno.scan.layers" data-i18n-html><strong>Four-layer AI</strong> · implemented toward the team stack in the prototype.</li>
+        <li data-i18n="xeno.scan.notMine" data-i18n-html><strong>Not mine</strong> · architecture design and research presentation (team); Blueprints (team).</li>
       </ul>
 
       <h3 class="mt-4" data-i18n="xeno.h.testing">What we're testing</h3>
-      <p data-i18n="xeno.p.test1" data-i18n-html>Two mechanics, stacked: a <strong>multi-layer</strong> hunt AI, and <strong>fake self-learning</strong> &mdash; the Isolation illusion that the predator adapts to you, built with authored rules rather than a model that trains.</p>
+      <p data-i18n="xeno.p.test1" data-i18n-html>Two mechanics, stacked: a <strong>multi-layer</strong> hunt AI, and <strong>fake self-learning</strong> (the Isolation illusion that the predator adapts to you, built with authored rules rather than a model that trains).</p>
       <p data-i18n="xeno.p.test2">Multi-layer means the pressure is not one brain. A session layer watches survival and captures and pushes Easy / Medium / Hard. A learning component counts hide habits and unlocks cabinet and vent checks when those counters cross a threshold. Under that, a hand-authored FSM runs Patrol, Investigate, Chase, and CheckArea. The creature only gets senses; the escalation above it decides what it is allowed to do.</p>
-      <p data-i18n="xeno.p.test3" data-i18n-html>Fake self-learning is the point of the gates. Hide in cabinets enough and checking cabinets becomes legal and more likely. It reads as &ldquo;it learned my trick.&rdquo; It is counters and thresholds &mdash; <code>UAlienLearningComponent</code> &mdash; not machine learning. You can tune when the cheat starts. You can also turn it off.</p>
+      <p data-i18n="xeno.p.test3" data-i18n-html>Fake self-learning is the point of the gates. Hide in cabinets enough and checking cabinets becomes legal and more likely. It reads as &ldquo;it learned my trick.&rdquo; It is counters and thresholds: <code>UAlienLearningComponent</code>: not machine learning. You can tune when the cheat starts. You can also turn it off.</p>
       <p data-i18n="xeno.p.test4">NPC profiles (Noob / Normal / Pro) are the measuring stick: same predator, different competence, so we can tell whether the illusion holds across panic and evasion rather than winning against one prey type.</p>
 
-      <p data-i18n="xeno.p.context1">Alien: Isolation's xenomorph feels like it adapts to you. It is not training a model. A Director AI is omniscient &mdash; pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
+      <p data-i18n="xeno.p.context1">Alien: Isolation's xenomorph feels like it adapts to you. It is not training a model. A Director AI is omniscient: pacing, menace, jobs on a blackboard. A behavior tree only has senses and runs search, chase, and attack. The hunt feels personal because the director manages fear and the creature is allowed to miss.</p>
       <p data-i18n="xeno.p.context2">Team 19 researched that split and presented it together. I specified how our agent would adapt, designed most of the NPC test profiles, and built most of the Unreal prototype in C++. Blueprints were team. The playable is a test bed, not a full game.</p>
 
       <h3 class="mt-4" data-i18n="xeno.h.intent">Design intent</h3>
-      <p data-i18n="xeno.p.intent1">The trap is to build an unstoppable learning machine. Escalation that invents invisible advantages eclipses the player's ability to adapt, which is the opposite of a survival horror fantasy &mdash; you stop feeling hunted and start feeling cheated. What we wanted was the systemic illusion of learning: an agent that tracks how you actually play and opens authored behaviors when those habits cross a line.</p>
+      <p data-i18n="xeno.p.intent1">The trap is to build an unstoppable learning machine. Escalation that invents invisible advantages eclipses the player's ability to adapt, which is the opposite of a survival horror fantasy: you stop feeling hunted and start feeling cheated. What we wanted was the systemic illusion of learning: an agent that tracks how you actually play and opens authored behaviors when those habits cross a line.</p>
       <p data-i18n="xeno.p.intent2" data-i18n-html>That distinction is the whole project. Machine learning would invent a cheat you cannot read. Metric gating invents a curriculum you can tune. The alien that starts checking lockers after you have lived in them three times is still playing by rules you could write on a whiteboard, which means a designer can decide <em>when</em> the pressure rises instead of discovering it after the fact.</p>
 
       <figure class="system-diagram">
@@ -144,17 +144,17 @@
             <tr><td data-i18n="xeno.metric.vent.name">Vent hide count</td><td data-i18n="xeno.metric.vent.catches">How often prey uses vents</td><td data-i18n="xeno.metric.vent.opens">Same gate path for vents, tracked separately</td></tr>
             <tr><td data-i18n="xeno.metric.surv.name">Avg survival time</td><td data-i18n="xeno.metric.surv.catches">How long prey lasts between captures</td><td data-i18n="xeno.metric.surv.opens">Feeds auto difficulty (Easy / Medium / Hard)</td></tr>
             <tr><td data-i18n="xeno.metric.cap.name">Captures per minute</td><td data-i18n="xeno.metric.cap.catches">How often the hunt ends</td><td data-i18n="xeno.metric.cap.opens">With survival, votes difficulty; scales move speed, check chance, and CheckArea duration</td></tr>
-            <tr><td data-i18n="xeno.metric.noise.name">Noise peak</td><td data-i18n="xeno.metric.noise.catches">How loud the map is right now</td><td data-i18n="xeno.metric.noise.opens">Not a gate &mdash; drives Investigate, then CheckArea at the peak</td></tr>
+            <tr><td data-i18n="xeno.metric.noise.name">Noise peak</td><td data-i18n="xeno.metric.noise.catches">How loud the map is right now</td><td data-i18n="xeno.metric.noise.opens">Not a gate: drives Investigate, then CheckArea at the peak</td></tr>
           </tbody>
         </table>
       </div>
-      <p data-i18n="xeno.p.gating2">The learning pipeline is the same for both hide types: action &rarr; counter &rarr; unlock step &rarr; check chance &rarr; CheckArea can pick that hide. Difficulty sits one layer above and multiplies those chances once they exist. Noise is a sense, not a curriculum row &mdash; it tells the FSM where to look, not whether a new behavior is legal.</p>
+      <p data-i18n="xeno.p.gating2">The learning pipeline is the same for both hide types: action &rarr; counter &rarr; unlock step &rarr; check chance &rarr; CheckArea can pick that hide. Difficulty sits one layer above and multiplies those chances once they exist. Noise is a sense, not a curriculum row: it tells the FSM where to look, not whether a new behavior is legal.</p>
       <p data-i18n="xeno.p.gating3">The study deck also listed a fuller Isolation-style set (flamethrower, LOS time, repeated escape routes). Those stayed research targets. The prototype instruments the hide gates and the session difficulty loop, which is enough to test whether authored &ldquo;learning&rdquo; reads as intentional rather than random.</p>
       <p data-i18n="xeno.p.gating4">The design pressure sits on the unlock step and the difficulty thresholds, not on the architecture. Set them too low and the alien escalates before the prey has a habit; set them too high and the adaptation never lands.</p>
       <!-- MEDIA SLOT 2 of 4 : Assets/xeno-gate-debug.png : Adaptive Hunting Debug panel -->
       <figure class="shot shot-narrow">
         <img src="Assets/xeno-gate-debug.png" alt="Adaptive Hunting Debug panel: NPC profile and survival stats, alien state, cabinet and vent gate chances, and modifier buttons for profile, difficulty, and sim speed.">
-        <figcaption data-i18n="xeno.fig.debug.cap">Adaptive Hunting Debug. Live meters on top (survival, captures, cabinet/vent chance and unlock). Modifiers below &mdash; swap NPC profile, difficulty, and gate weights without rebuilding.</figcaption>
+        <figcaption data-i18n="xeno.fig.debug.cap">Adaptive Hunting Debug. Live meters on top (survival, captures, cabinet/vent chance and unlock). Modifiers below: swap NPC profile, difficulty, and gate weights without rebuilding.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="xeno.h.layers">Four-layer architecture</h3>
@@ -187,24 +187,24 @@
 
           <rect x="160" y="16" width="400" height="48" rx="8" fill="rgba(94,196,176,0.07)" stroke="rgba(94,196,176,0.4)"/>
           <text x="360" y="36" class="dg-h" text-anchor="middle" data-i18n="xeno.stack.omniH">OMNISCIENT</text>
-          <text x="360" y="52" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.omniS">pacing curves &mdash; escalation stays readable</text>
+          <text x="360" y="52" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.omniS">pacing curves: escalation stays readable</text>
 
           <line x1="360" y1="66" x2="360" y2="84" stroke="#5ec4b0" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
 
           <rect x="160" y="88" width="400" height="48" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
           <text x="360" y="108" class="dg-h" text-anchor="middle" data-i18n="xeno.stack.highH">HIGH-LEVEL</text>
-          <text x="360" y="124" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.highS">strategy &mdash; senses in, strategy swap or augment</text>
+          <text x="360" y="124" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.highS">strategy: senses in, strategy swap or augment</text>
 
           <line x1="360" y1="138" x2="360" y2="156" stroke="#5ec4b0" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
 
           <rect x="160" y="160" width="400" height="48" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
           <text x="360" y="180" class="dg-h" text-anchor="middle" data-i18n="xeno.stack.midH">MID-LEVEL</text>
-          <text x="360" y="196" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.midS">execution &mdash; carry out the current strategy</text>
+          <text x="360" y="196" class="dg-s" text-anchor="middle" data-i18n="xeno.stack.midS">execution: carry out the current strategy</text>
 
           <line x1="360" y1="210" x2="360" y2="228" stroke="#5ec4b0" stroke-width="1.5" marker-end="url(#arrowXe2)"/>
 
           <rect x="160" y="232" width="400" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
-          <text x="360" y="258" class="dg-h" text-anchor="middle" data-i18n="xeno.stack.lowH">LOW-LEVEL &mdash; search / chase / attack</text>
+          <text x="360" y="258" class="dg-h" text-anchor="middle" data-i18n="xeno.stack.lowH">LOW-LEVEL: search / chase / attack</text>
         </svg>
         <figcaption data-i18n="xeno.fig.stack.cap">Each layer manages the one below. Omniscient knowledge never leaks into the creature's senses.</figcaption>
       </figure>
@@ -227,7 +227,7 @@
       <!-- MEDIA SLOT 3 of 4 : Assets/xeno-npc.gif : NPC sees alien, hides in cabinet -->
       <figure class="shot">
         <img src="Assets/xeno-npc.gif" alt="NPC spots the predator and ducks into a cabinet to hide.">
-        <figcaption data-i18n="xeno.fig.npc.cap">NPC sees the alien, then hides in a cabinet. The profiles exist so this kind of reaction can be delayed, assessed, or skipped &mdash; same threat, different competence.</figcaption>
+        <figcaption data-i18n="xeno.fig.npc.cap">NPC sees the alien, then hides in a cabinet. The profiles exist so this kind of reaction can be delayed, assessed, or skipped: same threat, different competence.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="xeno.h.built">What I built</h3>
@@ -241,19 +241,19 @@
 
       <h3 class="mt-4" data-i18n="xeno.h.outcome">Outcome and reflection</h3>
       <p data-i18n="xeno.p.out1">Xeno shipped as a research prototype and a study deck, not a complete game, which is the right shape for a course whose question was &ldquo;how does Isolation's predator actually work&rdquo; rather than &ldquo;can we remake Sevastopol.&rdquo; The part I would redo is not the research. It is the order I built in, and the tools I reached for while I did.</p>
-      <p data-i18n="xeno.p.out2">I coded most of the prototype in C++. Looking back, I would have lived in Blueprints much earlier. C++ was the familiar hammer from Overseas and Hellmaker, and it cost me the thing Unreal is built around: iterating on behavior without a compile between every guess. Metric gating and strategy swaps are exactly the kind of system where you want to move a threshold, play ten seconds, and move it again. Paying a rebuild for each of those passes is the same trap I already wrote about on Overseas &mdash; and this time I walked into it with a better alternative sitting in the editor.</p>
+      <p data-i18n="xeno.p.out2">I coded most of the prototype in C++. Looking back, I would have lived in Blueprints much earlier. C++ was the familiar hammer from Overseas and Hellmaker, and it cost me the thing Unreal is built around: iterating on behavior without a compile between every guess. Metric gating and strategy swaps are exactly the kind of system where you want to move a threshold, play ten seconds, and move it again. Paying a rebuild for each of those passes is the same trap I already wrote about on Overseas, and this time I walked into it with a better alternative sitting in the editor.</p>
       <p data-i18n="xeno.p.out3">The workload split is the other half of that. I did not foresee how hard the AI behavior itself would be, so I took more of it than one person should hold on a four-person team. Specifying the gates, implementing the agent, and designing the NPC instruments are three jobs that look adjacent on a slide and become three different kinds of stuck when they live in one head. Splitting earlier would not just have been fairer. It would have forced the interfaces between those pieces into the open, which is usually where the real design work is.</p>
-      <p data-i18n="xeno.p.out4">The build order was wrong in a more specific way. I started with the map and the NPCs &mdash; the things you can see &mdash; and left the overall controlling AI until there was something pretty to drop it into. That feels productive and is the wrong experiment. The question Xeno was asking lived entirely in the Director-shaped layer: does pacing plus gated strategy produce the illusion of learning? You can answer that with text logs, fake meters, and a console before a single corridor exists. Building the world first meant every bug in the predator was tangled with navigation, collisions, and NPC timing, so I could not tell whether a bad hunt was a bad gate or a bad map.</p>
-      <p data-i18n="xeno.p.out5">If I picked it up again, the first week would be the controlling AI alone &mdash; metrics, thresholds, gates, strategy swaps &mdash; tested against printed player-action scripts and a log of which behaviors became legal when. Only once that loop was boringly clear would I put a body on it and walk it through a room. The NPCs and the map are validation for a system that already works on paper, not a substitute for building the system.</p>
+      <p data-i18n="xeno.p.out4">The build order was wrong in a more specific way. I started with the map and the NPCs: the things you can see, and left the overall controlling AI until there was something pretty to drop it into. That feels productive and is the wrong experiment. The question Xeno was asking lived entirely in the Director-shaped layer: does pacing plus gated strategy produce the illusion of learning? You can answer that with text logs, fake meters, and a console before a single corridor exists. Building the world first meant every bug in the predator was tangled with navigation, collisions, and NPC timing, so I could not tell whether a bad hunt was a bad gate or a bad map.</p>
+      <p data-i18n="xeno.p.out5">If I picked it up again, the first week would be the controlling AI alone: metrics, thresholds, gates, strategy swaps: tested against printed player-action scripts and a log of which behaviors became legal when. Only once that loop was boringly clear would I put a body on it and walk it through a room. The NPCs and the map are validation for a system that already works on paper, not a substitute for building the system.</p>
       <p data-i18n="xeno.p.out6">It rhymes with both earlier projects. Overseas taught me to expose tunables before I need them. Hellmaker taught me to ask before routing around a gap. Xeno is the third version: build the thing the study is actually about first, in the medium that lets you change it fastest, and treat everything else as a test harness.</p>
 
       <h4 class="mt-5" data-i18n="xeno.h.role">Role</h4>
       <ul>
         <li data-i18n="xeno.role.1">Metric-gating adaptation spec</li>
-        <li data-i18n="xeno.role.2">Unreal prototype &mdash; most of the C++</li>
-        <li data-i18n="xeno.role.3">NPC reaction profiles (majority) &mdash; Noob, Normal, Pro</li>
-        <li data-i18n="xeno.role.4">Four-layer AI &mdash; team design, implementation toward it in the prototype</li>
-        <li data-i18n="xeno.role.5">Research, presentation, Blueprints &mdash; team</li>
+        <li data-i18n="xeno.role.2">Unreal prototype · most of the C++</li>
+        <li data-i18n="xeno.role.3">NPC reaction profiles (majority): Noob, Normal, Pro</li>
+        <li data-i18n="xeno.role.4">Four-layer AI · team design, implementation toward it in the prototype</li>
+        <li data-i18n="xeno.role.5">Research, presentation, Blueprints · team</li>
       </ul>
 
       <p class="project-links mt-4">
@@ -261,8 +261,8 @@
       </p>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label" data-i18n="xeno.exit.related">Related</span> <span data-i18n="xeno.exit.relatedBody" data-i18n-html><a href="GossipSimulator.html">Gossip Simulator</a> &mdash; same trimester; behaviour-tree multi-agent epidemic before the Unreal predator study.</span></p>
-        <p class="mb-2"><span class="case-exit-label" data-i18n="xeno.exit.also">Also</span> <span data-i18n="xeno.exit.alsoBody" data-i18n-html><a href="Overseas.html">Overseas</a> &mdash; earlier C++ systems work; different problem, same habit of making pressure readable.</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="xeno.exit.related">Related</span> <span data-i18n="xeno.exit.relatedBody" data-i18n-html><a href="GossipSimulator.html">Gossip Simulator</a> · same trimester; behaviour-tree multi-agent epidemic before the Unreal predator study.</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="xeno.exit.also">Also</span> <span data-i18n="xeno.exit.alsoBody" data-i18n-html><a href="Overseas.html">Overseas</a> · earlier C++ systems work; different problem, same habit of making pressure readable.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 

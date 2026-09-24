@@ -19,7 +19,7 @@ PortfolioI18nMerge({
     "fn.meta.scopeVal": "11 challenges + boss",
     "fn.meta.set": "Set",
     "fn.meta.setVal": "<a href=\"MegaManMaker.html\" class=\"text-info\">Mega Man Maker</a> \u00b7 <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a> \u00b7 <a href=\"PrisonBreak.html\" class=\"text-info\">Prison Break</a>",
-    "fn.p.intro": "This is the opposite of <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom \u2014 weapon choice, plus break and build so rooms are not stand-and-shoot. The Fortnite joke in the title is the brief: carefree on the surface, still authored underneath.",
+    "fn.p.intro": "This is the opposite of <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a>'s precision exam. I wanted an approachable fighting stage: drop in, choose a loadout, keep moving. Primary theme is fighting. Secondary is freedom: weapon choice, plus break and build so rooms are not stand-and-shoot. The Fortnite joke in the title is the brief: carefree on the surface, still authored underneath.",
     "fn.h.intent": "Design intent",
     "fn.p.intent1": "Easy is a constraint, not a missing curve. Checkpoints, heals, and ammo are placed so a death does not wipe the stage and so combat stays a verb instead of a resource puzzle. Terrain manipulation exists so players who get bored of gunplay have a second tool, and so later rooms can ask for gun and terrain at once.",
     "fn.p.intent2": "The starting weapon is the fork. Rooms are written to work with what you picked, not one scripted loadout. That is the hard part of an easy combat stage: if every room assumes one gun, freedom was flavour text. If every room works with several, the cadence has to name attack as a family rather than as a specific button.",
@@ -64,7 +64,7 @@ PortfolioI18nMerge({
     "fn.curve.z9.cadence": "C+E'",
     "fn.curve.z9.intensity": "5",
     "fn.curve.z11.zone": "11",
-    "fn.curve.z11.ask": "Boss \u2014 full kit",
+    "fn.curve.z11.ask": "Boss: full kit",
     "fn.curve.z11.cadence": "A+B+B'+C+C'+E",
     "fn.curve.z11.intensity": "7",
     "fn.p.curve2": "Numbers sit mostly in 1\u20135 so easy stays honest; the climb is still there (3, 4, 5, 6, 7). I do not spike to 10. The design problem was \u201chow do I keep a fighting stage readable and fair,\u201d not \u201chow hard can the last screen get.\u201d",
@@ -74,7 +74,7 @@ PortfolioI18nMerge({
     "fn.role.2": "Loadout fork, break/build traversal, boss as full-kit exam",
     "fn.links.doc": "Level document (map, cadence, intensity)",
     "fn.exit.set": "Set",
-    "fn.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> \u2014 all three stages. <a href=\"JumpMan.html\">JumpMan</a> \u2014 two verbs, harder. <a href=\"PrisonBreak.html\">Prison Break</a> \u2014 puzzle juggle."
+    "fn.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> · all three stages. <a href=\"JumpMan.html\">JumpMan</a> · two verbs, harder. <a href=\"PrisonBreak.html\">Prison Break</a> · puzzle juggle."
   },
   zh: {
     "fn.meta.title": "FIVENITE - \u6797\u946b",
@@ -96,7 +96,7 @@ PortfolioI18nMerge({
     "fn.meta.scopeVal": "11 \u4e2a\u6311\u6218 + Boss",
     "fn.meta.set": "\u96c6\u5408",
     "fn.meta.setVal": "<a href=\"MegaManMaker.html\" class=\"text-info\">Mega Man Maker</a> \u00b7 <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a> \u00b7 <a href=\"PrisonBreak.html\" class=\"text-info\">Prison Break</a>",
-    "fn.p.intro": "\u8fd9\u662f <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a> \u7cbe\u51c6\u8003\u8bd5\u7684\u53cd\u9762\u3002\u6211\u60f3\u8981\u4e00\u5173\u597d\u4e0a\u624b\u7684\u6218\u6597\uff1a\u7a7a\u964d\u3001\u9009\u914d\u88c5\u3001\u4fdd\u6301\u79fb\u52a8\u3002\u4e3b\u4e3b\u9898\u662f\u6218\u6597\u3002\u6b21\u4e3b\u9898\u662f\u81ea\u7531 \u2014 \u6b66\u5668\u9009\u62e9\uff0c\u5916\u52a0\u7834\u574f\u4e0e\u5efa\u9020\uff0c\u8ba9\u623f\u95f4\u4e0d\u662f\u7ad9\u6869\u5c04\u51fb\u3002\u6807\u9898\u91cc\u7684 Fortnite \u73a9\u7b11\u5c31\u662f brief\uff1a\u8868\u9762\u65e0\u5fe7\uff0c\u5e95\u4e0b\u4ecd\u662f\u7f16\u5199\u7684\u3002",
+    "fn.p.intro": "\u8fd9\u662f <a href=\"JumpMan.html\" class=\"text-info\">JumpMan</a> \u7cbe\u51c6\u8003\u8bd5\u7684\u53cd\u9762\u3002\u6211\u60f3\u8981\u4e00\u5173\u597d\u4e0a\u624b\u7684\u6218\u6597\uff1a\u7a7a\u964d\u3001\u9009\u914d\u88c5\u3001\u4fdd\u6301\u79fb\u52a8\u3002\u4e3b\u4e3b\u9898\u662f\u6218\u6597\u3002\u6b21\u4e3b\u9898\u662f\u81ea\u7531: \u6b66\u5668\u9009\u62e9\uff0c\u5916\u52a0\u7834\u574f\u4e0e\u5efa\u9020\uff0c\u8ba9\u623f\u95f4\u4e0d\u662f\u7ad9\u6869\u5c04\u51fb\u3002\u6807\u9898\u91cc\u7684 Fortnite \u73a9\u7b11\u5c31\u662f brief\uff1a\u8868\u9762\u65e0\u5fe7\uff0c\u5e95\u4e0b\u4ecd\u662f\u7f16\u5199\u7684\u3002",
     "fn.h.intent": "\u8bbe\u8ba1\u610f\u56fe",
     "fn.p.intent1": "\u7b80\u5355\u662f\u7ea6\u675f\uff0c\u4e0d\u662f\u7f3a\u66f2\u7ebf\u3002\u68c0\u67e5\u70b9\u3001\u6cbb\u7597\u4e0e\u5f39\u836f\u7684\u6446\u6cd5\uff0c\u8ba9\u4e00\u6b21\u6b7b\u4ea1\u4e0d\u62b9\u6389\u6574\u5173\uff0c\u4e5f\u8ba9\u6218\u6597\u4ecd\u662f\u52a8\u8bcd\u800c\u4e0d\u662f\u8d44\u6e90\u8c1c\u9898\u3002\u5730\u5f62\u64cd\u63a7\u5b58\u5728\uff0c\u662f\u4e3a\u4e86\u67aa\u6218\u817b\u4e86\u7684\u73a9\u5bb6\u6709\u7b2c\u4e8c\u5de5\u5177\uff0c\u4e5f\u4e3a\u4e86\u540e\u623f\u80fd\u540c\u65f6\u8981\u6c42\u67aa\u4e0e\u5730\u5f62\u3002",
     "fn.p.intent2": "\u8d77\u59cb\u6b66\u5668\u662f\u5206\u53c9\u3002\u623f\u95f4\u5199\u6210\u9002\u914d\u4f60\u9009\u7684\uff0c\u800c\u4e0d\u662f\u4e00\u5957\u811a\u672c\u914d\u88c5\u3002\u90a3\u662f\u7b80\u5355\u6218\u6597\u5173\u7684\u96be\u70b9\uff1a\u82e5\u6bcf\u623f\u5047\u5b9a\u4e00\u628a\u67aa\uff0c\u81ea\u7531\u5c31\u662f\u98ce\u5473\u6587\u6848\uff1b\u82e5\u6bcf\u623f\u80fd\u9002\u914d\u51e0\u628a\uff0c\u8282\u594f\u5c31\u5f97\u628a\u653b\u51fb\u547d\u540d\u6210\u4e00\u65cf\uff0c\u800c\u4e0d\u662f\u67d0\u4e00\u4e2a\u6309\u952e\u3002",
@@ -141,7 +141,7 @@ PortfolioI18nMerge({
     "fn.curve.z9.cadence": "C+E'",
     "fn.curve.z9.intensity": "5",
     "fn.curve.z11.zone": "11",
-    "fn.curve.z11.ask": "Boss \u2014 \u5168\u5957",
+    "fn.curve.z11.ask": "Boss: \u5168\u5957",
     "fn.curve.z11.cadence": "A+B+B'+C+C'+E",
     "fn.curve.z11.intensity": "7",
     "fn.p.curve2": "\u6570\u5b57\u5927\u591a\u843d\u5728 1\u20135\uff0c\u8ba9\u7b80\u5355\u4fdd\u6301\u8bda\u5b9e\uff1b\u722c\u5347\u4ecd\u5728\uff083\u30014\u30015\u30016\u30017\uff09\u3002\u6211\u4e0d\u51b2\u5230 10\u3002\u8bbe\u8ba1\u95ee\u9898\u662f\u300c\u5982\u4f55\u8ba9\u6218\u6597\u5173\u53ef\u8bfb\u4e14\u516c\u5e73\u300d\uff0c\u4e0d\u662f\u300c\u672b\u5c4f\u80fd\u6709\u591a\u786c\u300d\u3002",
@@ -151,6 +151,6 @@ PortfolioI18nMerge({
     "fn.role.2": "\u914d\u88c5\u5206\u53c9\u3001\u7834\u574f/\u5efa\u9020\u904d\u5386\u3001Boss \u4f5c\u4e3a\u5168\u5957\u8003\u8bd5",
     "fn.links.doc": "\u5173\u5361\u6587\u6863\uff08\u5730\u56fe\u3001\u8282\u594f\u3001\u5f3a\u5ea6\uff09",
     "fn.exit.set": "\u96c6\u5408",
-    "fn.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> \u2014 \u5168\u90e8\u4e09\u5173\u3002<a href=\"JumpMan.html\">JumpMan</a> \u2014 \u4e24\u4e2a\u52a8\u8bcd\uff0c\u66f4\u96be\u3002<a href=\"PrisonBreak.html\">Prison Break</a> \u2014 \u89e3\u8c1c\u6742\u800d\u3002"
+    "fn.exit.setBody": "<a href=\"MegaManMaker.html\">Mega Man Maker</a> · 全部三关。<a href=\"JumpMan.html\">JumpMan</a> · 两个动词，更难。<a href=\"PrisonBreak.html\">Prison Break</a> · 解谜杂耍。"
   }
 });

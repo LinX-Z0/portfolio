@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Solo behaviour-tree campus gossip epidemic in C++ on DigiPen's Rabin Engine. Four agent roles, contact rules, and formation extra credit.">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Gossip Simulator &mdash; Lin Xin">
-  <meta property="og:description" content="Solo behaviour-tree campus gossip epidemic. Starters, spreaders, mutators, removers — plus formation extra credit.">
+  <meta property="og:title" content="Gossip Simulator · Lin Xin">
+  <meta property="og:description" content="Solo behaviour-tree campus gossip epidemic. Starters, spreaders, mutators, removers: plus formation extra credit.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/GossipSimulator.html">
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/gossip-og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -56,7 +56,7 @@
       <dl class="project-meta">
         <div>
           <dt data-i18n="gossip.meta.role">Role</dt>
-          <dd data-i18n="gossip.meta.roleVal">Solo &mdash; scenario, BT nodes, trees, formations</dd>
+          <dd data-i18n="gossip.meta.roleVal">Solo: scenario, BT nodes, trees, formations</dd>
         </div>
         <div>
           <dt data-i18n="gossip.meta.team">Team</dt>
@@ -81,22 +81,22 @@
       </dl>
 
       <ul class="scan-strip">
-        <li data-i18n="gossip.scan.sim" data-i18n-html><strong>Gossip sim</strong> &mdash; clean / orange / yellow state machine on spreaders; contact range 5.0, 0.5&nbsp;s dual cooldown.</li>
-        <li data-i18n="gossip.scan.roles" data-i18n-html><strong>Four roles</strong> &mdash; Starter, Spreader, Remover, Mutator; each with its own GUI-authored tree.</li>
-        <li data-i18n="gossip.scan.nodes" data-i18n-html><strong>Custom BT nodes</strong> &mdash; eight leaves and five decorators wired into the DigiPen framework.</li>
-        <li data-i18n="gossip.scan.form" data-i18n-html><strong>Formations (EC)</strong> &mdash; Single, Wedge, Circle; click terrain for a group goal.</li>
-        <li data-i18n="gossip.scan.tune" data-i18n-html><strong>Live tuning</strong> &mdash; speed and population buttons while the sim runs.</li>
-        <li data-i18n="gossip.scan.notMine" data-i18n-html><strong>Not mine</strong> &mdash; Rabin Engine, BT runtime, BehaviorTreeEditor, sample nodes (DigiPen framework).</li>
+        <li data-i18n="gossip.scan.sim" data-i18n-html><strong>Gossip sim</strong> · clean / orange / yellow state machine on spreaders; contact range 5.0, 0.5&nbsp;s dual cooldown.</li>
+        <li data-i18n="gossip.scan.roles" data-i18n-html><strong>Four roles</strong> · Starter, Spreader, Remover, Mutator; each with its own GUI-authored tree.</li>
+        <li data-i18n="gossip.scan.nodes" data-i18n-html><strong>Custom BT nodes</strong> · eight leaves and five decorators wired into the DigiPen framework.</li>
+        <li data-i18n="gossip.scan.form" data-i18n-html><strong>Formations (EC)</strong> · Single, Wedge, Circle; click terrain for a group goal.</li>
+        <li data-i18n="gossip.scan.tune" data-i18n-html><strong>Live tuning</strong> · speed and population buttons while the sim runs.</li>
+        <li data-i18n="gossip.scan.notMine" data-i18n-html><strong>Not mine</strong> · Rabin Engine, BT runtime, BehaviorTreeEditor, sample nodes (DigiPen framework).</li>
       </ul>
 
       <h3 class="mt-4" data-i18n="gossip.h.testing">What we're testing</h3>
-      <p data-i18n="gossip.p.test1" data-i18n-html>Whether a readable multi-agent social epidemic can come from <strong>behaviour trees + blackboard + contact rules</strong> &mdash; not from a cutscene, and not from a trust or reputation model. Gossip here is a three-state colour FSM that spreads when agents touch.</p>
+      <p data-i18n="gossip.p.test1" data-i18n-html>Whether a readable multi-agent social epidemic can come from <strong>behaviour trees + blackboard + contact rules</strong>, not from a cutscene, and not from a trust or reputation model. Gossip here is a three-state colour FSM that spreads when agents touch.</p>
       <p data-i18n="gossip.p.test2">The asymmetric roles are the experiment. Starters only seed orange. Mutators alone escalate orange to yellow. Yellow then spreads from mutated spreaders. Removers pull everything back to white. If any of those permissions leak, the epidemic stops being legible as design and starts looking like random colour noise.</p>
 
       <p data-i18n="gossip.p.context">Solo week inside the DigiPen AI framework. I designed the scenario, wrote the gossip and formation systems in C++, authored the four trees in the BehaviorTreeEditor, and shipped a showcase video with the assignment.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.intent">Design intent</h3>
-      <p data-i18n="gossip.p.intent1" data-i18n-html>The trap is to write four scripts that walk toward each other and call it AI. Behaviour trees earn their keep when the same leaf vocabulary &mdash; find nearest, move, interact &mdash; produces different social jobs because the <em>decorators and selectors</em> change, not because each role has a private special-case function.</p>
+      <p data-i18n="gossip.p.intent1" data-i18n-html>The trap is to write four scripts that walk toward each other and call it AI. Behaviour trees earn their keep when the same leaf vocabulary: find nearest, move, interact: produces different social jobs because the <em>decorators and selectors</em> change, not because each role has a private special-case function.</p>
       <p data-i18n="gossip.p.intent2" data-i18n-html>That is why infection, mutation, and cleanse share one contact API and one cooldown. The trees decide <em>who</em> to chase and <em>when</em> it is legal to act. The sim decides whether the touch counts. If those layers blur, every bug becomes a rewrite of both.</p>
 
       <figure class="system-diagram">
@@ -128,7 +128,7 @@
           <text x="485" y="92" class="dg-s" text-anchor="middle" data-i18n="gossip.state.mutate">mutate</text>
 
           <path d="M 110 140 C 110 190, 610 190, 610 140" fill="none" stroke="rgba(120,180,255,0.7)" stroke-width="1.5" marker-end="url(#arrowGs)"/>
-          <text x="360" y="208" class="dg-s" text-anchor="middle" data-i18n="gossip.state.cleanse">cleanse (remover) &mdash; orange or yellow back to white</text>
+          <text x="360" y="208" class="dg-s" text-anchor="middle" data-i18n="gossip.state.cleanse">cleanse (remover): orange or yellow back to white</text>
         </svg>
         <figcaption data-i18n="gossip.fig.state.cap">Only the mutator can escalate orange to yellow. Spreaders copy whatever state they currently hold onto clean targets.</figcaption>
       </figure>
@@ -155,7 +155,7 @@
       <p data-i18n="gossip.p.contact2">Removers taught the sharpest rule: cleanse whoever is actually in range, not only the chase target still sitting on the blackboard. Chasing one agent and touching another is common once the map densifies; if cleanse is bound to the chase ID, removers look broken even when the contact geometry is correct.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.trees">Trees and nodes</h3>
-      <p data-i18n="gossip.p.trees1">Four GUI-authored trees in the BehaviorTreeEditor &mdash; Starter, Spreader, Remover, Mutator. Spreader is the deep one (23 nodes, depth 5): formation first if active, else infected or mutated spread branches, else clean wander/idle.</p>
+      <p data-i18n="gossip.p.trees1">Four GUI-authored trees in the BehaviorTreeEditor: Starter, Spreader, Remover, Mutator. Spreader is the deep one (23 nodes, depth 5): formation first if active, else infected or mutated spread branches, else clean wander/idle.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
@@ -174,7 +174,7 @@
         <div class="shot-row">
           <figure>
             <img src="Assets/gossip-bt-spreader.png" alt="BehaviorTreeEditor open on Spreader.bht with formation, infected, mutated, and clean branches.">
-            <figcaption data-i18n="gossip.fig.spreader.cap">Spreader.bht &mdash; deepest tree</figcaption>
+            <figcaption data-i18n="gossip.fig.spreader.cap">Spreader.bht: deepest tree</figcaption>
           </figure>
           <figure>
             <img src="Assets/gossip-bt-editor.png" alt="BehaviorTreeEditor open on Mutator.bht: cooldown-gated find, move, mutate, with wander idle fallback.">
@@ -185,11 +185,11 @@
       </figure>
 
       <h3 class="mt-4" data-i18n="gossip.h.form">Formations (extra credit)</h3>
-      <p data-i18n="gossip.p.form1">Optional group movement on top of the epidemic. UI toggles Single, Wedge, Circle, or Form Off. Left-click the terrain for a goal; the lowest-ID spreader is leader. Slot spacing 6.0; circle radius 8.0. While formation is active, that branch preempts gossip chase on spreaders &mdash; so you can watch the flock hold shape, then turn Form Off and watch the epidemic resume.</p>
+      <p data-i18n="gossip.p.form1">Optional group movement on top of the epidemic. UI toggles Single, Wedge, Circle, or Form Off. Left-click the terrain for a goal; the lowest-ID spreader is leader. Slot spacing 6.0; circle radius 8.0. While formation is active, that branch preempts gossip chase on spreaders: so you can watch the flock hold shape, then turn Form Off and watch the epidemic resume.</p>
       <ul>
-        <li data-i18n="gossip.form.single" data-i18n-html><strong>Single</strong> &mdash; diagonal trailing slots (one grouped formation, not a single-file queue).</li>
-        <li data-i18n="gossip.form.wedge" data-i18n-html><strong>Wedge</strong> &mdash; V rows alternating left / right behind the leader.</li>
-        <li data-i18n="gossip.form.circle" data-i18n-html><strong>Circle</strong> &mdash; ring around the click; leader to the center.</li>
+        <li data-i18n="gossip.form.single" data-i18n-html><strong>Single</strong> · diagonal trailing slots (one grouped formation, not a single-file queue).</li>
+        <li data-i18n="gossip.form.wedge" data-i18n-html><strong>Wedge</strong> · V rows alternating left / right behind the leader.</li>
+        <li data-i18n="gossip.form.circle" data-i18n-html><strong>Circle</strong> · ring around the click; leader to the center.</li>
       </ul>
       <figure class="shot">
         <img src="Assets/gossip-formation.gif" alt="Spreaders moving in formation toward a click goal on the terrain.">
@@ -201,11 +201,11 @@
       <p data-i18n="gossip.p.out1">Shipped as a one-week solo prototype that meets the node and tree requirements, plus the formation bonus. The showcase video is the proof pass; the readable colour epidemic is the design pass.</p>
       <p data-i18n="gossip.p.out2">What worked: building the four trees in the BehaviorTreeEditor. Seeing selectors and decorators as a diagram made nesting less abstract than reading only C++. The blackboard kept target and state out of one giant leaf.</p>
       <p data-i18n="gossip.p.out3" data-i18n-html>What hurt: editor depth and single-child composites failing Validate; registering every new node in <code>Nodes.def</code> and <code>NodeHeaders.h</code>; and the remover range-vs-chase bug until cleanse used the agent actually in contact. Formation slot overlap took a separate tuning pass after the gossip rules already worked.</p>
-      <p data-i18n="gossip.p.out4" data-i18n-html>If I rebuilt it, I would freeze the contact and state API first with debug logs on, then author trees against that contract &mdash; the same &ldquo;system before scenery&rdquo; lesson that shows up again on <a href="ProjectXeno.html" class="text-info">Project Xeno</a>.</p>
+      <p data-i18n="gossip.p.out4" data-i18n-html>If I rebuilt it, I would freeze the contact and state API first with debug logs on, then author trees against that contract: the same &ldquo;system before scenery&rdquo; lesson that shows up again on <a href="ProjectXeno.html" class="text-info">Project Xeno</a>.</p>
 
       <h4 class="mt-5" data-i18n="gossip.h.role">Role</h4>
       <ul>
-        <li data-i18n="gossip.role.list1">Scenario design &mdash; roles, colours, infection / mutate / cleanse rules</li>
+        <li data-i18n="gossip.role.list1">Scenario design: roles, colours, infection / mutate / cleanse rules</li>
         <li data-i18n="gossip.role.list2" data-i18n-html>Gossip simulation layer (<code>P1_Gossip</code>)</li>
         <li data-i18n="gossip.role.list3">Custom BT leaves and decorators; four authored trees</li>
         <li data-i18n="gossip.role.list4" data-i18n-html>Formation extra credit (<code>P1_Formation</code>) and live tuning UI</li>
@@ -213,7 +213,7 @@
       </ul>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label" data-i18n="gossip.exit.related">Related</span> <span data-i18n="gossip.exit.relatedBody" data-i18n-html><a href="ProjectXeno.html">Project Xeno</a> &mdash; same trimester; multi-agent pressure with a different AI tool (metric-gated FSM vs behaviour trees).</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="gossip.exit.related">Related</span> <span data-i18n="gossip.exit.relatedBody" data-i18n-html><a href="ProjectXeno.html">Project Xeno</a> · same trimester; multi-agent pressure with a different AI tool (metric-gated FSM vs behaviour trees).</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
