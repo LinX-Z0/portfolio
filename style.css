@@ -505,6 +505,113 @@ h3 { font-size: 1.2rem; margin: 2.1rem 0 0.7rem; }
     min-height: 0;
   }
 }
+/* ——— Games I've played showcase ——— */
+.played-showcase {
+  display: grid;
+  grid-template-columns: minmax(10rem, 15rem) 1fr;
+  gap: 1.5rem 1.85rem;
+  align-items: center;
+  margin-top: 1.15rem;
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(201, 164, 108, 0.06), transparent 42%),
+    var(--surface);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.25s ease;
+}
+
+.played-showcase:hover {
+  border-color: rgba(201, 164, 108, 0.45);
+  transform: translateY(-2px);
+}
+
+.played-visual {
+  border: 1px solid var(--line);
+  background: #0a0c10;
+  overflow: hidden;
+  aspect-ratio: 560 / 340;
+}
+
+.played-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  transition: transform 0.35s ease;
+}
+
+.played-showcase:hover .played-visual img {
+  transform: scale(1.03);
+}
+
+.played-tag {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.played-blurb {
+  margin: 0 0 1rem;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.played-metrics {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.played-metrics li {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.played-metrics li span:first-child {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.played-go {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.played-showcase:hover .played-go {
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .played-showcase {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .played-visual {
+    max-width: 18rem;
+  }
+}
+
 /* ——— Project index ——— */
 .project-filters {
   display: flex;

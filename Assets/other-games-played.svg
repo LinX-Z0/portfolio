@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-label="Games I've played">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0c10"/>
+      <stop offset="100%" stop-color="#171c26"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="340" fill="url(#g)"/>
+  <rect x="28" y="28" width="504" height="284" fill="none" stroke="#c9a46c" stroke-opacity="0.4" stroke-width="1.25"/>
+  <text x="52" y="78" fill="#c9a46c" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="4">GAMER PROFILE</text>
+  <text x="52" y="128" fill="#e8eaef" font-family="Georgia, 'Times New Roman', serif" font-size="34">Games I've played</text>
+  <text x="52" y="162" fill="#7a8290" font-family="system-ui, sans-serif" font-size="14">Lin Xin · ??</text>
+  <line x1="52" y1="190" x2="220" y2="190" stroke="#c9a46c" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="52" y="230" fill="#e8eaef" font-family="system-ui, sans-serif" font-size="22" font-weight="600">5,000+</text>
+  <text x="52" y="252" fill="#7a8290" font-family="system-ui, sans-serif" font-size="12">hours</text>
+  <text x="180" y="230" fill="#e8eaef" font-family="system-ui, sans-serif" font-size="22" font-weight="600">50+</text>
+  <text x="180" y="252" fill="#7a8290" font-family="system-ui, sans-serif" font-size="12">titles</text>
+  <text x="290" y="230" fill="#e8eaef" font-family="system-ui, sans-serif" font-size="22" font-weight="600">15+</text>
+  <text x="290" y="252" fill="#7a8290" font-family="system-ui, sans-serif" font-size="12">Steam 100%</text>
+  <text x="52" y="292" fill="#b4bac6" font-family="system-ui, sans-serif" font-size="12" letter-spacing="1">Tactical FPS · ARPG · CRPG · Strategy</text>
+</svg>
