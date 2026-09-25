@@ -601,6 +601,24 @@ h3 { font-size: 1.2rem; margin: 2.1rem 0 0.7rem; }
   border-bottom-color: var(--accent);
 }
 
+.played-steam {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+}
+
+.played-steam a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.played-steam a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 @media (max-width: 640px) {
   .played-showcase {
     grid-template-columns: 1fr;
