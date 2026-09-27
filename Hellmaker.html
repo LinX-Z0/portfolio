@@ -33,10 +33,19 @@
   </header>
 <section id="summary" class="pt-5 mt-5">
     <div class="container">
-      <figure class="shot">
-        <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with Scene Editor, Game View playing Death's Refrain, Profiler, and Config panels docked.">
-        <figcaption data-i18n="hm.fig.editor">The editor as the team used it. Scene hierarchy, live game view, profiler, and config docked around the same runtime.</figcaption>
-      </figure>
+      <div class="mb-4 project-doc">
+        <iframe
+          class="rounded shadow"
+          src="https://drive.google.com/file/d/1lAWNcFSRegp_ZVNm8CRc2JfMSQZvdmCD/preview"
+          allow="autoplay"
+          allowfullscreen
+          title="Hellmaker engine video"
+        ></iframe>
+      </div>
+      <p class="project-links mb-4">
+        <a href="https://drive.google.com/file/d/1lAWNcFSRegp_ZVNm8CRc2JfMSQZvdmCD/view" target="_blank" rel="noopener" data-i18n="hm.videoOpen">Open engine video on Google Drive</a>
+        <span class="project-credit" data-i18n="hm.videoCredit">Video by Rupak, Product Manager</span>
+      </p>
 
       <h1 class="display-5 mb-3">Hellmaker</h1>
       <p class="lead" data-i18n="hm.lead">Custom C++ engine behind Death's Refrain. I built the tooling the team watched the engine through.</p>
@@ -76,6 +85,11 @@
       </ul>
 
       <p data-i18n="hm.p.intro" data-i18n-html>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did. This is the engine and the editor tooling; that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling (the console, the GUI manager, and the asset browser), which together cut the distance between changing something and seeing it.</p>
+
+      <figure class="shot">
+        <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with Scene Editor, Game View playing Death's Refrain, Profiler, and Config panels docked.">
+        <figcaption data-i18n="hm.fig.editor">The editor as the team used it. Scene hierarchy, live game view, profiler, and config docked around the same runtime.</figcaption>
+      </figure>
 
       <h3 class="mt-4" data-i18n="hm.h.why">Why I asked for the tools job</h3>
       <p data-i18n="hm.p.why1" data-i18n-html>On <a href="Overseas.html" class="text-info">Overseas</a> I spent a trimester retuning values by rebuilding the game to find out whether each guess was right. Nothing was exposed, nothing was observable while it ran, and the reflection I wrote at the end of that project was that debug views and tunables belong in place before a system needs tuning, not after. Hellmaker is where I got to act on that, and the difference is that this time the user of the thing I was building was my own team.</p>
@@ -191,6 +205,7 @@
         <li data-i18n="hm.collab.1">Loh Boon Cheong, Timothy · Technical Lead; ImGuiFileDialog integration, share of the asset browser and game view</li>
         <li data-i18n="hm.collab.2">Alfred Lo Kai Xuan · Graphics and rendering; share of the game view and gizmos</li>
         <li data-i18n="hm.collab.3">Wong E-Ren, Jaeden · Physics and collision</li>
+        <li data-i18n="hm.collab.4">Rupak · Product Manager; engine showcase video</li>
       </ul>
 
       <div class="case-exit mt-5">

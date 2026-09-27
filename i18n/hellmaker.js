@@ -2,6 +2,8 @@ PortfolioI18nMerge({
   en: {
     "hm.meta.title": "Hellmaker - Lin Xin",
     "hm.fig.editor": "The editor as the team used it. Scene hierarchy, live game view, profiler, and config docked around the same runtime.",
+    "hm.videoOpen": "Open engine video on Google Drive",
+    "hm.videoCredit": "Video by Rupak, Product Manager",
     "hm.lead": "Custom C++ engine behind Death's Refrain. I built the tooling the team watched the engine through.",
     "hm.meta.role": "Role",
     "hm.meta.roleVal": "Engine tools programmer",
@@ -68,6 +70,7 @@ PortfolioI18nMerge({
     "hm.collab.1": "Loh Boon Cheong, Timothy · Technical Lead; ImGuiFileDialog integration, share of the asset browser and game view",
     "hm.collab.2": "Alfred Lo Kai Xuan · Graphics and rendering; share of the game view and gizmos",
     "hm.collab.3": "Wong E-Ren, Jaeden · Physics and collision",
+    "hm.collab.4": "Rupak · Product Manager; engine showcase video",
     "hm.exit.game": "Game",
     "hm.exit.gameBody": "<a href=\"DeathsRefrain.html\">Death's Refrain</a> · what the team built on this engine, and what I designed on it.",
     "hm.exit.before": "Before",
@@ -76,6 +79,8 @@ PortfolioI18nMerge({
   zh: {
     "hm.meta.title": "Hellmaker - \u6797\u946b",
     "hm.fig.editor": "\u56e2\u961f\u5b9e\u9645\u4f7f\u7528\u4e2d\u7684\u7f16\u8f91\u5668\u3002\u573a\u666f\u5c42\u7ea7\u3001\u5b9e\u65f6\u6e38\u620f\u89c6\u56fe\u3001Profiler \u4e0e Config \u9762\u677f\u56f4\u7ed5\u540c\u4e00\u5957\u8fd0\u884c\u65f6\u505c\u9760\u3002",
+    "hm.videoOpen": "\u5728 Google Drive \u6253\u5f00\u5f15\u64ce\u89c6\u9891",
+    "hm.videoCredit": "\u89c6\u9891\u5236\u4f5c\uff1aRupak\uff08\u4ea7\u54c1\u7ecf\u7406\uff09",
     "hm.lead": "Death's Refrain \u80cc\u540e\u7684\u81ea\u7814 C++ \u5f15\u64ce\u3002\u6211\u8d1f\u8d23\u56e2\u961f\u7528\u6765\u89c2\u5bdf\u5f15\u64ce\u7684\u90a3\u5957\u5de5\u5177\u94fe\u3002",
     "hm.meta.role": "\u89d2\u8272",
     "hm.meta.roleVal": "\u5f15\u64ce\u5de5\u5177\u7a0b\u5e8f\u5458",
@@ -142,6 +147,7 @@ PortfolioI18nMerge({
     "hm.collab.1": "Loh Boon Cheong, Timothy · \u6280\u672f\u8d1f\u8d23\u4eba\uff1bImGuiFileDialog \u96c6\u6210\uff0c\u8d44\u4ea7\u6d4f\u89c8\u5668\u4e0e\u6e38\u620f\u89c6\u56fe\u7684\u90e8\u5206\u5de5\u4f5c",
     "hm.collab.2": "Alfred Lo Kai Xuan · \u56fe\u5f62\u4e0e\u6e32\u67d3\uff1b\u6e38\u620f\u89c6\u56fe\u4e0e gizmo \u7684\u90e8\u5206\u5de5\u4f5c",
     "hm.collab.3": "Wong E-Ren, Jaeden · \u7269\u7406\u4e0e\u78b0\u649e",
+    "hm.collab.4": "Rupak · \u4ea7\u54c1\u7ecf\u7406\uff1b\u5f15\u64ce\u5c55\u793a\u89c6\u9891",
     "hm.exit.game": "\u6e38\u620f",
     "hm.exit.gameBody": "<a href=\"DeathsRefrain.html\">Death's Refrain</a> · \u56e2\u961f\u5728\u8fd9\u5957\u5f15\u64ce\u4e0a\u505a\u51fa\u7684\u4e1c\u897f\uff0c\u4ee5\u53ca\u6211\u5728\u5176\u4e0a\u7684\u8bbe\u8ba1\u3002",
     "hm.exit.before": "\u4e4b\u524d",

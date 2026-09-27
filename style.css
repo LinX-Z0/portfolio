@@ -995,6 +995,14 @@ h3 { font-size: 1.2rem; margin: 2.1rem 0 0.7rem; }
   font-weight: 500;
 }
 
+.project-credit {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+
 .project-meta {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
