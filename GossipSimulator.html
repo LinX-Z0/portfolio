@@ -5,10 +5,10 @@
   <title>Gossip Simulator - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Solo behaviour-tree campus gossip epidemic in C++ on DigiPen's Rabin Engine. Four agent roles, contact rules, and formation extra credit.">
+  <meta name="description" content="Solo C++ project on DigiPen's Rabin Engine: campus gossip that spreads like an epidemic, driven by behaviour trees. Four character roles, contact rules, and formations for extra credit.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Gossip Simulator · Lin Xin">
-  <meta property="og:description" content="Solo behaviour-tree campus gossip epidemic. Starters, spreaders, mutators, removers: plus formation extra credit.">
+  <meta property="og:description" content="Solo project: campus gossip that spreads like an epidemic, driven by behaviour trees. Starters, spreaders, mutators, and removers, plus formations for extra credit.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/GossipSimulator.html">
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/gossip-og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -52,7 +52,7 @@
       </figure>
 
       <h1 class="display-5 mb-3">Gossip Simulator</h1>
-      <p class="lead" data-i18n="gossip.lead">Campus gossip as a spatial epidemic. Four behaviour trees, one contact rule, no scripted chase.</p>
+      <p class="lead" data-i18n="gossip.lead">Campus gossip that spreads like an epidemic. Four behaviour trees, one contact rule, and no scripted chases.</p>
       <dl class="project-meta">
         <div>
           <dt data-i18n="gossip.meta.role">Role</dt>
@@ -76,7 +76,7 @@
         </div>
         <div>
           <dt data-i18n="gossip.meta.state">State</dt>
-          <dd data-i18n="gossip.meta.stateVal">Assignment prototype (+ formation EC)</dd>
+          <dd data-i18n="gossip.meta.stateVal">Assignment prototype (+ formation extra credit)</dd>
         </div>
       </dl>
 
@@ -84,20 +84,20 @@
         <li data-i18n="gossip.scan.sim" data-i18n-html><strong>Gossip sim</strong> · clean / orange / yellow state machine on spreaders; contact range 5.0, 0.5&nbsp;s dual cooldown.</li>
         <li data-i18n="gossip.scan.roles" data-i18n-html><strong>Four roles</strong> · Starter, Spreader, Remover, Mutator; each with its own GUI-authored tree.</li>
         <li data-i18n="gossip.scan.nodes" data-i18n-html><strong>Custom BT nodes</strong> · eight leaves and five decorators wired into the DigiPen framework.</li>
-        <li data-i18n="gossip.scan.form" data-i18n-html><strong>Formations (EC)</strong> · Single, Wedge, Circle; click terrain for a group goal.</li>
+        <li data-i18n="gossip.scan.form" data-i18n-html><strong>Formations (extra credit)</strong> · Single, Wedge, Circle; click the terrain to set a group goal.</li>
         <li data-i18n="gossip.scan.tune" data-i18n-html><strong>Live tuning</strong> · speed and population buttons while the sim runs.</li>
         <li data-i18n="gossip.scan.notMine" data-i18n-html><strong>Not mine</strong> · Rabin Engine, BT runtime, BehaviorTreeEditor, sample nodes (DigiPen framework).</li>
       </ul>
 
       <h3 class="mt-4" data-i18n="gossip.h.testing">What we're testing</h3>
-      <p data-i18n="gossip.p.test1" data-i18n-html>Whether a readable multi-agent social epidemic can come from <strong>behaviour trees + blackboard + contact rules</strong>, not from a cutscene, and not from a trust or reputation model. Gossip here is a three-state colour FSM that spreads when agents touch.</p>
-      <p data-i18n="gossip.p.test2">The asymmetric roles are the experiment. Starters only seed orange. Mutators alone escalate orange to yellow. Yellow then spreads from mutated spreaders. Removers pull everything back to white. If any of those permissions leak, the epidemic stops being legible as design and starts looking like random colour noise.</p>
+      <p data-i18n="gossip.p.test1" data-i18n-html>Whether a readable social epidemic between many agents can come from <strong>behaviour trees + blackboard + contact rules</strong>, not from a cutscene, and not from a trust or reputation model. Gossip here is a colour state (clean, orange, or yellow) that spreads when agents touch.</p>
+      <p data-i18n="gossip.p.test2">The uneven roles are the experiment. Starters only spread orange. Only mutators can turn orange into yellow. Yellow then spreads from mutated spreaders. Removers turn everything back to white. If any role could do another's job, the epidemic would stop reading as design and start looking like random colour noise.</p>
 
       <p data-i18n="gossip.p.context">Solo week inside the DigiPen AI framework. I designed the scenario, wrote the gossip and formation systems in C++, authored the four trees in the BehaviorTreeEditor, and shipped a showcase video with the assignment.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.intent">Design intent</h3>
-      <p data-i18n="gossip.p.intent1" data-i18n-html>The trap is to write four scripts that walk toward each other and call it AI. Behaviour trees earn their keep when the same leaf vocabulary: find nearest, move, interact: produces different social jobs because the <em>decorators and selectors</em> change, not because each role has a private special-case function.</p>
-      <p data-i18n="gossip.p.intent2" data-i18n-html>That is why infection, mutation, and cleanse share one contact API and one cooldown. The trees decide <em>who</em> to chase and <em>when</em> it is legal to act. The sim decides whether the touch counts. If those layers blur, every bug becomes a rewrite of both.</p>
+      <p data-i18n="gossip.p.intent1" data-i18n-html>The trap is to write four scripts that walk toward each other and call it AI. Behaviour trees are worth using when the same basic actions (find nearest, move, interact) produce different social roles because the <em>decorators and selectors</em> change, not because each role has its own special-case code.</p>
+      <p data-i18n="gossip.p.intent2" data-i18n-html>That is why infection, mutation, and cleanse share one contact API and one cooldown. The trees decide <em>who</em> to chase and <em>when</em> an agent is allowed to act. The simulation decides whether the touch counts. If those layers blur together, every bug means rewriting both.</p>
 
       <figure class="system-diagram">
         <svg viewBox="0 0 720 220" role="img" aria-labelledby="gossipStateTitle gossipStateDesc">
@@ -151,8 +151,8 @@
       <p class="authored" data-i18n="gossip.authored.gossip" data-i18n-html>Authored in <code>P1_Gossip</code> + four <code>.bht</code> trees.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.contact">Contact rules</h3>
-      <p data-i18n="gossip.p.contact1" data-i18n-html>Center-to-center distance &le; <strong>5.0</strong>. Both agents must be off cooldown. A successful interact starts a <strong>0.5&nbsp;s</strong> cooldown on both. That dual gate is what keeps the epidemic from becoming a single-frame flash of every colour at once.</p>
-      <p data-i18n="gossip.p.contact2">Removers taught the sharpest rule: cleanse whoever is actually in range, not only the chase target still sitting on the blackboard. Chasing one agent and touching another is common once the map densifies; if cleanse is bound to the chase ID, removers look broken even when the contact geometry is correct.</p>
+      <p data-i18n="gossip.p.contact1" data-i18n-html>Center-to-center distance ≤ <strong>5.0</strong>. Both agents must be off cooldown. A successful interaction starts a <strong>0.5 s</strong> cooldown on both. That double check is what keeps the epidemic from turning every agent every colour in a single frame.</p>
+      <p data-i18n="gossip.p.contact2">Removers taught me the most useful lesson: cleanse whoever is actually in range, not only the chase target still saved on the blackboard. Chasing one agent and touching another is common once the map gets crowded; if cleansing is tied to the chase target, removers look broken even when the contact check is correct.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.trees">Trees and nodes</h3>
       <p data-i18n="gossip.p.trees1">Four GUI-authored trees in the BehaviorTreeEditor: Starter, Spreader, Remover, Mutator. Spreader is the deep one (23 nodes, depth 5): formation first if active, else infected or mutated spread branches, else clean wander/idle.</p>
@@ -177,7 +177,7 @@
             <figcaption data-i18n="gossip.fig.spreader.cap">Spreader.bht: deepest tree</figcaption>
           </figure>
           <figure>
-            <img src="Assets/gossip-bt-editor.png" alt="BehaviorTreeEditor open on Mutator.bht: cooldown-gated find, move, mutate, with wander idle fallback.">
+            <img src="Assets/gossip-bt-editor.png" alt="BehaviorTreeEditor open on Mutator.bht: once the cooldown ends it finds, moves to, and mutates a target, and wanders when idle.">
             <figcaption data-i18n="gossip.fig.mutator.cap">Mutator.bht</figcaption>
           </figure>
         </div>
@@ -185,7 +185,7 @@
       </figure>
 
       <h3 class="mt-4" data-i18n="gossip.h.form">Formations (extra credit)</h3>
-      <p data-i18n="gossip.p.form1">Optional group movement on top of the epidemic. UI toggles Single, Wedge, Circle, or Form Off. Left-click the terrain for a goal; the lowest-ID spreader is leader. Slot spacing 6.0; circle radius 8.0. While formation is active, that branch preempts gossip chase on spreaders: so you can watch the flock hold shape, then turn Form Off and watch the epidemic resume.</p>
+      <p data-i18n="gossip.p.form1">Optional group movement on top of the epidemic. The UI toggles Single, Wedge, Circle, or Form Off. Left-click the terrain to set a goal; the spreader with the lowest ID is the leader. Slot spacing is 6.0 and the circle radius is 8.0. While a formation is active, it overrides gossip chasing on spreaders, so you can watch the group hold its shape, then turn Form Off and watch the epidemic resume.</p>
       <ul>
         <li data-i18n="gossip.form.single" data-i18n-html><strong>Single</strong> · diagonal trailing slots (one grouped formation, not a single-file queue).</li>
         <li data-i18n="gossip.form.wedge" data-i18n-html><strong>Wedge</strong> · V rows alternating left / right behind the leader.</li>
@@ -198,7 +198,7 @@
       <p class="authored" data-i18n="gossip.authored.form" data-i18n-html>Authored in <code>P1_Formation</code>.</p>
 
       <h3 class="mt-4" data-i18n="gossip.h.outcome">Outcome and reflection</h3>
-      <p data-i18n="gossip.p.out1">Shipped as a one-week solo prototype that meets the node and tree requirements, plus the formation bonus. The showcase video is the proof pass; the readable colour epidemic is the design pass.</p>
+      <p data-i18n="gossip.p.out1">Shipped as a one-week solo prototype that meets the node and tree requirements, plus the formation bonus. The showcase video shows it working; the easy-to-read colour epidemic is the design result.</p>
       <p data-i18n="gossip.p.out2">What worked: building the four trees in the BehaviorTreeEditor. Seeing selectors and decorators as a diagram made nesting less abstract than reading only C++. The blackboard kept target and state out of one giant leaf.</p>
       <p data-i18n="gossip.p.out3" data-i18n-html>What hurt: editor depth and single-child composites failing Validate; registering every new node in <code>Nodes.def</code> and <code>NodeHeaders.h</code>; and the remover range-vs-chase bug until cleanse used the agent actually in contact. Formation slot overlap took a separate tuning pass after the gossip rules already worked.</p>
       <p data-i18n="gossip.p.out4" data-i18n-html>If I rebuilt it, I would freeze the contact and state API first with debug logs on, then author trees against that contract: the same &ldquo;system before scenery&rdquo; lesson that shows up again on <a href="ProjectXeno.html" class="text-info">Project Xeno</a>.</p>
@@ -213,7 +213,7 @@
       </ul>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label" data-i18n="gossip.exit.related">Related</span> <span data-i18n="gossip.exit.relatedBody" data-i18n-html><a href="ProjectXeno.html">Project Xeno</a> · same trimester; multi-agent pressure with a different AI tool (metric-gated FSM vs behaviour trees).</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="gossip.exit.related">Related</span> <span data-i18n="gossip.exit.relatedBody" data-i18n-html><a href="ProjectXeno.html">Project Xeno</a> · same trimester; many agents again, but with a different AI tool (a state machine with unlockable behaviors instead of behaviour trees).</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 

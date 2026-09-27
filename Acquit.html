@@ -5,10 +5,10 @@
   <title>Acquit - Lin Xin</title>
   <meta name="author" content="Lin Xin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Physical courtroom strategy card game. As Design Lead I designed the table systems: split decks, investigation, motions, trial, scoring, and the card list.">
+  <meta name="description" content="Physical courtroom strategy card game. As Design Lead I designed all the gameplay systems: split decks, investigation, motions, trial, scoring, and the card list.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Acquit · Lin Xin">
-  <meta property="og:description" content="Physical courtroom strategy card game. Investigation, one motion, then a jury race to 12.">
+  <meta property="og:description" content="Physical courtroom strategy card game. Gather evidence, pick one motion, then win over the jury. First to 12 jurors wins.">
   <meta property="og:url" content="https://linx-z0.github.io/portfolio/Acquit.html">
   <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/acquit-og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -51,7 +51,7 @@
       </div>
 
       <h1 class="display-5 mb-3">Acquit</h1>
-      <p class="lead" data-i18n="acq.lead">Physical courtroom strategy. Build a file, lock a theory, then spend it on a jury race to 12.</p>
+      <p class="lead" data-i18n="acq.lead">A physical courtroom strategy game. Gather evidence, pick your defence, then use it to win over the jury. First to 12 jurors wins.</p>
       <dl class="project-meta">
         <div>
           <dt data-i18n="acq.meta.role">Role</dt>
@@ -85,24 +85,24 @@
 
       <ul class="scan-strip">
         <li data-i18n="acq.scan.cards" data-i18n-html><strong>Card mechanics</strong> · evidence, discovery, investigation; the full card list and how each type plays.</li>
-        <li data-i18n="acq.scan.motions" data-i18n-html><strong>Motions</strong> · Suppress / Dismiss / Continuance as a permanent trial overlay.</li>
-        <li data-i18n="acq.scan.tactics" data-i18n-html><strong>Tactics</strong> · interrupt tools in trial (reroll, extra evidence, replay, cancel).</li>
-        <li data-i18n="acq.scan.numbers" data-i18n-html><strong>Numbers and balance</strong> · argument difficulties, evidence modifiers, scoring; tuned after playtests.</li>
-        <li data-i18n="acq.scan.playtests" data-i18n-html><strong>Playtests</strong> · led passes with the team; scoring and difficulty reworks from those sessions.</li>
+        <li data-i18n="acq.scan.motions" data-i18n-html><strong>Motions</strong> · Suppress / Dismiss / Continuance; the one you pick stays in effect for the whole trial.</li>
+        <li data-i18n="acq.scan.tactics" data-i18n-html><strong>Tactics</strong> · cards you can play mid-trial (reroll, extra evidence, replay, cancel).</li>
+        <li data-i18n="acq.scan.numbers" data-i18n-html><strong>Numbers and balance</strong> · argument difficulty, evidence bonuses, scoring; tuned after playtests.</li>
+        <li data-i18n="acq.scan.playtests" data-i18n-html><strong>Playtests</strong> · ran sessions with the team, then reworked scoring and difficulty based on them.</li>
         <li data-i18n="acq.scan.notMine" data-i18n-html><strong>Not mine</strong> · art (team); research (mainly team, I helped a little); rulebook and Figma / card layout (contributor).</li>
       </ul>
 
-      <p data-i18n="acq.p.pitch1">You play defence on the O.J. Simpson trial. Build a file, lock a theory of the case, then spend that preparation on arguments. The brief asked for an adventure; the legal process is the journey. The other side is the trial deck, not a second player.</p>
-      <p data-i18n="acq.p.pitch2">I was Design Lead. Every gameplay system and mechanic on the table is mine: investigation, discovery, evidence, motions, tactics, the card list, and the numbers behind them. I ran balance passes after playtests with the team. Art was team. Research was mainly others; I helped a little. I contributed on the rulebook and on Figma / card layout, but that was not my seat.</p>
+      <p data-i18n="acq.p.pitch1">You play the defence in the O.J. Simpson trial. You gather evidence, commit to a theory of the case, then use that preparation to win arguments. The brief asked for an adventure, so the legal process itself is the journey. The prosecution is played by the trial deck, not a second player.</p>
+      <p data-i18n="acq.p.pitch2">I was Design Lead. Every gameplay system and mechanic on the table is mine: investigation, discovery, evidence, motions, tactics, the card list, and the numbers behind them. I ran balance passes after playtests with the team. Art was done by the team. Research was mainly done by others; I helped a little. I contributed to the rulebook and the Figma card layout, but those were not my main job.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.intent">Design intent</h3>
-      <p data-i18n="acq.p.intent1">A courtroom fantasy fails if it becomes a dice game with legal flavour text. The dice are how arguments resolve; they are not the game. The game is whether the file you built in investigation and the motion you locked in pre-trial actually change the odds you face when a card flips. If a player who prepared carefully and a player who rolled naked feel the same at the table, the phases were scenery.</p>
-      <p data-i18n="acq.p.intent2">That is why the three phases are not three flavours of the same loop. Investigation is hand-building. Pre-trial is a single permanent rules overlay. Trial is spending that preparation against a deck that leans. Each phase asks a different question, and the answers stack rather than reset.</p>
+      <p data-i18n="acq.p.intent1">A courtroom fantasy fails if it becomes a dice game with legal flavour text. The dice decide each argument, but they are not the game. The game is whether the evidence you gathered in investigation and the motion you picked in pre-trial actually change your odds when a card flips. If a player who prepared carefully and a player who rolled with no cards feel the same, the earlier phases were pointless.</p>
+      <p data-i18n="acq.p.intent2">That is why the three phases are not three versions of the same loop. Investigation is about building your hand. Pre-trial is picking one rule change that lasts the whole trial. Trial is using that preparation against a deck that is stacked against you. Each phase asks a different question, and the answers build on each other instead of resetting.</p>
 
       <figure class="system-diagram">
         <svg viewBox="0 0 720 200" role="img" aria-labelledby="acqTitle acqDesc">
           <title id="acqTitle" data-i18n="acq.loop.title">Acquit three-phase loop</title>
-          <desc id="acqDesc" data-i18n="acq.loop.desc">Investigation builds a hand, pre-trial locks one motion as a rules overlay, then trial spends that preparation in a jury race to 12.</desc>
+          <desc id="acqDesc" data-i18n="acq.loop.desc">Investigation builds your hand, pre-trial locks in one motion that changes the rules, then trial uses that preparation in a race to win 12 jurors.</desc>
           <defs>
             <marker id="arrowAc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#5ec4b0"/>
@@ -111,7 +111,7 @@
 
           <rect x="20" y="36" width="200" height="80" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
           <text x="120" y="68" class="dg-h" text-anchor="middle" data-i18n="acq.loop.invH">INVESTIGATION</text>
-          <text x="120" y="92" class="dg-s" text-anchor="middle" data-i18n="acq.loop.invS">hand-building</text>
+          <text x="120" y="92" class="dg-s" text-anchor="middle" data-i18n="acq.loop.invS">build your hand</text>
 
           <rect x="260" y="36" width="200" height="80" rx="8" fill="rgba(94,196,176,0.07)" stroke="rgba(94,196,176,0.4)"/>
           <text x="360" y="68" class="dg-h" text-anchor="middle" data-i18n="acq.loop.preH">PRE-TRIAL</text>
@@ -119,26 +119,26 @@
 
           <rect x="500" y="36" width="200" height="80" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
           <text x="600" y="68" class="dg-h" text-anchor="middle" data-i18n="acq.loop.trialH">TRIAL</text>
-          <text x="600" y="92" class="dg-s" text-anchor="middle" data-i18n="acq.loop.trialS">jury race to 12</text>
+          <text x="600" y="92" class="dg-s" text-anchor="middle" data-i18n="acq.loop.trialS">first to 12 jurors</text>
 
           <line x1="222" y1="76" x2="256" y2="76" stroke="#5ec4b0" stroke-width="1.5" marker-end="url(#arrowAc)"/>
           <line x1="462" y1="76" x2="496" y2="76" stroke="#5ec4b0" stroke-width="1.5" marker-end="url(#arrowAc)"/>
 
-          <text x="360" y="160" class="dg-s" text-anchor="middle" data-i18n="acq.loop.footer">Preparation spends forward. The dice resolve; they do not replace the file.</text>
+          <text x="360" y="160" class="dg-s" text-anchor="middle" data-i18n="acq.loop.footer">Preparation carries forward. The dice decide each argument, but they do not replace your evidence.</text>
         </svg>
-        <figcaption data-i18n="acq.fig.loop.cap">Three phases, three questions. The answers stack into the jury race.</figcaption>
+        <figcaption data-i18n="acq.fig.loop.cap">Three phases, three questions. Each answer carries into the fight for the jury.</figcaption>
       </figure>
 
       <h3 class="mt-4" data-i18n="acq.h.split">Split decks</h3>
-      <p data-i18n="acq.p.split1">A single shared deck was easier to set up. Wrong-phase cards kept showing up at the wrong time: an investigation tool during an argument, a motion after the trial had already begun. I split the decks: non-trial for investigation and pre-trial, arguments and tactics for court.</p>
-      <p data-i18n="acq.p.split2">Setup is fussier. Each phase is readable. That is the trade I would defend: a minute of sorting against a whole game of cards that only make sense when they appear.</p>
+      <p data-i18n="acq.p.split1">A single shared deck was easier to set up, but cards kept showing up at the wrong time: an investigation tool during an argument, a motion after the trial had already begun. So I split the decks: one for investigation and pre-trial, and one with arguments and tactics for court.</p>
+      <p data-i18n="acq.p.split2">Setup takes a little longer, but each phase is clear. I think that trade is worth it: a minute of sorting in exchange for a whole game where every card makes sense when it appears.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.invest">Investigation</h3>
-      <p data-i18n="acq.p.invest1">Hand-building. Draw a case, then spend investigation cards to peek, search, redraw, or filter evidence versus arguments. Extras leave at the end of the phase: the skill is what you keep, not hoarding.</p>
-      <p data-i18n="acq.p.invest2">Filtering matters more than raw draw power. A hand full of strong evidence that does not fit the arguments you will face is worse than a thinner hand that coheres. Investigation is where you decide what theory of the case you are actually going to try.</p>
+      <p data-i18n="acq.p.invest1">You build your hand. Draw a case, then use investigation cards to peek, search, redraw, or sort evidence from arguments. Extra cards are discarded at the end of the phase, so the skill is choosing what to keep, not hoarding.</p>
+      <p data-i18n="acq.p.invest2">Choosing the right cards matters more than drawing lots of them. A hand full of strong evidence that does not fit the arguments you will face is worse than a smaller hand where everything fits together. Investigation is where you decide which theory of the case you are actually going to argue.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.motion">One motion</h3>
-      <p data-i18n="acq.p.motion1">Pre-trial is one Motion, with a real tradeoff. That pick sits on the table for the whole trial: a rules overlay, not a one-shot.</p>
+      <p data-i18n="acq.p.motion1">In pre-trial you pick one motion, and each one has a real trade-off. It stays on the table for the whole trial: a lasting rule change, not a one-time effect.</p>
       <div class="table-responsive">
         <table class="table table-dark table-sm qte-table shop-table">
           <thead>
@@ -151,12 +151,12 @@
           </tbody>
         </table>
       </div>
-      <p data-i18n="acq.p.motion2">Suppress and Dismiss are bets that your preparation will hold. Continuance is the admission that it will not. Leaving Continuance as the low-leverage option is deliberate: the safe pick should feel like opting out of the motion system, not like a free fourth path with no downside.</p>
+      <p data-i18n="acq.p.motion2">Suppress and Dismiss are bets that your preparation will hold up. Continuance admits that it will not. Making Continuance the weak option is deliberate: the safe pick should feel like opting out of motions, not like a free fourth option with no downside.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.trial">Trial</h3>
-      <p data-i18n="acq.p.trial1">Flip an argument with a baseline difficulty that already leans one side. You may play evidence and/or a tactic, then roll. An empty hand can still roll naked: dry is a state, not a lock.</p>
-      <p data-i18n="acq.p.trial2">Evidence is not generic +1. Some cards only fit specific arguments; some swing the jury harder with worse odds. Synergies reward a coherent case instead of spraying every strong card. Tactics interrupt: reroll, extra evidence, replay, cancel.</p>
-      <p data-i18n="acq.p.trial3">Jury tokens start undecided. First to 12 wins; if nobody hits 12, a draw.</p>
+      <p data-i18n="acq.p.trial1">Flip an argument card; its base difficulty already favours one side. You can play evidence, a tactic, or both, then roll. Even with an empty hand you can still roll, so running out of cards makes things harder but never locks you out.</p>
+      <p data-i18n="acq.p.trial2">Evidence is not a generic +1. Some cards only fit specific arguments; some swing the jury harder but with worse odds. Combos reward building a consistent case instead of playing every strong card you have. Tactics can be played mid-trial: reroll, extra evidence, replay, cancel.</p>
+      <p data-i18n="acq.p.trial3">Jury tokens start undecided. First to 12 wins; if nobody reaches 12, it is a draw.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.economy">Economy</h3>
       <p data-i18n="acq.p.economy1">About 40 cards across the list:</p>
@@ -174,16 +174,16 @@
           </tbody>
         </table>
       </div>
-      <p data-i18n="acq.p.economy2">Difficulty per argument and evidence modifiers had to survive playtest without auto-win or coin-flip. The card list is that spec.</p>
+      <p data-i18n="acq.p.economy2">The difficulty of each argument and the evidence bonuses had to hold up in playtests without any argument becoming an automatic win or a pure coin flip. The card list is the result.</p>
 
       <h3 class="mt-4" data-i18n="acq.h.playtests">Playtests</h3>
       <p data-i18n="acq.p.play1">Early scores swung hard: 5&ndash;7, then 10&ndash;2, 10&ndash;2. Players who prepared carefully still felt like the dice had decided the night. That is the failure mode the whole design was trying to avoid.</p>
       <p data-i18n="acq.p.play2">What I changed, and why:</p>
       <ul class="tuning-list">
-        <li data-i18n="acq.play.leftover" data-i18n-html><strong>Leftover unused cards became a score penalty; successful cards a plus.</strong> Preparation that never left the hand was invisible to the scoreboard. Taxing dead cards and rewarding cards that actually resolved made the jury race answer the question the phases asked: did you improve your odds, or did you just hold pretty paper?</li>
-        <li data-i18n="acq.play.difficulty" data-i18n-html><strong>Argument difficulty and evidence modifiers reworked until neither auto-win nor coin-flip survived a pass.</strong> A leaning baseline is fine; a baseline that ignores the file is not.</li>
+        <li data-i18n="acq.play.leftover" data-i18n-html><strong>Unused cards left in hand became a score penalty; cards that succeeded became a bonus.</strong> Preparation that never left your hand did not show up on the scoreboard. Penalising unused cards and rewarding cards that actually worked made the jury race answer the question the phases were asking: did your preparation improve your odds, or did you just hold cards you never used?</li>
+        <li data-i18n="acq.play.difficulty" data-i18n-html><strong>Reworked argument difficulty and evidence bonuses until no argument was an automatic win or a pure coin flip.</strong> A starting difficulty that favours one side is fine; one that ignores your evidence is not.</li>
       </ul>
-      <p data-i18n="acq.p.play3">The dice stayed. The scoring had to teach that they were not the game.</p>
+      <p data-i18n="acq.p.play3">The dice stayed. The scoring had to show players that the dice were not the whole game.</p>
 
       <h4 class="mt-5" data-i18n="acq.h.role">Role</h4>
       <ul>
@@ -192,7 +192,7 @@
         <li data-i18n="acq.role.3">Card list, difficulties, modifiers, scoring, balance passes</li>
         <li data-i18n="acq.role.4">Playtesting with the team; presentation</li>
         <li data-i18n="acq.role.5">Rulebook and Figma / card layout (contributor)</li>
-        <li data-i18n="acq.role.6">Art: team; research: mainly team (I helped a little)</li>
+        <li data-i18n="acq.role.6">Art (team); research mainly by the team (I helped a little)</li>
       </ul>
 
       <p class="project-links mt-4">
@@ -204,7 +204,7 @@
       </p>
 
       <div class="case-exit mt-5">
-        <p class="mb-2"><span class="case-exit-label" data-i18n="acq.exit.also">Also physical</span> <span data-i18n="acq.exit.alsoBody" data-i18n-html><a href="Conquest.html">Conquest</a> · solo hex strategy, same Design Lead seat, different pressure: a clock and a hunter instead of a file and a jury.</span></p>
+        <p class="mb-2"><span class="case-exit-label" data-i18n="acq.exit.also">Also physical</span> <span data-i18n="acq.exit.alsoBody" data-i18n-html><a href="Conquest.html">Conquest</a> · a solo hex strategy game where I was also Design Lead. Instead of evidence and a jury, the pressure comes from a time limit and an assassin.</span></p>
         <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
 
