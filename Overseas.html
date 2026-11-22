@@ -84,6 +84,33 @@
 
       <p data-i18n="ov.p.pitch">You captain a small boat. A quota and a deadline sit on the HUD. Fish to pay the quota. Manage health and supply so the boat does not run dry, and keep clear of the monsters that take a bite out of it. Reach a shipwreck to restock supply. Clear the quota and the job renews with more days and a new target. Miss it, or hit zero health, and the run is over.</p>
 
+      <dl class="case-beats">
+        <div>
+          <dt data-i18n="ov.beat.problemLabel">Problem</dt>
+          <dd data-i18n="ov.beat.problem">Fishing and salvaging were supposed to be different decisions, greed versus keeping the boat alive. In play they felt like the same trip, because supply almost never ran out.</dd>
+        </div>
+        <div>
+          <dt data-i18n="ov.beat.constraintLabel">Constraint</dt>
+          <dd data-i18n="ov.beat.constraint">The quota generator was Mandy's, and a day could be 300 or 600 gold. The bars, QTE, spots, wrecks, and shop hooks were mine, with values hardcoded and no debug view. Fourteen weeks.</dd>
+        </div>
+        <div>
+          <dt data-i18n="ov.beat.testLabel">Test</dt>
+          <dd data-i18n="ov.beat.test">CSD1451 user testing, 26 surveys.</dd>
+        </div>
+        <div>
+          <dt data-i18n="ov.beat.failureLabel">Failure</dt>
+          <dd data-i18n="ov.beat.failure">Fifteen of 26 called the quota the worst part, which was a team problem. On my systems, the three QTE windows were 108px, 97px, and 88px, so rarity only changed the payout. A full supply bar outlasted attention, wrecks were not worth the detour, and with too many spots nobody had to cross open water. The bars sat in the corner, too small to use for the greed-or-safety choice.</dd>
+        </div>
+        <div>
+          <dt data-i18n="ov.beat.changeLabel">Change</dt>
+          <dd data-i18n="ov.beat.change">The QTE window now halves each tier. Drain went to 5 per second and the heal threshold to 80. Wrecks pay +50 supply. Spots and wrecks were cut to three each. The team separately shortened the day, eased the quota, brightened night, and made the tutorial unavoidable.</dd>
+        </div>
+        <div>
+          <dt data-i18n="ov.beat.resultLabel">Result</dt>
+          <dd data-i18n="ov.beat.result">Shipped with an A. The bars became readable enough to do their job. The retunes were slow because every guess needed a rebuild, which is why the next project starts with a debug console.</dd>
+        </div>
+      </dl>
+
       <figure class="shot">
         <img src="Assets/overseas-gameplay.png" alt="Overseas overworld: the boat on open water with quota, days, day-night bar, and health and supply icons.">
         <figcaption data-i18n="ov.fig.overworld.cap">On the water. Quota and days sit top-right; health and supply bottom-left. Fishing spots and wrecks share the map with rocks and debris.</figcaption>

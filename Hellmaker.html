@@ -86,6 +86,33 @@
 
       <p data-i18n="hm.p.intro" data-i18n-html>Hellmaker is the in-house engine that runs <a href="DeathsRefrain.html" class="text-info">Death's Refrain</a>. They are one Year 2 project across two pages, split by what I did. This is the engine and the editor tooling; that one is the game. Technical Lead was Loh Boon Cheong, Timothy. I owned the shared debug layer and the editor tooling (the console, the GUI manager, and the asset browser), which together cut the time between changing something and seeing the result.</p>
 
+      <dl class="case-beats">
+        <div>
+          <dt data-i18n="hm.beat.problemLabel">Problem</dt>
+          <dd data-i18n="hm.beat.problem">Checking a guess cost a rebuild on Overseas, and placing one object in a Death's Refrain room meant typing YAML, then waiting about a minute to see if the crate was too far left.</dd>
+        </div>
+        <div>
+          <dt data-i18n="hm.beat.constraintLabel">Constraint</dt>
+          <dd data-i18n="hm.beat.constraint">Levels are YAML and Lua, not C++, so a tool can change a room without a rebuild. I did not own architecture, rendering, or physics. The user of the tools was the same team, including me as design lead.</dd>
+        </div>
+        <div>
+          <dt data-i18n="hm.beat.testLabel">Test</dt>
+          <dd data-i18n="hm.beat.test">No outside survey. The test was building Death's Refrain in the editor for the rest of the year: console open, assets dragged into the live game view.</dd>
+        </div>
+        <div>
+          <dt data-i18n="hm.beat.failureLabel">Failure</dt>
+          <dd data-i18n="hm.beat.failure">I kept working around missing engine features instead of naming them. The sharp case is the tiles: four hand-authored orientations per tile, because I never asked for rotation. I had done it long enough that it stopped feeling like work. Separately, people built against slightly different pictures of the same system and only found out late.</dd>
+        </div>
+        <div>
+          <dt data-i18n="hm.beat.changeLabel">Change</dt>
+          <dd data-i18n="hm.beat.change">One spdlog pipeline for Editor, Sandbox, and Engine, with a live filtered console. An ImGui wrapper so gameplay code does not include the UI library. An asset browser that spawns under the cursor instead of at the origin. A teammate asked for tile rotation in one sentence, and that replaced the four-copy workaround.</dd>
+        </div>
+        <div>
+          <dt data-i18n="hm.beat.resultLabel">Result</dt>
+          <dd data-i18n="hm.beat.result">Placement went from about a minute to about five seconds, on every object. The final milestone was an A, and the must-haves shipped. The five seconds are what I would still close.</dd>
+        </div>
+      </dl>
+
       <figure class="shot">
         <img src="Assets/hellmaker-editor.png" alt="The Hellmaker editor with Scene Editor, Game View playing Death's Refrain, Profiler, and Config panels docked.">
         <figcaption data-i18n="hm.fig.editor">The editor as the team used it. Scene hierarchy, live game view, profiler, and config docked around the same runtime.</figcaption>

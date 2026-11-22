@@ -1085,6 +1085,37 @@ h3 { font-size: 1.2rem; margin: 2.1rem 0 0.7rem; }
   font-weight: 600;
 }
 
+.case-beats {
+  display: grid;
+  gap: 1.15rem 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  margin: 2rem 0 2.5rem;
+  padding: 0;
+}
+
+.case-beats div {
+  margin: 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(201, 164, 108, 0.45);
+}
+
+.case-beats dt {
+  font-family: var(--font-ui);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  margin: 0 0 0.3rem;
+}
+
+.case-beats dd {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
 .system-diagram {
   width: 100%;
   max-width: none;
@@ -1287,6 +1318,11 @@ footer .container {
   .scan-strip {
     grid-template-columns: 1fr;
     gap: 0.75rem;
+  }
+
+  .case-beats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
