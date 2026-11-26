@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Currency Wars - Lin Xin</title>
+  <meta name="author" content="Lin Xin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal design read of Currency Wars in Honkai: Star Rail: on-field and off-field combat, the Strategy Compendium, and why pressure can peak in the middle plane.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Currency Wars · Lin Xin">
+  <meta property="og:description" content="A design read of Currency Wars in Honkai: Star Rail. Roster versus control, onboarding, and three-plane pacing.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/CurrencyWars.html">
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/cw-board.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/favicon.svg">
+</head>
+<body data-i18n-title="cw.meta.title">
+  <header class="site-header" id="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Lin Xin</a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+        <a href="index.html#about" data-i18n="nav.about">About Me</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
+      </nav>
+    </div>
+  </header>
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-board.png" alt="Currency Wars preparation board, with an on-field row of character cards above an off-field row, bonds listed on the left.">
+        <figcaption data-i18n="cw.fig.board">The preparation board separating on-field and off-field. My capture from the current version.</figcaption>
+      </figure>
+
+      <h1 class="display-5 mb-3" data-i18n="cw.title">Currency Wars</h1>
+      <p class="lead" data-i18n="cw.lead">A design read of the mode in Honkai: Star Rail. What interested me was how it changes the combat loop and still feels like the same game.</p>
+      <dl class="project-meta">
+        <div>
+          <dt data-i18n="cw.meta.kind">Kind</dt>
+          <dd data-i18n="cw.meta.kindVal">Personal analysis</dd>
+        </div>
+        <div>
+          <dt data-i18n="cw.meta.subject">Subject</dt>
+          <dd data-i18n="cw.meta.subjectVal">Honkai: Star Rail · Currency Wars</dd>
+        </div>
+        <div>
+          <dt data-i18n="cw.meta.timeline">Timeline</dt>
+          <dd data-i18n="cw.meta.timelineVal">October 2026</dd>
+        </div>
+        <div>
+          <dt data-i18n="cw.meta.state">State</dt>
+          <dd data-i18n="cw.meta.stateVal">Write-up from my own runs</dd>
+        </div>
+      </dl>
+
+      <ul class="scan-strip">
+        <li data-i18n="cw.scan.split" data-i18n-html><strong>4 on-field + 6 off-field</strong> · a large composition, with direct control still capped at four.</li>
+        <li data-i18n="cw.scan.memory" data-i18n-html><strong>Strategy Compendium</strong> · the possibility space stays. Lookup moves to the moment of the choice.</li>
+        <li data-i18n="cw.scan.planes" data-i18n-html><strong>Three planes</strong> · enemy numbers keep rising. The tense point can still be the middle, when the build is least finished.</li>
+      </ul>
+
+      <h3 class="mt-4" data-i18n="cw.h.intro">What I kept coming back to</h3>
+      <p data-i18n="cw.p.intro1">When I played Currency Wars, the thing that stood out was how much the mode changes Honkai: Star Rail’s loop without feeling like a different game. Three parts kept pulling at me: the on-field and off-field split, the way an auto-battler’s complexity is handled, and the pacing across three planes. This write-up is about why those choices might exist, what problems they are trying to solve, and what they give up.</p>
+      <p data-i18n="cw.p.intro2">The sections move from combat structure, to what the player has to hold in their head, to the pacing of a whole run. I only explain a mechanic further when that detail is needed for the argument. Where no developer statement exists, a claim about purpose is my reading, not a confirmed intent. The screenshots are my own captures from the version I was playing.</p>
+
+      <h3 class="mt-4" data-i18n="cw.h.arch">Combat: roster scale and control scale</h3>
+      <p data-i18n="cw.p.arch1">The on-field / off-field split felt natural almost immediately. At first it looked like a front row and a back row. After more runs I think it is solving a deeper conflict. An auto-battler wants a large composition space. Honkai: Star Rail combat works best with a small number of characters the player actually controls.</p>
+      <p data-i18n="cw.p.arch2">Keeping the mode at four characters would preserve the base combat, and it would leave much less room for large synergies, specialist roles, and random recruitment. Putting up to ten full characters into the normal battle layer would add more than six extra bodies. It would add turn order, resources, targeting, survivability, and kit interactions, all at once. Automating all ten is closer to a conventional auto-battler, and then the mode gives up too much of what makes the combat recognisably Honkai: Star Rail: skill choices, Ultimate timing, and target selection.</p>
+      <p data-i18n="cw.p.arch3">The problem is not “fit more characters into the fight.” It is how to grow the composition without letting direct-control complexity grow at the same rate.</p>
+
+      <div data-i18n="cw.table.approaches" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Approach</th><th>What it preserves</th><th>What I think breaks</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Keep only 4 units</td><td>Base combat stays intact.</td><td>Too little room for the large synergy and role structure an auto-battler wants.</td></tr>
+            <tr><td>Control all 10</td><td>Every unit keeps full player agency.</td><td>Battle length, information, and interaction count expand together. Micro can overwhelm the draft.</td></tr>
+            <tr><td>Automate all 10</td><td>Closest to a conventional auto-battler.</td><td>The mode loses too much of what makes combat recognisably Honkai: Star Rail.</td></tr>
+            <tr><td>4 on-field + 6 off-field</td><td>A large composition, with direct control still capped.</td><td>Some off-field agency has to be given up.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cw.p.arch4">The 4+6 split separates “contributing to the composition” from “taking part in normal combat.” Up to ten characters can contribute to the build. Only the four on-field characters behave like they are on the ordinary battlefield. Off-field characters contribute through automated Character Empowerment, and they are taken out of normal enemy targeting and survivability management. The new decisions move toward recruitment, Bonds, role allocation, and resources, instead of multiplying ordinary combat by two and a half.</p>
+      <p data-i18n="cw.p.arch5">If on-field and off-field were only technical containers, the decision could collapse into “put the four strongest fighters in front.” Position-dependent Empowerment stops that. An on-field slot is scarce: giving one unit its full on-field value can deny that slot to another unit that also depends on it. A limit that exists to control complexity is turned back into a team-building problem.</p>
+
+      <div class="shot-row">
+        <figure class="shot shot-ui">
+          <img src="Assets/cw-empower-on.png" alt="Phainon placed on-field, with the talent I Fight Alone in effect.">
+          <figcaption data-i18n="cw.fig.on">On-field. Empowerment is active.</figcaption>
+        </figure>
+        <figure class="shot shot-ui">
+          <img src="Assets/cw-empower-off.png" alt="The same Phainon card placed off-field, with the talent marked Not in Effect.">
+          <figcaption data-i18n="cw.fig.off">Off-field. The same talent is not in effect.</figcaption>
+        </figure>
+      </div>
+      <p data-i18n="cw.fig.empower">The same unit gains or loses Currency Wars Empowerment depending on position.</p>
+
+      <p data-i18n="cw.p.arch6">The new macro layer does not erase the base game’s four-slot positioning. Preservation units still draw more aggro. An edge seat can reduce how many allies are caught by adjacent attacks. An Energy-hungry unit can sit beside the high-aggro character and trade safety for Energy from being hit. Currency Wars asks the player to learn a lot of new systems, and it does not make existing knowledge worthless.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-position.png" alt="A four-character lineup with Aventurine on the far left and Ruan Mei standing next to him.">
+        <figcaption data-i18n="cw.fig.position">Base-game micro positioning: Aventurine is on the edge, and Ruan Mei is deliberately next to him. Aggro ordering checked against KQM’s teambuilding guide.</figcaption>
+      </figure>
+
+      <p data-i18n="cw.p.arch7">The trade-off is the same thing that makes the solution scale. Off-field characters do not add the same amount of input, because the player does not control them directly. A ten-character team can feel like four characters with six extra systems running behind them. Automation lowers input complexity and can raise causal complexity: several backline effects can trigger together, and it is not always obvious which character caused which interaction. That can be true even for a veteran, because most players will not have every character.</p>
+      <p data-i18n="cw.p.arch8">I still think this is one of the more mature compromises in the mode. Currency Wars does not choose between “Honkai: Star Rail combat” and “auto-battler scale.” It puts them on different layers. The loss of some off-field agency is real, and that loss is also what lets the larger composition exist without breaking the base combat loop.</p>
+
+      <h3 class="mt-4" data-i18n="cw.h.complex">Complexity: keep it, and lower the friction</h3>
+      <p data-i18n="cw.p.cx1">Currency Wars reminded me of Teamfight Tactics. What I like about the auto-battler is controlled randomness. I cannot choose what I am offered, so I have to make something from what is actually there. That stays interesting only if there are enough units, interactions, and pivots to think about. The same complexity is what makes the genre hard to enter.</p>
+      <p data-i18n="cw.p.cx2">If the possibility space gets too small, controlled randomness turns into a script: see X, build Y. That is easier to learn, and the adaptation problem disappears with it. A giant tutorial is a weak substitute. Most of that information is hard to retain when the player is not using it to make a real choice. Leaving the problem to third-party sites creates another kind of friction: leave the game, search, remember, come back, and compare that information to the current board.</p>
+      <p data-i18n="cw.p.cx3">What Currency Wars does instead is more interesting to me. It keeps much of the underlying complexity, and it moves part of the memory and lookup cost out of the player’s head and into the interface. The possibility space is still there. The player has to hold less of it in working memory at the same time.</p>
+
+      <div data-i18n="cw.table.guides" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Approach</th><th>What the player has to do</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>External guide / second screen</td><td>Leave the game, search, remember, then compare with the current state.</td><td>Detailed information, and the decision flow is interrupted.</td></tr>
+            <tr><td>Static in-game comp image</td><td>Less searching. The player still has to remember when each target appears.</td><td>Better, and still mostly “read first, remember later.”</td></tr>
+            <tr><td>Contextual tracking</td><td>Relevant units and equipment are marked when they actually appear.</td><td>Recall becomes recognition. The complexity stays. The cost of using it drops.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cw.p.cx4">What I like about the Strategy Compendium is that it does not stop at a finished team. I can choose a strategy and carry that information into the run. When a relevant character appears in recruitment, or a tracked item appears in an equipment choice, the game marks it directly. Remembering an entire target composition becomes a recognition task: does the option in front of me match the plan? The strategic system is still complex. The working-memory burden is lower.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-compendium.png" alt="The Currency Wars Strategy screen, listing hot strategies with character icons, equipment, and a Save Lineup button.">
+        <figcaption data-i18n="cw.fig.compendium">The Strategy Compendium brings popular lineups into the game. My capture.</figcaption>
+      </figure>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-recruit.png" alt="A recruitment row in which Mydei’s card is highlighted among several trial characters.">
+        <figcaption data-i18n="cw.fig.recruit">A selected strategy carries into recruitment. A recommended unit is marked when it appears.</figcaption>
+      </figure>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-equipment.png" alt="A four-way equipment choice. Roller Skates carries a small tracking mark among Flower of Life, Batch Produced Armor, and Photon Cell.">
+        <figcaption data-i18n="cw.fig.equip">The same support on an equipment choice. The tracked item is marked among the options.</figcaption>
+      </figure>
+
+      <p data-i18n="cw.p.cx5">The timing of the information matters more than simply giving more of it. Ten possible interactions explained before a run are abstract, and they are easy to forget. A recommendation that appears when the unit enters the shop, or when the item enters a four-way choice, can be used immediately. The player can participate first, and later move from “the game told me to pick this” toward “I understand why this is being recommended.”</p>
+      <p data-i18n="cw.p.cx6">Building the support into the game also drops the assumption that the player has a second screen. PC, mobile, and console can reach the same assistance. Guide-version reminders, outdated-strategy warnings, and equipment tracking can be maintained as the mode changes. For a permanent live-service mode, that learning layer is more reliable than leaving the basic experience entirely to external tools.</p>
+      <p data-i18n="cw.p.cx7">The risk is that a recommendation gets read as the correct way. Once the interface highlights a unit or an item, a newer player may keep forcing the opening plan after the run has started offering better reasons to pivot, because leaving the highlighted advice feels unsafe. A system meant to help with randomness, and to ease entry, can weaken one of the genre’s important skills: adapting away from the original plan. If strong community compositions also spread efficiently through the official interface, players may converge on a small meta faster and experiment less.</p>
+      <p data-i18n="cw.p.cx8" data-i18n-html>A useful test of the system is not whether it can carry a beginner to a strong final board. It is whether the player eventually moves from “I buy this because it is highlighted” to “I know why it is highlighted, and I know when to ignore it.” The best version outsources memory. It does not outsource judgement. I came back to the same preference while building <a href="CoreShift.html">Core Shift</a>: show the relevant part at the moment of the decision, and leave the call to the player.</p>
+
+      <h3 class="mt-4" data-i18n="cw.h.planes">Three planes: pressure follows the build</h3>
+      <p data-i18n="cw.p.pl1">Across several runs I kept feeling that Plane 2 was often more dangerous than Plane 3. I checked the in-game difficulty information, expecting the step from Plane 2 to 3 to be smaller than the step from 1 to 2. It was not. Enemy modifiers keep rising at a stable rate. That made the feeling more interesting, because the question becomes the relative speed of enemy growth and build growth.</p>
+      <p data-i18n="cw.p.pl2">Plane 3 is not secretly weaker. At the difficulty I was on, enemy modifiers rise from Plane 1 (ATK +32%, HP +251%, SPD +26%) to Plane 2 (+35%, +322%, +32%) and again to Plane 3 (+38%, +406%, +38%). Absolute enemy pressure is still increasing. If Plane 3 can still feel more manageable, the player-side curve has to be part of the explanation.</p>
+
+      <figure class="shot shot-ui shot-narrow">
+        <img src="Assets/cw-difficulty.png" alt="Opponent Info listing First, Second, and Third Plane bonuses for ATK, HP, and SPD.">
+        <figcaption data-i18n="cw.fig.diff">In-game difficulty information. Enemy ATK, HP, and SPD modifiers increase across all three planes. My capture from the current version.</figcaption>
+      </figure>
+
+      <p data-i18n="cw.p.pl3">Enemy scaling also does not ease off in Plane 3 in any obvious way. The increases are not perfectly identical, and the relative growth stays very similar across both transitions: ATK +2.27% / +2.22%, HP +20.23% / +19.91%, and SPD +4.76% / +4.55%. If Plane 3 feels easier, it is more likely because the build is maturing faster than enemy strength, rather than because enemy scaling slowed down.</p>
+
+      <div data-i18n="cw.table.growth" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Stat</th><th>Plane 1</th><th>Plane 2</th><th>Plane 3</th><th>1 → 2</th><th>2 → 3</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ATK</td><td>1.32×</td><td>1.35×</td><td>1.38×</td><td>+2.27%</td><td>+2.22%</td></tr>
+            <tr><td>HP</td><td>3.51×</td><td>4.22×</td><td>5.06×</td><td>+20.23%</td><td>+19.91%</td></tr>
+            <tr><td>SPD</td><td>1.26×</td><td>1.32×</td><td>1.38×</td><td>+4.76%</td><td>+4.55%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p data-i18n="cw.p.pl4">Relative growth is calculated from the total multipliers. HP +251% is 3.51× base HP. The values come from the difficulty screen above.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-curve.png" alt="A conceptual chart. Enemy demand rises steadily across three planes. Build maturity rises slowly, then steeply, crossing enemy demand after Plane 2. A label marks relative pressure near Plane 2.">
+        <figcaption data-i18n="cw.fig.curve">A conceptual model, not measured data. If build maturity accelerates later, relative pressure can peak around Plane 2 while absolute enemy demand keeps rising.</figcaption>
+      </figure>
+
+      <p data-i18n="cw.p.pl5">A roguelike power curve is not satisfying just because every number gets larger. The player needs to feel that their decisions mattered. If enemy demand always rises in the same proportion as player power, then every new unit, upgrade, Bond, and item only keeps the player in place. The final plane can be “harder” on paper, and the build never gets a moment to feel complete.</p>
+
+      <div data-i18n="cw.table.planes" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Stage</th><th>What I think the player is asking</th><th>Why the pressure belongs here</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plane 1 · Formation</td><td>What can this run become?</td><td>Incomplete builds are tolerated, so the player can read random outcomes and keep pivots open.</td></tr>
+            <tr><td>Plane 2 · Stabilisation</td><td>Does this build actually work now?</td><td>A deadline for turning future potential into enough present power.</td></tr>
+            <tr><td>Plane 3 · Payoff</td><td>What can the completed build do?</td><td>Earlier investment becomes visible, while stronger enemy stats keep endgame pressure.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cw.p.pl6">Resources have future value. Gold can be held. A unit may be one copy away from an upgrade. A Bond may be one recruit away from a breakpoint. Spending now can close off something later, and saving too long can be the thing that loses the run. If serious pressure arrived only at the final boss, there would be a strong reason to save everything until the end. Plane 2 restores that balance by acting as a decision deadline. By then the player has to stop preserving every option and turn some future value into immediate strength. It forces a judgement about when waiting has become more costly than spending.</p>
+      <p data-i18n="cw.p.pl7">It is also a mid-run check. If the build is weak, Plane 2 exposes it while there is still time to adapt. The run gets a curve from formation, to a crisis that asks the build to stabilise, to a payoff, instead of a simple easy-medium-hard line.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-plane2.png" alt="The same run before the Plane 2 boss: level 6, six units, with empty slots still on both rows.">
+        <figcaption data-i18n="cw.fig.p2">The same run before the Plane 2 boss. Level 6, six units. The direction is clear, and the board still has room to mature.</figcaption>
+      </figure>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cw-plane3.png" alt="The same run before the Plane 3 boss: level 8, eight units, with a fuller on-field and off-field and more equipment.">
+        <figcaption data-i18n="cw.fig.p3">The same run before the Plane 3 boss. Level 8, eight units, with a more complete on-field, off-field, and equipment state.</figcaption>
+      </figure>
+
+      <p data-i18n="cw.p.pl8">I can see two ways this fails. A mid-run check only feels fair if the player has been given enough tools and chances to stabilise. Bad luck can leave a visible problem with no reasonable way to answer it. And once the run crosses that middle threshold, strong compounding can turn Plane 3 into a victory lap and make the final boss feel too easy. With enough practice, the whole mode can also become a checklist: approximate level, star, and economy thresholds, and a tense decision turns into a routine. These are real, and they are not enough to break the mode for me.</p>
+      <p data-i18n="cw.p.pl9">I do not think perceived difficulty has to rise on a straight line. For Currency Wars, it is more fun to me if pressure peaks when the build is least stable. The middle asks whether the system actually works. The end gives the completed system room to show what the earlier decisions created. The balance problem is making the Plane 2 check feel fair, without letting Plane 3 become so predictable and so simple that winning stops feeling like something the earlier decisions earned.</p>
+
+      <h3 class="mt-4" data-i18n="cw.h.out">Conclusion</h3>
+      <p data-i18n="cw.p.out1">Taken together, what interests me about Currency Wars is not that it contains an auto-battler shop, Bonds, or roguelike progression. Those are ingredients. The design work is in resolving the three conflicts that appear when those ingredients are mixed into Honkai: Star Rail: large compositions against manageable control, strategic complexity against the friction of getting started, and sustained challenge against the payoff of a completed build.</p>
+      <p data-i18n="cw.p.out2">None of the solutions are clean. The on-field / off-field structure makes a ten-unit composition possible, and some off-field agency is lost. The Strategy Compendium reduces memory and lookup cost, and it can turn guidance into an anchor. The three-plane curve can create a strong mid-run crisis and a late payoff, and it is sensitive to random outcomes and to snowballing. Each solution is a compromise that was thought through. That is why these are the parts I most wanted to take apart.</p>
+
+      <h3 class="mt-4" data-i18n="cw.h.sources">Sources and fact-checking</h3>
+      <ol>
+        <li data-i18n="cw.src.1">Honkai: Star Rail official site, Currency Wars V4.0 expansion notes: terminology and updates for on-field / off-field positioning, Character Empowerment, Bonds, the Strategy Compendium, and equipment tracking.</li>
+        <li data-i18n="cw.src.2" data-i18n-html>Prydwen, Currency Wars guide: on-field and off-field rules, positioning roles, the Strategy Compendium, and in-run marking. <a href="https://www.prydwen.gg/star-rail/guides/currency-wars" target="_blank" rel="noopener">prydwen.gg/star-rail/guides/currency-wars</a></li>
+        <li data-i18n="cw.src.3" data-i18n-html>KQM, Honkai: Star Rail teambuilding guide: base aggro values and four-character positioning. <a href="https://hsr.keqingmains.com/misc/teambuilding-guide/" target="_blank" rel="noopener">hsr.keqingmains.com/misc/teambuilding-guide</a></li>
+        <li data-i18n="cw.src.4">Official Currency Wars Strategy Compendium notice: strategy filtering, favourites, strategy codes, and applying a strategy inside a run.</li>
+      </ol>
+      <p data-i18n="cw.p.sources">Unless noted otherwise, the Currency Wars screenshots are my own captures from the version I was playing.</p>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label" data-i18n="cw.exit.related">Related</span> <span data-i18n="cw.exit.relatedBody" data-i18n-html><a href="CoreShift.html">Core Shift</a> · a tactics demo I designed, built around the same preference: show the cost before the player commits.</span></p>
+        <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
+      <a href="index.html#projects" class="btn btn-outline-light mt-4" data-i18n="chrome.back">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="translations.js"></script>
+  <script src="i18n/currencywars.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

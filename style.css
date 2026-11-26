@@ -1150,6 +1150,10 @@ h3 { font-size: 1.2rem; margin: 2.1rem 0 0.7rem; }
   image-rendering: pixelated;
 }
 
+.shot-ui img {
+  image-rendering: auto;
+}
+
 .shot figcaption {
   color: var(--muted);
   font-size: 0.9rem;

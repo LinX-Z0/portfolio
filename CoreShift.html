@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Core Shift - Lin Xin</title>
+  <meta name="author" content="Lin Xin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Solo Unity tactics demo. Two facing 3×3 boards, one shared Action Value clock, and a placement that changes safety, formation, and tempo at once.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Core Shift · Lin Xin">
+  <meta property="og:description" content="A short tactics demo: one placement changes safety, formation, and who acts next.">
+  <meta property="og:url" content="https://linx-z0.github.io/portfolio/CoreShift.html">
+  <meta property="og:image" content="https://linx-z0.github.io/portfolio/Assets/cs-combat.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/svg+xml" href="Assets/favicon.svg">
+</head>
+<body data-i18n-title="cs.meta.title">
+  <header class="site-header" id="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Lin Xin</a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+        <a href="index.html#about" data-i18n="nav.about">About Me</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button type="button" class="lang-toggle" data-lang-toggle data-i18n="nav.lang" data-i18n-aria="nav.langAria" aria-label="Switch to Chinese">ZH</button>
+      </nav>
+    </div>
+  </header>
+  <section id="summary" class="pt-5 mt-5">
+    <div class="container">
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-combat.png" alt="Core Shift in combat: a timeline across the top, an enemy 3×3, and a player 3×3 with Striker, Relay, and Anchor. Red cells mark incoming damage.">
+        <figcaption data-i18n="cs.fig.combat">Normal combat. The timeline, formation list, both boards, and threatened cells stay visible while the next action is chosen. The corner tools are a debug panel from the build I was iterating in. They are not part of the player-facing rules. Simplified Chinese is the language the game starts in.</figcaption>
+      </figure>
+
+      <h1 class="display-5 mb-3">Core Shift</h1>
+      <p class="lead" data-i18n="cs.lead">A short tactics demo on two facing 3×3 boards. One placement changes safety, formation, and who acts next.</p>
+      <dl class="project-meta">
+        <div>
+          <dt data-i18n="cs.meta.role">Role</dt>
+          <dd data-i18n="cs.meta.roleVal">Solo: design and Unity implementation</dd>
+        </div>
+        <div>
+          <dt data-i18n="cs.meta.team">Team</dt>
+          <dd data-i18n="cs.meta.teamVal">Solo</dd>
+        </div>
+        <div>
+          <dt data-i18n="cs.meta.timeline">Timeline</dt>
+          <dd data-i18n="cs.meta.timelineVal">October 2026</dd>
+        </div>
+        <div>
+          <dt data-i18n="cs.meta.stack">Stack</dt>
+          <dd data-i18n="cs.meta.stackVal">Unity, C#</dd>
+        </div>
+        <div>
+          <dt data-i18n="cs.meta.state">State</dt>
+          <dd data-i18n="cs.meta.stateVal">Playable demo</dd>
+        </div>
+      </dl>
+
+      <ul class="scan-strip">
+        <li data-i18n="cs.scan.board" data-i18n-html><strong>Two 3×3 boards</strong> · player position is the formation; enemy position is the threat.</li>
+        <li data-i18n="cs.scan.av" data-i18n-html><strong>One clock</strong> · Base AV = 10000 / Speed. Attack spends more future time than Move.</li>
+        <li data-i18n="cs.scan.forms" data-i18n-html><strong>Five formations</strong> · the shape matters. Which character stands on which mark does not.</li>
+        <li data-i18n="cs.scan.run" data-i18n-html><strong>One run</strong> · two timed stages, a fixed shop, one boss, and a score made of those same decisions.</li>
+        <li data-i18n="cs.scan.boss" data-i18n-html><strong>Boss iteration</strong> · reading the marks and moving went from 40% to 85% in the bot comparison.</li>
+        <li data-i18n="cs.scan.read" data-i18n-html><strong>Shown before confirm</strong> · timeline cost, red tiles, formation panel, labelled buttons.</li>
+      </ul>
+
+      <h3 class="mt-4" data-i18n="cs.h.question">The question</h3>
+      <p data-i18n="cs.p.q1">I started from one question: how much can a very small board do if the same position matters to several systems at once?</p>
+      <p data-i18n="cs.p.q2">I did not want the demo to feel deep because every character had a long skill list. That can work, and it also makes it harder to tell which rule is actually doing the work. I wanted the rules small enough to take apart, tune, and read before the player commits.</p>
+      <p data-i18n="cs.p.q3">Three characters share one Action Value timeline. Where they stand decides the formation. Where the enemies stand decides which cells are dangerous. The action they spend decides how long they wait before they act again. A run is Stage 1, a shop, Stage 2, another shop, a boss, and a score that comes from how the run was played.</p>
+      <p data-i18n="cs.p.q4">The moment I want is a small move that fixes more than one thing. Anchor steps off a threatened tile, the party completes a formation, and the step still costs less time than an attack. That is a better turn than pressing whichever button shows the biggest number.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-one-action.png" alt="Diagram: an action choice feeds player position, AV tempo, and enemy position, which become formation state and threat geometry, and those feed the next choice.">
+        <figcaption data-i18n="cs.fig.one">One action can change safety, formation, and future tempo at the same time.</figcaption>
+      </figure>
+
+      <p data-i18n="cs.p.q5">So the question in play is not “which ability is strongest?” It is “what change to the current state is worth the cost?”</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.play">How a turn plays</h3>
+      <p data-i18n="cs.p.play1">Stage 1 and Stage 2 keep sending groups while Assault Time remains. Clearing quickly reaches more groups, more Data Shards, and more score. Attacking twice every activation is not always the best answer. Formations pay score, damage, and buffs. A cheap move spends less of the stage. A downed character costs both score and stage time.</p>
+      <p data-i18n="cs.p.play2">The goal is not “kill as fast as possible.” It is to clear efficiently, use a formation when it is worth it, keep the team alive, and finish the boss with as much score as that play earned.</p>
+      <p data-i18n="cs.p.play3">A turn is direct. Read the timeline and the threatened cells, choose a labelled action, pick a target or tile if it needs one, then Confirm. After the first action, spend the second slot or end the activation. On the timed stages the timeline also shows Assault Time remaining, and hovering a command shows its AV cost before commit. Escape opens and closes the menu.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.party">One move should do more than one job</h3>
+      <p data-i18n="cs.p.party1">The board is small on purpose: a 3×3 player grid facing a separate 3×3 enemy grid. With three characters, every occupied cell matters, and there is still room to rearrange without turning the game into pathfinding.</p>
+      <p data-i18n="cs.p.party2">Striker, Relay, and Anchor share Attack, Move, Swap, Block, and Item. They differ by HP, ATK, and Speed. I wanted the same rules to feel different depending on who uses them, instead of a private mini-system for each character.</p>
+
+      <div data-i18n="cs.table.party" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Character</th><th>HP</th><th>ATK</th><th>Speed</th><th>Base AV</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Striker</td><td>240</td><td>100</td><td>100</td><td>100</td><td>Highest damage. Attacking is expensive, and it is worth it.</td></tr>
+            <tr><td>Relay</td><td>300</td><td>70</td><td>125</td><td>80</td><td>Fastest. The easiest piece to reposition often.</td></tr>
+            <tr><td>Anchor</td><td>420</td><td>80</td><td>75</td><td>133.33</td><td>Highest HP. Slow, and the safer body to leave in a bad cell.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.party3">Moving Relay instead of Anchor is not a new rule. It is the same choice with a different cost. Relay comes back sooner. Anchor gives up more time, and he is harder to remove if he stays in danger. That is enough to make the pieces feel different.</p>
+      <p data-i18n="cs.p.party4">A Move does not only change a cell. It changes when that character returns, what formation the team is holding, and sometimes which attack does not happen this activation.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-run-flow.png" alt="Run flow: Setup, Stage 1, Shop, Stage 2, Shop, Boss, Results.">
+        <figcaption data-i18n="cs.fig.run">The same party carries HP, upgrades, shards, and items through the run. Board placement resets at each combat setup.</figcaption>
+      </figure>
+
+      <p data-i18n="cs.p.party5">At the start of each combat stage the three characters are placed before the clock starts. Position resets. HP, upgrades, Data Shards, and carried items do not. I kept the content count low: three player units, three normal enemy archetypes, five formations, two timed stages, three consumables, and one boss. If I needed more depth, I would rather make those pieces interact than add another system.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.tempo">Tempo: an action has a future cost</h3>
+      <p data-i18n="cs.p.tempo1">The shared Action Value timeline is what makes every action a timing decision. I did not want the cost of Move or Attack to disappear into a hidden cooldown. If I choose something expensive now, I want that choice visible in the next few turns.</p>
+      <p data-i18n="cs.p.tempo2">Base AV is 10000 / Speed. Whoever has the lowest Current AV acts next. Time advances until that actor reaches 0, and the delay of the actions they took is added back when the activation ends. If two actors are equally ready, the faster one wins the tie.</p>
+      <p data-i18n="cs.p.tempo3">For the player, faster characters come back sooner. Every action pushes that character back by some fraction of their own Base AV. Using both slots gets more done now, and it pays both costs before that character returns.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-action-delay.png" alt="Bar chart of action delay as a fraction of Base AV: Attack 1.00, Block 0.75, Swap 0.75, Item 0.70, Move 0.60.">
+        <figcaption data-i18n="cs.fig.delay">Different actions spend different amounts of the acting character’s Base AV.</figcaption>
+      </figure>
+
+      <div data-i18n="cs.table.actions" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Action</th><th>Delay</th><th>What it pays for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Attack</td><td>1.00× Base AV</td><td>Damage, and an optional one-cell push.</td></tr>
+            <tr><td>Move</td><td>0.60×</td><td>Cheap reposition on the player board.</td></tr>
+            <tr><td>Swap</td><td>0.75×</td><td>Exchange places with an adjacent ally.</td></tr>
+            <tr><td>Item</td><td>0.70×</td><td>Spend one of the team’s limited consumables.</td></tr>
+            <tr><td>Block</td><td>0.75×</td><td>Reduce damage until the next activation. Ends the activation immediately.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.tempo4">Relay has 125 Speed, so Base AV is 80. A Move costs 60% of that, 48 AV. An Attack costs the full 80. Move and then Attack in the same activation pays both. More happens now, and the next turn comes later than if Relay had moved and stopped.</p>
+      <p data-i18n="cs.p.tempo5">The timeline chips always show the real current order. During Stage 1 and Stage 2 the same panel also shows Assault Time left. Those are different questions: who acts next, and how much of the stage remains. Hovering an action shows its AV cost. Once Move, Swap, or Attack is fully specified, a text preview can show the predicted order. The real clock does not move until Confirm.</p>
+      <p data-i18n="cs.p.tempo6">One action per turn would have been cleaner, and it would have removed the sequences I wanted: Move then Attack, Attack then reposition, or Move once and stop so the character comes back sooner. Two slots let those sequences exist without making them free. The player can still end after the first non-Block action.</p>
+      <p data-i18n="cs.p.tempo7">Items use the same action economy. They are not a free menu. Overclock multiplies the next action’s delay by 0.7. Flow can advance the other allies and grants +10 Speed while the shape is held. That Speed bonus makes later costs cheaper. It does not rewrite Current AV that is already on the timeline.</p>
+      <p data-i18n="cs.p.tempo8">Normal attacks have no critical chance, no damage roll, and no Defense stat. A hit deals the attacker’s current ATK after the modifiers that are already on screen. A directional attack can also push the target one orthogonal cell. If that cell is blocked or off the board, the damage still lands and only the push fails. I wanted mistakes to come from the decision, not from the game rolling a worse number than the one the player just read.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.position">Position: formations and threat share the board</h3>
+      <p data-i18n="cs.p.pos1">The part I like most is that the two boards care about position for different reasons. The player side asks “what shape am I making?” The enemy side asks “which cells become dangerous from here?” Move and Attack are what connect those questions.</p>
+      <p data-i18n="cs.p.pos2">A formation only cares about the three occupied player cells. It does not care which character stands on which mark. Rotation, reflection, and translation are the same pattern. I wanted the player to read a shape, not memorise one exact picture.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-formations.png" alt="Five 3×3 templates: Spear as a row, Pulse as a diagonal, Bulwark as a wedge, Flow as an L, Focus as two corners plus an offset.">
+        <figcaption data-i18n="cs.fig.forms">The five formation templates. Rotation, reflection, and translation still count as the same shape.</figcaption>
+      </figure>
+
+      <p data-i18n="cs.p.pos3">Each formation has a passive that stays on while the shape is held, and an active that fires once when the team enters a ready formation. Leaving and coming back does not refresh it. It becomes ready again when a new normal enemy group starts, and during the boss it refreshes after each body attack. Starting a stage already inside a formation gives the passive, not the active. Hold the shape for the passive. Enter it at the right time for the burst. The formation belongs to the team, not to whichever character moved last.</p>
+
+      <div data-i18n="cs.table.forms" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Formation</th><th>Shape</th><th>Active, once per ready window</th><th>Passive, while held</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Spear</td><td>Three in a line</td><td>Choose one enemy. Heavy single-target hit at 1.8× Formation Power, and the +10% single-target passive applies.</td><td>+10% single-target damage.</td></tr>
+            <tr><td>Pulse</td><td>Diagonal</td><td>Damage every active enemy at 0.65× Formation Power.</td><td>+5% team ATK, already included in that active.</td></tr>
+            <tr><td>Bulwark</td><td>Wedge</td><td>Each ally gains Shield equal to 20% of Max HP.</td><td>Incoming damage ×0.85.</td></tr>
+            <tr><td>Flow</td><td>An L of two plus one</td><td>Advance the other allies. The actor stores that tempo credit.</td><td>+10 Speed, which changes Base AV while held.</td></tr>
+            <tr><td>Focus</td><td>Two corners and one offset</td><td>The next two normal attacks deal +30% damage.</td><td>+10% team ATK.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.pos4">Formation Power is the team’s average current ATK, not the ATK of the character who happened to complete the shape. If Relay completes the same shape as Striker, the payoff should not suddenly be a different system.</p>
+      <p data-i18n="cs.p.pos5">Normal enemies do not secretly pick a new attack shape every turn. Each archetype has a fixed danger pattern around its current cell, and pushing the enemy moves that pattern with it. A directional attack is damage plus a relocated threat.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-threats.png" alt="Threat grids: Skirmisher hits its cell and one toward the player, Bruiser hits a column of three, Controller hits its cell, both sides, and one toward the player.">
+        <figcaption data-i18n="cs.fig.threats">Normal enemy threat patterns are fixed relative to the enemy’s current cell. The arrow marks the player side.</figcaption>
+      </figure>
+
+      <div data-i18n="cs.table.enemies" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Enemy</th><th>HP</th><th>Damage</th><th>Speed</th><th>Threat</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Skirmisher</td><td>120</td><td>60</td><td>115</td><td>Fast and narrow. Its own cell, and one cell toward the player.</td></tr>
+            <tr><td>Bruiser</td><td>260</td><td>140</td><td>65</td><td>Slow. A column of three: behind, on, and in front of itself.</td></tr>
+            <tr><td>Controller</td><td>180</td><td>90</td><td>90</td><td>Wider. Its own cell, both side cells, and one cell toward the player.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.pos6">When I push an enemy, I am moving its red area. The useful question is often not “where do I want the enemy?” It is “which cells do I want to make safe?”</p>
+      <p data-i18n="cs.p.pos7">Stage 2 reuses the same three enemies with stronger numbers: HP ×1.35, damage ×1.20, Speed +8. The knowledge from Stage 1 stays useful. The pressure goes up. The rules do not change.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.run">The run: time, economy, and the boss</h3>
+      <p data-i18n="cs.p.run1">Once combat works on its own, the run gives those small decisions a longer consequence. Time, deaths, score, and the shop all ask the same thing: how much do I spend now, and what am I giving up later?</p>
+      <p data-i18n="cs.p.run2">Assault Time falls as the shared timeline moves, so a slower action literally eats more of the run. Clearing a group refunds 90. If the timer hits 0, the current group is still finished, and it becomes the last one. Remaining time is shown in the timeline panel on these two stages, then disappears for the boss, because the boss does not use that clock.</p>
+      <p data-i18n="cs.p.run3">That is another reason not to Attack twice every turn. A cheap Move can fix the board without spending as much of the run. Slow play and deaths leave less time for later groups.</p>
+
+      <div data-i18n="cs.table.stages" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Stage</th><th>Starting time</th><th>Clear refund</th><th>Down penalty</th><th>Enemy scaling</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Stage 1</td><td>450</td><td>+90</td><td>−100</td><td>Base values. Four predefined groups.</td></tr>
+            <tr><td>Stage 2</td><td>420</td><td>+90</td><td>−100</td><td>HP ×1.35, damage ×1.20, Speed +8. Four predefined groups.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.run4">At 0 HP a character returns at 10% Max HP, minimum 1, keeps their Current AV, and stays on the timeline. A down costs 300 score. On the timed stages it also costs 100 Assault Time. A mistake should hurt without deleting a character and breaking the rest of the run.</p>
+      <p data-i18n="cs.p.run5">Score is not a checklist sitting on top of combat. It pays the things the rest of the game is already asking for: reach more groups, find useful formations, stay alive, and finish. Assault Time matters indirectly, because every extra group is another chance at kills, shards, and formation score.</p>
+
+      <div data-i18n="cs.table.score" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Score source</th><th>Value</th><th>What it pushes toward</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Normal enemy defeat</td><td>+100, and +5 Data Shards</td><td>Clear more groups. A boss part scores, and does not grant shards.</td></tr>
+            <tr><td>Formation award</td><td>+250</td><td>Once per formation per enemy group. Rewards changing shape, not only attacking.</td></tr>
+            <tr><td>Boss clear</td><td>+500</td><td>Finish the run.</td></tr>
+            <tr><td>Remaining HP</td><td>Up to +100 per living character</td><td>round(current / max × 100). A full bar is 100. Stay healthy instead of trading HP away for speed.</td></tr>
+            <tr><td>Character goes down</td><td>−300</td><td>Avoid careless damage. Timed stages also lose 100 Assault Time.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.run6">A high-scoring run keeps several things in balance. Killing faster helps when formation opportunities, HP, and future tempo stay intact.</p>
+      <p data-i18n="cs.p.run7">The shop is fixed instead of random. The decision is what I value right now, not whether the shop rolled the answer. Shards carry forward with HP, upgrades, and items.</p>
+
+      <div data-i18n="cs.table.shop" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Option</th><th>Cost</th><th>Effect</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Heal</td><td>20</td><td>Restore 40% Max HP to one character.</td></tr>
+            <tr><td>ATK upgrade</td><td>40</td><td>+15% of base ATK. Cap 2 per character.</td></tr>
+            <tr><td>Speed upgrade</td><td>40</td><td>+10 Speed. Cap 2 per character.</td></tr>
+            <tr><td>Max HP upgrade</td><td>30</td><td>+50 Max HP. Cap 2 per character.</td></tr>
+            <tr><td>Repair Kit</td><td>25</td><td>Heal a living ally for 30% Max HP. Cannot be spent at full HP.</td></tr>
+            <tr><td>Power Cell</td><td>25</td><td>The user’s next normal attack deals +30% damage.</td></tr>
+            <tr><td>Overclock Injector</td><td>25</td><td>The user’s next action costs 0.7× its normal delay.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.run8">The team has two consumable slots. Buying a third means replacing something. The shop is a small plan for the next stage or the boss, not a place that keeps everything.</p>
+      <p data-i18n="cs.p.boss1">The boss is one body and two arms. Only the body takes a turn on the shared timeline. Living arms attack as part of that action. Each living part marks player tiles on its own. The marks are shown before the attack, overlaps stack, and every roll still leaves at least two tiles safe.</p>
+
+      <div data-i18n="cs.table.boss" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>Body HP</th><th>Marks per living part</th><th>Other change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Above 70%</td><td>3 random tiles</td><td>At least 2 tiles stay safe.</td></tr>
+            <tr><td>2</td><td>40% through 70%</td><td>3 random tiles</td><td>Same rule. The phase change is a progress beat.</td></tr>
+            <tr><td>3</td><td>Below 40%</td><td>4 random tiles</td><td>Damage dealt and taken ×1.5. Destroyed arms return.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.boss2">The body has 900 HP, 100 damage, and 80 Speed, and stands at the back center. Each arm has 180 HP and 100 damage, and does not take its own turn. Marks are rolled at setup and again after every body attack. If an arm returns at the start of the body’s turn, it does not mark or attack that turn, because the player was never shown that danger. If Phase 3 brings an arm back during the player’s turn, it gets its marks immediately. The pattern is random. The danger is not hidden.</p>
+      <p data-i18n="cs.p.boss3">Normal enemies ask the player to learn a pattern. The boss asks them to react to a new one each cycle. The last fight is less certain, and the language stays the same: danger is shown first, then the player decides.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-boss.png" alt="Boss fight. The enemy board shows a body at 900 HP between two arms at 180. Several player cells are marked with stacked damage.">
+        <figcaption data-i18n="cs.fig.boss">Boss telegraph in play. Marked player tiles show the incoming danger before the body attacks, so a random pattern is still a readable decision. The corner tools are the same debug panel.</figcaption>
+      </figure>
+
+      <h3 class="mt-4" data-i18n="cs.h.iterate">Why I changed the boss</h3>
+      <p data-i18n="cs.p.iter1">The first boss used fixed threat columns. It looked readable. The behaviour underneath was wrong. A simple attack-only bot won 45% of full-HP starts, and a light-movement bot won 40%. The fight was being solved more by the starting placement than by reading and moving during the fight.</p>
+      <p data-i18n="cs.p.iter2">After the switch to telegraphed 3 / 3 / 4 marks, with at least two safe tiles, attack-only dropped to 37% and the light mover reached 85% across the same kind of repeated comparison. Movement became an answer instead of an extra step. These are simple policies. They are not a substitute for human playtesting.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-boss-chart.png" alt="Bar chart. Old fixed pattern: attack only 45%, light mover 40%. Current marks: attack only 37%, light mover 85%.">
+        <figcaption data-i18n="cs.fig.chart">The boss change increased the value of reading danger and moving. Win rate from full-HP starts, comparing two simple policies.</figcaption>
+      </figure>
+
+      <h3 class="mt-4" data-i18n="cs.h.teach">Teaching the rules without a glossary</h3>
+      <p data-i18n="cs.p.teach1">The game asks the player to watch position, threat, formation, and timing at the same time. I do not think the answer is one giant rules page. I would rather teach the pieces one at a time, then keep the same information visible when the real run begins.</p>
+      <p data-i18n="cs.p.teach2">The tutorial is a controlled Stage 1 fight. It limits what can be pressed at each step, and everything still uses the real rules. Place the team, attack and see the push directions, take a hit, move, form Spear, use an item, block, and reach the shop. Near the end it says what a real stage is asking for: groups keep coming while time remains, a new formation in each group can add score, and going down costs score and stage time. When Spear appears, the formation key is on screen too. An occupied cell, an empty cell, and the fact that turning or flipping the same shape still counts.</p>
+      <p data-i18n="cs.p.teach3">I still did not want the game to become unreadable if someone skipped the tutorial. A lot of the surface is familiar from other turn-based games. The timeline shows turn order. The buttons say Attack, Move, Swap, Block, and Item. Red cells mean danger. Completing a formation gets a sound and a visual response. The tutorial is more useful for what is different about Core Shift: position, formation, and timing keep affecting each other.</p>
+
+      <figure class="shot shot-ui shot-narrow">
+        <img src="Assets/cs-tutorial.png" alt="Tutorial close-up of a character with labelled buttons: Attack, Move, Swap, Block, and Item, plus a line of instruction under the board.">
+        <figcaption data-i18n="cs.fig.tutorial">Tutorial. Familiar commands are labelled directly. The line underneath uses them to explain the timing rule.</figcaption>
+      </figure>
+
+      <p data-i18n="cs.p.teach4" data-i18n-html>Once the controls make sense, the harder part is reading how the systems interact. I would rather turn recall into recognition. I do not want the player memorising a page of rules if the interface can show the important part when the decision actually comes up. The same idea shows up in my <a href="CurrencyWars.html">Currency Wars</a> write-up.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-surfaces.png" alt="Table of systems and the player-facing surface for each: AV cost, timeline chips, enemy threat, formation, attack push, score, and whose turn it is.">
+        <figcaption data-i18n="cs.fig.surfaces">Each important rule has a consistent player-facing surface. The preview helps the player judge an action without changing the live timeline.</figcaption>
+      </figure>
+
+      <p data-i18n="cs.p.teach5">The timeline is the clearest example. The chips show the current order and each actor’s AV. Hovering a command shows the cost before commit. Threat cells use the same shape in preview and when the attack resolves. The formation panel keeps the shapes and the active state visible. The command buttons stay labelled, not icon-only.</p>
+      <p data-i18n="cs.p.teach6">The interface should carry the memory and the arithmetic that are not fun to do by hand. It should still leave the judgement to the player.</p>
+      <p data-i18n="cs.p.teach7">When a character becomes active, the camera and an active ring show whose turn it is without hiding either board. A selected target stays highlighted, so it is still obvious what Confirm will do. After Confirm, the result plays as a short sequence: anticipation, hit, damage number, displacement, then the threat update, instead of everything landing on the same frame. Boss phase changes use a banner and keep the overview camera, so the board stays readable. Outgoing damage is warm, incoming damage is red, and a fully blocked hit still shows 0 so the attack does not seem to vanish.</p>
+      <p data-i18n="cs.p.teach8">Simplified Chinese is the language the game starts in. English is in Settings. UI text uses shared IDs, so the same rule can be read in either language. The interface was laid out from a 1920×1080 reference, with anchors and scaling so the important controls stay on screen.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.modules">What had to be built, by module</h3>
+      <p data-i18n="cs.p.mod1">I split the project by responsibility instead of by screen. I wanted each rule to have one owner. The presentation layer can show a result. It should not quietly invent a second version of the combat rule underneath it.</p>
+
+      <figure class="shot shot-ui">
+        <img src="Assets/cs-modules.png" alt="Module flow: Data and Grid, Timeline and Actions, Formation and Threat, Run and Economy, Boss. A second row of Tutorial and UI, Presentation, Localization, and Finalization supports those rules.">
+        <figcaption data-i18n="cs.fig.modules">Rule modules first, then the player-facing support modules. The lower row supports the same rules instead of creating a second version of them.</figcaption>
+      </figure>
+
+      <div data-i18n="cs.table.modules" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Module</th><th>What it contains</th><th>Why it is separate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Data &amp; Grid</td><td>Character and enemy values, the 3×3 logical boards, setup placement.</td><td>One place for tuned values and legal board state.</td></tr>
+            <tr><td>Timeline &amp; Actions</td><td>AV order, two action slots, Move, Swap, Attack, Block, and Item.</td><td>Owns timing and command legality.</td></tr>
+            <tr><td>Formations &amp; Threat</td><td>Shape matching, actives and passives, normal enemy danger.</td><td>Owns the two spatial rule sets.</td></tr>
+            <tr><td>Run &amp; Economy</td><td>Stages, Assault Time, carried state, shop, inventory, and score.</td><td>Owns decisions that persist beyond one action.</td></tr>
+            <tr><td>Boss</td><td>Parts, phases, marked tiles, the safe-tile floor, and arm return.</td><td>Reuses combat rules, and owns boss-specific pressure.</td></tr>
+            <tr><td>Tutorial &amp; UI</td><td>Tutorial flow, command UI, formation panel, timeline, and results.</td><td>Teaches and exposes rules. Does not own them.</td></tr>
+            <tr><td>Presentation</td><td>Camera, action timing, VFX, audio, and feedback.</td><td>Makes a resolved outcome readable.</td></tr>
+            <tr><td>Localization</td><td>Chinese and English text IDs, and layout checks.</td><td>Keeps the rule text consistent in both languages.</td></tr>
+            <tr><td>Finalization</td><td>Standalone build and resolution adaptation.</td><td>Keeps the build separate from the gameplay rules.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="cs.p.mod2">I decided the module boundaries first, then used Cursor inside those boundaries to help with implementation and refactoring. That worked better for me. I could ask it to solve a smaller problem without letting whatever was easiest to code become the design.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.scope">Scope, difficulty, and how I tested</h3>
+      <p data-i18n="cs.p.scope1">The demo is small on purpose. I care more about whether the few systems push against each other than about whether the feature list looks long.</p>
+      <p data-i18n="cs.p.scope2">There are no critical hits, no random normal-damage rolls, no Defense stat, no character-specific ultimates, no skill trees, no elemental reactions, no procedural maps, no exploration, and no meta progression. I also skipped a free camera and a full humanoid animation pipeline. Any of those could make sense in a bigger project. Here they would mostly give me more things to finish without making the core question clearer.</p>
+      <p data-i18n="cs.p.scope3">I had limited time to tune the demo, and I could not put it in front of a proper group of outside playtesters. I already know every enemy pattern, every formation, and most of the small tricks. If I balance only around myself, a first run becomes harder than I think it is. I leaned the difficulty a bit easier on purpose. I would rather a first run reach the boss and the results screen, and see the whole system, than get stuck before the interesting parts show up. Better play still matters through score, remaining HP, how many groups are reached, and how strong the run becomes. Most of the time a run should be winnable, and playing more effectively still grants a higher score. Someone can finish. Someone who explores the options gets the higher number. That is one of the reasons I like a high score.</p>
+      <p data-i18n="cs.p.scope4">I still played full runs myself, mostly to check readability, pacing, and whether a choice made sense before I confirmed it. For repeated balance checks I also used AI to help make a simple bot that could compare very basic behaviours, such as mostly attacking versus moving when the danger called for it.</p>
+      <p data-i18n="cs.p.scope5">The useful part was repetition. The bot could run the same comparison far more times than I could by hand. It cannot tell me whether something feels intuitive, whether the tutorial is annoying, or whether a decision is satisfying. I used it as a balance check, not as a replacement for players.</p>
+      <p data-i18n="cs.p.scope6">The boss was the clearest example. The first version looked fine when I played it, and the repeated comparison showed that moving was not actually helping. That pushed me to change the targeting rule instead of only raising or lowering HP and damage. The question I want from testing is whether the system rewards the behaviour I designed it around.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.out">Conclusion</h3>
+      <p data-i18n="cs.p.out1">What I focused on was not any one mechanic. It was the feeling of one small move that makes several things click: completing a formation, changing the threat, spending less time than an attack would have.</p>
+      <p data-i18n="cs.p.out2">That is why the project stayed small. The 3×3 boards, three stat-based characters, learnable normal enemies, and one shared AV clock already give those interactions room. The boss then adds uncertainty without throwing away the same language of visible danger and movement.</p>
+      <p data-i18n="cs.p.out3">The boss redesign was the most useful part of making the demo. The first version was readable, and the numbers showed it was rewarding the wrong behaviour. Changing one targeting rule made movement matter much more, without rebuilding the rest of combat. That is the systems problem I wanted this demo to explore. I want a run to be finishable, and I still want the higher score to belong to the player who figures the board out. If that player can say why a good turn worked, and can see the cost of a bad one, the system is doing what I wanted.</p>
+
+      <h3 class="mt-4" data-i18n="cs.h.app">Appendix: the numbers in the build</h3>
+      <div data-i18n="cs.table.app" data-i18n-html>
+        <table>
+          <thead>
+            <tr><th>Category</th><th>Current values</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AV</td><td>Base AV = 10000 / Speed. Enemy delay = 1.00× Base AV. Attack 1.00, Move 0.60, Swap 0.75, Item 0.70, Block 0.75.</td></tr>
+            <tr><td>Party</td><td>Striker 240 HP / 100 ATK / 100 Speed. Relay 300 / 70 / 125. Anchor 420 / 80 / 75.</td></tr>
+            <tr><td>Block / revive</td><td>Block reduces damage by 50% until the next activation opens. Revive at 10% Max HP, minimum 1. Down = −300 score. Stage 1 and 2 also lose 100 Assault Time.</td></tr>
+            <tr><td>Stages</td><td>Stage 1: 450 Assault Time, +90 per clear, four groups. Stage 2: 420, +90 per clear, HP ×1.35, damage ×1.20, Speed +8, four groups.</td></tr>
+            <tr><td>Economy</td><td>Normal kill +100 score and +5 shards. Heal 20. ATK upgrade 40. Speed 40. Max HP 30. Items 25. Two consumable slots.</td></tr>
+            <tr><td>Items</td><td>Repair Kit heals 30% Max HP. Power Cell: next normal attack +30%. Overclock: next action delay ×0.7.</td></tr>
+            <tr><td>Formations</td><td>Formation Power is the average current ATK of the three characters. Spear 1.8×, and it benefits from its +10% single-target passive. Pulse 0.65×, with +5% team ATK already included. Flow’s +10 Speed changes Base AV while held. Actives refresh on each new normal group, and after each boss body attack.</td></tr>
+            <tr><td>Boss</td><td>Body 900 HP / 100 damage / 80 Speed. Arms 180 HP / 100 damage. Thresholds at 70% and 40%. Each living part marks 3 / 3 / 4 player tiles by phase. Overlaps stack. At least 2 tiles stay safe. Phase 3 damage dealt and taken ×1.5, and destroyed arms return.</td></tr>
+            <tr><td>Score</td><td>Formation +250 once per formation per group. Boss clear +500. Remaining HP = round(current / max × 100) per living character. Down −300.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="mt-5" data-i18n="cs.h.role">Role</h4>
+      <ul>
+        <li data-i18n="cs.role.1">Systems design: the shared clock, formations, threat, stages, shop, boss, and score</li>
+        <li data-i18n="cs.role.2">The numbers in the tables above, and the boss change that made movement matter</li>
+        <li data-i18n="cs.role.3">Unity implementation of those rules, the tutorial, and the Chinese / English UI</li>
+        <li data-i18n="cs.role.4">Readability: timeline preview, threat pulse, formation panel, and labelled commands</li>
+      </ul>
+
+      <div class="case-exit mt-5">
+        <p class="mb-2"><span class="case-exit-label" data-i18n="cs.exit.related">Related</span> <span data-i18n="cs.exit.relatedBody" data-i18n-html><a href="CurrencyWars.html">Currency Wars</a> · a write-up of another game, about the same preference: show the decision when it matters, instead of asking the player to memorise it.</span></p>
+        <p class="mb-0"><span class="case-exit-label" data-i18n="chrome.questions">Questions</span> <a href="mailto:soniclinxin@gmail.com">soniclinxin@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/xinl0/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
+      <a href="index.html#projects" class="btn btn-outline-light mt-4" data-i18n="chrome.back">&larr; Back to Projects</a>
+    </div>
+  </section>
+
+  <footer class="text-white p-4 mt-5" style="background-color: #00000083;">
+    <div class="container">
+      <p class="mb-0 text-end">&copy; 2026 Lin Xin</p>
+    </div>
+  </footer>
+  <script src="translations.js"></script>
+  <script src="i18n/coreshift.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
